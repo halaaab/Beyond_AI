@@ -1,8 +1,12 @@
 :root {
-  --bg: #f2f2f2;
-  --offwhite: "";
+  --bg: #f9f9f9;
+  --paragraph-bg:#edf2f6;
+  --offwhite: #f2f2f2;
   --primary: #02144d;
   --paragraph: #0b3a8c;
+  --sky-blue: #158ce9;
+  --mid-blue: rgb(45,112,200);
+  --dark-blue:#143496;
   --max-width: 1100px;
   --radius: 20px;
 }
@@ -13,6 +17,14 @@
 @font-face {
   font-family: "lyonFontLight";
   src: url("COMM - Lyon Arabic Display Light.otf");
+}
+@font-face {
+  font-family: "lyonFontMedium";
+  src: url("COMM - Lyon Arabic Display Medium.otf");
+}
+@font-face {
+  font-family: "lyonFontBold";
+  src: url("COMM - Lyon Arabic Slanted Display Bold.otf");
 }
 * {
   box-sizing: border-box;
@@ -49,7 +61,7 @@ img{
 }
 
 .skyblueIntro {
-  background: #ebf0f4;
+  background: var(--paragraph-bg);
   border: 1px;
   border-radius: var(--radius);
   margin-left: 2;
@@ -87,7 +99,8 @@ p{
   padding: 8px;
 }
 .skyblueParagraphs {
-  background: #ebf0f4;
+  position: relative;
+  background: var(--paragraph-bg);
   border: 1px;
   border-radius: var(--radius);
   margin: 0px;
@@ -97,6 +110,27 @@ p{
   flex: 1;
   max-width: 800px;
 }
+
+.linkIcon {
+  position: absolute;
+  top: 10px;               
+  left: 10px;       
+  text-decoration: none;
+}
+.linkIcon img{
+  width: 25px;
+  height: auto;
+}
 .paragraphHeader{
     color: var(--primary);
+}
+#paragraphsEndingDiv {
+  padding-top: 10px;
+  justify-content: center;
+  text-align: center;
+  
+}
+#paragraphsEndingDiv H1 {
+  color: var(--primary);
+  font-family: "lyonFontBold";
 }
