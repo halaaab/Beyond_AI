@@ -1,6 +1,6 @@
 :root {
-  --bg: #f9f9f9;
-  --paragraph-bg:#edf2f6;
+  --bg: #f3f3f3;
+  --paragraph-bg:#ebf0f3;
   --offwhite: #f2f2f2;
   --primary: #02144d;
   --paragraph: #0b3a8c;
@@ -12,19 +12,19 @@
 }
 @font-face {
   font-family: "lyonFont";
-  src: url("COMM - Lyon Arabic Display Regular.otf");
+  src: url("COMM - Lyon Arabic Display Regular.otf") format("opentype");
 }
 @font-face {
   font-family: "lyonFontLight";
-  src: url("COMM - Lyon Arabic Display Light.otf");
+  src: url("COMM - Lyon Arabic Display Light.otf") format("opentype");
 }
 @font-face {
   font-family: "lyonFontMedium";
-  src: url("COMM - Lyon Arabic Display Medium.otf");
+  src: url("COMM - Lyon Arabic Display Medium.otf") format("opentype");
 }
 @font-face {
   font-family: "lyonFontBold";
-  src: url("COMM - Lyon Arabic Slanted Display Bold.otf");
+  src: url("COMM - Lyon Arabic Slanted Display Bold.otf") format("opentype");
 }
 * {
   box-sizing: border-box;
@@ -52,10 +52,11 @@ img{
 }
 
 #weeklyheading {
-  color: var(--primary);
+  font-family: "Lyon arabic display";
+  color: var(--paragraph);
   font-size: clamp(22px, 3.4vw, 36px);
   margin: 8px 0 18px 0;
-  font-weight: 700;
+  font-weight:500;
   text-align: right;
   letter-spacing: 0.2px;
 }
@@ -81,12 +82,12 @@ img{
 .skyblueIntro h4 {
   margin: 0;
   line-height: 1.6;
-  font-size: clamp(12px, 1.2vw, 14px); /* حجم أصغر */
-  font-weight: 700; /* غامق */
-  color: var(--primary);
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 700; 
+  color: var(--paragraph);
 }
 p{
-    color: var(--primary);
+    color: var(--paragraph);
     padding-left: 20px;
 }
 #MainParagraphs {
@@ -101,7 +102,7 @@ p{
 .skyblueParagraphs {
   position: relative;
   background: var(--paragraph-bg);
-  border: 1px;
+  border: 10px;
   border-radius: var(--radius);
   margin: 0px;
   padding: 20px ;
@@ -122,15 +123,19 @@ p{
   height: auto;
 }
 .paragraphHeader{
-    color: var(--primary);
+    color: var(--paragraph);
+    font-size: larger;
 }
 #paragraphsEndingDiv {
   padding-top: 10px;
   justify-content: center;
   text-align: center;
+  padding-bottom: 20px;
   
 }
 #paragraphsEndingDiv H1 {
-  color: var(--primary);
-  font-family: "lyonFontBold";
+  /* color: var(--primary); */
+  font-family: "lyonFontMedium";
+  font-weight: 500;
+  color: var(--paragraph)
 }
