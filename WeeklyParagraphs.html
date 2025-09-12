@@ -2,13 +2,156 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>الفقرات الأسبوعية</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="shortcut icon" href="markblue.png" type="image/x-icon">
+    <link rel="shortcut icon" href="markblue.png" type="image/x-icon" />
+    <style>
+      :root {
+        --bg: #fff;
+        --paragraph-bg: #ebf0f3;
+        --offwhite: #f2f2f2;
+        --primary: #02144d;
+        --paragraph: #0b3a8c;
+        --sky-blue: #158ce9;
+        --mid-blue: rgb(45, 112, 200);
+        --dark-blue: #143496;
+        --max-width: 1100px;
+        --radius: 20px;
+      }
+      @font-face {
+        font-family: "lyonFont";
+        src: url("Fonts/COMM - Lyon Arabic Display Regular.otf") format("opentype");
+      }
+      @font-face {
+        font-family: "lyonFontLight";
+        src: url("Fonts/COMM - Lyon Arabic Display Light.otf") format("opentype");
+      }
+      @font-face {
+        font-family: "lyonFontMedium";
+        src: url("Fonts/COMM - Lyon Arabic Display Medium.otf") format("opentype");
+      }
+      @font-face {
+        font-family: "lyonFontBold";
+        src: url("Fonts/COMM - Lyon Arabic Slanted Display Bold.otf")
+          format("opentype");
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: "lyonFont";
+        background: var(--bg);
+        color: #1b1b1b;
+        direction: rtl;
+      }
+      img {
+        width: 175px;
+        height: 175px;
+        object-fit: cover;
+        margin: 25px;
+        color: var(--primary);
+      }
+      .weekly-intro {
+        max-width: var(--max-width);
+        margin: 36px auto;
+        padding: 8px;
+      }
+
+      .weekly-heading {
+        font-family: "lyonFont";
+        color: var(--paragraph);
+        font-size: clamp(22px, 3.4vw, 36px);
+        margin: 8px 0 18px 0;
+        font-weight: 500;
+        text-align: right;
+        letter-spacing: 0.2px;
+      }
+
+      .skyblue-Intro {
+        background: var(--paragraph-bg);
+        border: 1px;
+        border-radius: var(--radius);
+        margin-left: 2;
+        /* padding: clamp(14px, 2vw, 22px); */
+        padding: 20px;
+        display: block;
+        overflow: hidden;
+      }
+      .paragraphs-continter {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 25px;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+      .skyblue-Intro h4 {
+        margin: 0;
+        line-height: 1.6;
+        font-size: clamp(12px, 1.2vw, 14px);
+        font-weight: 700;
+        color: var(--paragraph);
+      }
+      p {
+        color: var(--paragraph);
+        padding-left: 20px;
+      }
+      .main-paragraphs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 36px auto;
+
+        padding: 8px;
+      }
+      .skyblue-paragraphs {
+        position: relative;
+        background: var(--paragraph-bg);
+        border: 10px;
+        border-radius: var(--radius);
+        margin: 0px;
+        padding: 20px;
+        display: block;
+        overflow: hidden;
+        flex: 1;
+        max-width: 800px;
+      }
+
+      .link-icon {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        text-decoration: none;
+      }
+      .link-icon img {
+        width: 35px;
+        height: auto;
+      }
+      .paragraph-header {
+        color: var(--paragraph);
+        font-size: larger;
+      }
+      .paragraphs-ending-div {
+        padding-top: 10px;
+        justify-content: center;
+        text-align: center;
+        padding-bottom: 20px;
+      }
+      .paragraphs-ending-div H1 {
+        /* color: var(--primary); */
+        font-family: "lyonFontMedium";
+        font-weight: 500;
+        color: var(--paragraph);
+      }
+    </style>
   </head>
   <body>
-    <div id="weeklyIntro">
-      <h2 id="weeklyheading">الفقرات الأسبوعية</h2>
-      <div class="skyblueIntro">
+    <div class="weekly-intro">
+      <h2 class="weekly-heading">الفقرات الأسبوعية</h2>
+      <div class="skyblue-Intro">
         <p>
           في عالم يتسارع بالتطور التكنولوجي لم يعد الذكاء الاصطناعي مجرد فكرة
           مستقبلية، بل أصبح جزءًا من واقعنا اليومي وأصبح حاضرًا في كل مجال، حتى
@@ -32,15 +175,15 @@
         </p>
       </div>
     </div>
-    <div id="MainParagraphs">
-      <div class="paragraphsContinter">
-        <div class="skyblueParagraphs">
-          <div class="linkIcon">
+    <div class="main-paragraphs">
+      <div class="paragraphs-continter">
+        <div class="skyblue-paragraphs">
+          <div class="link-icon">
             <a href="https://example.com" target="_blank"
-              ><img src="arrow.png" alt="Link Arrrow"
+              ><img src="images/arrow.png" alt="Link Arrrow"
             /></a>
           </div>
-          <h4 class="paragraphHeader">التخصص AI x</h4>
+          <h4 class="paragraph-header">التخصص AI x</h4>
           <p>
             كل مجال من المجالات الأكاديمية يختبئ خلفه دور جديد للذكاء الاصطناعي.
             في هذه الفقرة، نستعرض أسبوعيًا كيف تغيرت مفاهيم كل تخصص مع دخول
@@ -53,17 +196,17 @@
             الذكاء الاصطناعي قد يكون مفتاحك للتميز فيها.
           </p>
         </div>
-        <img src="ai.png" alt="ai image" />
+        <img src="images/ai.png" alt="ai image" />
       </div>
-      <div class="paragraphsContinter">
-        <img src="ai.png" alt="ai image" />
-        <div class="skyblueParagraphs">
-          <div class="linkIcon">
+      <div class="paragraphs-continter">
+        <img src="images/clock.png" alt="ai image" />
+        <div class="skyblue-paragraphs">
+          <div class="link-icon">
             <a href="https://example.com" target="_blank"
-              ><img src="arrow.png" alt="Link Arrrow"
+              ><img src="images/arrow.png" alt="Link Arrrow"
             /></a>
           </div>
-          <h4 class="paragraphHeader">في دقيقة</h4>
+          <h4 class="paragraph-header">في دقيقة</h4>
           <p>
             فقرة مرئية موجزة يقدمها طالب أو مختص، يتناول فيها مفهومًا أو تطبيقًا
             عمليًا في الذكاء الاصطناعي مرتبطًا بتخصصه. تقدم لك بأكثر طريقة
@@ -77,14 +220,14 @@
           </p>
         </div>
       </div>
-      <div class="paragraphsContinter">
-        <div class="skyblueParagraphs">
-          <div class="linkIcon">
+      <div class="paragraphs-continter">
+        <div class="skyblue-paragraphs">
+          <div class="link-icon">
             <a href="https://example.com" target="_blank"
-              ><img src="arrow.png" alt="Link Arrrow"
+              ><img src="images/arrow.png" alt="Link Arrrow"
             /></a>
           </div>
-          <h4 class="paragraphHeader">تخيل لو .....</h4>
+          <h4 class="paragraph-header">تخيل لو .....</h4>
           <p>
             في هذه السلسلة نضعك في مواقف حقيقية من داخل تخصصك، ثم نعيد رسم
             المشهد باستخدام أدوات الذكاء الاصطناعي. تخيل أن تنجز هذه المهمة
@@ -97,10 +240,10 @@
             الأول في تخصصك ومستقبلك، لتكون أقرب للمستقبل أكثر من أي وقت مضى.
           </p>
         </div>
-        <img src="ai.png" alt="ai image" />
+        <img src="images/Think.png" alt="ai image" />
       </div>
     </div>
-    <div id="paragraphsEndingDiv">
+    <div class="paragraphs-ending-div">
       <h1>
         نحن لا نقدم محتوى فقط، بل نبني وعيًا مستقبليًا يربطك بالذكاء الاصطناعي
         خطوة بخطوة.
