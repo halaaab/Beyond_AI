@@ -9,24 +9,31 @@
         --paragraph-bg: #ebf0f3;
         --offwhite: #f2f2f2;
         --primary: #02144d;
+        --midnight: #02144d;
         --paragraph: #0b3a8c;
         --sky-blue: #158ce9;
         --mid-blue: rgb(45, 112, 200);
         --dark-blue: #143496;
         --max-width: 1100px;
         --radius: 20px;
+        --vivid: #3a6ebf;
+        --royal: #162f7a;
+        --line: rgba(22, 47, 122, 0.22);
       }
       @font-face {
         font-family: "lyonFont";
-        src: url("Fonts/COMM - Lyon Arabic Display Regular.otf") format("opentype");
+        src: url("Fonts/COMM - Lyon Arabic Display Regular.otf")
+          format("opentype");
       }
       @font-face {
         font-family: "lyonFontLight";
-        src: url("Fonts/COMM - Lyon Arabic Display Light.otf") format("opentype");
+        src: url("Fonts/COMM - Lyon Arabic Display Light.otf")
+          format("opentype");
       }
       @font-face {
         font-family: "lyonFontMedium";
-        src: url("Fonts/COMM - Lyon Arabic Display Medium.otf") format("opentype");
+        src: url("Fonts/COMM - Lyon Arabic Display Medium.otf")
+          format("opentype");
       }
       @font-face {
         font-family: "lyonFontBold";
@@ -45,14 +52,172 @@
         background: var(--bg);
         color: #1b1b1b;
         direction: rtl;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-color: #fff;
       }
-      img {
-        width: 175px;
-        height: 175px;
-        object-fit: cover;
-        margin: 25px;
-        color: var(--primary);
+
+      /* header */
+      .wrap {
+        max-width: 1200px;
+        margin-inline: auto;
+        padding-inline: 20px;
       }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: #fff;
+      }
+      .topbar .wrap {
+        padding-inline-start: 6px;
+        padding-inline-end: 20px;
+      }
+      .topbar-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 0 8px;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 15px !important;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        flex: 0 1 auto;
+        margin-inline-start: -18px;
+      }
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+      .nav a {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: var(--midnight);
+        font-size: 14px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .nav a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(22, 47, 122, 0.08);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+        border-radius: 12px;
+        z-index: -1;
+      }
+      .nav a:hover::before {
+        transform: scaleX(1);
+      }
+      .nav a:hover {
+        transform: translateY(-1px);
+        color: var(--royal);
+      }
+      .nav a.active {
+        color: #fff;
+        background: linear-gradient(90deg, var(--vivid), var(--royal));
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(22, 47, 122, 0.25);
+        min-width: auto;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 18px;
+        border-radius: 50px;
+      }
+      .nav a.active::before {
+        display: none;
+      }
+
+      .search button {
+        position: absolute;
+        inset-inline-end: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 26px;
+        height: 26px;
+        border: none;
+        background: transparent;
+        display: grid;
+        place-items: center;
+        padding: 0;
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      .search button img {
+        width: 12px;
+        height: 12px;
+        display: block;
+        object-fit: contain;
+        pointer-events: none;
+      }
+
+      .search {
+        position: relative;
+        width: 220px;
+        max-width: 24vw;
+        min-width: 160px;
+        flex: 0 0 auto;
+        margin: 0;
+        margin-inline-end: -18px;
+        transform: translateX(-27px);
+      }
+      .search input {
+        width: 100%;
+        height: 34px;
+        padding-block: 8px;
+        padding-inline-start: 12px;
+        padding-inline-end: 38px;
+        border-radius: 999px;
+        border: 1px solid rgba(2, 20, 77, 0.18);
+        outline: none;
+        background: #fff;
+        font-size: 12.5px;
+        box-shadow: 0 1px 4px rgba(2, 20, 77, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .search input:hover {
+        border-color: var(--royal);
+        box-shadow: 0 2px 8px rgba(2, 20, 77, 0.12);
+        transform: translateY(-1px);
+      }
+      .search input:focus {
+        border-color: var(--vivid);
+        box-shadow: 0 0 0 3px rgba(58, 110, 191, 0.15),
+          0 2px 8px rgba(2, 20, 77, 0.12);
+        transform: translateY(-1px);
+      }
+
+      .brand {
+        flex: 0 0 auto;
+        margin-inline-end: -28px;
+      }
+      .brand .logo {
+        height: 108px;
+        width: auto;
+        display: block;
+        direction: ltr;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06));
+      }
+      /* endofheader */
+
       .weekly-intro {
         max-width: var(--max-width);
         margin: 36px auto;
@@ -86,6 +251,13 @@
         align-items: center;
         justify-content: center;
         gap: 20px;
+      }
+      .paragraphs-continter img {
+        width: 175px;
+        height: 175px;
+        object-fit: cover;
+        margin: 25px;
+        color: var(--primary);
       }
       .skyblue-Intro h4 {
         margin: 0;
@@ -146,9 +318,164 @@
         font-weight: 500;
         color: var(--paragraph);
       }
+
+      .footer {
+        position: relative;
+        margin-top: 44px;
+        background: url("images/background.png") no-repeat bottom;
+        background-size: 100%;
+        min-height: 250px; /* Added to ensure footer has minimum height */
+      }
+      .footer .wrap {
+        max-width: 100% !important;
+        padding-inline: 0 !important;
+      }
+
+      .foot {
+        position: absolute;
+        bottom: 5px; /* Position from bottom of footer */
+        left: 0;
+        right: 0;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas: "left right";
+        align-items: center;
+        gap: 8px 12px;
+        min-height: 64px;
+        padding-inline: 12px;
+        direction: ltr;
+        font-size: 13px;
+        padding-block: 10px 16px;
+        background: transparent;
+        width: 100%;
+      }
+
+      .foot-left {
+        grid-area: left;
+        justify-self: start;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        color: midnightblue;
+      }
+      .social-icons {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
+      }
+
+      .icon {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: transparent;
+        border: 1.5px solid rgba(2, 20, 77, 0.35);
+        display: grid;
+        place-items: center;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+      .icon:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(2, 20, 77, 0.15);
+        border-color: var(--royal);
+      }
+      .icon img {
+        width: 14px;
+        height: 14px;
+        display: block;
+      }
+
+      .handle {
+        margin-inline-start: 8px;
+        opacity: 0.9;
+        font-size: 12.5px;
+        font-weight: 400;
+      }
+
+      .email-line {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        opacity: 0.9;
+        font-size: 13px;
+      }
+      .email-line .icon {
+        width: 24px;
+        height: 24px;
+      }
+
+      .foot-right {
+        grid-area: right;
+        justify-self: end;
+        direction: rtl;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 50vw;
+        font-size: 13px;
+        font-weight: 400;
+        color: midnightblue;
+      }
+      .foot-right [dir="ltr"] {
+        unicode-bidi: isolate-override;
+        display: inline-block;
+        margin-inline-start: 4px;
+        font-weight: 400;
+        color: midnightblue;
+      }
+
+      @media (max-width: 700px) {
+        .footer {
+          min-height: 300px; /* Increased for mobile */
+        }
+
+        .foot {
+          bottom: 70px; /* Adjusted for mobile */
+          grid-template-columns: 1fr;
+          grid-template-areas: "right" "left";
+          gap: 15px;
+          padding-inline: 8px;
+        }
+        .foot-right {
+          justify-self: center;
+          max-width: 100%;
+          text-align: center;
+        }
+        .foot-left {
+          justify-self: center;
+          align-items: center;
+        }
+      }
     </style>
   </head>
   <body>
+    <header class="topbar">
+      <div class="wrap topbar-row">
+        <nav class="nav">
+          <a href="#">الصفحة الرئيسية</a>
+          <a href="#" class="active">الفقرات الأسبوعية</a>
+          <a href="#">القائمة القادمة</a>
+          <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
+          <a href="#">من نحن</a>
+          <a href="#">تواصل معنا</a>
+        </nav>
+
+        <form class="search" role="search" aria-label="بحث">
+          <input type="search" placeholder="عن ماذا تبحث؟" />
+          <button type="submit" aria-label="ابحث">
+            <img src="images/search.png" alt="بحث" />
+          </button>
+        </form>
+
+        <div class="brand">
+          <img src="images/logo.svg" alt="الشعار" class="logo" />
+        </div>
+      </div>
+    </header>
     <div class="weekly-intro">
       <h2 class="weekly-heading">الفقرات الأسبوعية</h2>
       <div class="skyblue-Intro">
@@ -249,5 +576,57 @@
         خطوة بخطوة.
       </h1>
     </div>
+    <footer class="footer">
+      <div class="wrap foot">
+        <div class="foot-left">
+          <div class="social-icons">
+            <a
+              class="icon"
+              href="https://www.linkedin.com/showcase/thakaabeyond/"
+              title="LinkedIn"
+              aria-label="LinkedIn"
+            >
+              <img src="images/liked-in.png" alt="LinkedIn" />
+            </a>
+            <a
+              class="icon"
+              href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
+              title="X (Twitter)"
+              aria-label="X"
+            >
+              <img src="images/twitter.png" alt="X" />
+            </a>
+            <a
+              class="icon"
+              href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
+              title="TikTok"
+              aria-label="TikTok"
+            >
+              <img src="images/tik-tok.png" alt="TikTok" />
+            </a>
+            <span class="handle">@BeyondAI</span>
+          </div>
+
+          <div class="email-line">
+            <a
+              class="icon"
+              href="mailto:BeyondAI@gmail.com"
+              title="Email"
+              aria-label="Email"
+              dir="ltr"
+            >
+              <img src="images/email.png" alt="Email" />
+            </a>
+            <span>BeyondAI@gmail.com</span>
+          </div>
+        </div>
+
+        <div class="foot-right" dir="rtl">
+          <span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
+          <span class="sep" aria-hidden="true"> – </span>
+          <span class="brand-en" dir="ltr">Beyond AI</span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
