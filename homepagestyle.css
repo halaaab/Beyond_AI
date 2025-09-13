@@ -1,17 +1,48 @@
-html, body {
-    font-family: 'LyonArabic';
-    background-image: url('background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
-   
-    height: 100%;
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* لتوزيع المحتوى من الأعلى إلى الأسفل */
-}
+ @font-face{
+    font-family:'Lyon Arabic';
+    src:
+      url('Fonts/Font_Regular.otf') format('opentype');
+    font-weight:400;
+    font-style:normal;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Lyon Arabic';
+    src:
+      url('Fonts/Font_Bold.otf') format('opentype');
+    font-weight:700;
+    font-style:normal;
+    font-display:swap;
+  }
+
+  html, body{ font-family:'Lyon Arabic'; }
+  button, input, select, textarea{ font-family: inherit; }
+
+  :root{
+    --midnight:#02144d;
+    --vivid:#3A6EBF;
+    --royal:#162F7A;
+    --line:rgba(22,47,122,.22);
+  }
+
+  html,body{min-height:100%;}
+  *{box-sizing:border-box}
+
+  body{
+    margin:0; color:var(--midnight);
+    line-height:1.6; letter-spacing:.1px;
+
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-color:#fff;
+    background-image:url('images/background.png');
+    background-position:center bottom;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment:local;
+  }
+
 
 /* the header */
     .topbar{
