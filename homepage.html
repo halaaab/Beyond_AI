@@ -1,236 +1,431 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Beyond AI Club</title>
-    <link rel="stylesheet" href="homepagestyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-     <link rel="icon" type="image/png" href="images/markblue.png" />
+    <link rel="stylesheet" href="homepagestyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="images/markblue.png" />
     <link rel="apple-touch-icon" href="images/markblue.png" />
     <link rel="shortcut icon" href="images/markblue.png" />
-</head>
-<body>
-     <header class="topbar">
-    <div class="wrap topbar-row">
-      <nav class="nav">
-        <a href="homepage.html" class="active">الصفحة الرئيسية</a>
-        <a href="WeeklyParagraphs.html">الفقرات الأسبوعية</a>
-        <a href="#">القائمة القادمة</a>
-        <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
-        <a href="#">من نحن</a>
-        <a href="#">تواصل معنا</a>
-      </nav>
-
-      <form class="search" role="search" aria-label="بحث">
-        <input type="search" placeholder="عن ماذا تبحث؟" />
-        <button type="submit" aria-label="ابحث">
-          <img src="images/search.png" alt="بحث">
-        </button>
-      </form>
-
-      <div class="brand">
-        <img src="images/logo.svg" alt="الشعار" class="logo" />
-      </div>
+    <style>
+      /* Page transition: fade in on load, fade out on link click */
+      html.js body {
+        opacity: 0;
+        transition: opacity 350ms ease-in-out;
+      }
+      html.js body.is-shown {
+        opacity: 1;
+      }
+    </style>
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <!-- Page spinner overlay -->
+    <div id="page-spinner" aria-hidden="true">
+      <div class="spinner" role="status" aria-label="جارٍ التحميل"></div>
     </div>
-  </header>
+    <header class="topbar">
+      <div class="wrap topbar-row">
+        <input
+          type="checkbox"
+          id="nav-toggle"
+          class="nav-toggle"
+          aria-hidden="true"
+        />
+        <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation"
+          >☰</label
+        >
+        <nav class="nav">
+          <a href="homepage.html" class="active">الصفحة الرئيسية</a>
+          <a href="WeeklyParagraphs.html">الفقرات الأسبوعية</a>
+          <a href="#">القائمة القادمة</a>
+          <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
+          <a href="#">من نحن</a>
+          <a href="#">تواصل معنا</a>
+        </nav>
 
+        <form class="search" role="search" aria-label="بحث">
+          <input type="search" placeholder="عن ماذا تبحث؟" />
+          <button type="submit" aria-label="ابحث">
+            <img src="images/search.png" alt="بحث" />
+          </button>
+        </form>
+
+        <div class="brand">
+          <img src="images/logo.svg" alt="الشعار" class="logo" />
+        </div>
+      </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <img src="images/logo.png" alt="AI Icon" class="hero-icon">
-            <h1 dir="rtl">مستقبلك مع الذكاء الاصطناعي يبدأ هنا.....</h1>
-            <p dir="rtl">
-                في <b>Beyond AI</b> نؤمن أن التقنية ليست أدوات فحسب، بل هي فرصة لابتكار المستقبل وصناعة الأثر.  
-                نفتح لك الأفق لتتعلم، تبتكر، وتحوّل أفكارك إلى واقع.
-            </p>
-        </div>
+      <div class="hero-content">
+        <img src="images/logo.png" alt="AI Icon" class="hero-icon" />
+        <h1 dir="rtl">مستقبلك مع الذكاء الاصطناعي يبدأ هنا.....</h1>
+        <p dir="rtl">
+          في نادي <b>Beyond AI</b> نؤمن أن التقنية ليست أدوات فحسب، بل هي فرصة
+          لابتكار المستقبل وصناعة الأثر. نفتح لك الأفق لتتعلم، تبتكر، وتحوّل
+          أفكارك إلى واقع.
+        </p>
+      </div>
     </section>
 
     <!-- Why Beyond AI Section -->
     <section class="why">
-        <div class="section-title">
-            <h2 dir="rtl">لماذا Beyond AI ؟</h2>
+      <div class="section-title">
+        <h2 dir="rtl">لماذا Beyond AI ؟</h2>
+      </div>
+      <div class="cards" dir="rtl">
+        <div class="card">
+          <img src="images/AI.png" />
+          <p dir="rtl">
+            لأننا نمزج الذكاء الاصطناعي مع تخصصك الأكاديمي لتكتشف تطبيقاته
+            المباشرة في مجالك
+          </p>
         </div>
-        <div class="cards" dir="rtl">
-            <div class="card">
-                <img src="images/AI.png">
-                <p dir="rtl">لأننا نمزج الذكاء الاصطناعي مع تخصصك الأكاديمي لتكتشف تطبيقاته المباشرة في مجالك</p>
-            </div>
-            <div class="card">
-                <img src="images/mission.png">
-                <p dir="rtl">لأننا نمنحك رؤية مستقبلية واضحة تقودك بخطوات واثقة نحو التميز</p>
-            </div>
-            <div class="card">
-                <img src="images/cooperation.png">
-                <p dir="rtl">لأننا مجتمع طلابي متعاون يجمعنا الشغف بالعلم والإبداع في التقنية</p>
-            </div>
+        <div class="card">
+          <img src="images/mission.png" />
+          <p dir="rtl">
+            لأننا نمنحك رؤية مستقبلية واضحة تقودك بخطوات واثقة نحو التميز
+          </p>
         </div>
+        <div class="card">
+          <img src="images/cooperation.png" />
+          <p dir="rtl">
+            لأننا مجتمع طلابي متعاون يجمعنا الشغف بالعلم والإبداع في التقنية
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- "من نحن" Section -->
     <section class="about-us" id="us">
-        <div class="section-title">
-            <h2 dir="rtl">من نحن</h2>
+      <div class="section-title">
+        <h2 dir="rtl">من نحن</h2>
+      </div>
+      <div class="about-us-box">
+        <div class="about-us-logo">
+          <img src="images/logo.png" alt="Beyond AI Logo" />
         </div>
-        <div class="about-us-box">
-            <div class="about-us-logo">
-                <img src="images/logo.png" alt="Beyond AI Logo">
-            </div>
-            <div class="about-us-text">
-                <p>
-                    مبادرة Beyond AI هي مبادرة رائدة لمركز الدراسات المتقدمة في الذكاء الاصطناعي، تهدف إلى تمكين الطلاب من فهم وتطبيق الذكاء الاصطناعي في مختلف المجالات الأكاديمية والتقنية. نحرص على تطوير مهارات الطلاب العلمية والعملية لمواكبة التوجهات الحديثة في مجال الذكاء الاصطناعي، ونسعى جاهدين لبناء جيل قادر على استخدام التقنيات الحديثة لإحداث أثر ملموس في المجتمع.
-                </p>
-            </div>
+        <div class="about-us-text">
+          <p>
+            مبادرة Beyond AI هي
+            <b>مبادرة رائدة لمركز الدراسات المتقدمة في الذكاء الاصطناعي</b>،
+            تهدف إلى تمكين الطلاب من فهم وتطبيق الذكاء الاصطناعي في مختلف
+            المجالات الأكاديمية والتقنية. نحرص على تطوير مهارات الطلاب العلمية
+            والعملية لمواكبة التوجهات الحديثة في مجال الذكاء الاصطناعي، ونسعى
+            جاهدين لبناء جيل قادر على استخدام التقنيات الحديثة لإحداث أثر ملموس
+            في المجتمع.
+          </p>
         </div>
+      </div>
     </section>
     <section class="AI">
-  <div class="section-title">
-      <h2 dir="rtl">مركز الدراسات المتقدمة في الذكاء الاصطناعي </h2>
-  </div>
-
-  <div class="cards"dir="rtl" >
-      <div class="card">
-        <h3 dir="rtl">نبذة عن المركز</h3>
-          <p dir="rtl">مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) هو مركز بحثي متخصّص في تطوير تقنيات الذكاء الاصطناعي وتطبيقاته، ويتبع وكالة الجامعة للدراسات العليا والبحث العلمي. يهدف المركز إلى دعم منظومة البحث والابتكار في مجال الذكاء الاصطناعي على مستوى الجامعة والقطاعات الوطنية من خلال تقديم خدمات بحثية واستشارية تعتمد على أفضل الممارسات وأحدث المعايير والتقنيات العالمية </p>
+      <div class="section-title">
+        <h2 dir="rtl">مركز الدراسات المتقدمة في الذكاء الاصطناعي</h2>
       </div>
 
-      <div class="card">
-        <h3 dir="rtl">دعم المركز</h3>
+      <div class="cards" dir="rtl">
+        <div class="card">
+          <h3 dir="rtl">نبذة عن المركز</h3>
+          <p dir="rtl">
+            مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) هو مركز بحثي
+            متخصّص في تطوير تقنيات الذكاء الاصطناعي وتطبيقاته، ويتبع وكالة
+            الجامعة للدراسات العليا والبحث العلمي. يهدف المركز إلى دعم منظومة
+            البحث والابتكار في مجال الذكاء الاصطناعي على مستوى الجامعة والقطاعات
+            الوطنية من خلال تقديم خدمات بحثية واستشارية تعتمد على أفضل الممارسات
+            وأحدث المعايير والتقنيات العالمية
+          </p>
+        </div>
 
-          <p dir="rtl" >يساهم المركز في توفير الموارد الأكاديمية والبيئية والعلمية، مما يتيح للطلبة فرصة تطوير مهاراتهم وتعزيز معارفهم في مجال الذكاء الاصطناعي. هذا الدعم المستمر يفتح لهم آفاقًا لتقديم حلول مبتكرة تسهم في بناء جيل قادر على مواجهة تحديات المستقبل </p>
+        <div class="card">
+          <h3 dir="rtl">دعم المركز</h3>
+
+          <p dir="rtl">
+            يساهم المركز في توفير الموارد الأكاديمية والبيئية والعلمية، مما يتيح
+            للطلبة فرصة تطوير مهاراتهم وتعزيز معارفهم في مجال الذكاء الاصطناعي.
+            هذا الدعم المستمر يفتح لهم آفاقًا لتقديم حلول مبتكرة تسهم في بناء
+            جيل قادر على مواجهة تحديات المستقبل
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 dir="rtl">مجالات المركز</h3>
+
+          <p dir="rtl">
+            يساهم المركز في تنمية المهارات الرقمية وتعزيز القدرات البحثية، إلى
+            جانب تنظيم برامج تدريبية وفعاليات أكاديمية متخصصة. ويضع ضمن أولوياته
+            بناء مجتمع معرفي قادر على مواجهة تحديات المستقبل، وتحويل الأفكار إلى
+            ابتكارات وحلول عملية تواكب التطور التقني العالمي
+          </p>
+        </div>
       </div>
-
-      <div class="card">
-        <h3 dir="rtl">مجالات المركز</h3>
-
-          <p dir="rtl">  
-يساهم المركز في تنمية المهارات الرقمية وتعزيز القدرات البحثية، إلى جانب تنظيم برامج تدريبية وفعاليات أكاديمية متخصصة. ويضع ضمن أولوياته بناء مجتمع معرفي قادر على مواجهة تحديات المستقبل، وتحويل الأفكار إلى ابتكارات وحلول عملية تواكب التطور التقني العالمي </p>
-      </div>
-  </div>
-</section>
+    </section>
 
     <!-- ماذا نقدم؟ Section -->
     <section class="offeres">
-        <div class="section-title">
-            <h2 dir="rtl">ماذا نقدم؟</h2>
+      <div class="section-title">
+        <h2 dir="rtl">ماذا نقدم؟</h2>
+      </div>
+      <div class="cards" dir="rtl">
+        <div class="card">
+          <img src="images/what.png" alt="عرض 1" />
+          <h3 dir="rtl">الفقرات الأسبوعية</h3>
+          <p dir="rtl">
+            نقدم محتوى معرفي يربط الذكاء الاصطناعي بتخصصك بطريقة مبسطة ومنظمة
+          </p>
         </div>
-        <div class="cards" dir="rtl">
-            <div class="card">
-                <img src="images/what.png" alt="عرض 1">
-                <h3 dir="rtl">الفقرات الأسبوعية</h3>
-                <p dir="rtl">نقدم محتوى معرفي يربط الذكاء الاصطناعي بتخصصك بطريقة مبسطة ومنظمة</p>
-            </div>
 
-            <div class="card">
-                <img src="images/what2.png" alt="عرض 2">
-                <h3 dir="rtl">الأحداث القادمة</h3>
-                <p dir="rtl">فعاليات تعليمية وتفاعلية تهدف لتعزيز فهم الذكاء الاصطناعي وتطبيقاته الذكية</p>
-            </div>
-
-            <div class="card">
-                <img src="images/what3.png" alt="عرض 3">
-                <h3 dir="rtl">مكتبة أدوات الذكاء الاصطناعي</h3>
-                <p dir="rtl">مجموعة أدوات مختارة تمكّنك من تطبيق الذكاء الاصطناعي في مجالك 
-                الأكاديمي والمهني</p>
-            </div>
+        <div class="card">
+          <img src="images/what2.png" alt="عرض 2" />
+          <h3 dir="rtl">الأحداث القادمة</h3>
+          <p dir="rtl">
+            فعاليات تعليمية وتفاعلية تهدف لتعزيز فهم الذكاء الاصطناعي وتطبيقاته
+            الذكية
+          </p>
         </div>
+
+        <div class="card">
+          <img src="images/what3.png" alt="عرض 3" />
+          <h3 dir="rtl">مكتبة أدوات الذكاء الاصطناعي</h3>
+          <p dir="rtl">
+            مجموعة أدوات مختارة تمكّنك من تطبيق الذكاء الاصطناعي في مجالك
+            الأكاديمي والمهني
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- انضم إلينا Section -->
     <section class="join-us">
-        <div class="join-us-content">
-            <img src="images/logo.png" alt="Beyond AI Logo" class="join-us-logo">
-            <h2 dir="rtl">هل ترغب أن تكون جزءًا من Beyond AI؟</h2>
-            <p dir="rtl">
-                انضم إلى مجتمعنا الطلابي في Beyond AI وكن جزءًا من المستقبل الذي نقدمه في مجال الذكاء الاصطناعي.
-                تعلم، ابتكر، وشارك في صناعة المستقبل.
-            </p>
-            <a href="#" class="join-us-btn" dir="rtl">قدم الآن</a>
-        </div>
+      <div class="join-us-content">
+        <img src="images/logo.png" alt="Beyond AI Logo" class="join-us-logo" />
+        <h2 dir="rtl">هل ترغب أن تكون جزءًا من Beyond AI؟</h2>
+        <p dir="rtl">
+          انضم إلى مجتمعنا الطلابي في Beyond AI وكن جزءًا من المستقبل الذي نقدمه
+          في مجال الذكاء الاصطناعي. تعلم، ابتكر، وشارك في صناعة المستقبل.
+        </p>
+        <a href="#" class="join-us-btn" dir="rtl">قدم الآن</a>
+      </div>
     </section>
 
-    <!-- جهات تابعة Section -->
+    <!-- الجـهات التابعة Section -->
     <section class="affiliated">
-        <div class="section-title">
-            <h2 dir="rtl">الجهات التابعة</h2>
-        </div>
-        <div class="scroll-container">
-            <button class="scroll-btn left" onclick="scrollLeft()">&#8592;</button>
-            <div class="affiliated-logos">
-                <img src="images/p1.jpg" alt="Entity 1">
-                <img src="images/p2.jpg" alt="Entity 2">
-                <img src="images/p3.jpg" alt="Entity 3">
-                <img src="images/p4.jpg" alt="Entity 4">
-                <img src="images/p5.jpg" alt="Entity 5">
+      <div class="section-title">
+        <h2 dir="rtl">الجهات التابعة</h2>
+      </div>
+      <div
+        class="sponsor-carousel"
+        role="region"
+        aria-label="شركاء الرعاية"
+        aria-live="polite"
+      >
+        <div class="carousel-container">
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="images/p1.jpg" alt="شريك 1" />
             </div>
-            <button class="scroll-btn right" onclick="scrollRight()">&#8594;</button>
+            <div class="carousel-slide">
+              <img src="images/p2.jpg" alt="شريك 2" />
+            </div>
+            <div class="carousel-slide">
+              <img src="images/p3.jpg" alt="شريك 3" />
+            </div>
+            <div class="carousel-slide">
+              <img src="images/p4.jpg" alt="شريك 4" />
+            </div>
+            <div class="carousel-slide">
+              <img src="images/p5.jpg" alt="شريك 5" />
+            </div>
+          </div>
         </div>
+        <button class="carousel-btn prev" aria-label="السابق">&#8592;</button>
+        <button class="carousel-btn next" aria-label="التالي">&#8594;</button>
+        <div
+          class="carousel-dots"
+          role="tablist"
+          aria-label="مؤشرات الشركاء"
+        ></div>
+      </div>
     </section>
 
     <script>
-        function scrollLeft() {
-            const container = document.querySelector('.affiliated-logos');
-            container.scrollBy({
-                left: -200, 
-                behavior: 'smooth'
-            });
+      (function () {
+        const container = document.querySelector(".sponsor-carousel");
+        const track = container.querySelector(".carousel-track");
+        const slides = [...container.querySelectorAll(".carousel-slide")];
+        const prevBtn = container.querySelector(".prev");
+        const nextBtn = container.querySelector(".next");
+        const dotsContainer = container.querySelector(".carousel-dots");
+        const autoSlideDelay = 3000;
+        let currentIndex = 0;
+        let autoSlideInterval;
+        let slidesPerView = getSlidesPerView();
+
+        function getSlidesPerView() {
+          if (window.innerWidth >= 1024) return 4;
+          if (window.innerWidth >= 768) return 3;
+          if (window.innerWidth >= 480) return 2;
+          return 1;
         }
 
-        function scrollRight() {
-            const container = document.querySelector('.affiliated-logos');
-            container.scrollBy({
-                left: 200, 
-                behavior: 'smooth'
-            });
+        function totalPages() {
+          return Math.ceil(slides.length / slidesPerView) - 1;
         }
-        
-        const navLinks = document.querySelectorAll("#navbar a");
 
-        navLinks.forEach(link => {
-            link.addEventListener("click", function() {
-                navLinks.forEach(l => l.classList.remove("active"));
-                this.classList.add("active"); 
-            });
+        function createDots() {
+          dotsContainer.innerHTML = "";
+          for (let i = 0; i < totalPages(); i++) {
+            const dot = document.createElement("button");
+            dot.className = "carousel-dot";
+            dot.setAttribute("aria-label", `الشريحة ${i + 1}`);
+            dot.setAttribute("role", "tab");
+            dot.addEventListener("click", () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+          }
+        }
+
+        function updateDots() {
+          dotsContainer.querySelectorAll(".carousel-dot").forEach((dot, i) => {
+            dot.classList.toggle("active", i === currentIndex);
+            dot.setAttribute("aria-selected", i === currentIndex);
+          });
+        }
+
+        function moveToCurrentSlide() {
+          track.style.transform = `translateX(-${
+            currentIndex * (100 / slidesPerView)
+          }%)`;
+          updateDots();
+        }
+
+        function goToSlide(i) {
+          currentIndex = i;
+          moveToCurrentSlide();
+        }
+
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % totalPages();
+          moveToCurrentSlide();
+        }
+
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + totalPages()) % totalPages();
+          moveToCurrentSlide();
+        }
+
+        function startAutoSlide() {
+          stopAutoSlide();
+          autoSlideInterval = setInterval(nextSlide, autoSlideDelay);
+        }
+
+        function stopAutoSlide() {
+          clearInterval(autoSlideInterval);
+        }
+
+        prevBtn.addEventListener("click", prevSlide);
+        nextBtn.addEventListener("click", nextSlide);
+        container.addEventListener("mouseenter", stopAutoSlide);
+        container.addEventListener("mouseleave", startAutoSlide);
+        window.addEventListener("resize", () => {
+          slidesPerView = getSlidesPerView();
+          createDots();
+          updateDots();
+          moveToCurrentSlide();
         });
-    
-    </script>
 
-    <!-- Footer Section -->
+        createDots();
+        updateDots();
+        startAutoSlide();
+      })();
+      // Page transition script
+      document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.add("is-shown");
+        const links = document.querySelectorAll("a[href]");
+        links.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            const href = link.getAttribute("href");
+            if (
+              href.startsWith("#") ||
+              href.startsWith("mailto:") ||
+              href.startsWith("tel:") ||
+              link.target === "_blank"
+            ) {
+              return;
+            }
+            e.preventDefault();
+            document.body.classList.remove("is-shown");
+            setTimeout(() => {
+              window.location.href = href;
+            }, 300);
+          });
+        });
+      });
+      window.addEventListener("load", function () {
+        const spinner = document.getElementById("page-spinner");
+        if (spinner) {
+          spinner.style.display = "none";
+        }
+      });
+    </script>
     <footer class="footer">
-    <div class="wrap foot">
-      <div class="foot-left">
-        <div class="social-icons">
-          <span class="icon" title="LinkedIn" aria-label="LinkedIn">
-            <a href="https://www.linkedin.com/showcase/thakaabeyond/"> <img src="images/liked-in.png" alt="LinkedIn"></a>
-          </span>
-          <span class="icon" title="X (Twitter)" aria-label="X">
-           <a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"><img src="images/twitter.png" alt="X"></a>
-          </span>
-          <span class="icon" title="TikTok" aria-label="TikTok">
-            <a href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"><img src="images/tik-tok.png" alt="TikTok"></a>
-          </span>
-          <span class="handle">@BeyondAI</span>
+      <div class="wrap foot">
+        <div class="foot-left">
+          <div class="social-icons">
+            <a
+              class="icon"
+              href="https://www.linkedin.com/showcase/thakaabeyond/"
+              title="LinkedIn"
+              aria-label="LinkedIn"
+            >
+              <img src="images/liked-in.png" alt="LinkedIn" />
+            </a>
+            <a
+              class="icon"
+              href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
+              title="X (Twitter)"
+              aria-label="X"
+            >
+              <img src="images/twitter.png" alt="X" />
+            </a>
+            <a
+              class="icon"
+              href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
+              title="TikTok"
+              aria-label="TikTok"
+            >
+              <img src="images/tik-tok.png" alt="TikTok" />
+            </a>
+            <span class="handle">@BeyondAI</span>
+          </div>
+
+          <div class="email-line">
+            <a
+              class="icon"
+              href="mailto:BeyondAI@gmail.com"
+              title="Email"
+              aria-label="Email"
+              dir="ltr"
+            >
+              <img src="images/email.png" alt="Email" />
+            </a>
+            <span>BeyondAI@gmail.com</span>
+          </div>
         </div>
 
-        <div class="email-line">
-          <span class="icon" title="Email" aria-label="Email">
-          <a href="mailto:BeyondAI@gmail.com" dir="ltr"> <img src="images/email.png" alt="Email"></a>
-          </span>
-          <span>BeyondAI@gmail.com</span>
+        <div class="foot-right" dir="rtl">
+          <span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
+          <span class="sep" aria-hidden="true"> – </span>
+          <span class="brand-en" dir="ltr">Beyond AI</span>
         </div>
       </div>
-
-      
-
-            <div class="foot-right" dir="rtl">
-                <span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
-                <span class="sep" aria-hidden="true"> – </span>
-                <span class="brand-en" dir="ltr">Beyond AI</span>
-            </div>
-        </div>
     </footer>
-
-</body>
+  </body>
 </html>
