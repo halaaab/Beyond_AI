@@ -363,5 +363,86 @@
     });
     document.querySelector('.search')?.addEventListener('submit', e => e.preventDefault());
   </script>
+
+  
+
+
+
+<script>
+const searchForm = document.querySelector(".search");
+const searchInput = searchForm.querySelector("input[type='search']");
+
+function removeHighlights() {
+  document.querySelectorAll('.highlighted').forEach(span => {
+    const parent = span.parentNode;
+    parent.replaceChild(document.createTextNode(span.textContent), span);
+    parent.normalize();
+  });
+}
+
+function highlightText(element, query) {
+  const regex = new RegExp(query, "gi");
+  const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+  let node;
+  
+  while(node = walker.nextNode()) {
+    const match = node.textContent.match(regex);
+    if(match) {
+      const frag = document.createDocumentFragment();
+      let lastIndex = 0;
+      node.textContent.replace(regex, (m, index) => {
+        frag.appendChild(document.createTextNode(node.textContent.slice(lastIndex, index)));
+        const span = document.createElement("span");
+        span.className = "highlighted";
+        span.textContent = m;
+        frag.appendChild(span);
+        lastIndex = index + m.length;
+      });
+      frag.appendChild(document.createTextNode(node.textContent.slice(lastIndex)));
+      node.parentNode.replaceChild(frag, node);
+    }
+  }
+}
+
+// استمع لإرسال البحث
+searchForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const query = searchInput.value.trim();
+  removeHighlights();
+  if(!query) return;
+  const elements = [...document.querySelectorAll("h1, h2, h3, p, div")];
+  let found = false;
+  elements.forEach(el => {
+    if(el.textContent.toLowerCase().includes(query.toLowerCase())) {
+      highlightText(el, query);
+      found = true;
+    }
+  });
+  if(!found){
+    alert("لم يتم العثور على نتائج للبحث: " + query);
+  }
+});
+
+// إزالة التحديد تلقائيًا عند مسح أو تغيير النص
+searchInput.addEventListener("input", () => {
+  if(searchInput.value.trim() === "") {
+    removeHighlights();
+  }
+});
+
+// ستايل للهايلايت ظل أزرق فقط
+const style = document.createElement("style");
+style.innerHTML = `
+  .highlighted {
+    background-color: rgba(0, 123, 255, 0.3); /* ظل أزرق */
+    border-radius: 2px;
+    padding-inline-end: 2px;
+  }
+`;
+document.head.appendChild(style);
+</script>
+
+
+
 </body>
 </html>
