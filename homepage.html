@@ -21,6 +21,12 @@
       html.js body.is-shown {
         opacity: 1;
       }
+      /* Highlight style for search results */
+      .highlighted {
+        background-color: rgba(0, 123, 255, 0.3);
+        border-radius: 2px;
+        padding-inline-end: 2px;
+      }
     </style>
     <script>
       document.documentElement.classList.add("js");
@@ -45,14 +51,13 @@
         <nav class="nav">
           <a href="homepage.html" class="active">الصفحة الرئيسية</a>
           <a href="WeeklyParagraphs.html">الفقرات الأسبوعية</a>
-          <a href="#">القائمة القادمة</a>
           <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
           <a href="#">من نحن</a>
-          <a href="#">تواصل معنا</a>
+          <a href="#footer">تواصل معنا</a>
         </nav>
 
-        <form class="search" role="search" aria-label="بحث">
-          <input type="search" placeholder="عن ماذا تبحث؟" />
+        <form class="search" role="search" aria-label="بحث" id="searchForm">
+          <input type="search" id="searchInput" placeholder="عن ماذا تبحث؟" />
           <button type="submit" aria-label="ابحث">
             <img src="images/search.png" alt="بحث" />
           </button>
@@ -257,6 +262,128 @@
     </section>
 
     <script>
+      // Enhanced Search functionality with majors and footer support
+      (function() {
+        const searchForm = document.getElementById('searchForm');
+        const searchInput = document.getElementById('searchInput');
+        
+        // Define searchable content with keywords and target pages/sections
+        const searchableContent = {
+          'homepage.html': ['الصفحة الرئيسية', 'الرئيسية', 'home', 'main', 'beyond ai', 'مستقبل', 'ذكاء اصطناعي'],
+          'WeeklyParagraphs.html': [
+            'الفقرات الأسبوعية', 'فقرات', 'أسبوعية', 'weekly', 'محتوى', 'مقالات',
+            'في دقيقة', 'دقيقة', 'minute',
+            'أخبار الذكاء الاصطناعي', 'أخبار', 'news',
+            'الذكاء الاصطناعي والتخصصات', 'تخصصات', 'majors',
+            'مصطلحات', 'terminology', 'terms'
+          ],
+          'AI_libraries_page.html': [
+            'مكتبة أدوات الذكاء الاصطناعي', 'مكتبة', 'أدوات', 'library', 'tools', 'ai tools',
+            'chatgpt', 'claude', 'gemini', 'copilot', 'perplexity',
+            'midjourney', 'dall-e', 'stable diffusion', 'runway',
+            'elevenlabs', 'synthesia', 'descript', 'تخيل' , 'تخيل لو',
+            'gamma', 'beautiful.ai', 'canva', 'designify'
+          ],
+          '#us': ['من نحن', 'about', 'مبادرة', 'مركز', 'الدراسات'],
+          '#footer': ['تواصل معنا', 'تواصل', 'contact', 'اتصل', 'footer', 'social', 'email']
+        };
+
+        // Majors mapping to AI libraries page with specific filter
+        const majorsMapping = {
+          'الطب': 'medicine',
+          'طب': 'medicine',
+          'medicine': 'medicine',
+          'medical': 'medicine',
+          'إدارة الأعمال': 'business',
+          'إدارة': 'business',
+          'أعمال': 'business',
+          'business': 'business',
+          'management': 'business',
+          'العمارة والتخطيط': 'architecture',
+          'العمارة': 'architecture',
+          'تخطيط': 'architecture',
+          'architecture': 'architecture',
+          'planning': 'architecture',
+          'تقنية المعلومات': 'it',
+          'تقنية': 'it',
+          'معلومات': 'it',
+          'it': 'it',
+          'information technology': 'it',
+          'الصيدلة': 'pharmacy',
+          'صيدلة': 'pharmacy',
+          'pharmacy': 'pharmacy',
+          'القانون': 'law',
+          'قانون': 'law',
+          'law': 'law',
+          'legal': 'law',
+          'الإعلام': 'media',
+          'إعلام': 'media',
+          'media': 'media',
+          'communication': 'media'
+        };
+        
+        searchForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const query = searchInput.value.trim().toLowerCase();
+          
+          if (!query) {
+            alert('الرجاء إدخال كلمة البحث');
+            return;
+          }
+          
+          // Check if search is for a major
+          const majorKey = majorsMapping[query];
+          if (majorKey) {
+            // Store the major filter in sessionStorage
+            sessionStorage.setItem('selectedMajor', majorKey);
+            window.location.href = 'AI_libraries_page.html';
+            return;
+          }
+
+          // Check if search is for footer/contact
+          if (query.includes('تواصل') || query.includes('contact') || query.includes('اتصل')) {
+            const footer = document.querySelector('.footer');
+            if (footer) {
+              footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              searchInput.value = '';
+              return;
+            }
+          }
+          
+          // Search through all pages
+          let foundPage = null;
+          
+          for (const [page, keywords] of Object.entries(searchableContent)) {
+            for (const keyword of keywords) {
+              if (keyword.toLowerCase().includes(query) || query.includes(keyword.toLowerCase())) {
+                foundPage = page;
+                break;
+              }
+            }
+            if (foundPage) break;
+          }
+          
+          if (foundPage) {
+            // Navigate to the found page
+            if (foundPage.startsWith('#')) {
+              // Scroll to section on current page
+              const element = document.querySelector(foundPage);
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            } else {
+              // Navigate to different page
+              window.location.href = foundPage;
+            }
+            searchInput.value = ''; // Clear search
+          } else {
+            alert('لم يتم العثور على نتائج لـ "' + query + '"');
+          }
+        });
+      })();
+
+      // Carousel functionality
       (function () {
         const container = document.querySelector(".sponsor-carousel");
         const track = container.querySelector(".carousel-track");
@@ -345,6 +472,7 @@
         updateDots();
         startAutoSlide();
       })();
+
       // Page transition script
       document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.add("is-shown");
@@ -368,6 +496,7 @@
           });
         });
       });
+
       window.addEventListener("load", function () {
         const spinner = document.getElementById("page-spinner");
         if (spinner) {
@@ -375,7 +504,7 @@
         }
       });
     </script>
-    <footer class="footer">
+    <footer class="footer" id="footer">
       <div class="wrap foot">
         <div class="foot-left">
           <div class="social-icons">
@@ -403,20 +532,20 @@
             >
               <img src="images/tik-tok.png" alt="TikTok" />
             </a>
-            <span class="handle">@BeyondAI</span>
+            <span class="handle">@ThakaaBeyond</span>
           </div>
 
           <div class="email-line">
             <a
               class="icon"
-              href="mailto:BeyondAI@gmail.com"
+              href="mailto:ThakaaBeyond@ksu.edu.sa"
               title="Email"
               aria-label="Email"
               dir="ltr"
             >
               <img src="images/email.png" alt="Email" />
             </a>
-            <span>BeyondAI@gmail.com</span>
+            <span>ThakaaBeyond@ksu.edu.sa</span>
           </div>
         </div>
 

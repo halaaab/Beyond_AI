@@ -1,641 +1,816 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>الفقرات الأسبوعية</title>
-    <link rel="icon" type="image/png" href="images/markblue.png" />
-    <link rel="apple-touch-icon" href="images/markblue.png" />
-    <link rel="shortcut icon" href="images/markblue.png" />
-    <style>
-      :root {
-        --bg: #fff;
-        --paragraph-bg: #ebf0f3;
-        --offwhite: #f2f2f2;
-        --primary: #02144d;
-        --midnight: #02144d;
-        --paragraph: #0b3a8c;
-        --sky-blue: #158ce9;
-        --mid-blue: rgb(45, 112, 200);
-        --dark-blue: #143496;
-        --max-width: 1100px;
-        --radius: 20px;
-        --vivid: #3a6ebf;
-        --royal: #162f7a;
-        --line: rgba(22, 47, 122, 0.22);
-      }
-      @font-face {
-        font-family: "lyonFont";
-        src: url("Fonts/COMM - Lyon Arabic Display Regular.otf")
-          format("opentype");
-      }
-      @font-face {
-        font-family: "lyonFontLight";
-        src: url("Fonts/COMM - Lyon Arabic Display Light.otf")
-          format("opentype");
-      }
-      @font-face {
-        font-family: "lyonFontMedium";
-        src: url("Fonts/COMM - Lyon Arabic Display Medium.otf")
-          format("opentype");
-      }
-      @font-face {
-        font-family: "lyonFontBold";
-        src: url("Fonts/COMM - Lyon Arabic Slanted Display Bold.otf")
-          format("opentype");
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        scroll-behavior: smooth;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: "lyonFont";
-        background: var(--bg);
-        color: #1b1b1b;
-        direction: rtl;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        background-color: #fcfcfc;
-      }
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>الفقرات الأسبوعية</title>
+<link rel="icon" type="image/png" href="images/markblue.png" />
+<link rel="apple-touch-icon" href="images/markblue.png" />
+<link rel="shortcut icon" href="images/markblue.png" />
+<style>
+:root {
+--bg: #fff;
+--paragraph-bg: #ebf0f3;
+--offwhite: #f2f2f2;
+--primary: #02144d;
+--midnight: #02144d;
+--paragraph: #0b3a8c;
+--sky-blue: #158ce9;
+--mid-blue: rgb(45, 112, 200);
+--dark-blue: #143496;
+--max-width: 1100px;
+--radius: 20px;
+--vivid: #3a6ebf;
+--royal: #162f7a;
+--line: rgba(22, 47, 122, 0.22);
+}
+@font-face {
+font-family: "lyonFont";
+src: url("Fonts/COMM - Lyon Arabic Display Regular.otf")
+format("opentype");
+}
+@font-face {
+font-family: "lyonFontLight";
+src: url("Fonts/COMM - Lyon Arabic Display Light.otf")
+format("opentype");
+}
+@font-face {
+font-family: "lyonFontMedium";
+src: url("Fonts/COMM - Lyon Arabic Display Medium.otf")
+format("opentype");
+}
+@font-face {
+font-family: "lyonFontBold";
+src: url("Fonts/COMM - Lyon Arabic Slanted Display Bold.otf")
+format("opentype");
+}
+* {
+box-sizing: border-box;
+}
+html,
+body {
+scroll-behavior: smooth;
+height: 100%;
+margin: 0;
+padding: 0;
+font-family: "lyonFont";
+background: var(--bg);
+color: #1b1b1b;
+direction: rtl;
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: scroll;
+background-color: #fcfcfc;
+}
 
-      /* header */
-      .wrap {
-        max-width: 1200px;
-        margin-inline: auto;
-        padding-inline: 20px;
-      }
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: #fcfcfc;
-      }
-      .topbar .wrap {
-        padding-inline-start: 6px;
-        padding-inline-end: 20px;
-      }
-      .topbar-row {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 6px 0 8px;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-      }
-      .nav {
-        display: flex;
-        align-items: center;
-        gap: 15px !important;
-        flex-wrap: nowrap;
-        white-space: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        flex: 0 1 auto;
-        margin-inline-start: -18px;
-      }
-      .nav::-webkit-scrollbar {
-        display: none;
-      }
-      .nav a {
-        display: inline-block;
-        padding: 6px 10px;
-        border-radius: 12px;
-        text-decoration: none;
-        color: var(--midnight);
-        font-size: 14px;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-      .nav a::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(22, 47, 122, 0.08);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.3s ease;
-        border-radius: 12px;
-        z-index: -1;
-      }
-      .nav a:hover::before {
-        transform: scaleX(1);
-      }
-      .nav a:hover {
-        transform: translateY(-1px);
-        color: var(--royal);
-      }
-      .nav a.active {
-        color: #fff;
-        background: linear-gradient(90deg, var(--vivid), var(--royal));
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(22, 47, 122, 0.25);
-        min-width: auto;
-        height: 40px;
-        line-height: 40px;
-        padding: 0 18px;
-        border-radius: 50px;
-      }
-      .nav a.active::before {
-        display: none;
-      }
+/* NEW HEADER - SAME AS HOMEPAGE */
+.wrap {
+max-width: 1200px;
+margin-inline: auto;
+padding-inline: 20px;
+}
+.topbar {
+position: sticky;
+top: 0;
+z-index: 1000;
+background: #fff;
+border-bottom: 1px solid rgba(2, 20, 77, 0.08);
+}
+.topbar .wrap {
+padding-inline: 20px;
+max-width: 1400px;
+}
+.topbar-row {
+display: flex;
+align-items: center;
+gap: 20px;
+padding: 12px 0;
+justify-content: space-between;
+flex-wrap: nowrap;
+direction: rtl;
+}
+.brand {
+flex: 0 0 auto;
+order: 3;
+}
+.brand .logo {
+height: 80px;
+width: auto;
+display: block;
+filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06));
+}
+.search {
+position: relative;
+flex: 1 1 auto;
+max-width: 400px;
+min-width: 200px;
+order: 2;
+margin: 0;
+}
+.search input {
+width: 100%;
+height: 42px;
+padding: 0 45px 0 20px;
+border-radius: 50px;
+border: 1px solid rgba(2, 20, 77, 0.15);
+outline: none;
+background: #f8f9fa;
+font-size: 14px;
+box-shadow: 0 1px 3px rgba(2, 20, 77, 0.05);
+transition: all 0.3s ease;
+}
+.search input:hover {
+border-color: var(--royal);
+background: #fff;
+box-shadow: 0 2px 6px rgba(2, 20, 77, 0.1);
+}
+.search input:focus {
+border-color: var(--vivid);
+background: #fff;
+box-shadow: 0 0 0 3px rgba(58, 110, 191, 0.1),
+0 2px 8px rgba(2, 20, 77, 0.12);
+}
+.search button {
+position: absolute;
+right: 12px;
+top: 50%;
+transform: translateY(-50%);
+width: 28px;
+height: 28px;
+border: none;
+background: transparent;
+display: grid;
+place-items: center;
+padding: 0;
+cursor: pointer;
+}
+.search button img {
+width: 16px;
+height: 16px;
+display: block;
+object-fit: contain;
+opacity: 0.6;
+transition: opacity 0.2s;
+}
+.search button:hover img {
+opacity: 1;
+}
+.nav {
+display: flex;
+align-items: center;
+gap: 8px;
+flex-wrap: nowrap;
+white-space: nowrap;
+order: 1;
+flex: 0 1 auto;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+scrollbar-width: none;
+padding: 4px 0;
+}
+.nav::-webkit-scrollbar {
+display: none;
+}
+.nav a {
+display: inline-block;
+padding: 10px 20px;
+border-radius: 50px;
+text-decoration: none;
+color: var(--midnight);
+font-size: 15px;
+font-weight: 400;
+transition: all 0.3s ease;
+position: relative;
+background: transparent;
+}
+.nav a:hover {
+color: var(--royal);
+background: rgba(22, 47, 122, 0.06);
+}
+.nav a.active {
+color: #fff;
+background: linear-gradient(90deg, var(--vivid), var(--royal));
+box-shadow: 0 2px 8px rgba(22, 47, 122, 0.2);
+font-weight: 500;
+}
 
-      .search button {
-        position: absolute;
-        inset-inline-end: 8px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 26px;
-        height: 26px;
-        border: none;
-        background: transparent;
-        display: grid;
-        place-items: center;
-        padding: 0;
-        cursor: pointer;
-        overflow: hidden;
-      }
+@media (max-width: 1100px) {
+.topbar-row {
+gap: 15px;
+}
+.brand .logo {
+height: 70px;
+}
+.nav a {
+padding: 8px 16px;
+font-size: 14px;
+}
+}
 
-      .search button img {
-        width: 12px;
-        height: 12px;
-        display: block;
-        object-fit: contain;
-        pointer-events: none;
-      }
+@media (max-width: 768px) {
+.topbar .wrap {
+padding-inline: 12px;
+}
+.topbar-row {
+gap: 10px;
+padding: 10px 0;
+flex-wrap: wrap;
+}
+.brand {
+order: 2;
+flex: 0 0 auto;
+}
+.nav {
+order: 1;
+flex: 1 1 100%;
+}
+.search {
+order: 2;
+flex: 1 1 auto;
+max-width: none;
+}
+.brand .logo {
+height: 60px;
+}
+.search input {
+height: 38px;
+font-size: 13px;
+padding: 0 40px 0 16px;
+}
+.nav {
+gap: 6px;
+}
+.nav a {
+padding: 8px 14px;
+font-size: 13px;
+white-space: nowrap;
+}
+}
 
-      .search {
-        position: relative;
-        width: 220px;
-        max-width: 24vw;
-        min-width: 160px;
-        flex: 0 0 auto;
-        margin: 0;
-        margin-inline-end: -18px;
-        transform: translateX(-27px);
-      }
-      .search input {
-        width: 100%;
-        height: 34px;
-        padding-block: 8px;
-        padding-inline-start: 12px;
-        padding-inline-end: 38px;
-        border-radius: 999px;
-        border: 1px solid rgba(2, 20, 77, 0.18);
-        outline: none;
-        background: #fff;
-        font-size: 12.5px;
-        box-shadow: 0 1px 4px rgba(2, 20, 77, 0.05);
-        transition: all 0.3s ease;
-      }
+@media (min-width: 769px) {
+.topbar-row {
+flex-wrap: nowrap;
+}
+.nav {
+order: 1;
+flex: 0 1 auto;
+}
+.search {
+order: 2;
+flex: 1 1 auto;
+max-width: 400px;
+min-width: 200px;
+}
+.brand {
+order: 3;
+}
+}
+/* END OF NEW HEADER */
 
-      .search input:hover {
-        border-color: var(--royal);
-        box-shadow: 0 2px 8px rgba(2, 20, 77, 0.12);
-        transform: translateY(-1px);
-      }
-      .search input:focus {
-        border-color: var(--vivid);
-        box-shadow: 0 0 0 3px rgba(58, 110, 191, 0.15),
-          0 2px 8px rgba(2, 20, 77, 0.12);
-        transform: translateY(-1px);
-      }
+.weekly-intro {
+max-width: var(--max-width);
+margin: 36px auto;
+padding: 8px;
+}
+.weekly-heading {
+font-family: "lyonFont";
+color: var(--paragraph);
+font-size: clamp(22px, 3.4vw, 36px);
+margin: 8px 0 18px 0;
+font-weight: 500;
+text-align: right;
+letter-spacing: 0.2px;
+}
+.skyblue-Intro {
+background: var(--paragraph-bg);
+border: 1px;
+border-radius: var(--radius);
+margin-left: 2;
+padding: 20px;
+display: block;
+overflow: hidden;
+}
+.paragraphs-continter {
+display: flex;
+flex-direction: row;
+margin-bottom: 25px;
+align-items: center;
+justify-content: center;
+gap: 20px;
+}
+.paragraphs-continter img {
+width: 175px;
+height: 175px;
+object-fit: cover;
+margin: 25px;
+color: var(--primary);
+}
+.skyblue-Intro h4 {
+margin: 0;
+line-height: 1.6;
+font-size: clamp(12px, 1.2vw, 14px);
+font-weight: 700;
+color: var(--paragraph);
+}
+p {
+color: var(--paragraph);
+padding-left: 20px;
+}
+.main-paragraphs {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 36px auto;
+padding: 8px;
+}
+.skyblue-paragraphs {
+position: relative;
+background: var(--paragraph-bg);
+border: 10px;
+border-radius: var(--radius);
+margin: 0px;
+padding: 20px;
+display: block;
+overflow: hidden;
+flex: 1;
+max-width: 800px;
+}
+.link-icon {
+position: absolute;
+top: 5px;
+left: 5px;
+text-decoration: none;
+}
+.link-icon img {
+width: 35px;
+height: auto;
+}
+.paragraph-header {
+color: var(--paragraph);
+font-size: larger;
+}
+.paragraphs-ending-div {
+padding-top: 10px;
+justify-content: center;
+text-align: center;
+padding-bottom: 20px;
+}
+.paragraphs-ending-div h1 {
+font-family: "lyonFontMedium";
+font-weight: 500;
+color: var(--paragraph);
+}
+.footer {
+position: relative;
+margin-top: 44px;
+background: url("images/background.png") no-repeat bottom;
+background-size: 100%;
+min-height: 250px;
+}
+.footer .wrap {
+max-width: 100% !important;
+padding-inline: 0 !important;
+}
+.foot {
+position: absolute;
+bottom: 5px;
+left: 0;
+right: 0;
+display: grid;
+grid-template-columns: 1fr auto;
+grid-template-areas: "left right";
+align-items: center;
+gap: 8px 12px;
+min-height: 64px;
+padding-inline: 12px;
+direction: ltr;
+font-size: 13px;
+padding-block: 10px 16px;
+background: transparent;
+width: 100%;
+}
+.foot-left {
+grid-area: left;
+justify-self: start;
+text-align: left;
+display: flex;
+flex-direction: column;
+gap: 8px;
+color: midnightblue;
+}
+.social-icons {
+display: flex;
+align-items: center;
+gap: 4px;
+white-space: nowrap;
+}
+.icon {
+width: 26px;
+height: 26px;
+border-radius: 50%;
+background: transparent;
+border: 1.5px solid rgba(2, 20, 77, 0.35);
+display: grid;
+place-items: center;
+transition: all 0.2s ease;
+cursor: pointer;
+}
+.icon:hover {
+transform: translateY(-1px);
+box-shadow: 0 4px 8px rgba(2, 20, 77, 0.15);
+border-color: var(--royal);
+}
+.icon img {
+width: 14px;
+height: 14px;
+display: block;
+}
+.handle {
+margin-inline-start: 8px;
+opacity: 0.9;
+font-size: 12.5px;
+font-weight: 400;
+}
+.email-line {
+display: flex;
+align-items: center;
+gap: 8px;
+opacity: 0.9;
+font-size: 13px;
+}
+.email-line .icon {
+width: 24px;
+height: 24px;
+}
+.foot-right {
+grid-area: right;
+justify-self: end;
+direction: rtl;
+text-align: right;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+max-width: 50vw;
+font-size: 13px;
+font-weight: 400;
+color: midnightblue;
+}
+.foot-right [dir="ltr"] {
+unicode-bidi: isolate-override;
+display: inline-block;
+margin-inline-start: 4px;
+font-weight: 400;
+color: midnightblue;
+}
+@media (max-width: 700px) {
+.footer {
+min-height: 300px;
+}
+.foot {
+bottom: 70px;
+grid-template-columns: 1fr;
+grid-template-areas: "right" "left";
+gap: 15px;
+padding-inline: 8px;
+}
+.foot-right {
+justify-self: center;
+max-width: 100%;
+text-align: center;
+}
+.foot-left {
+justify-self: center;
+align-items: center;
+}
+}
+.highlighted {
+background-color: rgba(0, 123, 255, 0.3);
+border-radius: 2px;
+padding-inline-end: 2px;
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="wrap topbar-row">
+<nav class="nav">
+<a href="homepage.html">الصفحة الرئيسية</a>
+<a href="WeeklyParagraphs.html" class="active">الفقرات الأسبوعية</a>
+<a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
+<a href="homepage.html#us">من نحن</a>
+<a href="#footer">تواصل معنا</a>
+</nav>
 
-      .brand {
-        flex: 0 0 auto;
-        margin-inline-end: -28px;
-      }
-      .brand .logo {
-        height: 108px;
-        width: auto;
-        display: block;
-        direction: ltr;
-        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06));
-      }
-      /* endofheader */
+<form class="search" role="search" aria-label="بحث" id="searchForm">
+<input type="search" id="searchInput" placeholder="عن ماذا تبحث؟" />
+<button type="submit" aria-label="ابحث">
+<img src="images/search.png" alt="بحث" />
+</button>
+</form>
 
-      .weekly-intro {
-        max-width: var(--max-width);
-        margin: 36px auto;
-        padding: 8px;
-      }
+<div class="brand">
+<img src="images/logo.svg" alt="الشعار" class="logo" />
+</div>
+</div>
+</header>
 
-      .weekly-heading {
-        font-family: "lyonFont";
-        color: var(--paragraph);
-        font-size: clamp(22px, 3.4vw, 36px);
-        margin: 8px 0 18px 0;
-        font-weight: 500;
-        text-align: right;
-        letter-spacing: 0.2px;
-      }
+<div class="weekly-intro">
+<h2 class="weekly-heading">الفقرات الأسبوعية</h2>
+<div class="skyblue-Intro">
+<p>
+في عالم يتسارع بالتطور التكنولوجي لم يعد الذكاء الاصطناعي مجرد فكرة
+مستقبلية، بل أصبح جزءًا من واقعنا اليومي وأصبح حاضرًا في كل مجال، حتى
+المجالات التي قد تظن أنها بعيدة عنه تمامًا.
+</p>
+<p>
+فهل تساءلت يومًا عن دور الذكاء الاصطناعي في مجالك؟ كيف يمكن له أن يفتح
+لك أبوابًا جديدة في حياتك الأكاديمية والمهنية؟
+</p>
+<p>
+هنا ستجد الإجابة عن كل تساؤلاتك والمعرفة الحقيقية التي تأتي من مصادر
+متنوعة وتجارب واقعية. في كل أسبوع سنأخذك في رحلة قصيرة وممتعة، رحلة
+صممت خصيصًا لك لتبسط لك المفاهيم وتريك كيف يلامس الذكاء الاصطناعي
+تخصصك الجامعي بشكل ملهم وواقعي. وخطوة بخطوة سنكشف لك جوانب جديدة من
+عالم الذكاء الاصطناعي.
+</p>
+<p>
+كل أسبوع سيكون بداية جديدة لاكتشاف مختلف، وكل فقرة ستمنحك منظورًا
+مميزًا لمجالك أو تلهمك لتطويره حتى تنظر له من زاوية جديدة، زاوية
+المستقبل!
+</p>
+</div>
+</div>
 
-      .skyblue-Intro {
-        background: var(--paragraph-bg);
-        border: 1px;
-        border-radius: var(--radius);
-        margin-left: 2;
-        /* padding: clamp(14px, 2vw, 22px); */
-        padding: 20px;
-        display: block;
-        overflow: hidden;
-      }
-      .paragraphs-continter {
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 25px;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-      }
-      .paragraphs-continter img {
-        width: 175px;
-        height: 175px;
-        object-fit: cover;
-        margin: 25px;
-        color: var(--primary);
-      }
-      .skyblue-Intro h4 {
-        margin: 0;
-        line-height: 1.6;
-        font-size: clamp(12px, 1.2vw, 14px);
-        font-weight: 700;
-        color: var(--paragraph);
-      }
-      p {
-        color: var(--paragraph);
-        padding-left: 20px;
-      }
-      .main-paragraphs {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin: 36px auto;
+<div class="main-paragraphs">
+<div class="paragraphs-continter">
+<div class="skyblue-paragraphs">
+<div class="link-icon">
+<a
+href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
+target="_blank"
+><img src="images/arrow.png" alt="Link Arrrow"
+/></a>
+</div>
+<h4 class="paragraph-header">التخصص AI x</h4>
+<p>
+كل مجال من المجالات الأكاديمية يختبئ خلفه دور جديد للذكاء الاصطناعي.
+في هذه الفقرة، نستعرض أسبوعيًا كيف تغيرت مفاهيم كل تخصص مع دخول
+الذكاء الاصطناعي إليه. وما الأدوات التي أعادت تشكيل ملامحه والتقنيات
+والتطبيقات التي أحدثت فرقًا حقيقيًا فيه، وصولًا إلى الاتجاهات التي
+قد تعيد تشكيل المهنة من أساسها.
+</p>
+<p>
+هنا سترى تخصصك من زاوية مختلفة، وستدرك أن كل التخصصات تتطور وأن
+الذكاء الاصطناعي قد يكون مفتاحك للتميز فيها.
+</p>
+</div>
+<img src="images/ai_brain.png" alt="ai image" />
+</div>
 
-        padding: 8px;
-      }
-      .skyblue-paragraphs {
-        position: relative;
-        background: var(--paragraph-bg);
-        border: 10px;
-        border-radius: var(--radius);
-        margin: 0px;
-        padding: 20px;
-        display: block;
-        overflow: hidden;
-        flex: 1;
-        max-width: 800px;
-      }
+<div class="paragraphs-continter">
+<img src="images/clock.png" alt="ai image" />
+<div class="skyblue-paragraphs">
+<div class="link-icon">
+<a
+href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
+target="_blank"
+><img src="images/arrow.png" alt="Link Arrrow"
+/></a>
+</div>
+<h4 class="paragraph-header">في دقيقة</h4>
+<p>
+فقرة مرئية موجزة يقدمها طالب أو مختص، يتناول فيها مفهومًا أو تطبيقًا
+عمليًا في الذكاء الاصطناعي مرتبطًا بتخصصه. تقدم لك بأكثر طريقة
+مفهومة ومبسطة وتصل إليك مباشرة عبر منصاتنا الاجتماعية، لتبقى على
+اطلاع حتى في أكثر أيامك ازدحامًا.
+</p>
+<p>
+المعرفة لا تتطلب دائمًا إلى وقت طويل، أحيانًا كل ما تحتاجه هو دقيقة
+واحدة فقط، وإذا كانت دقيقة واحدة كافية لفهم فكرة، فهي أيضًا كافية
+لإحداث فرق.
+</p>
+</div>
+</div>
 
-      .link-icon {
-        position: absolute;
-        top: 5px;
-        left: 5px;
-        text-decoration: none;
-      }
-      .link-icon img {
-        width: 35px;
-        height: auto;
-      }
-      .paragraph-header {
-        color: var(--paragraph);
-        font-size: larger;
-      }
-      .paragraphs-ending-div {
-        padding-top: 10px;
-        justify-content: center;
-        text-align: center;
-        padding-bottom: 20px;
-      }
-      .paragraphs-ending-div H1 {
-        /* color: var(--primary); */
-        font-family: "lyonFontMedium";
-        font-weight: 500;
-        color: var(--paragraph);
-      }
+<div class="paragraphs-continter">
+<div class="skyblue-paragraphs">
+<div class="link-icon">
+<a
+href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
+target="_blank"
+><img src="images/arrow.png" alt="Link Arrrow"
+/></a>
+</div>
+<h4 class="paragraph-header">تخيل لو .....</h4>
+<p>
+في هذه السلسلة نضعك في مواقف حقيقية من داخل تخصصك، ثم نعيد رسم
+المشهد باستخدام أدوات الذكاء الاصطناعي. تخيل أن تنجز هذه المهمة
+بمساعدة الذكاء الاصطناعي؛ كيف سيكون الأداء؟ ما الذي سيتغير؟ وأين
+يكمن الفرق الحقيقي؟
+</p>
+<p>
+هنا لا نعرض تخيلات فقط، بل نربطها بتقنيات حقيقية تستخدم اليوم. نبين
+لك أثرها بلغة واقعية ونريك كيف يمكن للذكاء الاصطناعي أن يكون مساعدك
+الأول في تخصصك ومستقبلك، لتكون أقرب للمستقبل أكثر من أي وقت مضى.
+</p>
+</div>
+<img src="images/Think.png" alt="ai image" />
+</div>
+</div>
 
-      .footer {
-        position: relative;
-        margin-top: 44px;
-        background: url("images/background.png") no-repeat bottom;
-        background-size: 100%;
-        min-height: 250px; /* Added to ensure footer has minimum height */
-      }
-      .footer .wrap {
-        max-width: 100% !important;
-        padding-inline: 0 !important;
-      }
+<div class="paragraphs-ending-div">
+<h1>
+نحن لا نقدم محتوى فقط، بل نبني وعيًا مستقبليًا يربطك بالذكاء الاصطناعي
+خطوة بخطوة.
+</h1>
+</div>
 
-      .foot {
-        position: absolute;
-        bottom: 5px; /* Position from bottom of footer */
-        left: 0;
-        right: 0;
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-areas: "left right";
-        align-items: center;
-        gap: 8px 12px;
-        min-height: 64px;
-        padding-inline: 12px;
-        direction: ltr;
-        font-size: 13px;
-        padding-block: 10px 16px;
-        background: transparent;
-        width: 100%;
-      }
+<footer class="footer" id="footer">
+<div class="wrap foot">
+<div class="foot-left">
+<div class="social-icons">
+<a
+class="icon"
+href="https://www.linkedin.com/showcase/thakaabeyond/"
+title="LinkedIn"
+aria-label="LinkedIn"
+>
+<img src="images/liked-in.png" alt="LinkedIn" />
+</a>
+<a
+class="icon"
+href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
+title="X (Twitter)"
+aria-label="X"
+>
+<img src="images/twitter.png" alt="X" />
+</a>
+<a
+class="icon"
+href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
+title="TikTok"
+aria-label="TikTok"
+>
+<img src="images/tik-tok.png" alt="TikTok" />
+</a>
+<span class="handle">@ThakaaBeyond</span>
+</div>
 
-      .foot-left {
-        grid-area: left;
-        justify-self: start;
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        color: midnightblue;
-      }
-      .social-icons {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        white-space: nowrap;
-      }
+<div class="email-line">
+<a
+class="icon"
+href="mailto:ThakaaBeyond@ksu.edu.sa"
+title="Email"
+aria-label="Email"
+dir="ltr"
+>
+<img src="images/email.png" alt="Email" />
+</a>
+<span>ThakaaBeyond@ksu.edu.sa</span>
+</div>
+</div>
 
-      .icon {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: transparent;
-        border: 1.5px solid rgba(2, 20, 77, 0.35);
-        display: grid;
-        place-items: center;
-        transition: all 0.2s ease;
-        cursor: pointer;
-      }
-      .icon:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(2, 20, 77, 0.15);
-        border-color: var(--royal);
-      }
-      .icon img {
-        width: 14px;
-        height: 14px;
-        display: block;
-      }
+<div class="foot-right" dir="rtl">
+<span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
+<span class="sep" aria-hidden="true"> – </span>
+<span class="brand-en" dir="ltr">Beyond AI</span>
+</div>
+</div>
+</footer>
 
-      .handle {
-        margin-inline-start: 8px;
-        opacity: 0.9;
-        font-size: 12.5px;
-        font-weight: 400;
+<script>
+// Enhanced search with majors and navigation support
+(function() {
+  const searchForm = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
+  
+  // Majors mapping to AI libraries page with specific filter
+  const majorsMapping = {
+    'الطب': 'medicine',
+    'طب': 'medicine',
+    'medicine': 'medicine',
+    'medical': 'medicine',
+    'إدارة الأعمال': 'business',
+    'إدارة': 'business',
+    'أعمال': 'business',
+    'business': 'business',
+    'management': 'business',
+    'العمارة والتخطيط': 'architecture',
+    'العمارة': 'architecture',
+    'تخطيط': 'architecture',
+    'architecture': 'architecture',
+    'planning': 'architecture',
+    'تقنية المعلومات': 'it',
+    'تقنية': 'it',
+    'معلومات': 'it',
+    'it': 'it',
+    'information technology': 'it',
+    'الصيدلة': 'pharmacy',
+    'صيدلة': 'pharmacy',
+    'pharmacy': 'pharmacy',
+    'القانون': 'law',
+    'قانون': 'law',
+    'law': 'law',
+    'legal': 'law',
+    'الإعلام': 'media',
+    'إعلام': 'media',
+    'media': 'media',
+    'communication': 'media'
+  };
+  
+  const pageMapping = {
+    'homepage.html': ['الصفحة الرئيسية', 'الرئيسية', 'home'],
+    'AI_libraries_page.html': [
+      'مكتبة أدوات الذكاء الاصطناعي', 'مكتبة', 'أدوات', 'library', 'tools'
+    ],
+    'homepage.html#us': ['من نحن', 'about', 'مبادرة', 'مركز']
+  };
+  
+  searchForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const query = searchInput.value.trim().toLowerCase();
+    
+    if (!query) {
+      alert('الرجاء إدخال كلمة البحث');
+      return;
+    }
+    
+    // Check if search is for a major
+    const majorKey = majorsMapping[query];
+    if (majorKey) {
+      // Store the major filter in sessionStorage
+      sessionStorage.setItem('selectedMajor', majorKey);
+      window.location.href = 'AI_libraries_page.html';
+      return;
+    }
+    
+    // Check for footer/contact
+    if (query.includes('تواصل') || query.includes('contact')) {
+      document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
+      searchInput.value = '';
+      return;
+    }
+    
+    // Check for other pages
+    for (const [page, keywords] of Object.entries(pageMapping)) {
+      if (keywords.some(k => k.toLowerCase().includes(query) || query.includes(k.toLowerCase()))) {
+        window.location.href = page;
+        return;
       }
-
-      .email-line {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        opacity: 0.9;
-        font-size: 13px;
-      }
-      .email-line .icon {
-        width: 24px;
-        height: 24px;
-      }
-
-      .foot-right {
-        grid-area: right;
-        justify-self: end;
-        direction: rtl;
-        text-align: right;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 50vw;
-        font-size: 13px;
-        font-weight: 400;
-        color: midnightblue;
-      }
-      .foot-right [dir="ltr"] {
-        unicode-bidi: isolate-override;
-        display: inline-block;
-        margin-inline-start: 4px;
-        font-weight: 400;
-        color: midnightblue;
-      }
-
-      @media (max-width: 700px) {
-        .footer {
-          min-height: 300px; /* Increased for mobile */
+    }
+    
+    // In-page search
+    removeHighlights();
+    const elements = [...document.querySelectorAll("h1, h2, h3, h4, p, div, span")];
+    let found = false;
+    
+    elements.forEach(el => {
+      if(el.textContent.toLowerCase().includes(query)) {
+        highlightText(el, query);
+        if (!found) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          found = true;
         }
-
-        .foot {
-          bottom: 70px; /* Adjusted for mobile */
-          grid-template-columns: 1fr;
-          grid-template-areas: "right" "left";
-          gap: 15px;
-          padding-inline: 8px;
-        }
-        .foot-right {
-          justify-self: center;
-          max-width: 100%;
-          text-align: center;
-        }
-        .foot-left {
-          justify-self: center;
-          align-items: center;
-        }
       }
-    </style>
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="wrap topbar-row">
-        <nav class="nav">
-          <a href="homepage.html">الصفحة الرئيسية</a>
-          <a href="#" class="active">الفقرات الأسبوعية</a>
-          <a href="#">القائمة القادمة</a>
-          <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
-          <a href="homepage.html#us">من نحن</a>
-          <a href="#footer">تواصل معنا</a>
-        </nav>
-
-        <form class="search" role="search" aria-label="بحث">
-          <input type="search" placeholder="عن ماذا تبحث؟" />
-          <button type="submit" aria-label="ابحث">
-            <img src="images/search.png" alt="بحث" />
-          </button>
-        </form>
-
-        <div class="brand">
-          <img src="images/logo.svg" alt="الشعار" class="logo" />
-        </div>
-      </div>
-    </header>
-    <div class="weekly-intro">
-      <h2 class="weekly-heading">الفقرات الأسبوعية</h2>
-      <div class="skyblue-Intro">
-        <p>
-          في عالم يتسارع بالتطور التكنولوجي لم يعد الذكاء الاصطناعي مجرد فكرة
-          مستقبلية، بل أصبح جزءًا من واقعنا اليومي وأصبح حاضرًا في كل مجال، حتى
-          المجالات التي قد تظن أنها بعيدة عنه تمامًا.
-        </p>
-        <p>
-          فهل تساءلت يومًا عن دور الذكاء الاصطناعي في مجالك؟ كيف يمكن له أن يفتح
-          لك أبوابًا جديدة في حياتك الأكاديمية والمهنية؟
-        </p>
-        <p>
-          هنا ستجد الإجابة عن كل تساؤلاتك والمعرفة الحقيقية التي تأتي من مصادر
-          متنوعة وتجارب واقعية. في كل أسبوع سنأخذك في رحلة قصيرة وممتعة، رحلة
-          صممت خصيصًا لك لتبسط لك المفاهيم وتريك كيف يلامس الذكاء الاصطناعي
-          تخصصك الجامعي بشكل ملهم وواقعي. وخطوة بخطوة سنكشف لك جوانب جديدة من
-          عالم الذكاء الاصطناعي.
-        </p>
-        <p>
-          كل أسبوع سيكون بداية جديدة لاكتشاف مختلف، وكل فقرة ستمنحك منظورًا
-          مميزًا لمجالك أو تلهمك لتطويره حتى تنظر له من زاوية جديدة، زاوية
-          المستقبل!
-        </p>
-      </div>
-    </div>
-    <div class="main-paragraphs">
-      <div class="paragraphs-continter">
-        <div class="skyblue-paragraphs">
-          <div class="link-icon">
-            <a
-              href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-              target="_blank"
-              ><img src="images/arrow.png" alt="Link Arrrow"
-            /></a>
-          </div>
-          <h4 class="paragraph-header">التخصص AI x</h4>
-          <p>
-            كل مجال من المجالات الأكاديمية يختبئ خلفه دور جديد للذكاء الاصطناعي.
-            في هذه الفقرة، نستعرض أسبوعيًا كيف تغيرت مفاهيم كل تخصص مع دخول
-            الذكاء الاصطناعي إليه. وما الأدوات التي أعادت تشكيل ملامحه والتقنيات
-            والتطبيقات التي أحدثت فرقًا حقيقيًا فيه، وصولًا إلى الاتجاهات التي
-            قد تعيد تشكيل المهنة من أساسها.
-          </p>
-          <p>
-            هنا سترى تخصصك من زاوية مختلفة، وستدرك أن كل التخصصات تتطور وأن
-            الذكاء الاصطناعي قد يكون مفتاحك للتميز فيها.
-          </p>
-        </div>
-        <img src="images/ai_brain.png" alt="ai image" />
-      </div>
-      <div class="paragraphs-continter">
-        <img src="images/clock.png" alt="ai image" />
-        <div class="skyblue-paragraphs">
-          <div class="link-icon">
-            <a
-              href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-              target="_blank"
-              ><img src="images/arrow.png" alt="Link Arrrow"
-            /></a>
-          </div>
-          <h4 class="paragraph-header">في دقيقة</h4>
-          <p>
-            فقرة مرئية موجزة يقدمها طالب أو مختص، يتناول فيها مفهومًا أو تطبيقًا
-            عمليًا في الذكاء الاصطناعي مرتبطًا بتخصصه. تقدم لك بأكثر طريقة
-            مفهومة ومبسطة وتصل إليك مباشرة عبر منصاتنا الاجتماعية، لتبقى على
-            اطلاع حتى في أكثر أيامك ازدحامًا.
-          </p>
-          <p>
-            المعرفة لا تتطلب دائمًا إلى وقت طويل، أحيانًا كل ما تحتاجه هو دقيقة
-            واحدة فقط، وإذا كانت دقيقة واحدة كافية لفهم فكرة، فهي أيضًا كافية
-            لإحداث فرق.
-          </p>
-        </div>
-      </div>
-      <div class="paragraphs-continter">
-        <div class="skyblue-paragraphs">
-          <div class="link-icon">
-            <a
-              href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-              target="_blank"
-              ><img src="images/arrow.png" alt="Link Arrrow"
-            /></a>
-          </div>
-          <h4 class="paragraph-header">تخيل لو .....</h4>
-          <p>
-            في هذه السلسلة نضعك في مواقف حقيقية من داخل تخصصك، ثم نعيد رسم
-            المشهد باستخدام أدوات الذكاء الاصطناعي. تخيل أن تنجز هذه المهمة
-            بمساعدة الذكاء الاصطناعي؛ كيف سيكون الأداء؟ ما الذي سيتغير؟ وأين
-            يكمن الفرق الحقيقي؟
-          </p>
-          <p>
-            هنا لا نعرض تخيلات فقط، بل نربطها بتقنيات حقيقية تستخدم اليوم. نبين
-            لك أثرها بلغة واقعية ونريك كيف يمكن للذكاء الاصطناعي أن يكون مساعدك
-            الأول في تخصصك ومستقبلك، لتكون أقرب للمستقبل أكثر من أي وقت مضى.
-          </p>
-        </div>
-        <img src="images/Think.png" alt="ai image" />
-      </div>
-    </div>
-    <div class="paragraphs-ending-div">
-      <h1>
-        نحن لا نقدم محتوى فقط، بل نبني وعيًا مستقبليًا يربطك بالذكاء الاصطناعي
-        خطوة بخطوة.
-      </h1>
-    </div>
-    <footer class="footer" id="footer">
-      <div class="wrap foot">
-        <div class="foot-left">
-          <div class="social-icons">
-            <a
-              class="icon"
-              href="https://www.linkedin.com/showcase/thakaabeyond/"
-              title="LinkedIn"
-              aria-label="LinkedIn"
-            >
-              <img src="images/liked-in.png" alt="LinkedIn" />
-            </a>
-            <a
-              class="icon"
-              href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-              title="X (Twitter)"
-              aria-label="X"
-            >
-              <img src="images/twitter.png" alt="X" />
-            </a>
-            <a
-              class="icon"
-              href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
-              title="TikTok"
-              aria-label="TikTok"
-            >
-              <img src="images/tik-tok.png" alt="TikTok" />
-            </a>
-            <span class="handle">@BeyondAI</span>
-          </div>
-
-          <div class="email-line">
-            <a
-              class="icon"
-              href="mailto:BeyondAI@gmail.com"
-              title="Email"
-              aria-label="Email"
-              dir="ltr"
-            >
-              <img src="images/email.png" alt="Email" />
-            </a>
-            <span>BeyondAI@gmail.com</span>
-          </div>
-        </div>
-
-        <div class="foot-right" dir="rtl">
-          <span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
-          <span class="sep" aria-hidden="true"> – </span>
-          <span class="brand-en" dir="ltr">Beyond AI</span>
-        </div>
-      </div>
-    </footer>
-  </body>
+    });
+    
+    if (!found) {
+      alert("لم يتم العثور على نتائج للبحث: " + query);
+    }
+  });
+  
+  function removeHighlights() {
+    document.querySelectorAll('.highlighted').forEach(span => {
+      const parent = span.parentNode;
+      parent.replaceChild(document.createTextNode(span.textContent), span);
+      parent.normalize();
+    });
+  }
+  
+  function highlightText(element, query) {
+    const regex = new RegExp(query, "gi");
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+    let node;
+    while(node = walker.nextNode()) {
+      const match = node.textContent.match(regex);
+      if(match) {
+        const frag = document.createDocumentFragment();
+        let lastIndex = 0;
+        node.textContent.replace(regex, (m, index) => {
+          frag.appendChild(document.createTextNode(node.textContent.slice(lastIndex, index)));
+          const span = document.createElement("span");
+          span.className = "highlighted";
+          span.textContent = m;
+          frag.appendChild(span);
+          lastIndex = index + m.length;
+        });
+        frag.appendChild(document.createTextNode(node.textContent.slice(lastIndex)));
+        node.parentNode.replaceChild(frag, node);
+      }
+    }
+  }
+})();
+</script>
+</body>
 </html>
