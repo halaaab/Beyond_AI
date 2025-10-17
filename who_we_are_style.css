@@ -318,8 +318,8 @@ box-shadow: 0 4px 12px rgba(0, 119, 181, 0.4);
 }
 
 .member-avatar {
-width: 120px;
-height: 120px;
+width: 90px;
+height: 90px;
 border-radius: 50%;
 background: linear-gradient(135deg, #89CFF0, #4A90E2);
 display: flex;
@@ -336,7 +336,7 @@ position: relative;
 content: '\f007';
 font-family: 'Font Awesome 6 Free';
 font-weight: 900;
-font-size: 50px;
+font-size: 40px;
 color: rgba(255, 255, 255, 0.9);
 }
 
@@ -369,6 +369,8 @@ color: #fff;
 text-decoration: none;
 transition: all 0.3s ease;
 box-shadow: 0 2px 6px rgba(0, 119, 181, 0.3);
+pointer-events: auto;
+cursor: pointer;
 }
 
 .linkedin-icon:hover {
@@ -515,8 +517,8 @@ color: midnightblue;
 .about-us-text { font-size: 1rem; }
 .team-grid { gap: 30px 20px; }
 .member-card { width: 150px; }
-.member-avatar { width: 100px; height: 100px; }
-.member-avatar.placeholder::before { font-size: 40px; }
+.member-avatar { width: 80px; height: 80px; }
+.member-avatar.placeholder::before { font-size: 35px; }
 .member-name { font-size: 0.9rem; }
 .member-position { font-size: 0.8rem; min-height: 45px; }
 .footer { min-height: 300px; }
@@ -540,9 +542,4 @@ padding-inline: 8px;
 
 @media (min-width: 1024px) {
 .team-grid { gap: 50px 40px; }
-}
-
-.linkedin-icon {
-pointer-events: auto !important;
-cursor: pointer !important;
 }
