@@ -18,19 +18,25 @@
 <a href="Who_We_Are.html" class="active">من نحن</a>
 <a href="#footer">تواصل معنا</a>
 </nav>
-<form class="search" role="search">
-<input type="search" placeholder="عن ماذا تبحث؟" />
-<button type="submit"><img src="images/search.png" alt="بحث" /></button>
+
+<form class="search" role="search" aria-label="بحث" id="searchForm">
+<input type="search" id="searchInput" placeholder="عن ماذا تبحث؟" />
+<button type="submit" aria-label="ابحث">
+<img src="images/search.png" alt="بحث" />
+</button>
 </form>
-<div class="brand"><img src="images/logo.svg" alt="الشعار" class="logo" /></div>
+
+<div class="brand">
+<img src="images/logo.svg" alt="الشعار" class="logo" />
+</div>
 </div>
 </header>
 
 <main>
 <section class="about-us-intro">
+<div class="about-us-logo"><img src="images/logo.png" alt="Beyond AI" /></div>
 <h1>من نحن</h1>
 <div class="about-us-box">
-<div class="about-us-logo"><img src="images/logo.png" alt="Beyond AI" /></div>
 <div class="about-us-text">
 <p>مبادرة Beyond AI هي <b>مبادرة رائدة لمركز الدراسات المتقدمة في الذكاء الاصطناعي</b>، تهدف إلى تمكين الطلاب من فهم وتطبيق الذكاء الاصطناعي في مختلف المجالات الأكاديمية والتقنية. نحرص على تطوير مهارات الطلاب العلمية والعملية لمواكبة التوجهات الحديثة في مجال الذكاء الاصطناعي، ونسعى جاهدين لبناء جيل قادر على استخدام التقنيات الحديثة لإحداث أثر ملموس في المجتمع.</p>
 </div>
@@ -273,5 +279,64 @@
 </div>
 </div>
 </footer>
+
+<script>
+// Enhanced search functionality
+(function() {
+  const searchForm = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
+  
+  const majorsMapping = {
+    'الطب': 'medicine', 'طب': 'medicine', 'medicine': 'medicine',
+    'إدارة الأعمال': 'business', 'إدارة': 'business', 'أعمال': 'business', 'business': 'business',
+    'العمارة والتخطيط': 'architecture', 'العمارة': 'architecture', 'تخطيط': 'architecture', 'architecture': 'architecture',
+    'تقنية المعلومات': 'it', 'تقنية': 'it', 'معلومات': 'it', 'it': 'it',
+    'الصيدلة': 'pharmacy', 'صيدلة': 'pharmacy', 'pharmacy': 'pharmacy',
+    'القانون': 'law', 'قانون': 'law', 'law': 'law',
+    'الإعلام': 'media', 'إعلام': 'media', 'media': 'media'
+  };
+  
+  const pageMapping = {
+    'homepage.html': ['الصفحة الرئيسية', 'الرئيسية', 'home'],
+    'WeeklyParagraphs.html': ['الفقرات الأسبوعية', 'فقرات', 'أسبوعية', 'weekly'],
+    'AI_libraries_page.html': ['مكتبة أدوات الذكاء الاصطناعي', 'مكتبة', 'أدوات', 'library', 'tools']
+  };
+  
+  searchForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const query = searchInput.value.trim().toLowerCase();
+    
+    if (!query) {
+      alert('الرجاء إدخال كلمة البحث');
+      return;
+    }
+    
+    // Check for major
+    const majorKey = majorsMapping[query];
+    if (majorKey) {
+      sessionStorage.setItem('selectedMajor', majorKey);
+      window.location.href = 'AI_libraries_page.html';
+      return;
+    }
+    
+    // Check for footer/contact
+    if (query.includes('تواصل') || query.includes('contact')) {
+      document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
+      searchInput.value = '';
+      return;
+    }
+    
+    // Check for other pages
+    for (const [page, keywords] of Object.entries(pageMapping)) {
+      if (keywords.some(k => k.toLowerCase().includes(query) || query.includes(k.toLowerCase()))) {
+        window.location.href = page;
+        return;
+      }
+    }
+    
+    alert('لم يتم العثور على نتائج للبحث: ' + query);
+  });
+})();
+</script>
 </body>
 </html>

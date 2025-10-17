@@ -168,93 +168,82 @@ box-shadow: 0 2px 8px rgba(22, 47, 122, 0.2);
 font-weight: 500;
 }
 
-/* About Section */
+/* About Section - الترتيب: الصورة ثم العنوان ثم النص */
 .about-us-intro {
 text-align: center;
-padding: 60px 20px 40px;
+padding: 60px 20px 60px;
+max-width: 1000px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+}
+
+.about-us-logo {
+margin-bottom: 50px;
+order: 1;
 }
 
 .about-us-intro h1 {
-font-size: 2.5rem;
+font-size: 2.8rem;
 color: var(--royal);
-margin-bottom: 30px;
+margin-bottom: 40px;
 font-weight: 700;
-}
-
-.about-us-box {
-background-color: #e1f2ff;
-padding: 30px;
-display: flex;
-justify-content: flex-start;
-align-items: center;
-border-radius: 20px;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-max-width: 1000px;
-margin: 0 auto 60px;
-flex-direction: row;
-text-align: right;
-gap: 30px;
-transition: all 0.3s ease;
-}
-
-.about-us-box:hover {
-transform: translateY(-5px);
-box-shadow: 0 8px 20px rgba(58, 110, 191, 0.2);
-background-color: #d4ecff;
+margin-top: 0;
+order: 2;
 }
 
 .about-us-logo img {
 width: 180px;
 height: 180px;
 object-fit: contain;
+filter: drop-shadow(0 4px 12px rgba(58, 110, 191, 0.15));
+}
+
+.about-us-box {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+text-align: center;
+margin-bottom: 80px;
+order: 3;
 }
 
 .about-us-text {
-flex: 1;
-font-size: 1.1rem;
-line-height: 1.8;
+font-size: 1.2rem;
+line-height: 2;
 color: var(--midnight);
-text-align: right;
+text-align: center;
+max-width: 800px;
 }
 
 .about-us-text p {
 margin: 0;
-text-align: right;
+text-align: center;
 }
 
-/* Gratitude */
+/* Gratitude Section */
 .gratitude-section {
 text-align: center;
-padding: 40px 20px;
+padding: 60px 20px;
 max-width: 900px;
-margin: 0 auto 60px;
+margin: 0 auto 80px;
 }
 
 .gratitude-section h2 {
-font-size: 2rem;
+font-size: 2.3rem;
 color: var(--royal);
-margin-bottom: 20px;
+margin-bottom: 40px;
 font-weight: 700;
 }
 
 .gratitude-text {
-background: linear-gradient(135deg, rgba(58, 110, 191, 0.1), rgba(225, 242, 255, 0.8));
-padding: 30px;
-border-radius: 20px;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 text-align: center;
-transition: all 0.3s ease;
-}
-
-.gratitude-text:hover {
-transform: translateY(-5px);
-box-shadow: 0 8px 20px rgba(58, 110, 191, 0.2);
-background: linear-gradient(135deg, rgba(58, 110, 191, 0.15), rgba(225, 242, 255, 0.9));
 }
 
 .gratitude-text p {
-font-size: 1.15rem;
-line-height: 1.9;
+font-size: 1.2rem;
+line-height: 2;
 color: var(--midnight);
 margin: 0;
 text-align: center;
@@ -495,6 +484,8 @@ color: midnightblue;
 .brand .logo { height: 70px; }
 .nav a { padding: 8px 16px; font-size: 14px; }
 .team-grid { gap: 35px 25px; }
+.about-us-intro h1 { font-size: 2.3rem; }
+.gratitude-section h2 { font-size: 2rem; }
 }
 
 @media (max-width: 768px) {
@@ -507,14 +498,15 @@ color: midnightblue;
 .search input { height: 38px; font-size: 13px; padding: 0 40px 0 16px; }
 .nav { gap: 6px; }
 .nav a { padding: 8px 14px; font-size: 13px; white-space: nowrap; }
-.about-us-intro h1 { font-size: 1.8rem; }
-.about-us-box { flex-direction: column; text-align: center; padding: 25px; }
-.about-us-text { text-align: center; }
-.about-us-text p { text-align: center; }
-.gratitude-text { text-align: center; }
-.gratitude-text p { text-align: center; }
-.about-us-logo img { width: 140px; height: 140px; }
-.about-us-text { font-size: 1rem; }
+.about-us-intro { padding: 60px 20px 40px; }
+.about-us-intro h1 { font-size: 1.8rem; margin-bottom: 30px; }
+.about-us-box { margin-bottom: 60px; }
+.about-us-logo { margin-bottom: 30px; }
+.about-us-logo img { width: 130px; height: 130px; }
+.about-us-text { font-size: 1rem; line-height: 1.8; }
+.gratitude-section { padding: 40px 20px; margin-bottom: 60px; }
+.gratitude-section h2 { font-size: 1.7rem; margin-bottom: 30px; }
+.gratitude-text p { font-size: 1rem; line-height: 1.8; }
 .team-grid { gap: 30px 20px; }
 .member-card { width: 150px; }
 .member-avatar { width: 80px; height: 80px; }
