@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>الفقرات الأسبوعية</title>
+<link rel="icon" type="image/png" href="images/markblue.png" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+--primary: #60a5fa;
+--primary-light: #93c5fd;
+--primary-dark: #3b82f6;
+--accent: #38bdf8;
+--accent-light: #7dd3fc;
+--dark: #1e3a8a;
+--light: #f8fafc;
+--paragraph-bg: #ebf0f3;
+}
+@font-face {
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+font-weight: 400;
+}
+@font-face {
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+font-weight: 500;
+}
+@font-face {
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Light.otf') format('opentype');
+font-weight: 300;
+}
+@font-face {
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+font-weight: 700;
+}
+body {
+font-family: 'Lyon Arabic', 'Tajawal', sans-serif;
+background: url('images/city-background.jpg') center center / cover no-repeat fixed;
+background-color: #bfdbfe;
+min-height: 100vh;
+color: var(--dark);
+line-height: 1.6;
+overflow-x: hidden;
+}
+
+/* Header - Same as Homepage */
+.topbar {
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(20px);
+border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+box-shadow: 0 2px 10px rgba(59, 130, 246, 0.1);
+position: sticky;
+top: 0;
+z-index: 1000;
+padding: 1rem 0;
+transition: all 0.3s ease;
+}
+.topbar-row {
+max-width: 1400px;
+margin: 0 auto;
+padding: 0 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.nav {
+display: flex;
+gap: 2rem;
+align-items: center;
+}
+.nav a {
+color: var(--dark);
+text-decoration: none;
+font-weight: 500;
+padding: 0.5rem 1rem;
+border-radius: 8px;
+transition: all 0.3s ease;
+position: relative;
+}
+.nav a::before {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: var(--accent);
+transition: width 0.3s ease;
+}
+.nav a:hover::before, .nav a.active::before { width: 100%; }
+.nav a:hover { color: var(--primary); transform: translateY(-2px); }
+.nav a.active { color: var(--primary); background: rgba(96, 165, 250, 0.1); }
+.search {
+display: flex;
+align-items: center;
+background: rgba(96, 165, 250, 0.1);
+border: 1px solid rgba(59, 130, 246, 0.3);
+border-radius: 50px;
+padding: 0.5rem 1rem;
+transition: all 0.3s ease;
+}
+.search:hover, .search:focus-within {
+background: rgba(96, 165, 250, 0.15);
+border-color: var(--accent);
+transform: scale(1.05);
+}
+.search input {
+background: none;
+border: none;
+color: var(--dark);
+outline: none;
+padding: 0 0.5rem;
+width: 200px;
+font-family: 'Lyon Arabic', sans-serif;
+}
+.search input::placeholder { color: rgba(30, 58, 138, 0.6); }
+.search button {
+background: none;
+border: none;
+color: var(--accent);
+cursor: pointer;
+transition: transform 0.3s ease;
+}
+.search button:hover { transform: scale(1.2); }
+.logo { height: 50px; }
+.hamburger { display: none; color: var(--dark); font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
+.nav-toggle { display: none; }
+
+/* Main Content */
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+.weekly-intro {
+margin: 3rem auto;
+}
+.weekly-heading {
+font-size: clamp(2rem, 4vw, 3rem);
+font-weight: 400;
+color: var(--dark);
+margin: 2rem 0 1.5rem;
+text-align: center;
+background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.skyblue-Intro {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(96, 165, 250, 0.3);
+border-radius: 20px;
+padding: 2.5rem;
+margin: 2rem 0;
+}
+.skyblue-Intro p {
+color: var(--dark);
+line-height: 1.8;
+margin-bottom: 1rem;
+font-size: 1.1rem;
+}
+
+.main-paragraphs {
+margin: 4rem auto;
+}
+.paragraphs-continter {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 3rem;
+margin-bottom: 3rem;
+}
+.paragraphs-continter:nth-child(even) {
+flex-direction: row-reverse;
+}
+.skyblue-paragraphs {
+position: relative;
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(96, 165, 250, 0.3);
+border-radius: 20px;
+padding: 2.5rem;
+flex: 1;
+transition: all 0.3s ease;
+}
+.skyblue-paragraphs:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 30px rgba(96, 165, 250, 0.3);
+background: rgba(255, 255, 255, 0.85);
+}
+.link-icon {
+position: absolute;
+top: 12px;
+left: 12px;
+width: 13px;
+height: 13px;
+z-index: 10;
+}
+
+.link-icon a {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 13px;
+height: 13px;
+background: rgba(96, 165, 250, 0.15);
+border: 1px solid rgba(96, 165, 250, 0.3);
+border-radius: 50%;
+transition: all 0.3s ease;
+transform: scale(0.2);
+}
+
+.link-icon a:hover {
+background: var(--primary);
+border-color: var(--primary);
+transform: scale(0.3);
+}
+
+.link-icon img {
+width: 11px;
+height: 11px;
+object-fit: contain;
+}
+.paragraph-header {
+color: var(--primary);
+font-size: 1.5rem;
+font-weight: 700;
+margin-bottom: 1rem;
+}
+.skyblue-paragraphs p {
+color: var(--dark);
+line-height: 1.8;
+font-size: 1.05rem;
+}
+.paragraphs-continter img {
+width: 175px;
+height: 175px;
+object-fit: contain;
+flex-shrink: 0;
+filter: drop-shadow(0 10px 20px rgba(96, 165, 250, 0.3));
+}
+
+.paragraphs-ending-div {
+text-align: center;
+padding: 3rem 0;
+}
+.paragraphs-ending-div h1 {
+font-size: clamp(1.25rem, 3vw, 1.75rem);
+font-weight: 400;
+color: var(--dark);
+line-height: 1.8;
+max-width: 900px;
+margin: 0 auto;
+}
+
+/* Footer - Same as Homepage */
+.footer {
+margin-top: 44px;
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(20px);
+border-top: 1px solid rgba(96, 165, 250, 0.3);
+}
+.footer .wrap {
+max-width: 100% !important;
+padding-inline: 0 !important;
+}
+.foot {
+display: grid;
+grid-template-columns: 1fr auto;
+grid-template-areas: "left right";
+align-items: center;
+gap: 8px 12px;
+min-height: 64px;
+padding-inline: 12px;
+direction: ltr;
+font-size: 13px;
+padding-block: 10px 16px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.foot-left {
+grid-area: left;
+justify-self: start;
+text-align: left;
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+.social-icons {
+display: flex;
+align-items: center;
+gap: 4px;
+white-space: nowrap;
+}
+.social-icons .icon {
+width: 26px;
+height: 26px;
+border-radius: 50%;
+background: transparent;
+border: 1.5px solid rgba(96, 165, 250, 0.35);
+display: grid;
+place-items: center;
+transition: all 0.2s ease;
+cursor: pointer;
+text-decoration: none;
+}
+.social-icons .icon:hover {
+transform: translateY(-1px);
+box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
+border-color: var(--primary);
+}
+.social-icons .icon img {
+width: 14px;
+height: 14px;
+display: block;
+}
+.handle {
+margin-inline-start: 8px;
+opacity: 0.9;
+font-size: 12.5px;
+font-weight: 400;
+color: var(--dark);
+}
+.email-line {
+display: flex;
+align-items: center;
+gap: 8px;
+opacity: 0.9;
+font-size: 13px;
+}
+.email-line .icon {
+width: 24px;
+height: 24px;
+border-radius: 50%;
+background: transparent;
+border: 1.5px solid rgba(96, 165, 250, 0.35);
+display: grid;
+place-items: center;
+transition: all 0.2s ease;
+cursor: pointer;
+text-decoration: none;
+}
+.email-line .icon:hover {
+transform: translateY(-1px);
+box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
+border-color: var(--primary);
+}
+.email-line .icon img {
+width: 13px;
+height: 13px;
+display: block;
+}
+.email-line span {
+color: var(--dark);
+}
+.foot-right {
+grid-area: right;
+justify-self: end;
+direction: rtl;
+text-align: right;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+max-width: 50vw;
+font-size: 13px;
+font-weight: 400;
+color: var(--dark);
+}
+.foot-right [dir="ltr"] {
+unicode-bidi: isolate-override;
+display: inline-block;
+margin-inline-start: 4px;
+font-weight: 400;
+}
+.sep { opacity: 0.5; }
+.brand-en {
+color: var(--primary);
+font-weight: 700;
+}
+
+@media (max-width: 768px) {
+.hamburger { display: block; }
+.nav {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+background: rgba(255, 255, 255, 0.98);
+flex-direction: column;
+padding: 2rem;
+border-top: 1px solid rgba(96, 165, 250, 0.3);
+}
+.nav-toggle:checked ~ .nav { display: flex; }
+.search { display: none; }
+.paragraphs-continter {
+flex-direction: column !important;
+}
+.paragraphs-continter img {
+width: 140px;
+height: 140px;
+}
+.foot {
+grid-template-columns: 1fr;
+grid-template-areas: "right" "left";
+gap: 15px;
+}
+.foot-right { justify-self: center; max-width: 100%; text-align: center; }
+.foot-left { justify-self: center; align-items: center; }
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-row">
+<input type="checkbox" id="nav-toggle" class="nav-toggle" />
+<label for="nav-toggle" class="hamburger">☰</label>
+        
+<nav class="nav">
+<a href="homepage.html">الصفحة الرئيسية</a>
+<a href="WeeklyParagraphs.html" class="active">الفقرات الأسبوعية</a>
+<a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
+<a href="Who_We_Are.html">من نحن</a>
+<a href="#footer">تواصل معنا</a>
+</nav>
+
+<form class="search" id="searchForm">
+<input type="search" id="searchInput" placeholder="عن ماذا تبحث؟" />
+<button type="submit"><i class="fas fa-search"></i></button>
+</form>
+
+<div class="brand">
+<img src="images/logo.svg" alt="الشعار" class="logo" />
+</div>
+</div>
+</header>
+
+<div class="wrap weekly-intro">
+<h2 class="weekly-heading">الفقرات الأسبوعية</h2>
+<div class="skyblue-Intro">
+<p>
+في عالم يتسارع بالتطور التكنولوجي لم يعد الذكاء الاصطناعي مجرد فكرة
+مستقبلية، بل أصبح جزءًا من واقعنا اليومي وأصبح حاضرًا في كل مجال، حتى
+المجالات التي قد تظن أنها بعيدة عنه تمامًا.
+</p>
+<p>
+فهل تساءلت يومًا عن دور الذكاء الاصطناعي في مجالك؟ كيف يمكن له أن يفتح
+لك أبوابًا جديدة في حياتك الأكاديمية والمهنية؟
+</p>
+<p>
+هنا ستجد الإجابة عن كل تساؤلاتك والمعرفة الحقيقية التي تأتي من مصادر
+متنوعة وتجارب واقعية. في كل أسبوع سنأخذك في رحلة قصيرة وممتعة، رحلة
+صممت خصيصًا لك لتبسط لك المفاهيم وتريك كيف يلامس الذكاء الاصطناعي
+تخصصك الجامعي بشكل ملهم وواقعي. وخطوة بخطوة سنكشف لك جوانب جديدة من
+عالم الذكاء الاصطناعي.
+</p>
+<p>
+كل أسبوع سيكون بداية جديدة لاكتشاف مختلف، وكل فقرة ستمنحك منظورًا
+مميزًا لمجالك أو تلهمك لتطويره حتى تنظر له من زاوية جديدة، زاوية
+المستقبل!
+</p>
+</div>
+</div>
+
+<div class="wrap main-paragraphs">
+<div class="paragraphs-continter" id="section-ai-x-major">
+<div class="skyblue-paragraphs">
+<div class="link-icon">
+<a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" target="_blank">
+<img src="images/arrow.png" alt="Link Arrow" />
+</a>
+</div>
+<h4 class="paragraph-header">التخصص AI x</h4>
+<p>
+كل مجال من المجالات الأكاديمية يختبئ خلفه دور جديد للذكاء الاصطناعي.
+في هذه الفقرة، نستعرض أسبوعيًا كيف تغيرت مفاهيم كل تخصص مع دخول
+الذكاء الاصطناعي إليه. وما الأدوات التي أعادت تشكيل ملامحه والتقنيات
+والتطبيقات التي أحدثت فرقًا حقيقيًا فيه، وصولًا إلى الاتجاهات التي
+قد تعيد تشكيل المهنة من أساسها.
+</p>
+<p>
+هنا سترى تخصصك من زاوية مختلفة، وستدرك أن كل التخصصات تتطور وأن
+الذكاء الاصطناعي قد يكون مفتاحك للتميز فيها.
+</p>
+</div>
+<img src="images/ai_brain.png" alt="ai image" />
+</div>
+
+
+<div class="paragraphs-continter" id="section-imagine-if">
+<div class="skyblue-paragraphs">
+<div class="link-icon">
+<a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" target="_blank">
+<img src="images/arrow.png" alt="Link Arrow" />
+</a>
+</div>
+<h4 class="paragraph-header">تخيل لو .....</h4>
+<p>
+في هذه السلسلة نضعك في مواقف حقيقية من داخل تخصصك، ثم نعيد رسم
+المشهد باستخدام أدوات الذكاء الاصطناعي. تخيل أن تنجز هذه المهمة
+بمساعدة الذكاء الاصطناعي؛ كيف سيكون الأداء؟ ما الذي سيتغير؟ وأين
+يكمن الفرق الحقيقي؟
+</p>
+<p>
+هنا لا نعرض تخيلات فقط، بل نربطها بتقنيات حقيقية تستخدم اليوم. نبين
+لك أثرها بلغة واقعية ونريك كيف يمكن للذكاء الاصطناعي أن يكون مساعدك
+الأول في تخصصك ومستقبلك، لتكون أقرب للمستقبل أكثر من أي وقت مضى.
+</p>
+</div>
+<img src="images/Think.png" alt="ai image" />
+</div>
+</div>
+
+<div class="wrap paragraphs-ending-div">
+<h1>
+نحن لا نقدم محتوى فقط، بل نبني وعيًا مستقبليًا يربطك بالذكاء الاصطناعي
+خطوة بخطوة.
+</h1>
+</div>
+
+<footer class="footer" id="footer">
+<div class="foot">
+<div class="foot-left">
+<div class="social-icons">
+<a class="icon" href="https://www.linkedin.com/showcase/thakaabeyond/" title="LinkedIn" aria-label="LinkedIn">
+<img src="images/liked-in.png" alt="LinkedIn" />
+</a>
+<a class="icon" href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" title="X (Twitter)" aria-label="X">
+<img src="images/twitter.png" alt="X" />
+</a>
+<a class="icon" href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" title="TikTok" aria-label="TikTok">
+<img src="images/tik-tok.png" alt="TikTok" />
+</a>
+<span class="handle">@ThakaaBeyond</span>
+</div>
+<div class="email-line">
+<a class="icon" href="mailto:ThakaaBeyond@ksu.edu.sa" title="Email" aria-label="Email" dir="ltr">
+<img src="images/email.png" alt="Email" />
+</a>
+<span>ThakaaBeyond@ksu.edu.sa</span>
+</div>
+</div>
+<div class="foot-right" dir="rtl">
+<span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
+<span class="sep" aria-hidden="true"> – </span>
+<span class="brand-en" dir="ltr">Beyond AI</span>
+</div>
+</div>
+</footer>
+
+<script>
+// Search functionality
+(function() {
+  const searchForm = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
+  
+  const majorsMapping = {
+    'الطب': 'medicine', 'طب': 'medicine', 'طبية': 'medicine', 'medicine': 'medicine', 'medical': 'medicine',
+    'إدارة الأعمال': 'business', 'إدارة': 'business', 'أعمال': 'business', 'business': 'business', 'management': 'business',
+    'العمارة والتخطيط': 'architecture', 'العمارة': 'architecture', 'عمارة': 'architecture', 'architecture': 'architecture',
+    'تقنية المعلومات': 'it', 'تقنية': 'it', 'معلومات': 'it', 'حاسب': 'it', 'it': 'it',
+    'الصيدلة': 'pharmacy', 'صيدلة': 'pharmacy', 'pharmacy': 'pharmacy',
+    'القانون': 'law', 'قانون': 'law', 'حقوق': 'law', 'law': 'law',
+    'الإعلام': 'media', 'إعلام': 'media', 'صحافة': 'media', 'media': 'media'
+  };
+  
+  const pageMapping = {
+    'homepage.html': ['الصفحة الرئيسية', 'الرئيسية', 'home'],
+    'AI_libraries_page.html': ['مكتبة أدوات الذكاء الاصطناعي', 'مكتبة', 'أدوات', 'library', 'tools'],
+    'Who_We_Are.html': ['من نحن', 'about', 'نبذة']
+  };
+  
+  const sectionMapping = {
+    'section-in-minute': ['في دقيقة', 'دقيقة', 'minute', 'فقرة مرئية'],
+    'section-imagine-if': ['تخيل لو', 'تخيل', 'imagine'],
+    'section-ai-x-major': ['التخصص', 'ai x', 'تخصص ai']
+  };
+  
+  if (searchForm) {
+    searchForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const query = searchInput.value.trim().toLowerCase();
+      
+      if (!query) {
+        alert('الرجاء إدخال كلمة البحث');
+        return;
+      }
+      
+      for (const [sectionId, keywords] of Object.entries(sectionMapping)) {
+        for (const keyword of keywords) {
+          if (query.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(query)) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              searchInput.value = '';
+              return;
+            }
+          }
+        }
+      }
+      
+      for (const [keyword, major] of Object.entries(majorsMapping)) {
+        if (query.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(query)) {
+          sessionStorage.setItem('selectedMajor', major);
+          window.location.href = 'AI_libraries_page.html';
+          return;
+        }
+      }
+      
+      if (query.includes('تواصل') || query.includes('contact') || query.includes('ايميل') || query.includes('email')) {
+        document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
+        searchInput.value = '';
+        return;
+      }
+      
+      for (const [page, keywords] of Object.entries(pageMapping)) {
+        for (const keyword of keywords) {
+          if (query.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(query)) {
+            window.location.href = page;
+            return;
+          }
+        }
+      }
+      
+      const suggestions = 'يمكنك البحث عن:\n\n📌 الفقرات: في دقيقة، تخيل لو، التخصص\n📚 التخصصات: طب، هندسة، حاسب، إدارة، قانون...\n🏠 الصفحات: الصفحة الرئيسية، مكتبة الأدوات، من نحن\n📧 تواصل معنا';
+      alert('لم يتم العثور على نتائج لـ "' + query + '"\n\n' + suggestions);
+    });
+  }
+})();
+</script>
+</body>
+</html>
