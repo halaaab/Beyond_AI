@@ -5,378 +5,268 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>الفقرات الأسبوعية</title>
 <link rel="icon" type="image/png" href="images/markblue.png" />
-<link rel="apple-touch-icon" href="images/markblue.png" />
-<link rel="shortcut icon" href="images/markblue.png" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
---bg: #fff;
+--primary: #60a5fa;
+--primary-light: #93c5fd;
+--primary-dark: #3b82f6;
+--accent: #38bdf8;
+--accent-light: #7dd3fc;
+--dark: #1e3a8a;
+--light: #f8fafc;
 --paragraph-bg: #ebf0f3;
---offwhite: #f2f2f2;
---primary: #02144d;
---midnight: #02144d;
---paragraph: #0b3a8c;
---sky-blue: #158ce9;
---mid-blue: rgb(45, 112, 200);
---dark-blue: #143496;
---max-width: 1100px;
---radius: 20px;
---vivid: #3a6ebf;
---royal: #162f7a;
---line: rgba(22, 47, 122, 0.22);
 }
 @font-face {
-font-family: "lyonFont";
-src: url("Fonts/COMM - Lyon Arabic Display Regular.otf")
-format("opentype");
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+font-weight: 400;
 }
 @font-face {
-font-family: "lyonFontLight";
-src: url("Fonts/COMM - Lyon Arabic Display Light.otf")
-format("opentype");
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+font-weight: 500;
 }
 @font-face {
-font-family: "lyonFontMedium";
-src: url("Fonts/COMM - Lyon Arabic Display Medium.otf")
-format("opentype");
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Light.otf') format('opentype');
+font-weight: 300;
 }
 @font-face {
-font-family: "lyonFontBold";
-src: url("Fonts/COMM - Lyon Arabic Slanted Display Bold.otf")
-format("opentype");
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+font-weight: 700;
 }
-* {
-box-sizing: border-box;
-}
-html,
 body {
-scroll-behavior: smooth;
-height: 100%;
-margin: 0;
-padding: 0;
-font-family: "lyonFont";
-background: var(--bg);
-color: #1b1b1b;
-direction: rtl;
-background-size: cover;
-background-repeat: no-repeat;
-background-attachment: scroll;
-background-color: #fcfcfc;
+font-family: 'Lyon Arabic', 'Tajawal', sans-serif;
+background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%);
+background-attachment: fixed;
+min-height: 100vh;
+color: var(--dark);
+line-height: 1.6;
+overflow-x: hidden;
 }
 
-/* NEW HEADER - SAME AS HOMEPAGE */
-.wrap {
-max-width: 1200px;
-margin-inline: auto;
-padding-inline: 20px;
-}
+/* Header - Same as Homepage */
 .topbar {
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(20px);
+border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+box-shadow: 0 2px 10px rgba(59, 130, 246, 0.1);
 position: sticky;
 top: 0;
 z-index: 1000;
-background: #fff;
-border-bottom: 1px solid rgba(2, 20, 77, 0.08);
+padding: 1rem 0;
+transition: all 0.3s ease;
 }
-.topbar .wrap {
-padding-inline: 20px;
+.topbar-row {
 max-width: 1400px;
-}
-.topbar-row {
+margin: 0 auto;
+padding: 0 2rem;
 display: flex;
-align-items: center;
-gap: 20px;
-padding: 12px 0;
 justify-content: space-between;
-flex-wrap: nowrap;
-direction: rtl;
-}
-.brand {
-flex: 0 0 auto;
-order: 3;
-}
-.brand .logo {
-height: 80px;
-width: auto;
-display: block;
-filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06));
-}
-.search {
-position: relative;
-flex: 1 1 auto;
-max-width: 400px;
-min-width: 200px;
-order: 2;
-margin: 0;
-}
-.search input {
-width: 100%;
-height: 42px;
-padding: 0 45px 0 20px;
-border-radius: 50px;
-border: 1px solid rgba(2, 20, 77, 0.15);
-outline: none;
-background: #f8f9fa;
-font-size: 14px;
-box-shadow: 0 1px 3px rgba(2, 20, 77, 0.05);
-transition: all 0.3s ease;
-}
-.search input:hover {
-border-color: var(--royal);
-background: #fff;
-box-shadow: 0 2px 6px rgba(2, 20, 77, 0.1);
-}
-.search input:focus {
-border-color: var(--vivid);
-background: #fff;
-box-shadow: 0 0 0 3px rgba(58, 110, 191, 0.1),
-0 2px 8px rgba(2, 20, 77, 0.12);
-}
-.search button {
-position: absolute;
-right: 12px;
-top: 50%;
-transform: translateY(-50%);
-width: 28px;
-height: 28px;
-border: none;
-background: transparent;
-display: grid;
-place-items: center;
-padding: 0;
-cursor: pointer;
-}
-.search button img {
-width: 16px;
-height: 16px;
-display: block;
-object-fit: contain;
-opacity: 0.6;
-transition: opacity 0.2s;
-}
-.search button:hover img {
-opacity: 1;
+align-items: center;
 }
 .nav {
 display: flex;
+gap: 2rem;
 align-items: center;
-gap: 8px;
-flex-wrap: nowrap;
-white-space: nowrap;
-order: 1;
-flex: 0 1 auto;
-overflow-x: auto;
--webkit-overflow-scrolling: touch;
-scrollbar-width: none;
-padding: 4px 0;
-}
-.nav::-webkit-scrollbar {
-display: none;
 }
 .nav a {
-display: inline-block;
-padding: 10px 20px;
-border-radius: 50px;
+color: var(--dark);
 text-decoration: none;
-color: var(--midnight);
-font-size: 15px;
-font-weight: 400;
+font-weight: 500;
+padding: 0.5rem 1rem;
+border-radius: 8px;
 transition: all 0.3s ease;
 position: relative;
-background: transparent;
 }
-.nav a:hover {
-color: var(--royal);
-background: rgba(22, 47, 122, 0.06);
+.nav a::before {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: var(--accent);
+transition: width 0.3s ease;
 }
-.nav a.active {
-color: #fff;
-background: linear-gradient(90deg, var(--vivid), var(--royal));
-box-shadow: 0 2px 8px rgba(22, 47, 122, 0.2);
-font-weight: 500;
-}
-
-@media (max-width: 1100px) {
-.topbar-row {
-gap: 15px;
-}
-.brand .logo {
-height: 70px;
-}
-.nav a {
-padding: 8px 16px;
-font-size: 14px;
-}
-}
-
-@media (max-width: 768px) {
-.topbar .wrap {
-padding-inline: 12px;
-}
-.topbar-row {
-gap: 10px;
-padding: 10px 0;
-flex-wrap: wrap;
-}
-.brand {
-order: 2;
-flex: 0 0 auto;
-}
-.nav {
-order: 1;
-flex: 1 1 100%;
-}
+.nav a:hover::before, .nav a.active::before { width: 100%; }
+.nav a:hover { color: var(--primary); transform: translateY(-2px); }
+.nav a.active { color: var(--primary); background: rgba(96, 165, 250, 0.1); }
 .search {
-order: 2;
-flex: 1 1 auto;
-max-width: none;
+display: flex;
+align-items: center;
+background: rgba(96, 165, 250, 0.1);
+border: 1px solid rgba(59, 130, 246, 0.3);
+border-radius: 50px;
+padding: 0.5rem 1rem;
+transition: all 0.3s ease;
 }
-.brand .logo {
-height: 60px;
+.search:hover, .search:focus-within {
+background: rgba(96, 165, 250, 0.15);
+border-color: var(--accent);
+transform: scale(1.05);
 }
 .search input {
-height: 38px;
-font-size: 13px;
-padding: 0 40px 0 16px;
+background: none;
+border: none;
+color: var(--dark);
+outline: none;
+padding: 0 0.5rem;
+width: 200px;
+font-family: 'Lyon Arabic', sans-serif;
 }
-.nav {
-gap: 6px;
+.search input::placeholder { color: rgba(30, 58, 138, 0.6); }
+.search button {
+background: none;
+border: none;
+color: var(--accent);
+cursor: pointer;
+transition: transform 0.3s ease;
 }
-.nav a {
-padding: 8px 14px;
-font-size: 13px;
-white-space: nowrap;
-}
-}
+.search button:hover { transform: scale(1.2); }
+.logo { height: 50px; }
+.hamburger { display: none; color: var(--dark); font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
+.nav-toggle { display: none; }
 
-@media (min-width: 769px) {
-.topbar-row {
-flex-wrap: nowrap;
-}
-.nav {
-order: 1;
-flex: 0 1 auto;
-}
-.search {
-order: 2;
-flex: 1 1 auto;
-max-width: 400px;
-min-width: 200px;
-}
-.brand {
-order: 3;
-}
-}
-/* END OF NEW HEADER */
+/* Main Content */
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
 .weekly-intro {
-max-width: var(--max-width);
-margin: 36px auto;
-padding: 8px;
+margin: 3rem auto;
 }
 .weekly-heading {
-font-family: "lyonFont";
-color: var(--paragraph);
-font-size: clamp(22px, 3.4vw, 36px);
-margin: 8px 0 18px 0;
-font-weight: 500;
-text-align: right;
-letter-spacing: 0.2px;
+font-size: clamp(2rem, 4vw, 3rem);
+font-weight: 400;
+color: var(--dark);
+margin: 2rem 0 1.5rem;
+text-align: center;
+background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 }
 .skyblue-Intro {
-background: var(--paragraph-bg);
-border: 1px;
-border-radius: var(--radius);
-margin-left: 2;
-padding: 20px;
-display: block;
-overflow: hidden;
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(96, 165, 250, 0.3);
+border-radius: 20px;
+padding: 2.5rem;
+margin: 2rem 0;
+}
+.skyblue-Intro p {
+color: var(--dark);
+line-height: 1.8;
+margin-bottom: 1rem;
+font-size: 1.1rem;
+}
+
+.main-paragraphs {
+margin: 4rem auto;
 }
 .paragraphs-continter {
 display: flex;
-flex-direction: row;
-margin-bottom: 25px;
+align-items: center;
+justify-content: space-between;
+gap: 3rem;
+margin-bottom: 3rem;
+}
+.paragraphs-continter:nth-child(even) {
+flex-direction: row-reverse;
+}
+.skyblue-paragraphs {
+position: relative;
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(96, 165, 250, 0.3);
+border-radius: 20px;
+padding: 2.5rem;
+flex: 1;
+transition: all 0.3s ease;
+}
+.skyblue-paragraphs:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 30px rgba(96, 165, 250, 0.3);
+background: rgba(255, 255, 255, 0.85);
+}
+.link-icon {
+position: absolute;
+top: 12px;
+left: 12px;
+width: 13px;
+height: 13px;
+z-index: 10;
+}
+
+.link-icon a {
+display: flex;
 align-items: center;
 justify-content: center;
-gap: 20px;
+width: 13px;
+height: 13px;
+background: rgba(96, 165, 250, 0.15);
+border: 1px solid rgba(96, 165, 250, 0.3);
+border-radius: 50%;
+transition: all 0.3s ease;
+transform: scale(0.2);
+}
+
+.link-icon a:hover {
+background: var(--primary);
+border-color: var(--primary);
+transform: scale(0.3);
+}
+
+.link-icon img {
+width: 11px;
+height: 11px;
+object-fit: contain;
+}
+.paragraph-header {
+color: var(--primary);
+font-size: 1.5rem;
+font-weight: 700;
+margin-bottom: 1rem;
+}
+.skyblue-paragraphs p {
+color: var(--dark);
+line-height: 1.8;
+font-size: 1.05rem;
 }
 .paragraphs-continter img {
 width: 175px;
 height: 175px;
-object-fit: cover;
-margin: 25px;
-color: var(--primary);
+object-fit: contain;
+flex-shrink: 0;
+filter: drop-shadow(0 10px 20px rgba(96, 165, 250, 0.3));
 }
-.skyblue-Intro h4 {
-margin: 0;
-line-height: 1.6;
-font-size: clamp(12px, 1.2vw, 14px);
-font-weight: 700;
-color: var(--paragraph);
-}
-p {
-color: var(--paragraph);
-padding-left: 20px;
-}
-.main-paragraphs {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-margin: 36px auto;
-padding: 8px;
-}
-.skyblue-paragraphs {
-position: relative;
-background: var(--paragraph-bg);
-border: 10px;
-border-radius: var(--radius);
-margin: 0px;
-padding: 20px;
-display: block;
-overflow: hidden;
-flex: 1;
-max-width: 800px;
-}
-.link-icon {
-position: absolute;
-top: 5px;
-left: 5px;
-text-decoration: none;
-}
-.link-icon img {
-width: 35px;
-height: auto;
-}
-.paragraph-header {
-color: var(--paragraph);
-font-size: larger;
-}
+
 .paragraphs-ending-div {
-padding-top: 10px;
-justify-content: center;
 text-align: center;
-padding-bottom: 20px;
+padding: 3rem 0;
 }
 .paragraphs-ending-div h1 {
-font-family: "lyonFontMedium";
-font-weight: 500;
-color: var(--paragraph);
+font-size: clamp(1.25rem, 3vw, 1.75rem);
+font-weight: 400;
+color: var(--dark);
+line-height: 1.8;
+max-width: 900px;
+margin: 0 auto;
 }
+
+/* Footer - Same as Homepage */
 .footer {
-position: relative;
 margin-top: 44px;
-background: url("images/background.png") no-repeat bottom;
-background-size: 100%;
-min-height: 250px;
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(20px);
+border-top: 1px solid rgba(96, 165, 250, 0.3);
 }
 .footer .wrap {
 max-width: 100% !important;
 padding-inline: 0 !important;
 }
 .foot {
-position: absolute;
-bottom: 5px;
-left: 0;
-right: 0;
 display: grid;
 grid-template-columns: 1fr auto;
 grid-template-areas: "left right";
@@ -387,8 +277,8 @@ padding-inline: 12px;
 direction: ltr;
 font-size: 13px;
 padding-block: 10px 16px;
-background: transparent;
-width: 100%;
+max-width: 1200px;
+margin: 0 auto;
 }
 .foot-left {
 grid-area: left;
@@ -397,7 +287,6 @@ text-align: left;
 display: flex;
 flex-direction: column;
 gap: 8px;
-color: midnightblue;
 }
 .social-icons {
 display: flex;
@@ -405,23 +294,24 @@ align-items: center;
 gap: 4px;
 white-space: nowrap;
 }
-.icon {
+.social-icons .icon {
 width: 26px;
 height: 26px;
 border-radius: 50%;
 background: transparent;
-border: 1.5px solid rgba(2, 20, 77, 0.35);
+border: 1.5px solid rgba(96, 165, 250, 0.35);
 display: grid;
 place-items: center;
 transition: all 0.2s ease;
 cursor: pointer;
+text-decoration: none;
 }
-.icon:hover {
+.social-icons .icon:hover {
 transform: translateY(-1px);
-box-shadow: 0 4px 8px rgba(2, 20, 77, 0.15);
-border-color: var(--royal);
+box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
+border-color: var(--primary);
 }
-.icon img {
+.social-icons .icon img {
 width: 14px;
 height: 14px;
 display: block;
@@ -431,6 +321,7 @@ margin-inline-start: 8px;
 opacity: 0.9;
 font-size: 12.5px;
 font-weight: 400;
+color: var(--dark);
 }
 .email-line {
 display: flex;
@@ -442,6 +333,27 @@ font-size: 13px;
 .email-line .icon {
 width: 24px;
 height: 24px;
+border-radius: 50%;
+background: transparent;
+border: 1.5px solid rgba(96, 165, 250, 0.35);
+display: grid;
+place-items: center;
+transition: all 0.2s ease;
+cursor: pointer;
+text-decoration: none;
+}
+.email-line .icon:hover {
+transform: translateY(-1px);
+box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
+border-color: var(--primary);
+}
+.email-line .icon img {
+width: 13px;
+height: 13px;
+display: block;
+}
+.email-line span {
+color: var(--dark);
 }
 .foot-right {
 grid-area: right;
@@ -454,46 +366,58 @@ text-overflow: ellipsis;
 max-width: 50vw;
 font-size: 13px;
 font-weight: 400;
-color: midnightblue;
+color: var(--dark);
 }
 .foot-right [dir="ltr"] {
 unicode-bidi: isolate-override;
 display: inline-block;
 margin-inline-start: 4px;
 font-weight: 400;
-color: midnightblue;
 }
-@media (max-width: 700px) {
-.footer {
-min-height: 300px;
+.sep { opacity: 0.5; }
+.brand-en {
+color: var(--primary);
+font-weight: 700;
+}
+
+@media (max-width: 768px) {
+.hamburger { display: block; }
+.nav {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+background: rgba(255, 255, 255, 0.98);
+flex-direction: column;
+padding: 2rem;
+border-top: 1px solid rgba(96, 165, 250, 0.3);
+}
+.nav-toggle:checked ~ .nav { display: flex; }
+.search { display: none; }
+.paragraphs-continter {
+flex-direction: column !important;
+}
+.paragraphs-continter img {
+width: 140px;
+height: 140px;
 }
 .foot {
-bottom: 70px;
 grid-template-columns: 1fr;
 grid-template-areas: "right" "left";
 gap: 15px;
-padding-inline: 8px;
 }
-.foot-right {
-justify-self: center;
-max-width: 100%;
-text-align: center;
-}
-.foot-left {
-justify-self: center;
-align-items: center;
-}
-}
-.highlighted {
-background-color: rgba(0, 123, 255, 0.3);
-border-radius: 2px;
-padding-inline-end: 2px;
+.foot-right { justify-self: center; max-width: 100%; text-align: center; }
+.foot-left { justify-self: center; align-items: center; }
 }
 </style>
 </head>
 <body>
 <header class="topbar">
-<div class="wrap topbar-row">
+<div class="topbar-row">
+<input type="checkbox" id="nav-toggle" class="nav-toggle" />
+<label for="nav-toggle" class="hamburger">☰</label>
+        
 <nav class="nav">
 <a href="homepage.html">الصفحة الرئيسية</a>
 <a href="WeeklyParagraphs.html" class="active">الفقرات الأسبوعية</a>
@@ -502,11 +426,9 @@ padding-inline-end: 2px;
 <a href="#footer">تواصل معنا</a>
 </nav>
 
-<form class="search" role="search" aria-label="بحث" id="searchForm">
+<form class="search" id="searchForm">
 <input type="search" id="searchInput" placeholder="عن ماذا تبحث؟" />
-<button type="submit" aria-label="ابحث">
-<img src="images/search.png" alt="بحث" />
-</button>
+<button type="submit"><i class="fas fa-search"></i></button>
 </form>
 
 <div class="brand">
@@ -515,7 +437,7 @@ padding-inline-end: 2px;
 </div>
 </header>
 
-<div class="weekly-intro">
+<div class="wrap weekly-intro">
 <h2 class="weekly-heading">الفقرات الأسبوعية</h2>
 <div class="skyblue-Intro">
 <p>
@@ -542,15 +464,13 @@ padding-inline-end: 2px;
 </div>
 </div>
 
-<div class="main-paragraphs">
-<div class="paragraphs-continter">
+<div class="wrap main-paragraphs">
+<div class="paragraphs-continter" id="section-ai-x-major">
 <div class="skyblue-paragraphs">
 <div class="link-icon">
-<a
-href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-target="_blank"
-><img src="images/arrow.png" alt="Link Arrrow"
-/></a>
+<a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" target="_blank">
+<img src="images/arrow.png" alt="Link Arrow" />
+</a>
 </div>
 <h4 class="paragraph-header">التخصص AI x</h4>
 <p>
@@ -568,39 +488,13 @@ target="_blank"
 <img src="images/ai_brain.png" alt="ai image" />
 </div>
 
-<div class="paragraphs-continter">
-<img src="images/clock.png" alt="ai image" />
-<div class="skyblue-paragraphs">
-<div class="link-icon">
-<a
-href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-target="_blank"
-><img src="images/arrow.png" alt="Link Arrrow"
-/></a>
-</div>
-<h4 class="paragraph-header">في دقيقة</h4>
-<p>
-فقرة مرئية موجزة يقدمها طالب أو مختص، يتناول فيها مفهومًا أو تطبيقًا
-عمليًا في الذكاء الاصطناعي مرتبطًا بتخصصه. تقدم لك بأكثر طريقة
-مفهومة ومبسطة وتصل إليك مباشرة عبر منصاتنا الاجتماعية، لتبقى على
-اطلاع حتى في أكثر أيامك ازدحامًا.
-</p>
-<p>
-المعرفة لا تتطلب دائمًا إلى وقت طويل، أحيانًا كل ما تحتاجه هو دقيقة
-واحدة فقط، وإذا كانت دقيقة واحدة كافية لفهم فكرة، فهي أيضًا كافية
-لإحداث فرق.
-</p>
-</div>
-</div>
 
-<div class="paragraphs-continter">
+<div class="paragraphs-continter" id="section-imagine-if">
 <div class="skyblue-paragraphs">
 <div class="link-icon">
-<a
-href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-target="_blank"
-><img src="images/arrow.png" alt="Link Arrrow"
-/></a>
+<a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" target="_blank">
+<img src="images/arrow.png" alt="Link Arrow" />
+</a>
 </div>
 <h4 class="paragraph-header">تخيل لو .....</h4>
 <p>
@@ -619,7 +513,7 @@ target="_blank"
 </div>
 </div>
 
-<div class="paragraphs-ending-div">
+<div class="wrap paragraphs-ending-div">
 <h1>
 نحن لا نقدم محتوى فقط، بل نبني وعيًا مستقبليًا يربطك بالذكاء الاصطناعي
 خطوة بخطوة.
@@ -627,50 +521,27 @@ target="_blank"
 </div>
 
 <footer class="footer" id="footer">
-<div class="wrap foot">
+<div class="foot">
 <div class="foot-left">
 <div class="social-icons">
-<a
-class="icon"
-href="https://www.linkedin.com/showcase/thakaabeyond/"
-title="LinkedIn"
-aria-label="LinkedIn"
->
+<a class="icon" href="https://www.linkedin.com/showcase/thakaabeyond/" title="LinkedIn" aria-label="LinkedIn">
 <img src="images/liked-in.png" alt="LinkedIn" />
 </a>
-<a
-class="icon"
-href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-title="X (Twitter)"
-aria-label="X"
->
+<a class="icon" href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" title="X (Twitter)" aria-label="X">
 <img src="images/twitter.png" alt="X" />
 </a>
-<a
-class="icon"
-href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
-title="TikTok"
-aria-label="TikTok"
->
+<a class="icon" href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" title="TikTok" aria-label="TikTok">
 <img src="images/tik-tok.png" alt="TikTok" />
 </a>
 <span class="handle">@ThakaaBeyond</span>
 </div>
-
 <div class="email-line">
-<a
-class="icon"
-href="mailto:ThakaaBeyond@ksu.edu.sa"
-title="Email"
-aria-label="Email"
-dir="ltr"
->
+<a class="icon" href="mailto:ThakaaBeyond@ksu.edu.sa" title="Email" aria-label="Email" dir="ltr">
 <img src="images/email.png" alt="Email" />
 </a>
 <span>ThakaaBeyond@ksu.edu.sa</span>
 </div>
 </div>
-
 <div class="foot-right" dir="rtl">
 <span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
 <span class="sep" aria-hidden="true"> – </span>
@@ -680,135 +551,82 @@ dir="ltr"
 </footer>
 
 <script>
-// Enhanced search with majors and navigation support
+// Search functionality
 (function() {
   const searchForm = document.getElementById('searchForm');
   const searchInput = document.getElementById('searchInput');
   
-  // Majors mapping to AI libraries page with specific filter
   const majorsMapping = {
-    'الطب': 'medicine',
-    'طب': 'medicine',
-    'medicine': 'medicine',
-    'medical': 'medicine',
-    'إدارة الأعمال': 'business',
-    'إدارة': 'business',
-    'أعمال': 'business',
-    'business': 'business',
-    'management': 'business',
-    'العمارة والتخطيط': 'architecture',
-    'العمارة': 'architecture',
-    'تخطيط': 'architecture',
-    'architecture': 'architecture',
-    'planning': 'architecture',
-    'تقنية المعلومات': 'it',
-    'تقنية': 'it',
-    'معلومات': 'it',
-    'it': 'it',
-    'information technology': 'it',
-    'الصيدلة': 'pharmacy',
-    'صيدلة': 'pharmacy',
-    'pharmacy': 'pharmacy',
-    'القانون': 'law',
-    'قانون': 'law',
-    'law': 'law',
-    'legal': 'law',
-    'الإعلام': 'media',
-    'إعلام': 'media',
-    'media': 'media',
-    'communication': 'media'
+    'الطب': 'medicine', 'طب': 'medicine', 'طبية': 'medicine', 'medicine': 'medicine', 'medical': 'medicine',
+    'إدارة الأعمال': 'business', 'إدارة': 'business', 'أعمال': 'business', 'business': 'business', 'management': 'business',
+    'العمارة والتخطيط': 'architecture', 'العمارة': 'architecture', 'عمارة': 'architecture', 'architecture': 'architecture',
+    'تقنية المعلومات': 'it', 'تقنية': 'it', 'معلومات': 'it', 'حاسب': 'it', 'it': 'it',
+    'الصيدلة': 'pharmacy', 'صيدلة': 'pharmacy', 'pharmacy': 'pharmacy',
+    'القانون': 'law', 'قانون': 'law', 'حقوق': 'law', 'law': 'law',
+    'الإعلام': 'media', 'إعلام': 'media', 'صحافة': 'media', 'media': 'media'
   };
   
   const pageMapping = {
     'homepage.html': ['الصفحة الرئيسية', 'الرئيسية', 'home'],
-    'AI_libraries_page.html': [
-      'مكتبة أدوات الذكاء الاصطناعي', 'مكتبة', 'أدوات', 'library', 'tools'
-    ],
-    'homepage.html#us': ['من نحن', 'about', 'مبادرة', 'مركز']
+    'AI_libraries_page.html': ['مكتبة أدوات الذكاء الاصطناعي', 'مكتبة', 'أدوات', 'library', 'tools'],
+    'Who_We_Are.html': ['من نحن', 'about', 'نبذة']
   };
   
-  searchForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const query = searchInput.value.trim().toLowerCase();
-    
-    if (!query) {
-      alert('الرجاء إدخال كلمة البحث');
-      return;
-    }
-    
-    // Check if search is for a major
-    const majorKey = majorsMapping[query];
-    if (majorKey) {
-      // Store the major filter in sessionStorage
-      sessionStorage.setItem('selectedMajor', majorKey);
-      window.location.href = 'AI_libraries_page.html';
-      return;
-    }
-    
-    // Check for footer/contact
-    if (query.includes('تواصل') || query.includes('contact')) {
-      document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
-      searchInput.value = '';
-      return;
-    }
-    
-    // Check for other pages
-    for (const [page, keywords] of Object.entries(pageMapping)) {
-      if (keywords.some(k => k.toLowerCase().includes(query) || query.includes(k.toLowerCase()))) {
-        window.location.href = page;
+  const sectionMapping = {
+    'section-in-minute': ['في دقيقة', 'دقيقة', 'minute', 'فقرة مرئية'],
+    'section-imagine-if': ['تخيل لو', 'تخيل', 'imagine'],
+    'section-ai-x-major': ['التخصص', 'ai x', 'تخصص ai']
+  };
+  
+  if (searchForm) {
+    searchForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const query = searchInput.value.trim().toLowerCase();
+      
+      if (!query) {
+        alert('الرجاء إدخال كلمة البحث');
         return;
       }
-    }
-    
-    // In-page search
-    removeHighlights();
-    const elements = [...document.querySelectorAll("h1, h2, h3, h4, p, div, span")];
-    let found = false;
-    
-    elements.forEach(el => {
-      if(el.textContent.toLowerCase().includes(query)) {
-        highlightText(el, query);
-        if (!found) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          found = true;
+      
+      for (const [sectionId, keywords] of Object.entries(sectionMapping)) {
+        for (const keyword of keywords) {
+          if (query.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(query)) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+              section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              searchInput.value = '';
+              return;
+            }
+          }
         }
       }
-    });
-    
-    if (!found) {
-      alert("لم يتم العثور على نتائج للبحث: " + query);
-    }
-  });
-  
-  function removeHighlights() {
-    document.querySelectorAll('.highlighted').forEach(span => {
-      const parent = span.parentNode;
-      parent.replaceChild(document.createTextNode(span.textContent), span);
-      parent.normalize();
-    });
-  }
-  
-  function highlightText(element, query) {
-    const regex = new RegExp(query, "gi");
-    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
-    let node;
-    while(node = walker.nextNode()) {
-      const match = node.textContent.match(regex);
-      if(match) {
-        const frag = document.createDocumentFragment();
-        let lastIndex = 0;
-        node.textContent.replace(regex, (m, index) => {
-          frag.appendChild(document.createTextNode(node.textContent.slice(lastIndex, index)));
-          const span = document.createElement("span");
-          span.className = "highlighted";
-          span.textContent = m;
-          frag.appendChild(span);
-          lastIndex = index + m.length;
-        });
-        frag.appendChild(document.createTextNode(node.textContent.slice(lastIndex)));
-        node.parentNode.replaceChild(frag, node);
+      
+      for (const [keyword, major] of Object.entries(majorsMapping)) {
+        if (query.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(query)) {
+          sessionStorage.setItem('selectedMajor', major);
+          window.location.href = 'AI_libraries_page.html';
+          return;
+        }
       }
-    }
+      
+      if (query.includes('تواصل') || query.includes('contact') || query.includes('ايميل') || query.includes('email')) {
+        document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
+        searchInput.value = '';
+        return;
+      }
+      
+      for (const [page, keywords] of Object.entries(pageMapping)) {
+        for (const keyword of keywords) {
+          if (query.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(query)) {
+            window.location.href = page;
+            return;
+          }
+        }
+      }
+      
+      const suggestions = 'يمكنك البحث عن:\n\n📌 الفقرات: في دقيقة، تخيل لو، التخصص\n📚 التخصصات: طب، هندسة، حاسب، إدارة، قانون...\n🏠 الصفحات: الصفحة الرئيسية، مكتبة الأدوات، من نحن\n📧 تواصل معنا';
+      alert('لم يتم العثور على نتائج لـ "' + query + '"\n\n' + suggestions);
+    });
   }
 })();
 </script>

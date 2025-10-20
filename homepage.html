@@ -4,50 +4,700 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Beyond AI Club</title>
-    <link rel="stylesheet" href="homepagestyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <link rel="icon" type="image/png" href="images/markblue.png" />
-    <link rel="apple-touch-icon" href="images/markblue.png" />
-    <link rel="shortcut icon" href="images/markblue.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
-      /* Page transition: fade in on load, fade out on link click */
-      html.js body {
-        opacity: 0;
-        transition: opacity 350ms ease-in-out;
-      }
-      html.js body.is-shown {
-        opacity: 1;
-      }
-      /* Highlight style for search results */
-      .highlighted {
-        background-color: rgba(0, 123, 255, 0.3);
-        border-radius: 2px;
-        padding-inline-end: 2px;
-      }
-    </style>
-    <script>
-      document.documentElement.classList.add("js");
-    </script>
+   * { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+--primary: #60a5fa;
+--primary-light: #93c5fd;
+--primary-dark: #3b82f6;
+--accent: #38bdf8;
+--accent-light: #7dd3fc;
+--dark: #1e3a8a;
+--light: #f8fafc;
+--gray: #94a3b8;
+--gray-light: #e2e8f0;
+--success: #10b981;
+--gradient-1: linear-gradient(135deg, #93c5fd 0%, #7dd3fc 100%);
+--gradient-2: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+--gradient-3: linear-gradient(135deg, #93c5fd 0%, #60a5fa 100%);
+}
+@font-face {
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+font-weight: 400;
+}
+@font-face {
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+font-weight: 500;
+}
+@font-face {
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Light.otf') format('opentype');
+font-weight: 300;
+}
+@font-face {
+font-family: 'Lyon Arabic';
+src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+font-weight: 700;
+}
+body {
+font-family: 'Lyon Arabic', 'Tajawal', sans-serif;
+background: url('images/city-background.jpg') center center / cover no-repeat fixed;
+background-color: #bfdbfe;
+min-height: 100vh;
+color: var(--dark);
+line-height: 1.6;
+overflow-x: hidden;
+}
+.topbar {
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(20px);
+border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+box-shadow: 0 2px 10px rgba(59, 130, 246, 0.1);
+position: sticky;
+top: 0;
+z-index: 1000;
+padding: 1rem 0;
+transition: all 0.3s ease;
+}
+.topbar-row {
+max-width: 1400px;
+margin: 0 auto;
+padding: 0 2rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.nav {
+display: flex;
+gap: 2rem;
+align-items: center;
+}
+.nav a {
+color: var(--dark);
+text-decoration: none;
+font-weight: 500;
+padding: 0.5rem 1rem;
+border-radius: 8px;
+transition: all 0.3s ease;
+position: relative;
+}
+.nav a::before {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: var(--accent);
+transition: width 0.3s ease;
+}
+.nav a:hover::before, .nav a.active::before { width: 100%; }
+.nav a:hover { color: var(--primary); transform: translateY(-2px); }
+.nav a.active { color: var(--primary); background: rgba(96, 165, 250, 0.1); }
+.search {
+display: flex;
+align-items: center;
+background: rgba(96, 165, 250, 0.1);
+border: 1px solid rgba(59, 130, 246, 0.3);
+border-radius: 50px;
+padding: 0.5rem 1rem;
+transition: all 0.3s ease;
+}
+.search:hover, .search:focus-within {
+background: rgba(96, 165, 250, 0.15);
+border-color: var(--accent);
+transform: scale(1.05);
+}
+.search input {
+background: none;
+border: none;
+color: var(--dark);
+outline: none;
+padding: 0 0.5rem;
+width: 200px;
+font-family: 'Lyon Arabic', sans-serif;
+}
+.search input::placeholder { color: rgba(30, 58, 138, 0.6); }
+.search button {
+background: none;
+border: none;
+color: var(--accent);
+cursor: pointer;
+transition: transform 0.3s ease;
+}
+.search button:hover { transform: scale(1.2); }
+.logo { height: 50px; }
+.hero {
+padding: 100px 20px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+.hero::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
+animation: rotate 30s linear infinite;
+}
+@keyframes rotate {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+}
+.hero-content {
+max-width: 1000px;
+margin: 0 auto;
+position: relative;
+z-index: 1;
+}
+.hero-icon {
+width: 150px;
+height: 150px;
+margin-bottom: 2rem;
+filter: drop-shadow(0 20px 40px rgba(96, 165, 250, 0.3));
+animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+ 0%, 100% { transform: translateY(0px); }
+ 50% { transform: translateY(-20px); }
+}
+.hero h1 {
+font-size: clamp(2rem, 5vw, 3.5rem);
+font-weight: 400;
+color: var(--dark);
+margin-bottom: 1.5rem;
+background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.hero p {
+font-size: 1.25rem;
+color: var(--dark);
+line-height: 1.8;
+max-width: 800px;
+margin: 0 auto;
+}
+.hero p b { color: var(--primary); font-weight: 700; }
+.quote-section {
+padding: 100px 20px;
+background: rgba(255, 255, 255, 0.5);
+backdrop-filter: blur(10px);
+position: relative;
+}
+.quote-section::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+.quote-container {
+max-width: 1200px;
+margin: 0 auto;
+display: flex;
+gap: 60px;
+align-items: center;
+flex-direction: row-reverse;
+}
+.quote-text {
+font-size: 1.5rem;
+line-height: 2;
+color: var(--dark);
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(96, 165, 250, 0.3);
+border-radius: 20px;
+padding: 3rem;
+position: relative;
+}
+.quote-text::before {
+content: '"';
+position: absolute;
+top: -20px;
+right: 20px;
+font-size: 150px;
+color: var(--primary);
+opacity: 0.1;
+font-family: Georgia, serif;
+}
+.quote-author { margin-top: 2rem; text-align: right; }
+.author-title { font-size: 1.25rem; color: var(--primary); font-weight: 700; margin-bottom: 0.5rem; }
+.author-subtitle { font-size: 1rem; color: var(--dark); opacity: 0.8; }
+.quote-image { flex: 0 0 350px; }
+.quote-image img {
+width: 100%;
+height: 500px;
+object-fit: cover;
+border-radius: 20px;
+box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+border: 2px solid rgba(96, 165, 250, 0.3);
+}
+.why, .AI, .offeres, .affiliated { padding: 100px 20px; }
+.why { background: rgba(255, 255, 255, 0.4); }
+.AI { background: rgba(255, 255, 255, 0.4); }
+.offeres { background: rgba(255, 255, 255, 0.6); }
+.affiliated { background: rgba(255, 255, 255, 0.5); }
+.about-us { padding: 100px 20px; background: rgba(255, 255, 255, 0.6); }
+.section-title { text-align: center; margin-bottom: 4rem; }
+.section-title h2 {
+font-size: clamp(2rem, 4vw, 3rem);
+font-weight: 700;
+color: var(--dark);
+position: relative;
+display: inline-block;
+}
+.section-title h2::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 50%;
+transform: translateX(-50%);
+width: 100px;
+height: 4px;
+background: var(--gradient-2);
+border-radius: 2px;
+}
+
+/* AI Section Link Icon */
+.AI .section-title {
+position: relative;
+padding-top: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 1rem;
+flex-wrap: wrap;
+}
+
+.AI .section-title .link-icon {
+position: relative;
+top: auto;
+left: auto;
+transform: none;
+width: 45px;
+height: 45px;
+z-index: 10;
+order: 2;
+flex-shrink: 0;
+}
+
+.AI .section-title h2 {
+order: 1;
+}
+
+.AI .section-title .link-icon a {
+display: block;
+width: 100%;
+height: 100%;
+background: rgba(255, 255, 255, 0.9);
+backdrop-filter: blur(10px);
+border: 2px solid rgba(96, 165, 250, 0.3);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.3s ease;
+box-shadow: 0 4px 15px rgba(96, 165, 250, 0.2);
+}
+
+.AI .section-title .link-icon a:hover {
+transform: scale(1.15) rotate(5deg);
+border-color: var(--primary);
+box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
+background: rgba(96, 165, 250, 0.1);
+}
+
+.AI .section-title .link-icon img {
+width: 20px;
+height: 20px;
+object-fit: contain;
+transition: transform 0.3s ease;
+filter: brightness(0.8);
+}
+
+.AI .section-title .link-icon a:hover img {
+transform: translateX(-2px);
+filter: brightness(1);
+}
+
+.cards {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2rem;
+max-width: 1200px;
+margin: 0 auto;
+}
+.card {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(96, 165, 250, 0.3);
+border-radius: 20px;
+padding: 2.5rem;
+text-align: center;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+.card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 4px;
+background: var(--gradient-2);
+transform: scaleX(0);
+transition: transform 0.3s ease;
+}
+.card:hover::before { transform: scaleX(1); }
+.card:hover {
+transform: translateY(-10px);
+box-shadow: 0 20px 40px rgba(96, 165, 250, 0.3);
+background: rgba(255, 255, 255, 0.85);
+}
+.card img {
+width: 80px;
+height: 80px;
+margin-bottom: 1.5rem;
+opacity: 0.9;
+}
+.card h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 1rem; font-weight: 700; }
+.card p { color: var(--dark); line-height: 1.8; font-size: 1.1rem; }
+.join-us {
+padding: 100px 20px;
+background: linear-gradient(135deg, #93c5fd 0%,rgba(96, 165, 250, 0.3), #60a5fa 100%);
+position: relative;
+overflow: hidden;
+}
+.join-us::before {
+content: '';
+position: absolute;
+top: -50%;
+right: -50%;
+width: 200%;
+height: 200%;
+background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+animation: rotate 25s linear infinite reverse;
+}
+.join-us-content {
+max-width: 800px;
+margin: 0 auto;
+text-align: center;
+position: relative;
+z-index: 1;
+}
+.join-us-logo { width: 120px; margin-bottom: 2rem; filter: brightness(0) invert(1); }
+.join-us h2 { font-size: 2.5rem; color: var(--light); margin-bottom: 1.5rem; font-weight: 700; }
+.join-us p { font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 2.5rem; line-height: 1.8; }
+.join-us-btn {
+display: inline-block;
+padding: 1rem 3rem;
+background: var(--light);
+color: var(--primary);
+font-size: 1.25rem;
+font-weight: 700;
+border-radius: 50px;
+text-decoration: none;
+transition: all 0.3s ease;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.join-us-btn:hover {
+transform: translateY(-5px);
+box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+background: rgba(96, 165, 250, 0.3);
+color: var(--light);
+}
+.sponsor-carousel {
+max-width: 1200px;
+margin: 0 auto;
+position: relative;
+overflow: hidden;
+border-radius: 20px;
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(10px);
+padding: 2rem;
+}
+.carousel-track { display: flex; transition: transform 0.5s ease; }
+.carousel-slide { flex: 0 0 25%; padding: 1rem; }
+.carousel-slide img {
+width: 100%;
+height: 120px;
+object-fit: contain;
+filter: brightness(0.95);
+opacity: 0.85;
+transition: all 0.3s ease;
+}
+.carousel-slide img:hover {
+opacity: 1;
+filter: brightness(1);
+transform: scale(1.05);
+}
+.carousel-btn {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background: rgba(96, 165, 250, 0.9);
+color: white;
+border: none;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+font-size: 1.5rem;
+cursor: pointer;
+transition: all 0.3s ease;
+z-index: 2;
+}
+.carousel-btn:hover {
+background: var(--primary);
+transform: translateY(-50%) scale(1.1);
+}
+.carousel-btn.prev { right: 20px; }
+.carousel-btn.next { left: 20px; }
+.carousel-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; }
+.carousel-dot {
+width: 12px;
+height: 12px;
+border-radius: 50%;
+background: rgba(96, 165, 250, 0.4);
+border: none;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.carousel-dot.active { background: var(--primary); transform: scale(1.3); }
+/* the footer */
+.footer {
+margin-top: 44px;
+background: rgba(255, 255, 255, 0.95);
+backdrop-filter: blur(20px);
+border-top: 1px solid rgba(96, 165, 250, 0.3);
+}
+.footer .wrap {
+max-width: 100% !important;
+padding-inline: 0 !important;
+}
+.foot {
+display: grid;
+grid-template-columns: 1fr auto;
+grid-template-areas: "left right";
+align-items: center;
+gap: 8px 12px;
+min-height: 64px;
+padding-inline: 12px;
+direction: ltr;
+font-size: 13px;
+padding-block: 10px 16px;
+max-width: 1200px;
+margin: 0 auto;
+}
+.foot-left {
+grid-area: left;
+justify-self: start;
+text-align: left;
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+.social-icons {
+display: flex;
+align-items: center;
+gap: 4px;
+white-space: nowrap;
+}
+.social-icons .icon {
+width: 26px;
+height: 26px;
+border-radius: 50%;
+background: transparent;
+border: 1.5px solid rgba(96, 165, 250, 0.35);
+display: grid;
+place-items: center;
+transition: all 0.2s ease;
+cursor: pointer;
+text-decoration: none;
+}
+.social-icons .icon:hover {
+transform: translateY(-1px);
+box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
+border-color: var(--primary);
+}
+.social-icons .icon img {
+width: 14px;
+height: 14px;
+display: block;
+}
+.handle {
+margin-inline-start: 8px;
+opacity: 0.9;
+font-size: 12.5px;
+font-weight: 400;
+color: var(--dark);
+}
+.email-line {
+display: flex;
+align-items: center;
+gap: 8px;
+opacity: 0.9;
+font-size: 13px;
+}
+.email-line .icon {
+width: 24px;
+height: 24px;
+border-radius: 50%;
+background: transparent;
+border: 1.5px solid rgba(96, 165, 250, 0.35);
+display: grid;
+place-items: center;
+transition: all 0.2s ease;
+cursor: pointer;
+text-decoration: none;
+}
+.email-line .icon:hover {
+transform: translateY(-1px);
+box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
+border-color: var(--primary);
+}
+.email-line .icon img {
+width: 13px;
+height: 13px;
+display: block;
+}
+.email-line span {
+color: var(--dark);
+}
+.foot-right {
+grid-area: right;
+justify-self: end;
+direction: rtl;
+text-align: right;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+max-width: 50vw;
+font-size: 13px;
+font-weight: 400;
+color: var(--dark);
+}
+.foot-right [dir="ltr"] {
+unicode-bidi: isolate-override;
+display: inline-block;
+margin-inline-start: 4px;
+font-weight: 400;
+}
+.sep {
+opacity: 0.5;
+}
+.brand-en {
+color: var(--primary);
+font-weight: 700;
+}
+/* end of the footer */
+.nav-toggle { display: none; }
+.hamburger { display: none; color: var(--dark); font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.scale-in { opacity: 0; transform: scale(0.9); transition: opacity 0.6s ease, transform 0.6s ease; }
+.scale-in.visible { opacity: 1; transform: scale(1); }
+.slide-left { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.slide-left.visible { opacity: 1; transform: translateX(0); }
+.slide-right { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.slide-right.visible { opacity: 1; transform: translateX(0); }
+#page-spinner {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%);
+z-index: 9999;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.spinner {
+width: 60px;
+height: 60px;
+border: 4px solid rgba(96, 165, 250, 0.3);
+border-top-color: var(--primary);
+border-radius: 50%;
+animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 992px) {
+.quote-container { flex-direction: column-reverse; gap: 3rem; }
+.quote-image { flex: 0 0 auto; max-width: 400px; }
+.about-us-box { flex-direction: column; text-align: center; }
+.cards { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+}
+@media (max-width: 768px) {
+.hamburger { display: block; }
+.nav {
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+background: rgba(255, 255, 255, 0.98);
+flex-direction: column;
+padding: 2rem;
+border-top: 1px solid rgba(96, 165, 250, 0.3);
+}
+.nav-toggle:checked ~ .nav { display: flex; }
+.hero h1 { font-size: 2rem; }
+.quote-text { font-size: 1.2rem; padding: 2rem; }
+.foot { flex-direction: column; text-align: center; }
+.foot-right { text-align: center; }
+.search { display: none; }
+
+/* AI Section Link Icon - Mobile */
+.AI .section-title {
+flex-direction: column;
+gap: 0.8rem;
+}
+
+.AI .section-title .link-icon {
+width: 38px;
+height: 38px;
+}
+
+.AI .section-title .link-icon img {
+width: 16px;
+height: 16px;
+}
+
+.foot {
+grid-template-columns: 1fr;
+grid-template-areas: "right" "left";
+gap: 15px;
+}
+.foot-right { justify-self: center; max-width: 100%; text-align: center; }
+.foot-left { justify-self: center; align-items: center; }
+}
+@media (max-width: 480px) {
+.hero-icon { width: 100px; height: 100px; }
+.cards { grid-template-columns: 1fr; }
+.carousel-slide { flex: 0 0 50%; }
+}
+
+</style>
   </head>
   <body>
-    <!-- Page spinner overlay -->
-    <div id="page-spinner" aria-hidden="true">
-      <div class="spinner" role="status" aria-label="جارٍ التحميل"></div>
+    <div id="page-spinner">
+      <div class="spinner"></div>
     </div>
+
     <header class="topbar">
-      <div class="wrap topbar-row">
-        <input
-          type="checkbox"
-          id="nav-toggle"
-          class="nav-toggle"
-          aria-hidden="true"
-        />
-        <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation"
-          >☰</label
-        >
+      <div class="topbar-row">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+        <label for="nav-toggle" class="hamburger">☰</label>
+        
         <nav class="nav">
           <a href="homepage.html" class="active">الصفحة الرئيسية</a>
           <a href="WeeklyParagraphs.html">الفقرات الأسبوعية</a>
@@ -56,11 +706,9 @@
           <a href="#footer">تواصل معنا</a>
         </nav>
 
-        <form class="search" role="search" aria-label="بحث" id="searchForm">
+        <form class="search" id="searchForm">
           <input type="search" id="searchInput" placeholder="عن ماذا تبحث؟" />
-          <button type="submit" aria-label="ابحث">
-            <img src="images/search.png" alt="بحث" />
-          </button>
+          <button type="submit"><i class="fas fa-search"></i></button>
         </form>
 
         <div class="brand">
@@ -69,464 +717,154 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero fade-in">
       <div class="hero-content">
-        <img src="images/logo.png" alt="AI Icon" class="hero-icon" />
-        <h1 dir="rtl">مستقبلك مع الذكاء الاصطناعي يبدأ هنا.....</h1>
-        <p dir="rtl">
-          في نادي <b>Beyond AI</b> نؤمن أن التقنية ليست أدوات فحسب، بل هي فرصة
-          لابتكار المستقبل وصناعة الأثر. نفتح لك الأفق لتتعلم، تبتكر، وتحوّل
-          أفكارك إلى واقع.
-        </p>
+        <img src="images/logo.png" alt="AI Icon" class="hero-icon scale-in" />
+        <h1>مستقبلك مع الذكاء الاصطناعي يبدأ هنا</h1>
+        <p>في مبادرة <b>Beyond AI</b> نؤمن أن التقنية ليست أدوات فحسب، بل هي فرصة لابتكار المستقبل وصناعة الأثر. نفتح لك الأفق لتتعلم، تبتكر، وتحوّل أفكارك إلى واقع.</p>
       </div>
     </section>
 
-    <!-- Why Beyond AI Section -->
-    <section class="why">
-      <div class="section-title">
-        <h2 dir="rtl">لماذا Beyond AI ؟</h2>
-      </div>
-      <div class="cards" dir="rtl">
-        <div class="card">
-          <img src="images/AI.png" />
-          <p dir="rtl">
-            لأننا نمزج الذكاء الاصطناعي مع تخصصك الأكاديمي لتكتشف تطبيقاته
-            المباشرة في مجالك
-          </p>
-        </div>
-        <div class="card">
-          <img src="images/mission.png" />
-          <p dir="rtl">
-            لأننا نمنحك رؤية مستقبلية واضحة تقودك بخطوات واثقة نحو التميز
-          </p>
-        </div>
-        <div class="card">
-          <img src="images/cooperation.png" />
-          <p dir="rtl">
-            لأننا مجتمع طلابي متعاون يجمعنا الشغف بالعلم والإبداع في التقنية
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="AI">
-      <div class="section-title">
-        <h2 dir="rtl">مركز الدراسات المتقدمة في الذكاء الاصطناعي</h2>
-      </div>
-
-      <div class="cards" dir="rtl">
-        <div class="card">
-          <h3 dir="rtl">نبذة عن المركز</h3>
-          <p dir="rtl">
-            مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) هو مركز بحثي
-            متخصّص في تطوير تقنيات الذكاء الاصطناعي وتطبيقاته، ويتبع وكالة
-            الجامعة للدراسات العليا والبحث العلمي. يهدف المركز إلى دعم منظومة
-            البحث والابتكار في مجال الذكاء الاصطناعي على مستوى الجامعة والقطاعات
-            الوطنية من خلال تقديم خدمات بحثية واستشارية تعتمد على أفضل الممارسات
-            وأحدث المعايير والتقنيات العالمية
-          </p>
-        </div>
-
-        <div class="card">
-          <h3 dir="rtl">دعم المركز</h3>
-
-          <p dir="rtl">
-            يساهم المركز في توفير الموارد الأكاديمية والبيئية والعلمية، مما يتيح
-            للطلبة فرصة تطوير مهاراتهم وتعزيز معارفهم في مجال الذكاء الاصطناعي.
-            هذا الدعم المستمر يفتح لهم آفاقًا لتقديم حلول مبتكرة تسهم في بناء
-            جيل قادر على مواجهة تحديات المستقبل
-          </p>
-        </div>
-
-        <div class="card">
-          <h3 dir="rtl">مجالات المركز</h3>
-
-          <p dir="rtl">
-            يساهم المركز في تنمية المهارات الرقمية وتعزيز القدرات البحثية، إلى
-            جانب تنظيم برامج تدريبية وفعاليات أكاديمية متخصصة. ويضع ضمن أولوياته
-            بناء مجتمع معرفي قادر على مواجهة تحديات المستقبل، وتحويل الأفكار إلى
-            ابتكارات وحلول عملية تواكب التطور التقني العالمي
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ماذا نقدم؟ Section -->
-    <section class="offeres">
-      <div class="section-title">
-        <h2 dir="rtl">ماذا نقدم؟</h2>
-      </div>
-      <div class="cards" dir="rtl">
-        <div class="card">
-          <img src="images/what.png" alt="عرض 1" />
-          <h3 dir="rtl">الفقرات الأسبوعية</h3>
-          <p dir="rtl">
-            نقدم محتوى معرفي يربط الذكاء الاصطناعي بتخصصك بطريقة مبسطة ومنظمة
-          </p>
-        </div>
-
-        <div class="card">
-          <img src="images/what2.png" alt="عرض 2" />
-          <h3 dir="rtl">الأحداث القادمة</h3>
-          <p dir="rtl">
-            فعاليات تعليمية وتفاعلية تهدف لتعزيز فهم الذكاء الاصطناعي وتطبيقاته
-            الذكية
-          </p>
-        </div>
-
-        <div class="card">
-          <img src="images/what3.png" alt="عرض 3" />
-          <h3 dir="rtl">مكتبة أدوات الذكاء الاصطناعي</h3>
-          <p dir="rtl">
-            مجموعة أدوات مختارة تمكّنك من تطبيق الذكاء الاصطناعي في مجالك
-            الأكاديمي والمهني
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- انضم إلينا Section -->
-    <section class="join-us">
-      <div class="join-us-content">
-        <img src="images/logo.png" alt="Beyond AI Logo" class="join-us-logo" />
-        <h2 dir="rtl">هل ترغب أن تكون جزءًا من Beyond AI؟</h2>
-        <p dir="rtl">
-          انضم إلى مجتمعنا الطلابي في Beyond AI وكن جزءًا من المستقبل الذي نقدمه
-          في مجال الذكاء الاصطناعي. تعلم، ابتكر، وشارك في صناعة المستقبل.
-        </p>
-        <a href="#" class="join-us-btn" dir="rtl">قدم الآن</a>
-      </div>
-    </section>
-
-    <!-- الجـهات التابعة Section -->
-    <section class="affiliated">
-      <div class="section-title">
-        <h2 dir="rtl">الجهات التابعة</h2>
-      </div>
-      <div
-        class="sponsor-carousel"
-        role="region"
-        aria-label="شركاء الرعاية"
-        aria-live="polite"
-      >
-        <div class="carousel-container">
-          <div class="carousel-track">
-            <div class="carousel-slide">
-              <img src="images/p1.jpg" alt="شريك 1" />
-            </div>
-            <div class="carousel-slide">
-              <img src="images/p2.jpg" alt="شريك 2" />
-            </div>
-            <div class="carousel-slide">
-              <img src="images/p3.jpg" alt="شريك 3" />
-            </div>
-            <div class="carousel-slide">
-              <img src="images/p4.jpg" alt="شريك 4" />
-            </div>
-            <div class="carousel-slide">
-              <img src="images/p5.jpg" alt="شريك 5" />
+    <section class="quote-section">
+      <div class="quote-container">
+        <div class="quote-content slide-left">
+          <div class="quote-text">
+            نحن نحتضن الذكاء الاصطناعي ونسخر قدراته معاً ونطلق إمكاناته لخير الإنسانية جمعاء، وندعو كافة الحالمين والمبدعين والمستثمرين للانضمام لنا لنبني نموذجاً رائداً لإطلاق قيمة البيانات والذكاء الاصطناعي لبناء اقتصادات المعرفة
+            <div class="quote-author">
+              <div class="author-title">صاحب السمو الملكي الأمير محمد بن سلمان بن عبدالعزيز آل سعود</div>
+              <div class="author-subtitle">ولي العهد رئيس مجلس الوزراء - حفظه الله</div>
             </div>
           </div>
         </div>
-        <button class="carousel-btn prev" aria-label="السابق">&#8592;</button>
-        <button class="carousel-btn next" aria-label="التالي">&#8594;</button>
-        <div
-          class="carousel-dots"
-          role="tablist"
-          aria-label="مؤشرات الشركاء"
-        ></div>
+        <div class="quote-image slide-right">
+          <img src="images/prince_Mohammad.jpg" alt="صاحب السمو الملكي" />
+        </div>
       </div>
     </section>
 
-    <script>
-      // Enhanced Search functionality with majors and footer support
-      (function() {
-        const searchForm = document.getElementById('searchForm');
-        const searchInput = document.getElementById('searchInput');
-        
-        // Define searchable content with keywords and target pages/sections
-        const searchableContent = {
-          'homepage.html': ['الصفحة الرئيسية', 'الرئيسية', 'home', 'main', 'beyond ai', 'مستقبل', 'ذكاء اصطناعي'],
-          'WeeklyParagraphs.html': [
-            'الفقرات الأسبوعية', 'فقرات', 'أسبوعية', 'weekly', 'محتوى', 'مقالات',
-            'في دقيقة', 'دقيقة', 'minute',
-            'أخبار الذكاء الاصطناعي', 'أخبار', 'news',
-            'الذكاء الاصطناعي والتخصصات', 'تخصصات', 'majors',
-            'مصطلحات', 'terminology', 'terms'
-          ],
-          'AI_libraries_page.html': [
-            'مكتبة أدوات الذكاء الاصطناعي', 'مكتبة', 'أدوات', 'library', 'tools', 'ai tools',
-            'chatgpt', 'claude', 'gemini', 'copilot', 'perplexity',
-            'midjourney', 'dall-e', 'stable diffusion', 'runway',
-            'elevenlabs', 'synthesia', 'descript', 'تخيل' , 'تخيل لو',
-            'gamma', 'beautiful.ai', 'canva', 'designify'
-          ],
-          '#us': ['من نحن', 'about', 'مبادرة', 'مركز', 'الدراسات'],
-          '#footer': ['تواصل معنا', 'تواصل', 'contact', 'اتصل', 'footer', 'social', 'email']
-        };
+    <section class="why">
+      <div class="section-title fade-in">
+        <h2>لماذا Beyond AI ؟</h2>
+      </div>
+      <div class="cards">
+        <div class="card scale-in">
+          <img src="images/AI.png" alt="AI" />
+          <h3>تكامل التخصصات</h3>
+          <p>نمزج الذكاء الاصطناعي مع تخصصك الأكاديمي لتكتشف تطبيقاته المباشرة في مجالك</p>
+        </div>
+        <div class="card scale-in">
+          <img src="images/mission.png" alt="Vision" />
+          <h3>رؤية مستقبلية</h3>
+          <p>نمنحك رؤية مستقبلية واضحة تقودك بخطوات واثقة نحو التميز</p>
+        </div>
+        <div class="card scale-in">
+          <img src="images/cooperation.png" alt="Community" />
+          <h3>مجتمع متعاون</h3>
+          <p>مجتمع طلابي متعاون يجمعنا الشغف بالعلم والإبداع في التقنية</p>
+        </div>
+      </div>
+    </section>
 
-        // Majors mapping to AI libraries page with specific filter
-        const majorsMapping = {
-          'الطب': 'medicine',
-          'طب': 'medicine',
-          'medicine': 'medicine',
-          'medical': 'medicine',
-          'إدارة الأعمال': 'business',
-          'إدارة': 'business',
-          'أعمال': 'business',
-          'business': 'business',
-          'management': 'business',
-          'العمارة والتخطيط': 'architecture',
-          'العمارة': 'architecture',
-          'تخطيط': 'architecture',
-          'architecture': 'architecture',
-          'planning': 'architecture',
-          'تقنية المعلومات': 'it',
-          'تقنية': 'it',
-          'معلومات': 'it',
-          'it': 'it',
-          'information technology': 'it',
-          'الصيدلة': 'pharmacy',
-          'صيدلة': 'pharmacy',
-          'pharmacy': 'pharmacy',
-          'القانون': 'law',
-          'قانون': 'law',
-          'law': 'law',
-          'legal': 'law',
-          'الإعلام': 'media',
-          'إعلام': 'media',
-          'media': 'media',
-          'communication': 'media'
-        };
-        
-        searchForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          const query = searchInput.value.trim().toLowerCase();
-          
-          if (!query) {
-            alert('الرجاء إدخال كلمة البحث');
-            return;
-          }
-          
-          // Check if search is for a major
-          const majorKey = majorsMapping[query];
-          if (majorKey) {
-            // Store the major filter in sessionStorage
-            sessionStorage.setItem('selectedMajor', majorKey);
-            window.location.href = 'AI_libraries_page.html';
-            return;
-          }
+    
+  <section class="AI">
+ <div class="section-title fade-in">
+<h2>مركز الدراسات المتقدمة في الذكاء الاصطناعي</h2>
+<div class="link-icon">
+<a href="https://thakaa.ksu.edu.sa/ar" target="_blank">
+<img src="images/arrow.png" alt="Link Arrow" />
+</a>
+</div>
+</div>
+<div class="cards">
+<div class="card fade-in">
+<h3>نبذة عن المركز</h3>
+<p>مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) هو مركز بحثي متخصّص في تطوير تقنيات الذكاء الاصطناعي وتطبيقاته، ويتبع وكالة الجامعة للدراسات العليا والبحث العلمي. يهدف المركز إلى دعم منظومة البحث والابتكار في مجال الذكاء الاصطناعي على مستوى الجامعة والقطاعات الوطنية من خلال تقديم خدمات بحثية واستشارية تعتمد على أفضل الممارسات وأحدث المعايير والتقنيات العالمية</p>
+</div>
+<div class="card fade-in">
+<h3>دعم المركز</h3>
+<p>يساهم المركز في توفير الموارد الأكاديمية والبيئية والعلمية، مما يتيح للطلبة فرصة تطوير مهاراتهم وتعزيز معارفهم في مجال الذكاء الاصطناعي. هذا الدعم المستمر يفتح لهم آفاقاً لتقديم حلول مبتكرة تسهم في بناء جيل قادر على مواجهة تحديات المستقبل</p>
+</div>
+<div class="card fade-in">
+<h3>مجالات المركز</h3>
+<p>يساهم المركز في تنمية المهارات الرقمية وتعزيز القدرات البحثية، إلى جانب تنظيم برامج تدريبية وفعاليات أكاديمية متخصصة. ويضع ضمن أولوياته بناء مجتمع معرفي قادر على مواجهة تحديات المستقبل، وتحويل الأفكار إلى ابتكارات وحلول عملية تواكب التطور التقني العالمي</p>
+</div>
+</div>
+</section>
 
-          // Check if search is for footer/contact
-          if (query.includes('تواصل') || query.includes('contact') || query.includes('اتصل')) {
-            const footer = document.querySelector('.footer');
-            if (footer) {
-              footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              searchInput.value = '';
-              return;
-            }
-          }
-          
-          // Search through all pages
-          let foundPage = null;
-          
-          for (const [page, keywords] of Object.entries(searchableContent)) {
-            for (const keyword of keywords) {
-              if (keyword.toLowerCase().includes(query) || query.includes(keyword.toLowerCase())) {
-                foundPage = page;
-                break;
-              }
-            }
-            if (foundPage) break;
-          }
-          
-          if (foundPage) {
-            // Navigate to the found page
-            if (foundPage.startsWith('#')) {
-              // Scroll to section on current page
-              const element = document.querySelector(foundPage);
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-            } else {
-              // Navigate to different page
-              window.location.href = foundPage;
-            }
-            searchInput.value = ''; // Clear search
-          } else {
-            alert('لم يتم العثور على نتائج لـ "' + query + '"');
-          }
-        });
-      })();
+    <section class="offeres">
+      <div class="section-title fade-in">
+        <h2>ماذا نقدم؟</h2>
+      </div>
+      <div class="cards">
+        <div class="card scale-in">
+          <img src="images/what.png" alt="Weekly" />
+          <h3>الفقرات الأسبوعية</h3>
+          <p>نقدم محتوى معرفي يربط الذكاء الاصطناعي بتخصصك بطريقة مبسطة ومنظمة</p>
+        </div>
+        <div class="card scale-in">
+          <img src="images/what2.png" alt="Events" />
+          <h3>الأحداث القادمة</h3>
+          <p>فعاليات تعليمية وتفاعلية تهدف لتعزيز فهم الذكاء الاصطناعي وتطبيقاته الذكية</p>
+        </div>
+        <div class="card scale-in">
+          <img src="images/what3.png" alt="Tools" />
+          <h3>مكتبة أدوات الذكاء الاصطناعي</h3>
+          <p>مجموعة أدوات مختارة تمكّنك من تطبيق الذكاء الاصطناعي في مجالك الأكاديمي والمهني</p>
+        </div>
+      </div>
+    </section>
 
-      // Carousel functionality
-      (function () {
-        const container = document.querySelector(".sponsor-carousel");
-        const track = container.querySelector(".carousel-track");
-        const slides = [...container.querySelectorAll(".carousel-slide")];
-        const prevBtn = container.querySelector(".prev");
-        const nextBtn = container.querySelector(".next");
-        const dotsContainer = container.querySelector(".carousel-dots");
-        const autoSlideDelay = 3000;
-        let currentIndex = 0;
-        let autoSlideInterval;
-        let slidesPerView = getSlidesPerView();
+   <section class="join-us fade-in">
+  <div class="join-us-content">
+    <img src="images/logo.png" alt="Logo" class="join-us-logo scale-in" />
+    <h2>انضم إلى فعالياتنا المميزة</h2>
+    <p>سجل الآن للانضمام إلى أحداث Beyond AI الحصرية. تفاعل مع الخبراء، اكتسب معارف جديدة، وكن جزءاً من مجتمع متميز في مجال الذكاء الاصطناعي.</p>
+    <p class="coming-soon-text">سيتاح قريباً</p>
+  </div>
+</section>
 
-        function getSlidesPerView() {
-          if (window.innerWidth >= 1024) return 4;
-          if (window.innerWidth >= 768) return 3;
-          if (window.innerWidth >= 480) return 2;
-          return 1;
-        }
+    <section class="affiliated fade-in">
+      <div class="section-title">
+        <h2>شركاء النجاح</h2>
+      </div>
+      <div class="sponsor-carousel">
+        <div class="carousel-container">
+          <div class="carousel-track">
+            <div class="carousel-slide"><img src="images/p1.jpg" alt="Partner 1" /></div>
+            <div class="carousel-slide"><img src="images/p2.jpg" alt="Partner 2" /></div>
+            <div class="carousel-slide"><img src="images/p3.jpg" alt="Partner 3" /></div>
+            <div class="carousel-slide"><img src="images/p4.jpg" alt="Partner 4" /></div>
+            <div class="carousel-slide"><img src="images/p5.jpg" alt="Partner 5" /></div>
+          </div>
+        </div>
+        <button class="carousel-btn prev">❮</button>
+        <button class="carousel-btn next">❯</button>
+        <div class="carousel-dots"></div>
+      </div>
+    </section>
 
-        function totalPages() {
-          return Math.ceil(slides.length / slidesPerView) - 1;
-        }
-
-        function createDots() {
-          dotsContainer.innerHTML = "";
-          for (let i = 0; i < totalPages(); i++) {
-            const dot = document.createElement("button");
-            dot.className = "carousel-dot";
-            dot.setAttribute("aria-label", `الشريحة ${i + 1}`);
-            dot.setAttribute("role", "tab");
-            dot.addEventListener("click", () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-          }
-        }
-
-        function updateDots() {
-          dotsContainer.querySelectorAll(".carousel-dot").forEach((dot, i) => {
-            dot.classList.toggle("active", i === currentIndex);
-            dot.setAttribute("aria-selected", i === currentIndex);
-          });
-        }
-
-        function moveToCurrentSlide() {
-          track.style.transform = `translateX(-${
-            currentIndex * (100 / slidesPerView)
-          }%)`;
-          updateDots();
-        }
-
-        function goToSlide(i) {
-          currentIndex = i;
-          moveToCurrentSlide();
-        }
-
-        function nextSlide() {
-          currentIndex = (currentIndex + 1) % totalPages();
-          moveToCurrentSlide();
-        }
-
-        function prevSlide() {
-          currentIndex = (currentIndex - 1 + totalPages()) % totalPages();
-          moveToCurrentSlide();
-        }
-
-        function startAutoSlide() {
-          stopAutoSlide();
-          autoSlideInterval = setInterval(nextSlide, autoSlideDelay);
-        }
-
-        function stopAutoSlide() {
-          clearInterval(autoSlideInterval);
-        }
-
-        prevBtn.addEventListener("click", prevSlide);
-        nextBtn.addEventListener("click", nextSlide);
-        container.addEventListener("mouseenter", stopAutoSlide);
-        container.addEventListener("mouseleave", startAutoSlide);
-        window.addEventListener("resize", () => {
-          slidesPerView = getSlidesPerView();
-          createDots();
-          updateDots();
-          moveToCurrentSlide();
-        });
-
-        createDots();
-        updateDots();
-        startAutoSlide();
-      })();
-
-      // Page transition script
-      document.addEventListener("DOMContentLoaded", function () {
-        document.body.classList.add("is-shown");
-        const links = document.querySelectorAll("a[href]");
-        links.forEach((link) => {
-          link.addEventListener("click", function (e) {
-            const href = link.getAttribute("href");
-            if (
-              href.startsWith("#") ||
-              href.startsWith("mailto:") ||
-              href.startsWith("tel:") ||
-              link.target === "_blank"
-            ) {
-              return;
-            }
-            e.preventDefault();
-            document.body.classList.remove("is-shown");
-            setTimeout(() => {
-              window.location.href = href;
-            }, 300);
-          });
-        });
-      });
-
-      window.addEventListener("load", function () {
-        const spinner = document.getElementById("page-spinner");
-        if (spinner) {
-          spinner.style.display = "none";
-        }
-      });
-    </script>
-    <footer class="footer" id="footer">
-      <div class="wrap foot">
+    <footer class="footer fade-in" id="footer">
+      <div class="foot">
         <div class="foot-left">
           <div class="social-icons">
-            <a
-              class="icon"
-              href="https://www.linkedin.com/showcase/thakaabeyond/"
-              title="LinkedIn"
-              aria-label="LinkedIn"
-            >
+            <a class="icon" href="https://www.linkedin.com/showcase/thakaabeyond/" title="LinkedIn" aria-label="LinkedIn">
               <img src="images/liked-in.png" alt="LinkedIn" />
             </a>
-            <a
-              class="icon"
-              href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-              title="X (Twitter)"
-              aria-label="X"
-            >
+            <a class="icon" href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" title="X (Twitter)" aria-label="X">
               <img src="images/twitter.png" alt="X" />
             </a>
-            <a
-              class="icon"
-              href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
-              title="TikTok"
-              aria-label="TikTok"
-            >
+            <a class="icon" href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" title="TikTok" aria-label="TikTok">
               <img src="images/tik-tok.png" alt="TikTok" />
             </a>
             <span class="handle">@ThakaaBeyond</span>
           </div>
-
           <div class="email-line">
-            <a
-              class="icon"
-              href="mailto:ThakaaBeyond@ksu.edu.sa"
-              title="Email"
-              aria-label="Email"
-              dir="ltr"
-            >
+            <a class="icon" href="mailto:ThakaaBeyond@ksu.edu.sa" title="Email" aria-label="Email" dir="ltr">
               <img src="images/email.png" alt="Email" />
             </a>
             <span>ThakaaBeyond@ksu.edu.sa</span>
           </div>
         </div>
-
         <div class="foot-right" dir="rtl">
           <span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
           <span class="sep" aria-hidden="true"> – </span>
@@ -534,5 +872,186 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      window.addEventListener('load', function() {
+        const spinner = document.getElementById('page-spinner');
+        if (spinner) {
+          setTimeout(() => {
+            spinner.style.opacity = '0';
+            setTimeout(() => { spinner.style.display = 'none'; }, 300);
+          }, 500);
+        }
+      });
+
+      const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, observerOptions);
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const animatedElements = document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-in');
+        animatedElements.forEach(el => observer.observe(el));
+      });
+
+      const searchForm = document.getElementById('searchForm');
+      const searchInput = document.getElementById('searchInput');
+      
+      if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const query = searchInput.value.trim().toLowerCase();
+          if (!query) { alert('الرجاء إدخال كلمة البحث'); return; }
+          
+          const majorsMapping = {
+            'الطب': 'medicine', 'طب': 'medicine', 'طبية': 'medicine', 'medicine': 'medicine', 'medical': 'medicine',
+            'إدارة الأعمال': 'business', 'إدارة': 'business', 'أعمال': 'business', 'business': 'business', 'management': 'business',
+            'اقتصاد': 'business', 'محاسبة': 'business', 'تسويق': 'business',
+            'العمارة والتخطيط': 'architecture', 'العمارة': 'architecture', 'عمارة': 'architecture', 'تخطيط': 'architecture',
+            'architecture': 'architecture', 'planning': 'architecture',
+            'تقنية المعلومات': 'it', 'تقنية': 'it', 'معلومات': 'it', 'حاسب': 'it', 'حاسوب': 'it', 'برمجة': 'it',
+            'it': 'it', 'computer': 'it', 'information technology': 'it',
+            'الصيدلة': 'pharmacy', 'صيدلة': 'pharmacy', 'pharmacy': 'pharmacy',
+            'القانون': 'law', 'قانون': 'law', 'حقوق': 'law', 'law': 'law', 'legal': 'law',
+            'الإعلام': 'media', 'إعلام': 'media', 'صحافة': 'media', 'media': 'media', 'communication': 'media',
+            'هندسة': 'engineering', 'مهندس': 'engineering', 'engineering': 'engineering',
+            'تصميم': 'design', 'design': 'design',
+            'علوم': 'science', 'رياضيات': 'science', 'فيزياء': 'science', 'كيمياء': 'science', 'science': 'science',
+            'تربية': 'education', 'تعليم': 'education', 'education': 'education',
+            'لغات': 'languages', 'ترجمة': 'languages', 'languages': 'languages',
+            'شريعة': 'sharia', 'إسلامية': 'sharia',
+            'تمريض': 'nursing', 'nursing': 'nursing'
+          };
+          
+          const pageMapping = {
+            'homepage.html': ['الصفحة الرئيسية', 'الرئيسية', 'home'],
+            'WeeklyParagraphs.html': ['الفقرات الأسبوعية', 'فقرات', 'أسبوعية', 'weekly', 'في دقيقة', 'دقيقة', 'minute',
+              'أخبار الذكاء الاصطناعي', 'أخبار', 'news', 'الذكاء الاصطناعي والتخصصات', 'تخصصات',
+              'مصطلحات', 'terminology', 'تخيل لو', 'imagine'],
+            'Who_We_Are.html': ['من نحن', 'about', 'مبادرة', 'مركز', 'عنا', 'نبذة'],
+            'AI_libraries_page.html': ['مكتبة', 'أدوات', 'library', 'tools']
+          };
+          
+          for (const [keyword, major] of Object.entries(majorsMapping)) {
+            if (query.includes(keyword)) {
+              sessionStorage.setItem('selectedMajor', major);
+              window.location.href = 'AI_libraries_page.html';
+              return;
+            }
+          }
+          
+          for (const [page, keywords] of Object.entries(pageMapping)) {
+            for (const keyword of keywords) {
+              if (query.includes(keyword.toLowerCase())) {
+                window.location.href = page;
+                return;
+              }
+            }
+          }
+          
+          if (query.includes('تواصل') || query.includes('contact') || query.includes('ايميل') || query.includes('email')) {
+            document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+            return;
+          }
+          
+          const suggestions = 'يمكنك البحث عن:\n\n📚 التخصصات: طب، هندسة، حاسب، إدارة، قانون...\n⏱️ الفقرات الأسبوعية أو "في دقيقة"\n🔧 مكتبة الأدوات\n👥 من نحن\n📧 تواصل معنا';
+          alert('لم يتم العثور على نتائج لـ "' + query + '"\n\n' + suggestions);
+        });
+      }
+
+      (function() {
+        const track = document.querySelector('.carousel-track');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        const dotsContainer = document.querySelector('.carousel-dots');
+        
+        if (!track || !slides.length) return;
+        
+        let currentIndex = 0;
+        let slidesPerView = getSlidesPerView();
+        let maxIndex = Math.max(0, slides.length - slidesPerView);
+        
+        function getSlidesPerView() {
+          if (window.innerWidth >= 1024) return 4;
+          if (window.innerWidth >= 768) return 3;
+          if (window.innerWidth >= 480) return 2;
+          return 1;
+        }
+        
+        function createDots() {
+          if (!dotsContainer) return;
+          dotsContainer.innerHTML = '';
+          const dotCount = Math.ceil(slides.length / slidesPerView);
+          for (let i = 0; i < dotCount; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+          }
+        }
+        
+        function updateCarousel() {
+          const slideWidth = 100 / slidesPerView;
+          const offset = -currentIndex * slideWidth;
+          track.style.transform = `translateX(${offset}%)`;
+          
+          const dots = document.querySelectorAll('.carousel-dot');
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === Math.floor(currentIndex / slidesPerView));
+          });
+        }
+        
+        function goToSlide(index) {
+          currentIndex = Math.min(Math.max(0, index * slidesPerView), maxIndex);
+          updateCarousel();
+        }
+        
+        function nextSlide() {
+          currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+          updateCarousel();
+        }
+        
+        function prevSlide() {
+          currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
+          updateCarousel();
+        }
+        
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        
+        let autoPlayInterval = setInterval(nextSlide, 3000);
+        
+        const carousel = document.querySelector('.sponsor-carousel');
+        if (carousel) {
+          carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+          carousel.addEventListener('mouseleave', () => {
+            autoPlayInterval = setInterval(nextSlide, 3000);
+          });
+        }
+        
+        window.addEventListener('resize', () => {
+          slidesPerView = getSlidesPerView();
+          maxIndex = Math.max(0, slides.length - slidesPerView);
+          currentIndex = Math.min(currentIndex, maxIndex);
+          createDots();
+          updateCarousel();
+        });
+        
+        createDots();
+        updateCarousel();
+      })();
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    </script>
   </body>
 </html>
