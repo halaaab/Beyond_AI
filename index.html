@@ -63,6 +63,7 @@
         line-height: 1.6;
         overflow-x: hidden;
       }
+     
       .topbar {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(20px);
@@ -186,12 +187,24 @@
           transform: rotate(360deg);
         }
       }
-      .hero-content {
-        max-width: 1000px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-      }
+    .hero-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.08) !important; /* !important عشان يثبت */
+  backdrop-filter: blur(20px) !important;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: none !important; /* يلغي أي transition */
+}
+
+.hero-content.visible {
+  background: rgba(255, 255, 255, 0.08) !important; /* نفس القيمة */
+  backdrop-filter: blur(20px) !important;
+}
+   
       .hero-icon {
         width: 150px;
         height: 150px;
@@ -213,21 +226,29 @@
         font-weight: 400;
         color: var(--dark);
         margin-bottom: 1.5rem;
+        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
         background: linear-gradient(135deg, #1e3a8a, #3b82f6);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       .hero p {
-        font-size: 1.25rem;
-        color: var(--dark);
-        line-height: 1.8;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      .hero p b {
-        color: var(--primary);
-        font-weight: 700;
-      }
+  font-size: 1.25rem;
+  color:var(--dark);
+  line-height: 1.8;
+  max-width: 800px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
+  margin: 0 auto;
+}
+
+
+
+/* خل بس هذا */
+.hero p b.brand-name {
+  color: var(--dark); /* أزرق غامق */
+  font-weight: bold; /* أو 900 */
+  font-size: 1.05em;
+}
+
       .quote-section {
         padding: 100px 20px;
         background: rgba(255, 255, 255, 0.5);
@@ -937,16 +958,16 @@
     </header>
 
     <section class="hero fade-in">
-      <div class="hero-content">
-        <img src="images/logo.png" alt="AI Icon" class="hero-icon scale-in" />
-        <h1>مستقبلك مع الذكاء الاصطناعي يبدأ هنا</h1>
-        <p>
-          في مبادرة <b>Beyond AI</b> نؤمن أن التقنية ليست أدوات فحسب، بل هي فرصة
-          لابتكار المستقبل وصناعة الأثر. نفتح لك الأفق لتتعلم، تبتكر، وتحوّل
-          أفكارك إلى واقع.
-        </p>
-      </div>
-    </section>
+  <div class="hero-content">
+    <img src="images/logo.png" alt="AI Icon" class="hero-icon scale-in" />
+    <h1>مستقبلك مع الذكاء الاصطناعي يبدأ هنا</h1>
+    <p>
+      في مبادرة <b class="brand-name">Beyond AI</b> نؤمن أن التقنية ليست أدوات فحسب، بل هي فرصة
+      لابتكار المستقبل وصناعة الأثر. نفتح لك الأفق لتتعلم، تبتكر، وتحوّل
+      أفكارك إلى واقع.
+    </p>
+  </div>
+</section>
 
     <section class="quote-section">
       <div class="quote-container">

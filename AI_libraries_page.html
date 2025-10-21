@@ -171,24 +171,25 @@
 
       .logo {
         height: 50px;
+        width: auto;
       }
 
       .brand {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
       }
 
+      .nav-toggle {
+        display: none;
+      }
       .hamburger {
         display: none;
         color: var(--dark);
         font-size: 1.5rem;
         cursor: pointer;
         padding: 0.5rem;
-      }
-
-      .nav-toggle {
-        display: none;
       }
 
       /* Page Header (Topbar) */
@@ -614,7 +615,8 @@
       /* Responsive */
       @media (max-width: 768px) {
         .topbar-row {
-          padding: 0 2rem;
+          padding: 8px 12px;
+          position: relative;
         }
         .hamburger {
           display: block;
@@ -627,8 +629,10 @@
           right: 0;
           background: rgba(255, 255, 255, 0.98);
           flex-direction: column;
-          padding: 2rem;
+          padding: 1.25rem 1rem;
           border-top: 1px solid rgba(96, 165, 250, 0.3);
+          gap: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         .nav-toggle:checked ~ .nav {
           display: flex;
