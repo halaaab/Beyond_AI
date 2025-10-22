@@ -72,12 +72,13 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        align-items: flex-start;
+        align-items: center;
         justify-content: flex-start;
-        padding: 16px;
+        padding: 0;
+        width: 100%;
         /* RTL alignment and wrapping */
         direction: rtl;
-        text-align: right;
+        text-align: center;
         white-space: normal;
         color: var(--dark);
       }
@@ -88,7 +89,7 @@
         line-height: 1.4;
         /* full wrap for Arabic text */
         direction: rtl;
-        text-align: right;
+        text-align: center;
         white-space: normal;
         overflow-wrap: anywhere;
         word-break: break-word;
@@ -101,7 +102,7 @@
         opacity: 0.85;
         /* allow multi-line wrapping */
         direction: rtl;
-        text-align: right;
+        text-align: center;
         white-space: normal;
         overflow-wrap: anywhere;
         word-break: break-word;
@@ -113,7 +114,7 @@
         opacity: 0.95;
         /* show full text without truncation */
         direction: rtl;
-        text-align: right;
+        text-align: center;
         white-space: normal;
         overflow-wrap: anywhere;
         word-break: break-word;
@@ -127,8 +128,8 @@
         border-bottom: 1px dashed rgba(96, 165, 250, 0.6);
         font-weight: 600;
         font-size: 14px;
-        align-self: stretch; /* take full width of content */
-        text-align: right; /* keep on the right in RTL */
+        align-self: center;
+        text-align: center;
       }
 
       .card .card-link:hover,
@@ -401,20 +402,19 @@
         border-radius: 20px;
         /* allow card to grow to fit content */
         height: auto;
-        min-height: 270px;
-        padding: 16px;
-        padding-bottom: 64px; /* space for bottom bar */
+        padding: 24px 20px 20px;
         position: relative;
         overflow: visible; /* prevent clipping of flowing content */
         display: flex;
-        align-items: stretch;
+        flex-direction: column;
+        align-items: center;
         justify-content: flex-start;
         cursor: pointer;
         transition: all 0.3s ease;
         transform-origin: center;
         /* Ensure proper RTL alignment and wrapping by default */
         direction: rtl;
-        text-align: right;
+        text-align: center;
         white-space: normal;
       }
 
@@ -463,10 +463,9 @@
       }
 
       .card__bar {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        margin-top: auto;
+        width: 100%;
+        padding-top: 18px;
       }
 
       .card__bar span {
