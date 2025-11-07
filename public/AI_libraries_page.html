@@ -55,6 +55,29 @@
         padding: 0;
       }
 
+      body {
+        font-family: "Lyon Arabic", sans-serif;
+        background-color: #bfdbfe;
+        min-height: 100vh;
+        line-height: 1.6;
+        overflow-x: hidden;
+        color: var(--dark);
+        position: relative;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("images/city-background.jpg") center center / cover
+          no-repeat;
+        opacity: 0.15;
+        z-index: -1;
+      }
+
       /* Loading indicator */
       .loading {
         display: none;
@@ -67,76 +90,79 @@
 
       /* Dynamic card content */
       .card-content {
-        /* allow content to define card height */
-        position: static;
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        right: 16px;
+        bottom: 64px;
         display: flex;
         flex-direction: column;
         gap: 10px;
-        align-items: center;
+        align-items: flex-start;
         justify-content: flex-start;
-        padding: 0;
-        width: 100%;
-        /* RTL alignment and wrapping */
+        text-align: right;
         direction: rtl;
-        text-align: center;
-        white-space: normal;
         color: var(--dark);
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary) rgba(96, 165, 250, 0.1);
+      }
+
+      .card-content::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .card-content::-webkit-scrollbar-track {
+        background: rgba(96, 165, 250, 0.1);
+        border-radius: 10px;
+      }
+
+      .card-content::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, var(--primary), var(--accent));
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .card-content::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(
+          180deg,
+          var(--primary-dark),
+          var(--primary)
+        );
+        box-shadow: 0 0 6px rgba(96, 165, 250, 0.4);
       }
 
       .card .title {
         font-weight: 700;
         font-size: clamp(1rem, 1.4vw, 18px);
         line-height: 1.4;
-        /* full wrap for Arabic text */
-        direction: rtl;
-        text-align: center;
-        white-space: normal;
-        overflow-wrap: anywhere;
-        word-break: break-word;
-      }
-
-      .card .subtitle {
-        font-weight: 500;
-        font-size: 14px;
-        color: #0f172a;
-        opacity: 0.85;
-        /* allow multi-line wrapping */
-        direction: rtl;
-        text-align: center;
-        white-space: normal;
-        overflow-wrap: anywhere;
-        word-break: break-word;
+        flex-shrink: 0;
       }
 
       .card .description {
         font-size: 14.5px;
         line-height: 1.7;
         opacity: 0.95;
-        /* show full text without truncation */
-        direction: rtl;
-        text-align: center;
-        white-space: normal;
-        overflow-wrap: anywhere;
-        word-break: break-word;
+        flex: 1;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
       }
 
       .card .card-link {
         display: inline-block;
-        margin-top: auto; /* pin link to bottom of content */
+        margin-top: auto;
         color: var(--primary);
         text-decoration: none;
         border-bottom: 1px dashed rgba(96, 165, 250, 0.6);
         font-weight: 600;
         font-size: 14px;
-        align-self: center;
-        text-align: center;
       }
 
-      .card .card-link:hover,
-      .card .card-link:focus-visible {
+      .card .card-link:hover {
         color: var(--accent);
         border-bottom-color: var(--accent);
-        outline: none;
       }
 
       .search {
@@ -184,7 +210,15 @@
       }
 
       .logo {
-        height: 50px;
+        height: 70px;
+        width: auto;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
       }
 
       .nav-toggle {
@@ -250,19 +284,15 @@
       .nav a.active::before {
         width: 100%;
       }
+
       .nav a:hover {
         color: var(--primary);
         transform: translateY(-2px);
       }
+
       .nav a.active {
         color: var(--primary);
         background: rgba(96, 165, 250, 0.1);
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
 
       /* Main Content */
@@ -400,9 +430,7 @@
         backdrop-filter: blur(10px);
         border: 1px solid rgba(96, 165, 250, 0.3);
         border-radius: 20px;
-        /* allow card to grow to fit content */
-        height: auto;
-        padding: 24px 20px 20px;
+        height: 270px;
         position: relative;
         overflow: visible; /* prevent clipping of flowing content */
         display: flex;
@@ -416,13 +444,6 @@
         direction: rtl;
         text-align: center;
         white-space: normal;
-      }
-
-      @media (max-width: 560px) {
-        .card .description {
-          /* ensure wrapping on small screens */
-          white-space: normal;
-        }
       }
 
       .card::before {
@@ -486,7 +507,7 @@
         text-overflow: ellipsis;
       }
 
-      /* Footer - نفس الصفحة الرئيسية */
+      /* Footer */
       .footer {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(20px);
@@ -630,6 +651,7 @@
       @media (max-width: 768px) {
         .topbar-row {
           padding: 8px 12px;
+          position: relative;
         }
         .hamburger {
           display: block;
@@ -644,12 +666,11 @@
           flex-direction: column;
           padding: 2rem;
           border-top: 1px solid rgba(96, 165, 250, 0.3);
+          gap: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         .nav-toggle:checked ~ .nav {
           display: flex;
-        }
-        .brand {
-          margin-inline: auto;
         }
         .search {
           display: none;
@@ -674,110 +695,6 @@
       }
     </style>
   </head>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import {
-      getFirestore,
-      collection,
-      getDocs,
-    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyDdpvJecXEMPBJ_G1-Q2LnyPWuF7-tVVYU",
-      authDomain: "beyond-ai-95083.firebaseapp.com",
-      projectId: "beyond-ai-95083",
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    document.addEventListener("DOMContentLoaded", () => {
-      let allLibraries = [];
-
-      async function fetchLibraries() {
-        const loader = document.getElementById("loading");
-        const grid = document.querySelector(".grid");
-        loader.style.display = "block";
-        grid.style.opacity = "0.3";
-
-        try {
-          const querySnapshot = await getDocs(collection(db, "libraries"));
-          allLibraries = querySnapshot.docs.map((doc) => doc.data());
-          renderLibraries("medicine");
-        } catch (err) {
-          console.error("Error fetching libraries:", err);
-        } finally {
-          loader.style.display = "none";
-          grid.style.opacity = "1";
-        }
-      }
-
-      function escapeHtml(str = "") {
-        return String(str)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#39;");
-      }
-
-      function renderLibraries(filter) {
-        const grid = document.querySelector(".grid");
-        // fade out
-        grid.classList.add("fading");
-        setTimeout(() => {
-          grid.innerHTML = "";
-
-          const group = allLibraries.find((g) => g.specialty === filter);
-          const libs =
-            group && Array.isArray(group.libraries) ? group.libraries : [];
-
-          libs.forEach((item) => {
-            const card = document.createElement("article");
-            card.className = "card";
-
-            const title = escapeHtml(item.title || "");
-            const name = escapeHtml(item.name || "");
-            const description = escapeHtml(item.description || "");
-            const url = item.url || "#";
-
-            card.innerHTML = `
-              <div class="card-content" dir="rtl">
-                <div class="title" title="${name}">${name}</div>
-                ${title ? `<div class="subtitle">${title}</div>` : ""}
-                <div class="description">${description}</div>
-                <a class="card-link" href="${url}" target="_blank" rel="noopener">رابط الأداة</a>
-              </div>
-              <div class="card__bar" aria-hidden="true"><span>${name}</span></div>
-            `;
-            grid.appendChild(card);
-          });
-
-          if (!libs.length) {
-            grid.innerHTML = `<article class="card"><div class="soon">لا توجد أدوات لهذا التخصص</div></article>`;
-          }
-          // fade in
-          requestAnimationFrame(() => {
-            grid.classList.remove("fading");
-          });
-        }, 100);
-      }
-
-      document.querySelectorAll(".pill").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          document
-            .querySelectorAll(".pill")
-            .forEach((x) => x.classList.remove("active"));
-          btn.classList.add("active");
-          const specialty = btn.dataset.specialty || "medicine";
-          renderLibraries(specialty);
-        });
-      });
-
-      fetchLibraries();
-    });
-  </script>
-
   <body>
     <header class="topbar">
       <div class="topbar-row">
@@ -791,7 +708,7 @@
             >مكتبة أدوات الذكاء الاصطناعي</a
           >
           <a href="Who_We_Are.html">من نحن</a>
-          <a href="#footer">تواصل معنا</a>
+          <a href="Contact_Us.html">تواصل معنا</a>
         </nav>
 
         <form class="search" id="searchForm">
@@ -835,31 +752,7 @@
         جارٍ تحميل الأدوات...
       </div>
       <section class="grid" aria-live="polite">
-        <!-- Medicine Tools -->
-        <!-- <article class="card" data-category="medicine">
-          <div class="soon">قريباً...</div>
-          <div class="card__bar"><span>ChatGPT</span></div>
-        </article>
-        <article class="card" data-category="medicine">
-          <div class="soon">قريباً...</div>
-          <div class="card__bar"><span>Claude</span></div>
-        </article>
-        <article class="card" data-category="medicine">
-          <div class="soon">قريباً...</div>
-          <div class="card__bar"><span>Gemini</span></div>
-        </article>
-        <article class="card" data-category="medicine">
-          <div class="soon">قريباً...</div>
-          <div class="card__bar"><span>Perplexity</span></div>
-        </article>
-        <article class="card" data-category="medicine">
-          <div class="soon">قريباً...</div>
-          <div class="card__bar"><span>Med-PaLM</span></div>
-        </article>
-        <article class="card" data-category="medicine">
-          <div class="soon">قريباً...</div>
-          <div class="card__bar"><span>Glass Health</span></div>
-        </article> -->
+        <!-- Cards will be loaded dynamically -->
       </section>
     </main>
 
@@ -920,8 +813,39 @@
       </div>
     </footer>
 
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+
+      // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
+
+      // Add Firebase products that you want to use
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+      } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDdpvJecXEMPBJ_G1-Q2LnyPWuF7-tVVYU",
+        authDomain: "beyond-ai-95083.firebaseapp.com",
+        projectId: "beyond-ai-95083",
+        storageBucket: "beyond-ai-95083.firebasestorage.app",
+        messagingSenderId: "419351047742",
+        appId: "1:419351047742:web:b6570c37cfcbada461ab6f",
+        measurementId: "G-VLFGTLL7E5",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getFirestore(app);
+      window.db = db; // Make Firestore accessible globally
+      window.getDocs = getDocs;
+      window.collection = collection;
+    </script>
     <script>
-      // Enhanced search with major filtering and navigation
       (function () {
         const searchForm = document.getElementById("searchForm");
         const searchInput = document.getElementById("searchInput");
@@ -976,118 +900,168 @@
           "Who_We_Are.html": ["من نحن", "about", "مبادرة", "مركز"],
         };
 
-        searchForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const query = searchInput.value.trim().toLowerCase();
+        if (searchForm) {
+          searchForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const query = searchInput.value.trim().toLowerCase();
 
-          if (!query) {
-            alert("الرجاء إدخال كلمة البحث");
-            return;
-          }
+            if (!query) {
+              alert("الرجاء إدخال كلمة البحث");
+              return;
+            }
 
-          // Check for major filter
-          const majorKey = majorsMapping[query];
-          if (majorKey) {
-            const button = document.querySelector(
-              `[data-specialty="${majorKey}"]`
-            );
-            if (button) {
-              button.click();
+            const majorKey = majorsMapping[query];
+            if (majorKey) {
+              const button = document.querySelector(
+                `[data-specialty="${majorKey}"]`
+              );
+              if (button) {
+                button.click();
+                searchInput.value = "";
+                return;
+              }
+            }
+
+            if (query.includes("تواصل") || query.includes("contact")) {
+              document
+                .querySelector(".footer")
+                .scrollIntoView({ behavior: "smooth" });
               searchInput.value = "";
               return;
             }
-          }
 
-          // Check for footer/contact
-          if (query.includes("تواصل") || query.includes("contact")) {
-            document
-              .querySelector(".footer")
-              .scrollIntoView({ behavior: "smooth" });
-            searchInput.value = "";
-            return;
-          }
-
-          // Check for other pages
-          for (const [page, keywords] of Object.entries(pageMapping)) {
-            if (
-              keywords.some(
-                (k) =>
-                  k.toLowerCase().includes(query) ||
-                  query.includes(k.toLowerCase())
-              )
-            ) {
-              window.location.href = page;
-              return;
-            }
-          }
-
-          // In-page search
-          removeHighlights();
-          const elements = [
-            ...document.querySelectorAll("h1, h2, h3, p, div, span"),
-          ];
-          let found = false;
-
-          elements.forEach((el) => {
-            if (el.textContent.toLowerCase().includes(query)) {
-              highlightText(el, query);
-              if (!found) {
-                el.scrollIntoView({ behavior: "smooth", block: "center" });
-                found = true;
+            for (const [page, keywords] of Object.entries(pageMapping)) {
+              if (
+                keywords.some(
+                  (k) =>
+                    k.toLowerCase().includes(query) ||
+                    query.includes(k.toLowerCase())
+                )
+              ) {
+                window.location.href = page;
+                return;
               }
             }
-          });
 
-          if (!found) {
             alert("لم يتم العثور على نتائج للبحث: " + query);
-          }
-        });
-
-        function removeHighlights() {
-          document.querySelectorAll(".highlighted").forEach((span) => {
-            const parent = span.parentNode;
-            parent.replaceChild(
-              document.createTextNode(span.textContent),
-              span
-            );
-            parent.normalize();
           });
-        }
-
-        function highlightText(element, query) {
-          const regex = new RegExp(query, "gi");
-          const walker = document.createTreeWalker(
-            element,
-            NodeFilter.SHOW_TEXT,
-            null,
-            false
-          );
-          let node;
-          while ((node = walker.nextNode())) {
-            const match = node.textContent.match(regex);
-            if (match) {
-              const frag = document.createDocumentFragment();
-              let lastIndex = 0;
-              node.textContent.replace(regex, (m, index) => {
-                frag.appendChild(
-                  document.createTextNode(
-                    node.textContent.slice(lastIndex, index)
-                  )
-                );
-                const span = document.createElement("span");
-                span.className = "highlighted";
-                span.textContent = m;
-                frag.appendChild(span);
-                lastIndex = index + m.length;
-              });
-              frag.appendChild(
-                document.createTextNode(node.textContent.slice(lastIndex))
-              );
-              node.parentNode.replaceChild(frag, node);
-            }
-          }
         }
       })();
+
+      // Dynamic libraries fetching from Firestore
+      document.addEventListener("DOMContentLoaded", function () {
+        const pills = document.querySelectorAll(".pill");
+        const grid = document.querySelector(".grid");
+        const loader = document.getElementById("loading");
+
+        let allLibraries = [];
+
+        async function fetchLibraries() {
+          try {
+            loader.style.display = "block";
+            grid.style.opacity = "0.3";
+
+            const querySnapshot = await getDocs(
+              collection(window.db, "libraries")
+            );
+            allLibraries = querySnapshot.docs.map((doc) => doc.data());
+
+            console.log("Libraries loaded:", allLibraries);
+          } catch (err) {
+            console.error("Error fetching libraries:", err);
+            grid.innerHTML = `<article class="card"><div class="soon">تعذر تحميل الأدوات، حاول لاحقًا.</div></article>`;
+          } finally {
+            loader.style.display = "none";
+            grid.style.opacity = "1";
+          }
+        }
+
+        function escapeHtml(str = "") {
+          return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
+        }
+
+        function renderLibraries(specialty) {
+          grid.classList.add("fading");
+
+          setTimeout(() => {
+            grid.innerHTML = "";
+
+            const group = allLibraries.find((g) => g.specialty === specialty);
+            const libs =
+              group && Array.isArray(group.libraries) ? group.libraries : [];
+
+            if (!libs.length) {
+              grid.innerHTML = `<article class="card"><div class="soon">لا توجد أدوات لهذا التخصص</div></article>`;
+            } else {
+              libs.forEach((item) => {
+                const card = document.createElement("article");
+                card.className = "card";
+
+                const title = escapeHtml(item.title || "");
+                const name = escapeHtml(item.name || "");
+                const description = escapeHtml(item.description || "");
+                const url = item.url || "#";
+
+                card.innerHTML = `
+                  <div class="card-content">
+                    ${name ? `<div class="title">${name}</div>` : ""}
+                    ${title ? `<div class="subtitle">${title}</div>` : ""}
+                    ${
+                      description
+                        ? `<div class="description">${description}</div>`
+                        : ""
+                    }
+                    ${
+                      url !== "#"
+                        ? `<a class="card-link" href="${url}" target="_blank" rel="noopener">رابط الأداة</a>`
+                        : ""
+                    }
+                  </div>
+                  <div class="card__bar"><span>${name}</span></div>
+                `;
+                grid.appendChild(card);
+              });
+            }
+
+            requestAnimationFrame(() => {
+              grid.classList.remove("fading");
+            });
+          }, 100);
+        }
+
+        function setActive(specialty) {
+          pills.forEach((p) => p.classList.remove("active"));
+          const btn = document.querySelector(`[data-specialty="${specialty}"]`);
+          if (btn) btn.classList.add("active");
+          renderLibraries(specialty);
+        }
+
+        pills.forEach((p) => {
+          p.addEventListener("click", () => {
+            const specialty = p.getAttribute("data-specialty");
+            setActive(specialty);
+          });
+        });
+
+        (async () => {
+          await fetchLibraries();
+          const selectedMajor = sessionStorage.getItem("selectedMajor");
+          if (
+            selectedMajor &&
+            document.querySelector(`[data-specialty="${selectedMajor}"]`)
+          ) {
+            setActive(selectedMajor);
+            sessionStorage.removeItem("selectedMajor");
+          } else {
+            setActive("medicine");
+          }
+        })();
+      });
     </script>
   </body>
 </html>
