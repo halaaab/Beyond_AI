@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تواصل معنا - Beyond AI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #60a5fa;
+      --primary-light: #93c5fd;
+      --primary-dark: #3b82f6;
+      --accent: #38bdf8;
+      --accent-light: #7dd3fc;
+      --dark: #1e3a8a;
+      --light: #f8fafc;
+      --gray: #94a3b8;
+      --gray-light: #e2e8f0;
+      --success: #10b981;
+      --gradient-1: linear-gradient(135deg, #93c5fd 0%, #7dd3fc 100%);
+      --gradient-2: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+    }
+
+    @font-face {
+      font-family: "Lyon Arabic";
+      src: url("Fonts/COMM - Lyon Arabic Display Regular.otf") format("opentype");
+      font-weight: 400;
+    }
+
+    body {
+      font-family: "Lyon Arabic", "Tajawal", sans-serif;
+      background: url("images/city-background.jpg") center center / cover no-repeat fixed;
+      background-color: #bfdbfe;
+      min-height: 100vh;
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .topbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+      box-shadow: 0 2px 10px rgba(59, 130, 246, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .topbar-row {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav a::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav a:hover::before {
+      width: 100%;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .nav a.active {
+      color: var(--primary);
+      background: rgba(96, 165, 250, 0.1);
+    }
+
+    .nav a.active::before {
+      width: 100%;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      background: rgba(96, 165, 250, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .search:hover,
+    .search:focus-within {
+      background: rgba(96, 165, 250, 0.15);
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .search input {
+      background: none;
+      border: none;
+      color: var(--dark);
+      outline: none;
+      padding: 0 0.5rem;
+      width: 200px;
+      font-family: "Lyon Arabic", sans-serif;
+    }
+
+    .search input::placeholder {
+      color: rgba(30, 58, 138, 0.6);
+    }
+
+    .search button {
+      background: none;
+      border: none;
+      color: var(--accent);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .search button:hover {
+      transform: scale(1.2);
+    }
+
+    .logo {
+      height: 70px;
+    }
+
+    .hamburger {
+      display: none;
+      color: var(--dark);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 100px 20px;
+      min-height: calc(100vh - 200px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
+      animation: rotate 30s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .contact-container {
+      max-width: 900px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      padding: 3rem;
+      box-shadow: 0 30px 60px rgba(96, 165, 250, 0.2);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .contact-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1.5rem;
+      filter: drop-shadow(0 15px 30px rgba(96, 165, 250, 0.3));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .contact-header h1 {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contact-header p {
+      font-size: 1.1rem;
+      color: var(--dark);
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .required {
+      color: var(--primary);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 1rem 1.25rem;
+      border: 2px solid rgba(96, 165, 250, 0.3);
+      border-radius: 15px;
+      font-family: "Lyon Arabic", sans-serif;
+      font-size: 1rem;
+      color: var(--dark);
+      background: rgba(255, 255, 255, 0.9);
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(30, 58, 138, 0.5);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      padding: 1.25rem 3rem;
+      background: var(--gradient-2);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(96, 165, 250, 0.3);
+      font-family: "Lyon Arabic", sans-serif;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(96, 165, 250, 0.4);
+    }
+
+    .submit-btn:active:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .submit-btn.loading .spinner {
+      display: block;
+    }
+
+    .submit-btn.loading .btn-text {
+      display: none;
+    }
+
+    .success-message,
+    .error-message {
+      padding: 1rem;
+      border-radius: 15px;
+      text-align: center;
+      font-weight: 500;
+      display: none;
+      animation: slideDown 0.3s ease;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .success-message {
+      background: rgba(16, 185, 129, 0.1);
+      border: 2px solid var(--success);
+      color: var(--success);
+    }
+
+    .error-message {
+      background: rgba(239, 68, 68, 0.1);
+      border: 2px solid #ef4444;
+      color: #dc2626;
+    }
+
+    /* Footer */
+    .footer {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(96, 165, 246, 0.3);
+      padding: 2rem 0;
+    }
+
+    .foot {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-areas: "left right";
+      align-items: center;
+      gap: 8px 12px;
+      min-height: 64px;
+      padding-inline: 12px;
+      direction: ltr;
+      font-size: 13px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .foot-left {
+      grid-area: left;
+      justify-self: start;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .social-icons .icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid rgba(96, 165, 250, 0.35);
+      display: grid;
+      place-items: center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .social-icons .icon:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
+      border-color: var(--primary);
+    }
+
+    .social-icons .icon img {
+      width: 14px;
+      height: 14px;
+    }
+
+    .handle {
+      margin-inline-start: 8px;
+      opacity: 0.9;
+      font-size: 12.5px;
+      color: var(--dark);
+    }
+
+    .email-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.9;
+      font-size: 13px;
+    }
+
+    .email-line .icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid rgba(96, 165, 250, 0.35);
+      display: grid;
+      place-items: center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .email-line .icon:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
+      border-color: var(--primary);
+    }
+
+    .email-line .icon img {
+      width: 13px;
+      height: 13px;
+    }
+
+    .email-line span {
+      color: var(--dark);
+    }
+
+    .foot-right {
+      grid-area: right;
+      justify-self: end;
+      direction: rtl;
+      text-align: right;
+      font-size: 13px;
+      color: var(--dark);
+    }
+
+    .brand-en {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        border-top: 1px solid rgba(96, 165, 250, 0.3);
+      }
+
+      .nav-toggle:checked ~ .nav {
+        display: flex;
+      }
+
+      .search {
+        display: none;
+      }
+
+      .contact-container {
+        padding: 2rem 1.5rem;
+      }
+
+      .contact-icon {
+        width: 80px;
+        height: 80px;
+      }
+
+      .foot {
+        grid-template-columns: 1fr;
+        grid-template-areas: "right" "left";
+        gap: 15px;
+      }
+
+      .foot-right {
+        justify-self: center;
+        text-align: center;
+      }
+
+      .foot-left {
+        justify-self: center;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-row">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="hamburger">☰</label>
+
+      <nav class="nav">
+        <a href="index.html">الصفحة الرئيسية</a>
+        <a href="WeeklyParagraphs.html">الفقرات الأسبوعية</a>
+        <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
+        <a href="Who_We_Are.html">من نحن</a>
+        <a href="contact.html" class="active">تواصل معنا</a>
+      </nav>
+
+      <form class="search" id="searchForm">
+        <input type="search" id="searchInput" placeholder="عن ماذا تبحث؟" />
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+
+      <div class="brand">
+        <img src="images/logo.svg" alt="الشعار" class="logo" />
+      </div>
+    </div>
+  </header>
+
+  <section class="contact-section">
+    <div class="contact-container">
+      <div class="contact-header">
+        <img src="images/logo.png" alt="Contact Icon" class="contact-icon" />
+        <h1>تواصل معنا</h1>
+        <p>نسعد بتواصلك معنا. سنبذل قصارى جهدنا للرد عليك في أقرب وقت ممكن</p>
+      </div>
+
+      <div id="successMessage" class="success-message">
+        <i class="fas fa-check-circle"></i> تم إرسال رسالتك بنجاح! سنتواصل معك قريباً
+      </div>
+      <div id="errorMessage" class="error-message">
+        <i class="fas fa-exclamation-circle"></i> حدث خطأ في الإرسال، يرجى المحاولة مرة أخرى
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label>
+            الاسم <span class="required">*</span>
+          </label>
+          <input type="text" name="from_name" placeholder="أدخل اسمك الكامل" required />
+        </div>
+
+        <div class="form-group">
+          <label>
+            رقم الجوال <span class="required">*</span>
+          </label>
+          <input type="tel" name="phone" placeholder="05xxxxxxxx" pattern="[0-9]{10}" required />
+        </div>
+
+        <div class="form-group">
+          <label>
+            البريد الإلكتروني <span class="required">*</span>
+          </label>
+          <input type="email" name="reply_to" placeholder="example@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label>العنوان</label>
+          <input type="text" name="title" placeholder="عنوان الرسالة" />
+        </div>
+
+        <div class="form-group">
+          <label>الوصف</label>
+          <textarea name="message" placeholder="اكتب رسالتك هنا..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <div class="spinner"></div>
+          <span class="btn-text">
+            <i class="fas fa-paper-plane"></i> إرسال
+          </span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="foot">
+      <div class="foot-left">
+        <div class="social-icons">
+          <a class="icon" href="https://www.linkedin.com/showcase/thakaabeyond/" title="LinkedIn" aria-label="LinkedIn">
+            <img src="images/liked-in.png" alt="LinkedIn" />
+          </a>
+          <a class="icon" href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" title="X (Twitter)" aria-label="X">
+            <img src="images/twitter.png" alt="X" />
+          </a>
+          <a class="icon" href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" title="TikTok" aria-label="TikTok">
+            <img src="images/tik-tok.png" alt="TikTok" />
+          </a>
+          <span class="handle">@ThakaaBeyond</span>
+        </div>
+        <div class="email-line">
+          <a class="icon" href="mailto:ThakaaBeyond@ksu.edu.sa" title="Email" aria-label="Email" dir="ltr">
+            <img src="images/email.png" alt="Email" />
+          </a>
+          <span>ThakaaBeyond@ksu.edu.sa</span>
+        </div>
+      </div>
+      <div class="foot-right" dir="rtl">
+        <span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
+        <span> – </span>
+        <span class="brand-en" dir="ltr">Beyond AI</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize EmailJS
+    (function() {
+      emailjs.init("pLnpxW-YkvE2WRPyT");
+    })();
+
+    // Form submission
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Hide previous messages
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      submitBtn.classList.add('loading');
+      
+      try {
+        // Prepare form data
+        const formData = new FormData(contactForm);
+        const templateParams = {
+          from_name: formData.get('from_name'),
+          phone: formData.get('phone'),
+          reply_to: formData.get('reply_to'),
+          title: formData.get('title') || 'غير محدد',
+          message: formData.get('message') || 'غير محدد',
+          to_email: 'hala.abdulrahman01@gmail.com'
+        };
+
+        // Send email using EmailJS
+        const response = await emailjs.send(
+          'service_2iuqdc2',
+          'template_un02scn',
+          templateParams
+        );
+
+        console.log('Success:', response);
+        
+        // Show success message
+        successMessage.style.display = 'block';
+        
+        // Reset form
+        contactForm.reset();
+        
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 5000);
+        
+      } catch (error) {
+        console.error('Error:', error);
+        errorMessage.style.display = 'block';
+        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Hide error message after 5 seconds
+        setTimeout(() => {
+          errorMessage.style.display = 'none';
+        }, 5000);
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('loading');
+      }
+    });
+
+    // Search functionality
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = document.getElementById('searchInput');
+
+    if (searchForm) {
+      searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const query = searchInput.value.trim().toLowerCase();
+        if (!query) {
+          alert('الرجاء إدخال كلمة البحث');
+          return;
+        }
+
+        const pageMapping = {
+          'index.html': ['الصفحة الرئيسية', 'الرئيسية', 'home'],
+          'WeeklyParagraphs.html': ['الفقرات الأسبوعية', 'فقرات', 'أسبوعية', 'weekly'],
+          'Who_We_Are.html': ['من نحن', 'about', 'مبادرة'],
+          'AI_libraries_page.html': ['مكتبة', 'أدوات', 'library', 'tools'],
+          'contact.html': ['تواصل', 'contact', 'ايميل', 'email']
+        };
+
+        for (const [page, keywords] of Object.entries(pageMapping)) {
+          for (const keyword of keywords) {
+            if (query.includes(keyword.toLowerCase())) {
+              window.location.href = page;
+              return;
+            }
+          }
+        }
+
+        alert('لم يتم العثور على نتائج');
+      });
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
