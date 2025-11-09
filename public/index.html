@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beyond AI Club</title>
+    <title>Beyond AI initiative</title>
+    <link rel="icon" type="image/png" href="images/markblue.png" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -63,7 +64,6 @@
         line-height: 1.6;
         overflow-x: hidden;
       }
-     
       .topbar {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(20px);
@@ -157,7 +157,7 @@
         transform: scale(1.2);
       }
       .logo {
-         height: 70px;
+        height: 50px;
       }
       .hero {
         padding: 100px 20px;
@@ -187,24 +187,12 @@
           transform: rotate(360deg);
         }
       }
-    .hero-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.08) !important; /* !important عشان يثبت */
-  backdrop-filter: blur(20px) !important;
-  padding: 3rem 2rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: none !important; /* يلغي أي transition */
-}
-
-.hero-content.visible {
-  background: rgba(255, 255, 255, 0.08) !important; /* نفس القيمة */
-  backdrop-filter: blur(20px) !important;
-}
-   
+      .hero-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
       .hero-icon {
         width: 150px;
         height: 150px;
@@ -226,29 +214,21 @@
         font-weight: 400;
         color: var(--dark);
         margin-bottom: 1.5rem;
-        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
         background: linear-gradient(135deg, #1e3a8a, #3b82f6);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       .hero p {
-  font-size: 1.25rem;
-  color:var(--dark);
-  line-height: 1.8;
-  max-width: 800px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.7);
-  margin: 0 auto;
-}
-
-
-
-/* خل بس هذا */
-.hero p b.brand-name {
-  color: var(--dark); /* أزرق غامق */
-  font-weight: bold; /* أو 900 */
-  font-size: 1.05em;
-}
-
+        font-size: 1.25rem;
+        color: var(--dark);
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .hero p b {
+        color: var(--primary);
+        font-weight: 700;
+      }
       .quote-section {
         padding: 100px 20px;
         background: rgba(255, 255, 255, 0.5);
@@ -552,81 +532,113 @@
         background: rgba(96, 165, 250, 0.3);
         color: var(--light);
       }
+      
+      /* تحسينات الكاروسيل - عرض جميع الشركاء معاً */
       .sponsor-carousel {
         max-width: 1200px;
         margin: 0 auto;
         position: relative;
         overflow: hidden;
         border-radius: 20px;
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(10px);
-        padding: 2rem;
+        background: linear-gradient(135deg, rgba(147, 197, 253, 0.4) 0%, rgba(191, 219, 254, 0.3) 100%);
+        backdrop-filter: blur(15px);
+        padding: 3rem 1rem;
+        box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+        border: 1px solid rgba(147, 197, 253, 0.3);
       }
+
       .carousel-track {
         display: flex;
-        transition: transform 0.5s ease;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        width: 100%;
       }
+
       .carousel-slide {
-        flex: 0 0 25%;
+        flex: 0 0 auto;
         padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
+
       .carousel-slide img {
         width: 100%;
+        max-width: 180px;
         height: 120px;
         object-fit: contain;
-        filter: brightness(0.95);
-        opacity: 0.85;
+        filter: brightness(0.9) contrast(1.1);
+        opacity: 0.9;
         transition: all 0.3s ease;
+        display: block;
+        margin: 0 auto;
       }
+
       .carousel-slide img:hover {
         opacity: 1;
-        filter: brightness(1);
-        transform: scale(1.05);
+        filter: brightness(1) contrast(1.15);
+        transform: scale(1.08);
       }
+
       .carousel-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(96, 165, 250, 0.9);
-        color: white;
-        border: none;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 2;
+        display: none; /* إخفاء الأزرار */
       }
-      .carousel-btn:hover {
-        background: var(--primary);
-        transform: translateY(-50%) scale(1.1);
-      }
-      .carousel-btn.prev {
-        right: 20px;
-      }
-      .carousel-btn.next {
-        left: 20px;
-      }
+
       .carousel-dots {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 1.5rem;
+        display: none; /* إخفاء النقاط */
       }
-      .carousel-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: rgba(96, 165, 250, 0.4);
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
+
+      /* تحسينات الاستجابة */
+      @media (max-width: 1200px) {
+        .carousel-track {
+          gap: 2.5rem;
+        }
+        
+        .carousel-slide img {
+          max-width: 160px;
+          height: 100px;
+        }
       }
-      .carousel-dot.active {
-        background: var(--primary);
-        transform: scale(1.3);
+
+      @media (max-width: 992px) {
+        .carousel-track {
+          gap: 2rem;
+        }
+        
+        .carousel-slide img {
+          max-width: 140px;
+          height: 90px;
+        }
       }
+
+      @media (max-width: 768px) {
+        .sponsor-carousel {
+          padding: 2rem 0.5rem;
+        }
+        
+        .carousel-track {
+          gap: 1.5rem;
+        }
+        
+        .carousel-slide img {
+          max-width: 120px;
+          height: 80px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .carousel-track {
+          gap: 1rem;
+        }
+        
+        .carousel-slide img {
+          max-width: 100px;
+          height: 70px;
+        }
+      }
+
       /* the footer */
       .footer {
         margin-top: 44px;
@@ -860,7 +872,7 @@
           background: rgba(255, 255, 255, 0.98);
           flex-direction: column;
           padding: 2rem;
-          border-top: 1px solid rgba(96, 165, 250, 0.3);
+          border-top: 1px solid rgba(96, 165, 246, 0.3);
         }
         .nav-toggle:checked ~ .nav {
           display: flex;
@@ -922,9 +934,6 @@
         .cards {
           grid-template-columns: 1fr;
         }
-        .carousel-slide {
-          flex: 0 0 50%;
-        }
       }
     </style>
   </head>
@@ -938,6 +947,7 @@
         <input type="checkbox" id="nav-toggle" class="nav-toggle" />
         <label for="nav-toggle" class="hamburger">☰</label>
 
+        
         <nav class="nav">
           <a href="index.html" class="active">الصفحة الرئيسية</a>
           <a href="WeeklyParagraphs.html">الفقرات الأسبوعية</a>
@@ -958,16 +968,16 @@
     </header>
 
     <section class="hero fade-in">
-  <div class="hero-content">
-    <img src="images/logo.png" alt="AI Icon" class="hero-icon scale-in" />
-    <h1>مستقبلك مع الذكاء الاصطناعي يبدأ هنا</h1>
-    <p>
-      في مبادرة <b class="brand-name">Beyond AI</b> نؤمن أن التقنية ليست أدوات فحسب، بل هي فرصة
-      لابتكار المستقبل وصناعة الأثر. نفتح لك الأفق لتتعلم، تبتكر، وتحوّل
-      أفكارك إلى واقع.
-    </p>
-  </div>
-</section>
+      <div class="hero-content">
+        <img src="images/logo.png" alt="AI Icon" class="hero-icon scale-in" />
+        <h1>مستقبلك مع الذكاء الاصطناعي يبدأ هنا</h1>
+        <p>
+          في مبادرة <b>Beyond AI</b> نؤمن أن التقنية ليست أدوات فحسب، بل هي فرصة
+          لابتكار المستقبل وصناعة الأثر. نفتح لك الأفق لتتعلم، تبتكر، وتحوّل
+          أفكارك إلى واقع.
+        </p>
+      </div>
+    </section>
 
     <section class="quote-section">
       <div class="quote-container">
@@ -999,7 +1009,7 @@
       </div>
       <div class="cards">
         <div class="card scale-in">
-          <img src="images/ai.png" alt="AI" />
+          <img src="images/AI.png" alt="AI" />
           <h3>تكامل التخصصات</h3>
           <p>
             نمزج الذكاء الاصطناعي مع تخصصك الأكاديمي لتكتشف تطبيقاته المباشرة في
@@ -1019,29 +1029,48 @@
       </div>
     </section>
 
-   <section class="AI">
-  <div class="section-title fade-in">
-    <h2>مركز الدراسات المتقدمة في الذكاء الاصطناعي</h2>
-    <div class="link-icon">
-      <a href="https://thakaa.ksu.edu.sa/ar" target="_blank">
-        <img src="images/arrow.png" alt="Link Arrow" />
-      </a>
-    </div>
-  </div>
-  <div class="cards">
-    <div class="card fade-in">
-      <h3>نبذة عن المركز</h3>
-      <p>
-        مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) هو مركز بحثي
-        متخصّص في تطوير تقنيات الذكاء الاصطناعي وتطبيقاته، ويتبع وكالة
-        الجامعة للدراسات العليا والبحث العلمي. يهدف المركز إلى دعم منظومة
-        البحث والابتكار في مجال الذكاء الاصطناعي على مستوى الجامعة والقطاعات
-        الوطنية من خلال تقديم خدمات بحثية واستشارية تعتمد على أفضل الممارسات
-        وأحدث المعايير والتقنيات العالمية
-      </p>
-    </div>
-  </div>
-</section>
+    <section class="AI">
+      <div class="section-title fade-in">
+        <h2>مركز الدراسات المتقدمة في الذكاء الاصطناعي</h2>
+        <div class="link-icon">
+          <a href="https://thakaa.ksu.edu.sa/ar" target="_blank">
+            <img src="images/arrow.png" alt="Link Arrow" />
+          </a>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="card fade-in">
+          <h3>نبذة عن المركز</h3>
+          <p>
+            مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) هو مركز بحثي
+            متخصّص في تطوير تقنيات الذكاء الاصطناعي وتطبيقاته، ويتبع وكالة
+            الجامعة للدراسات العليا والبحث العلمي. يهدف المركز إلى دعم منظومة
+            البحث والابتكار في مجال الذكاء الاصطناعي على مستوى الجامعة والقطاعات
+            الوطنية من خلال تقديم خدمات بحثية واستشارية تعتمد على أفضل الممارسات
+            وأحدث المعايير والتقنيات العالمية
+          </p>
+        </div>
+        <div class="card fade-in">
+          <h3>دعم المركز</h3>
+          <p>
+            يساهم المركز في توفير الموارد الأكاديمية والبيئية والعلمية، مما يتيح
+            للطلبة فرصة تطوير مهاراتهم وتعزيز معارفهم في مجال الذكاء الاصطناعي.
+            هذا الدعم المستمر يفتح لهم آفاقاً لتقديم حلول مبتكرة تسهم في بناء
+            جيل قادر على مواجهة تحديات المستقبل
+          </p>
+        </div>
+        <div class="card fade-in">
+          <h3>مجالات المركز</h3>
+          <p>
+            يساهم المركز في تنمية المهارات الرقمية وتعزيز القدرات البحثية، إلى
+            جانب تنظيم برامج تدريبية وفعاليات أكاديمية متخصصة. ويضع ضمن أولوياته
+            بناء مجتمع معرفي قادر على مواجهة تحديات المستقبل، وتحويل الأفكار إلى
+            ابتكارات وحلول عملية تواكب التطور التقني العالمي
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section class="offeres">
       <div class="section-title fade-in">
         <h2>ماذا نقدم؟</h2>
@@ -1093,19 +1122,19 @@
         <div class="carousel-container">
           <div class="carousel-track">
             <div class="carousel-slide">
-              <img src="images/p1.jpg" alt="Partner 1" />
+              <img src="images/2.png" alt="Partner 1" />
             </div>
             <div class="carousel-slide">
-              <img src="images/p2.jpg" alt="Partner 2" />
+              <img src="images/p1.png" alt="Partner 2" />
             </div>
             <div class="carousel-slide">
-              <img src="images/p3.jpg" alt="Partner 3" />
+              <img src="images/3.png" alt="Partner 3" />
             </div>
             <div class="carousel-slide">
-              <img src="images/p4.jpg" alt="Partner 4" />
+              <img src="images/4.png" alt="Partner 4" />
             </div>
             <div class="carousel-slide">
-              <img src="images/p5.jpg" alt="Partner 5" />
+              <img src="images/5.png" alt="Partner 5" />
             </div>
           </div>
         </div>
@@ -1346,85 +1375,33 @@
         const dotsContainer = document.querySelector(".carousel-dots");
 
         if (!track || !slides.length) return;
-
-        let currentIndex = 0;
-        let slidesPerView = getSlidesPerView();
-        let maxIndex = Math.max(0, slides.length - slidesPerView);
-
-        function getSlidesPerView() {
-          if (window.innerWidth >= 1024) return 4;
-          if (window.innerWidth >= 768) return 3;
-          if (window.innerWidth >= 480) return 2;
-          return 1;
-        }
-
-        function createDots() {
-          if (!dotsContainer) return;
-          dotsContainer.innerHTML = "";
-          const dotCount = Math.ceil(slides.length / slidesPerView);
-          for (let i = 0; i < dotCount; i++) {
-            const dot = document.createElement("button");
-            dot.className = "carousel-dot";
-            if (i === 0) dot.classList.add("active");
-            dot.addEventListener("click", () => goToSlide(i));
-            dotsContainer.appendChild(dot);
+        
+        console.log('🎯 عدد الشركاء في الكاروسيل:', slides.length);
+        
+        // التحقق من تحميل الصور
+        slides.forEach((slide, index) => {
+          const img = slide.querySelector('img');
+          if (img) {
+            img.onerror = function() {
+              console.error(`❌ فشل تحميل الصورة: ${img.src}`);
+              // استبدال الصورة المفقودة بصورة بديلة
+              img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'%3E%3Crect width='180' height='120' fill='%2393c5fd'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%231e3a8a'%3Eشريك%3C/text%3E%3C/svg%3E";
+              img.alt = "شريك افتراضي";
+            };
+            img.onload = function() {
+              console.log(`✅ تم تحميل الصورة: ${img.src}`);
+            };
           }
-        }
-
-        function updateCarousel() {
-          const slideWidth = 100 / slidesPerView;
-          const offset = -currentIndex * slideWidth;
-          track.style.transform = `translateX(${offset}%)`;
-
-          const dots = document.querySelectorAll(".carousel-dot");
-          dots.forEach((dot, i) => {
-            dot.classList.toggle(
-              "active",
-              i === Math.floor(currentIndex / slidesPerView)
-            );
-          });
-        }
-
-        function goToSlide(index) {
-          currentIndex = Math.min(Math.max(0, index * slidesPerView), maxIndex);
-          updateCarousel();
-        }
-
-        function nextSlide() {
-          currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
-          updateCarousel();
-        }
-
-        function prevSlide() {
-          currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
-          updateCarousel();
-        }
-
-        if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-        if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-
-        let autoPlayInterval = setInterval(nextSlide, 3000);
-
-        const carousel = document.querySelector(".sponsor-carousel");
-        if (carousel) {
-          carousel.addEventListener("mouseenter", () =>
-            clearInterval(autoPlayInterval)
-          );
-          carousel.addEventListener("mouseleave", () => {
-            autoPlayInterval = setInterval(nextSlide, 3000);
-          });
-        }
-
-        window.addEventListener("resize", () => {
-          slidesPerView = getSlidesPerView();
-          maxIndex = Math.max(0, slides.length - slidesPerView);
-          currentIndex = Math.min(currentIndex, maxIndex);
-          createDots();
-          updateCarousel();
         });
 
-        createDots();
-        updateCarousel();
+        // لا نحتاج للتمرير لأننا نعرض جميع الشركاء
+        console.log('📊 عرض جميع الشركاء الخمسة معاً');
+
+        // إخفاء عناصر التحكم لأننا لا نحتاجها
+        if (prevBtn) prevBtn.style.display = 'none';
+        if (nextBtn) nextBtn.style.display = 'none';
+        if (dotsContainer) dotsContainer.style.display = 'none';
+
       })();
 
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
