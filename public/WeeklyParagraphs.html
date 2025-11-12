@@ -59,7 +59,34 @@
         line-height: 1.6;
         overflow-x: hidden;
       }
+      /* القسم الرئيسي للمقدمة */
+.about-us-intro {
+  text-align: center;
+  margin-bottom: 80px;
+}
 
+/* حاوية الشعار */
+.about-us-logo {
+  margin-bottom: 2rem;
+}
+
+/* الشعار نفسه */
+.about-us-logo img {
+  width: 150px;
+  height: 150px;
+  filter: drop-shadow(0 20px 40px rgba(96, 165, 250, 0.3));
+  animation: float 3s ease-in-out infinite;
+}
+
+/* الحركة العائمة للشعار */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-20px); 
+  }
+}
       /* Header - Same as index */
       .topbar {
         background: rgba(255, 255, 255, 0.95);
@@ -491,6 +518,11 @@
         </div>
       </div>
     </header>
+    <br><br><br>
+<section class="about-us-intro">
+  <div class="about-us-logo"><img src="images/logo.png" alt="Beyond AI" /></div>
+</section>
+
 
     <div class="wrap weekly-intro">
       <h2 class="weekly-heading">الفقرات الأسبوعية</h2>
