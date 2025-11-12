@@ -432,7 +432,7 @@
         border-radius: 20px;
         height: 270px;
         position: relative;
-        overflow: visible; /* prevent clipping of flowing content */
+        overflow: visible;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -440,7 +440,6 @@
         cursor: pointer;
         transition: all 0.3s ease;
         transform-origin: center;
-        /* Ensure proper RTL alignment and wrapping by default */
         direction: rtl;
         text-align: center;
         white-space: normal;
@@ -650,7 +649,7 @@
       /* Responsive */
       @media (max-width: 768px) {
         .topbar-row {
-          padding: 8px 12px;
+          padding: 0 2rem;
           position: relative;
         }
         .hamburger {
