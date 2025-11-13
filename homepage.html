@@ -956,6 +956,123 @@
           flex: 0 0 50%;
         }
       }
+   /* News Section Styles */
+.news-section {
+  padding: 100px 20px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.news-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 1.5rem;
+  scroll-behavior: smooth;
+  scrollbar-width: auto;
+  scrollbar-color: var(--primary) rgba(96, 165, 250, 0.15);
+  -webkit-overflow-scrolling: touch;
+}
+
+.news-cards::-webkit-scrollbar {
+  height: 12px;
+  display: block;
+}
+
+.news-cards::-webkit-scrollbar-track {
+  background: rgba(96, 165, 250, 0.15);
+  border-radius: 10px;
+  margin: 0 10px;
+}
+
+.news-cards::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.news-cards::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+.news-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+  min-width: 350px;
+  max-width: 350px;
+  flex-shrink: 0;
+}
+
+.news-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-2);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+  transform: scaleX(1);
+}
+
+.news-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(96, 165, 250, 0.3);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(96, 165, 250, 0.5);
+}
+
+.news-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.news-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-image img {
+  transform: scale(1.05);
+}
+
+.news-content {
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.news-content p {
+  color: var(--dark);
+  line-height: 1.8;
+  font-size: 1rem;
+  margin: 0;
+  text-align: right;
+}
     </style>
   </head>
   <body>
@@ -1020,6 +1137,46 @@
         <div class="quote-image slide-right">
           <img src="images/prince_Mohammad.jpg" alt="صاحب السمو الملكي" />
         </div>
+      </div>
+    </section>
+
+<section class="news-section">
+      <div class="section-title fade-in">
+        <h2>آخر الأخبار</h2>
+      </div>
+      <div class="news-cards">
+        <a href="#" class="news-card fade-in" target="_blank">
+          <div class="news-image">
+            <img src="images/prince_Mohammad.jpg" alt="خبر 1" />
+          </div>
+          <div class="news-content">
+            <p>
+              اختتمت المبادرة معسكر تطبيقات الذكاء الاصطناعي في الهندسة المحاسبية بالشراكة مع شركة أوراكل (Oracle)، بمشاركة 24 طالبةً وطالباً من مختلف الجامعات السعودية، وظهروا على دورة مكثفة لأيام عدة حول وحدات معالجة تجارب منخفضة باستخدام أدوات وتقنيات الذكاء الاصطناعي المقدمة من شركة أوراكل
+            </p>
+          </div>
+        </a>
+        
+        <a href="#" class="news-card fade-in" target="_blank">
+          <div class="news-image">
+            <img src="images/news2.jpg" alt="خبر 2" />
+          </div>
+          <div class="news-content">
+            <p>
+              نفس الشيء لكن ليست الشراكة مع أوراكل في المعسكر
+            </p>
+          </div>
+        </a>
+        
+        <a href="#" class="news-card fade-in" target="_blank">
+          <div class="news-image">
+            <img src="images/news3.jpg" alt="خبر 3" />
+          </div>
+          <div class="news-content">
+            <p>
+              نفس الشيء لكن لورشة العمل
+            </p>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -1091,27 +1248,21 @@
       </div>
     </section>
 
-    <section class="offeres">
+   <section class="offeres">
       <div class="section-title fade-in">
         <h2>ماذا نقدم؟</h2>
       </div>
-      <div class="cards">
+      <div class="cards offers-cards">
         <div class="card scale-in">
-          <img src="images/what.png" alt="Weekly" />
-          <h3>الفقرات الأسبوعية</h3>
+          <img src="images/what.png" alt="Programs" />
+          <h3>برامج المبادرة</h3>
           <p>
-            نقدم محتوى معرفي يربط الذكاء الاصطناعي بتخصصك بطريقة مبسطة ومنظمة
+           برامج معرفية وتطبيقية تهدف إلى تمكين الطلبة من استكشاف الذكاء الاصطناعي وتوظيفه عبر لقاءات
+وورش عمل ومعسكرات تخصصية
+
           </p>
         </div>
-        <div class="card scale-in">
-          <img src="images/what2.png" alt="Events" />
-          <h3>الأحداث القادمة</h3>
-          <p>
-            فعاليات تعليمية وتفاعلية تهدف لتعزيز فهم الذكاء الاصطناعي وتطبيقاته
-            الذكية
-          </p>
-        </div>
-        <div class="card scale-in">
+        <div class="card scale-in card-clickable" onclick="window.location.href='AI_libraries_page.html'" style="cursor: pointer;">
           <img src="images/what3.png" alt="Tools" />
           <h3>مكتبة أدوات الذكاء الاصطناعي</h3>
           <p>
