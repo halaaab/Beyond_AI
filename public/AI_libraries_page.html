@@ -63,34 +63,35 @@
         color: var(--dark);
         position: relative;
       }
-/* القسم الرئيسي للمقدمة */
-.about-us-intro {
-  text-align: center;
-  margin-bottom: 80px;
-}
+      /* القسم الرئيسي للمقدمة */
+      .about-us-intro {
+        text-align: center;
+        margin-bottom: 80px;
+      }
 
-/* حاوية الشعار */
-.about-us-logo {
-  margin-bottom: 2rem;
-}
+      /* حاوية الشعار */
+      .about-us-logo {
+        margin-bottom: 2rem;
+      }
 
-/* الشعار نفسه */
-.about-us-logo img {
-  width: 150px;
-  height: 150px;
-  filter: drop-shadow(0 20px 40px rgba(96, 165, 250, 0.3));
-  animation: float 3s ease-in-out infinite;
-}
+      /* الشعار نفسه */
+      .about-us-logo img {
+        width: 150px;
+        height: 150px;
+        filter: drop-shadow(0 20px 40px rgba(96, 165, 250, 0.3));
+        animation: float 3s ease-in-out infinite;
+      }
 
-/* الحركة العائمة للشعار */
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0px); 
-  }
-  50% { 
-    transform: translateY(-20px); 
-  }
-}
+      /* الحركة العائمة للشعار */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
       body::before {
         content: "";
         position: fixed;
@@ -115,79 +116,112 @@
 
       /* Dynamic card content */
       .card-content {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        right: 16px;
-        bottom: 64px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-        justify-content: flex-start;
-        text-align: right;
+        gap: 0;
+        padding: 28px 20px 20px 20px;
+        text-align: center;
         direction: rtl;
         color: var(--dark);
-        overflow-y: auto;
-        overflow-x: hidden;
-        scrollbar-width: thin;
-        scrollbar-color: var(--primary) rgba(96, 165, 250, 0.1);
-      }
-
-      .card-content::-webkit-scrollbar {
-        width: 6px;
-      }
-
-      .card-content::-webkit-scrollbar-track {
-        background: rgba(96, 165, 250, 0.1);
-        border-radius: 10px;
-      }
-
-      .card-content::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg, var(--primary), var(--accent));
-        border-radius: 10px;
-        transition: all 0.3s ease;
-      }
-
-      .card-content::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(
-          180deg,
-          var(--primary-dark),
-          var(--primary)
-        );
-        box-shadow: 0 0 6px rgba(96, 165, 250, 0.4);
+        flex: 1;
+        align-items: center;
+        justify-content: flex-start;
       }
 
       .card .title {
         font-weight: 700;
-        font-size: clamp(1rem, 1.4vw, 18px);
-        line-height: 1.4;
-        flex-shrink: 0;
-      }
-
-      .card .description {
-        font-size: 14.5px;
-        line-height: 1.7;
-        opacity: 0.95;
-        flex: 1;
+        font-size: clamp(1.8rem, 3vw, 3.2rem);
+        line-height: 1.15;
+        color: #3b82f6;
+        margin-bottom: 0;
+        width: 100%;
+        text-align: center;
+        letter-spacing: -0.5px;
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
       }
 
+      .card .top-section {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .card .middle-section {
+        flex: 1;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        width: 100%;
+        padding-top: 8px;
+        padding-bottom: 18px;
+      }
+
+      .card .middle-section:empty {
+        flex: 0;
+        padding: 0;
+        margin-bottom: 18px;
+      }
+
+      .card .bottom-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding-bottom: 4px;
+      }
+
+      .card .divider {
+        width: 100%;
+        height: 1px;
+        background: #d1d5db;
+        margin: 0;
+      }
+
+      .card .description {
+        font-size: 15px;
+        line-height: 1.75;
+        color: #1e293b;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        text-align: right;
+        width: 100%;
+        margin: 0;
+        padding: 0 8px;
+      }
+
       .card .card-link {
-        display: inline-block;
-        margin-top: auto;
-        color: var(--primary);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #3b82f6;
         text-decoration: none;
-        border-bottom: 1px dashed rgba(96, 165, 250, 0.6);
-        font-weight: 600;
-        font-size: 14px;
+        border-bottom: 1.5px solid #3b82f6;
+        font-weight: 500;
+        font-size: 15px;
+        padding-bottom: 1px;
+        transition: all 0.3s ease;
       }
 
       .card .card-link:hover {
-        color: var(--accent);
-        border-bottom-color: var(--accent);
+        color: #2563eb;
+        border-bottom-color: #2563eb;
+      }
+
+      .card .card-link::before {
+        content: "↖";
+        font-size: 17px;
+        color: #3b82f6;
+        transition: transform 0.3s ease;
+      }
+
+      .card .card-link:hover::before {
+        transform: translate(2px, -2px);
       }
 
       .search {
@@ -447,27 +481,20 @@
       }
 
       .card {
-        background: linear-gradient(
-          115deg,
-          rgba(96, 165, 250, 0.08) 12%,
-          rgba(255, 255, 255, 0.9) 42%
-        );
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(96, 165, 250, 0.3);
-        border-radius: 20px;
-        height: 270px;
+        border: 1.5px solid #e5e7eb;
+        border-radius: 16px;
+        min-height: 340px;
         position: relative;
-        overflow: visible;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
         cursor: pointer;
         transition: all 0.3s ease;
         transform-origin: center;
         direction: rtl;
-        text-align: center;
-        white-space: normal;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
       }
 
       .card::before {
@@ -487,9 +514,9 @@
       }
 
       .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 30px rgba(96, 165, 250, 0.25);
-        border-color: var(--primary);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        border-color: #3b82f6;
       }
 
       .card.hidden {
@@ -510,22 +537,21 @@
       .card__bar {
         margin-top: auto;
         width: 100%;
-        padding-top: 18px;
       }
 
       .card__bar span {
         display: block;
         width: 100%;
         text-align: center;
-        color: #fff;
+        color: #1e293b;
         font-weight: 600;
-        font-size: 18px;
-        height: 48px;
-        line-height: 48px;
+        font-size: 17px;
+        height: 50px;
+        line-height: 50px;
         margin: 0;
-        padding: 0 18px;
-        border-radius: 15px 15px 20px 20px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
+        padding: 0 20px;
+        border-radius: 0 0 16px 16px;
+        background: #5b9cf6;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -745,10 +771,12 @@
         </div>
       </div>
     </header>
-    <br><br><br>
-<section class="about-us-intro">
-  <div class="about-us-logo"><img src="images/logo.png" alt="Beyond AI" /></div>
-</section>
+    <br /><br /><br />
+    <section class="about-us-intro">
+      <div class="about-us-logo">
+        <img src="images/logo.png" alt="Beyond AI" />
+      </div>
+    </section>
     <main class="wrap">
       <h1>مكتبة أدوات الذكاء الاصطناعي</h1>
       <div class="heading-line"></div>
@@ -1036,18 +1064,24 @@
 
                 card.innerHTML = `
                   <div class="card-content">
-                    ${name ? `<div class="title">${name}</div>` : ""}
-                    ${title ? `<div class="subtitle">${title}</div>` : ""}
-                    ${
-                      description
-                        ? `<div class="description">${description}</div>`
-                        : ""
-                    }
-                    ${
-                      url !== "#"
-                        ? `<a class="card-link" href="${url}" target="_blank" rel="noopener">رابط الأداة</a>`
-                        : ""
-                    }
+                    <div class="top-section">
+                      ${name ? `<div class="title">${name}</div>` : ""}
+                      <div class="divider"></div>
+                    </div>
+                    <div class="middle-section">
+                      ${
+                        description
+                          ? `<div class="description">${description}</div>`
+                          : ""
+                      }
+                    </div>
+                    <div class="bottom-section">
+                      ${
+                        url !== "#"
+                          ? `<a class="card-link" href="${url}" target="_blank" rel="noopener">اطلع على المقطع التعريفي للأداة</a>`
+                          : ""
+                      }
+                    </div>
                   </div>
                   <div class="card__bar"><span>${name}</span></div>
                 `;
