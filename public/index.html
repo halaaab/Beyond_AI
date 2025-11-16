@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beyond AI initiative</title>
-    <link rel="icon" type="image/png" href="images/markblue.png" />
+    <title>Beyond AI Inititaive</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -157,7 +156,7 @@
         transform: scale(1.2);
       }
       .logo {
-        height: 70px;
+        height: 50px;
       }
       .hero {
         padding: 100px 20px;
@@ -304,6 +303,133 @@
         box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
         border: 2px solid rgba(96, 165, 250, 0.3);
       }
+      /* News Section Styles */
+.news-section {
+  padding: 100px 20px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.news-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 1.5rem;
+  scroll-behavior: smooth;
+  scrollbar-width: auto;
+  scrollbar-color: var(--primary) rgba(96, 165, 250, 0.15);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* شريط التمرير */
+.news-cards::-webkit-scrollbar {
+  height: 10px;
+  display: block;
+}
+
+.news-cards::-webkit-scrollbar-track {
+  background: rgba(96, 165, 250, 0.15);
+  border-radius: 10px;
+  margin: 0 10px;
+}
+
+.news-cards::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.news-cards::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+/* بطاقة الخبر */
+.news-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+  min-width: 360px;
+  max-width: 360px;
+  flex-shrink: 0;
+}
+
+.news-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-2);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover::before {
+  transform: scaleX(1);
+}
+
+.news-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 35px rgba(96, 165, 250, 0.35);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(96, 165, 250, 0.55);
+}
+
+/* صورة الخبر */
+.news-image {
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.news-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-image img {
+  transform: scale(1.05);
+}
+
+/* النص */
+.news-content {
+  padding: 1.8rem 1.8rem 2.1rem;
+  display: block;
+}
+
+.news-content p {
+  color: var(--dark);
+  line-height: 1.9;
+  font-size: 1rem;
+  margin: 0;
+  text-align: right;
+
+  /* تقصير النص داخل البطاقة */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;   /* غيّري الرقم حسب ما تحبين */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
       .why,
       .AI,
       .offeres,
@@ -316,9 +442,11 @@
       .AI {
         background: rgba(255, 255, 255, 0.4);
       }
-      .offeres {
-        background: rgba(255, 255, 255, 0.6);
-      }
+     .offeres {
+  background: rgba(255, 255, 255, 0.6);
+  padding-bottom: 160px; /* زودنا المسافة تحت القسم */
+}
+
       .affiliated {
         background: rgba(255, 255, 255, 0.5);
       }
@@ -532,112 +660,237 @@
         background: rgba(96, 165, 250, 0.3);
         color: var(--light);
       }
-      
-      /* تحسينات الكاروسيل - عرض جميع الشركاء معاً */
-      .sponsor-carousel {
-        max-width: 1200px;
-        margin: 0 auto;
-        position: relative;
-        overflow: hidden;
-        border-radius: 20px;
-        background: linear-gradient(135deg, rgba(147, 197, 253, 0.4) 0%, rgba(191, 219, 254, 0.3) 100%);
-        backdrop-filter: blur(15px);
-        padding: 3rem 1rem;
-        box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
-        border: 1px solid rgba(147, 197, 253, 0.3);
-      }
+   /* شركاء النجاح – شعارات كبيرة + سكروول داخلي + أسهم */
 
-      .carousel-track {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 3rem;
-        flex-wrap: wrap;
-        width: 100%;
-      }
+.sponsor-carousel {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(147, 197, 253, 0.4) 0%, rgba(191, 219, 254, 0.3) 100%);
+  backdrop-filter: blur(15px);
+  padding: 3rem 3.5rem; /* مساحة للأسهم يمين ويسار */
+  box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+  border: 1px solid rgba(147, 197, 253, 0.3);
 
-      .carousel-slide {
-        flex: 0 0 auto;
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+  /* مهم: ما نخليه هو اللي يسوي scroll */
+  overflow: visible;
+}
 
-      .carousel-slide img {
-        width: 100%;
-        max-width: 180px;
-        height: 120px;
-        object-fit: contain;
-        filter: brightness(0.9) contrast(1.1);
-        opacity: 0.9;
-        transition: all 0.3s ease;
-        display: block;
-        margin: 0 auto;
-      }
+/* هذا هو الصندوق اللي يكون scrollable */
+.carousel-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) rgba(96, 165, 250, 0.15);
+  direction: ltr; /* عشان حركة السكروول تكون واضحة وما تلخبط مع RTL */
+}
 
-      .carousel-slide img:hover {
-        opacity: 1;
-        filter: brightness(1) contrast(1.15);
-        transform: scale(1.08);
-      }
+/* Scrollbar للكروم والسفاري */
+.carousel-container::-webkit-scrollbar {
+  height: 10px;
+}
 
-      .carousel-btn {
-        display: none;
-      }
+.carousel-container::-webkit-scrollbar-track {
+  background: rgba(96, 165, 250, 0.12);
+  border-radius: 10px;
+}
 
-      .carousel-dots {
-        display: none;
-      }
+.carousel-container::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
 
-      /* تحسينات الاستجابة */
-      @media (max-width: 1200px) {
-        .carousel-track {
-          gap: 2.5rem;
-        }
-        
-        .carousel-slide img {
-          max-width: 160px;
-          height: 100px;
-        }
-      }
+/* المحتوى الداخلي */
+.carousel-track {
+  display: flex;
+  gap: 3rem; /* مسافة بين الشعارات */
+  padding-inline: 0.5rem;
+}
 
-      @media (max-width: 992px) {
-        .carousel-track {
-          gap: 2rem;
-        }
-        
-        .carousel-slide img {
-          max-width: 140px;
-          height: 90px;
-        }
-      }
+.carousel-slide {
+  flex: 0 0 auto;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      @media (max-width: 768px) {
-        .sponsor-carousel {
-          padding: 2rem 0.5rem;
-        }
-        
-        .carousel-track {
-          gap: 1.5rem;
-        }
-        
-        .carousel-slide img {
-          max-width: 120px;
-          height: 80px;
-        }
-      }
+/* 👇 تكبير شعارات الشركاء */
+.carousel-slide img {
+  width: 240px;
+  height: 140px;
+  object-fit: contain;
+  filter: brightness(0.95) contrast(1.1);
+  opacity: 0.96;
+  transition: all 0.3s ease;
+  display: block;
+}
 
-      @media (max-width: 480px) {
-        .carousel-track {
-          gap: 1rem;
-        }
-        
-        .carousel-slide img {
-          max-width: 100px;
-          height: 70px;
-        }
-      }
+.carousel-slide img:hover {
+  opacity: 1;
+  filter: brightness(1) contrast(1.15);
+  transform: scale(1.05);
+}
+
+/* الأسهم */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(96, 165, 250, 0.9);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 5; /* فوق الشعارات */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(96, 165, 250, 0.35);
+}
+
+.carousel-btn:hover {
+  background: var(--primary);
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 20px rgba(96, 165, 250, 0.55);
+}
+
+/* في الـ HTML: next = ❮ (على اليمين) ، prev = ❯ (على اليسار) */
+.carousel-btn.next { /* ❮ */
+  right: 16px;
+}
+
+.carousel-btn.prev { /* ❯ */
+  left: 16px;
+}
+
+/* ما نحتاج النقاط */
+.carousel-dots {
+  display: none;
+}
+
+/* ميديا للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .sponsor-carousel {
+    padding: 2.5rem 2.5rem;
+  }
+
+  .carousel-slide img {
+    width: 190px;
+    height: 115px;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsor-carousel {
+    padding-inline: 2.3rem;
+  }
+
+  .carousel-slide img {
+    width: 160px;
+    height: 100px;
+  }
+}
+
+
+/* ماذا نقدم */
+/* قسم ماذا نقدم */
+.what-we-offer {
+  margin-top: 4rem;
+    margin-bottom: 5rem;
+}
+
+.what-we-offer .section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.offer-cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.offer-card {
+  width: 480px; /* حجم الكرت */
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 26px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border: 1px solid rgba(147, 197, 253, 0.32);
+  box-shadow: 0 12px 30px rgba(148, 163, 184, 0.22);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(148, 163, 184, 0.32);
+}
+
+.offer-icon {
+  width: 85px;
+  margin-bottom: 1.3rem;
+  opacity: 0.9;
+}
+
+.offer-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.offer-card p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--dark);
+}
+
+/* ريسبونسف */
+@media (max-width: 768px) {
+  .offer-card {
+    width: 100%;
+  }
+}
+/* تاريخ اللي في آخر الأخبار */
+.news-date {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 0.45rem 1.4rem;
+  border-radius: 999px;
+  background: var(--gradient-3);
+  box-shadow: 0 8px 18px rgba(96, 165, 250, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin-bottom: 1.1rem;
+  margin-inline: auto;      /* يخليها في المنتصف تحت الصورة */
+}
+
+.news-date::before {
+  content: "📅";
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
 
       /* the footer */
       .footer {
@@ -934,6 +1187,9 @@
         .cards {
           grid-template-columns: 1fr;
         }
+        .carousel-slide {
+          flex: 0 0 50%;
+        }
       }
     </style>
   </head>
@@ -947,13 +1203,12 @@
         <input type="checkbox" id="nav-toggle" class="nav-toggle" />
         <label for="nav-toggle" class="hamburger">☰</label>
 
-        
         <nav class="nav">
           <a href="index.html" class="active">الصفحة الرئيسية</a>
           <a href="WeeklyParagraphs.html">الفقرات الأسبوعية</a>
           <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
           <a href="Who_We_Are.html">من نحن</a>
-          <a href="Contact_Us.html">تواصل معنا</a>
+          <a href="#footer">تواصل معنا</a>
         </nav>
 
         <form class="search" id="searchForm">
@@ -968,16 +1223,17 @@
     </header>
 
     <section class="hero fade-in">
-      <div class="hero-content">
-        <img src="images/logo.png" alt="AI Icon" class="hero-icon scale-in" />
-        <h1>مستقبلك مع الذكاء الاصطناعي يبدأ هنا</h1>
-        <p>
-          في مبادرة <b>Beyond AI</b> نؤمن أن التقنية ليست أدوات فحسب، بل هي فرصة
-          لابتكار المستقبل وصناعة الأثر. نفتح لك الأفق لتتعلم، تبتكر، وتحوّل
-          أفكارك إلى واقع.
-        </p>
-      </div>
-    </section>
+  <div class="hero-content">
+    <img src="images/logo.png" alt="AI Icon" class="hero-icon scale-in" />
+    <h1>مستقبلك مع الذكاء الاصطناعي يبدأ هنا</h1>
+    <p>
+      في مبادرة <b>Beyond AI</b> نؤمن أن التقنية ليست أدوات فحسب، بل هي فرصة
+      لابتكار المستقبل وصناعة الأثر. نفتح لك الأفق لتتعلم، تبتكر، وتحوّل
+      أفكارك إلى واقع.
+    </p>
+  </div>
+</section>
+
 
     <section class="quote-section">
       <div class="quote-container">
@@ -1002,6 +1258,73 @@
         </div>
       </div>
     </section>
+<section class="news-section">
+      <div class="section-title fade-in">
+        <h2>آخر الأخبار</h2>
+      </div>
+      <div class="news-cards">
+  <a href="https://x.com/_ksu/status/1987928051225702665?s=46"
+   class="news-card fade-in" target="_blank">
+
+  <div class="news-image">
+    <img src="images/news1.jpg" alt="معسكر الذكاء الاصطناعي" />
+  </div>
+
+  <div class="news-content">
+    <span class="news-date">٢٦ – ٣٠ أكتوبر ٢٠٢٥</span>
+
+    <p>
+      اختتمت مبادرة Beyond AI معسكر تطبيقات الذكاء الاصطناعي في الحوسبة
+      السحابية بمشاركة 75 طالبًا وطالبة، نفّذوا خلالها 17 مشروعًا مبتكرًا
+      في خمسة أيام تدريبية مكثفة بإشراف متخصص.
+    </p>
+  </div>
+
+</a>
+
+        
+   <a href="https://x.com/thakaa_beyond/status/1979572270713774285?s=46"
+   class="news-card fade-in" target="_blank">
+
+  <div class="news-image">
+    <img src="images/news2.png" alt="شراكة Oracle" />
+  </div>
+
+  <div class="news-content">
+    <span class="news-date">١٨ أكتوبر ٢٠٢٥</span>
+
+   <p>
+      أعلنت مبادرة Beyond AI عن عقد شراكة استراتيجية مع شركة Oracle
+      لدعم <b>معسكر تطبيقات الذكاء الاصطناعي في الحوسبة السحابية</b>،
+      وذلك لتوفير بيئة تدريبية عملية على أحدث التقنيات السحابية،
+      وتمكين الفرق المشاركة من بناء حلول مبتكرة في مجالات الذكاء الاصطناعي.
+    </p>
+  </div>
+
+</a>
+
+        
+     <a href="https://x.com/thakaa_beyond/status/1985022133693456598?s=46"
+   class="news-card fade-in" target="_blank">
+
+  <div class="news-image">
+    <img src="images/new3.png" alt="ورشة العمل" />
+  </div>
+
+  <div class="news-content">
+    <span class="news-date">٥ نوفمبر ٢٠٢٥</span>
+
+    <p>
+      أقامت مبادرة Beyond AI ورشة عمل بعنوان "How to Build an AI Chatbot"،
+      خاض فيها المشاركون تجربة عملية للتعرّف على أساسيات بناء أنظمة المحادثة
+      الذكية، وفهم دور الـ chatbots في تحسين التفاعل الرقمي.
+    </p>
+  </div>
+
+</a>
+
+      </div>
+    </section>
 
     <section class="why">
       <div class="section-title fade-in">
@@ -1009,7 +1332,7 @@
       </div>
       <div class="cards">
         <div class="card scale-in">
-          <img src="images/ai.png" alt="AI" />
+          <img src="images/AI.png" alt="AI" />
           <h3>تكامل التخصصات</h3>
           <p>
             نمزج الذكاء الاصطناعي مع تخصصك الأكاديمي لتكتشف تطبيقاته المباشرة في
@@ -1030,59 +1353,58 @@
     </section>
 
     <section class="AI">
-      <div class="section-title fade-in">
-        <h2>مركز الدراسات المتقدمة في الذكاء الاصطناعي</h2>
-        <div class="link-icon">
-          <a href="https://thakaa.ksu.edu.sa/ar" target="_blank">
-            <img src="images/arrow.png" alt="Link Arrow" />
-          </a>
-        </div>
-      </div>
-      <div class="cards">
-        <div class="card fade-in">
-          <h3>نبذة عن المركز</h3>
-          <p>
-            مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) هو مركز بحثي
-            متخصّص في تطوير تقنيات الذكاء الاصطناعي وتطبيقاته، ويتبع وكالة
-            الجامعة للدراسات العليا والبحث العلمي. يهدف المركز إلى دعم منظومة
-            البحث والابتكار في مجال الذكاء الاصطناعي على مستوى الجامعة والقطاعات
-            الوطنية من خلال تقديم خدمات بحثية واستشارية تعتمد على أفضل الممارسات
-            وأحدث المعايير والتقنيات العالمية
-          </p>
-        </div>
-      </div>
-    </section>
+  <div class="section-title fade-in">
+    <h2>مركز الدراسات المتقدمة في الذكاء الاصطناعي</h2>
+    <div class="link-icon">
+      <a href="https://thakaa.ksu.edu.sa/ar" target="_blank">
+        <img src="images/arrow.png" alt="Link Arrow" />
+      </a>
+    </div>
+  </div>
 
-    <section class="offeres">
-      <div class="section-title fade-in">
-        <h2>ماذا نقدم؟</h2>
-      </div>
-      <div class="cards">
-        <div class="card scale-in">
-          <img src="images/what.png" alt="Weekly" />
-          <h3>الفقرات الأسبوعية</h3>
-          <p>
-            نقدم محتوى معرفي يربط الذكاء الاصطناعي بتخصصك بطريقة مبسطة ومنظمة
-          </p>
-        </div>
-        <div class="card scale-in">
-          <img src="images/what2.png" alt="Events" />
-          <h3>الأحداث القادمة</h3>
-          <p>
-            فعاليات تعليمية وتفاعلية تهدف لتعزيز فهم الذكاء الاصطناعي وتطبيقاته
-            الذكية
-          </p>
-        </div>
-        <div class="card scale-in">
-          <img src="images/what3.png" alt="Tools" />
-          <h3>مكتبة أدوات الذكاء الاصطناعي</h3>
-          <p>
-            مجموعة أدوات مختارة تمكّنك من تطبيق الذكاء الاصطناعي في مجالك
-            الأكاديمي والمهني
-          </p>
-        </div>
-      </div>
-    </section>
+  <div class="cards">
+    <div class="card fade-in">
+      <h3>نبذة عن المركز</h3>
+      <p>
+        مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) هو مركز بحثي
+        متخصّص في تطوير تقنيات الذكاء الاصطناعي وتطبيقاته، ويتبع وكالة
+        الجامعة للدراسات العليا والبحث العلمي. يهدف المركز إلى دعم منظومة
+        البحث والابتكار في مجال الذكاء الاصطناعي على مستوى الجامعة والقطاعات
+        الوطنية من خلال تقديم خدمات بحثية واستشارية تعتمد على أفضل الممارسات
+        وأحدث المعايير والتقنيات العالمية.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+   <section class="what-we-offer fade-in">
+  <div class="section-title">
+    <h2>ماذا نقدم؟</h2>
+  </div>
+
+  <div class="offer-cards">
+    
+    <!-- الكرت 1 -->
+    <div class="offer-card">
+      <img src="images/what3.png" alt="AI Tools" class="offer-icon">
+      <h3>مكتبة أدوات الذكاء الاصطناعي</h3>
+      <p>
+        مجموعة أدوات مختارة تمكّنك من تطبيق الذكاء الاصطناعي في مجالك الأكاديمي والمهني.
+      </p>
+    </div>
+
+    <!-- الكرت 2 -->
+    <div class="offer-card">
+      <img src="images/what.png" alt="Programs" class="offer-icon">
+      <h3>برامج المبادرة</h3>
+      <p>
+        برامج معرفية وتطبيقية تهدف إلى تمكين الطلبة من استكشاف الذكاء الاصطناعي وتوظيفه عبر لقاءات وورش عمل ومعسكرات تخصصية.
+      </p>
+    </div>
+
+  </div>
+</section>
 
     <section class="join-us fade-in">
       <div class="join-us-content">
@@ -1096,35 +1418,54 @@
       </div>
     </section>
 
-    <section class="affiliated fade-in">
-      <div class="section-title">
-        <h2>شركاء النجاح</h2>
-      </div>
-      <div class="sponsor-carousel">
-        <div class="carousel-container">
-          <div class="carousel-track">
-            <div class="carousel-slide">
-              <img src="images/2.png" alt="Partner 1" />
-            </div>
-            <div class="carousel-slide">
-              <img src="images/p1.png" alt="Partner 2" />
-            </div>
-            <div class="carousel-slide">
-              <img src="images/3.png" alt="Partner 3" />
-            </div>
-            <div class="carousel-slide">
-              <img src="images/4.png" alt="Partner 4" />
-            </div>
-            <div class="carousel-slide">
-              <img src="images/5.png" alt="Partner 5" />
-            </div>
-          </div>
+<section class="affiliated fade-in">
+  <div class="section-title">
+    <h2>شركاء النجاح</h2>
+  </div>
+
+  <div class="sponsor-carousel">
+    <div class="carousel-container">
+      <div class="carousel-track">
+
+        <!-- 1 -->
+        <div class="carousel-slide">
+          <img src="images/5.png" alt="Partner 1" 
+               onerror="this.style.display='none'; console.error('صورة 2.png مفقودة');" />
         </div>
-        <button class="carousel-btn prev">❮</button>
-        <button class="carousel-btn next">❯</button>
-        <div class="carousel-dots"></div>
+
+        <!-- 2 (كان p1 — الآن صار 5) -->
+        <div class="carousel-slide">
+          <img src="images/4.png" alt="Partner 5" 
+               onerror="this.style.display='none'; console.error('⚠️ صورة 5.png مفقودة - تأكد من وجود الملف');" />
+        </div>
+
+        <!-- 3 -->
+        <div class="carousel-slide">
+          <img src="images/3.png" alt="Partner 3" 
+               onerror="this.style.display='none'; console.error('صورة 3.png مفقودة');" />
+        </div>
+
+        <!-- 4 -->
+        <div class="carousel-slide">
+          <img src="images/2.png" alt="Partner 4" 
+               onerror="this.style.display='none'; console.error('صورة 4.png مفقودة');" />
+        </div>
+
+        <!-- 5 (كان 5 — الآن صار p1) -->
+        <div class="carousel-slide">
+          <img src="images/p1.png" alt="Partner 2" 
+               onerror="this.style.display='none'; console.error('صورة p1.png مفقودة');" />
+        </div>
+
       </div>
-    </section>
+    </div>
+
+    <button class="carousel-btn next">❮</button>
+    <button class="carousel-btn prev">❯</button>
+    <div class="carousel-dots"></div>
+  </div>
+</section>
+
 
     <footer class="footer fade-in" id="footer">
       <div class="foot">
@@ -1349,38 +1690,55 @@
         });
       }
 
-      (function () {
-        const track = document.querySelector(".carousel-track");
-        const slides = document.querySelectorAll(".carousel-slide");
-        const prevBtn = document.querySelector(".carousel-btn.prev");
-        const nextBtn = document.querySelector(".carousel-btn.next");
-        const dotsContainer = document.querySelector(".carousel-dots");
+ // التحكم بالسكروول للأسهم داخل قسم شركاء النجاح
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".carousel-container");
+  const nextBtn = document.querySelector(".carousel-btn.next"); // ❮ (يمين)
+  const prevBtn = document.querySelector(".carousel-btn.prev"); // ❯ (يسار)
 
-        if (!track || !slides.length) return;
-        
-        console.log('🎯 عدد الشركاء في الكاروسيل:', slides.length);
-        
-        slides.forEach((slide, index) => {
-          const img = slide.querySelector('img');
-          if (img) {
-            img.onerror = function() {
-              console.error(`❌ فشل تحميل الصورة: ${img.src}`);
-              img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' viewBox='0 0 180 120'%3E%3Crect width='180' height='120' fill='%2393c5fd'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='14' fill='%231e3a8a'%3Eشريك%3C/text%3E%3C/svg%3E";
-              img.alt = "شريك افتراضي";
-            };
-            img.onload = function() {
-              console.log(`✅ تم تحميل الصورة: ${img.src}`);
-            };
-          }
-        });
+  if (!container || !nextBtn || !prevBtn) return;
 
-        console.log('📊 عرض جميع الشركاء الخمسة معاً');
+  const SCROLL_AMOUNT = 350; // مقدار الحركة
 
-        if (prevBtn) prevBtn.style.display = 'none';
-        if (nextBtn) nextBtn.style.display = 'none';
-        if (dotsContainer) dotsContainer.style.display = 'none';
+  function updateArrows() {
+    const maxScroll = container.scrollWidth - container.clientWidth;
 
-      })();
+    // بداية السكروول
+    if (container.scrollLeft <= 0) {
+      prevBtn.style.opacity = "0.4";
+      prevBtn.style.pointerEvents = "none";
+    } else {
+      prevBtn.style.opacity = "1";
+      prevBtn.style.pointerEvents = "auto";
+    }
+
+    // نهاية السكروول
+    if (container.scrollLeft >= maxScroll - 2) {
+      nextBtn.style.opacity = "0.4";
+      nextBtn.style.pointerEvents = "none";
+    } else {
+      nextBtn.style.opacity = "1";
+      nextBtn.style.pointerEvents = "auto";
+    }
+  }
+
+  nextBtn.addEventListener("click", () => {
+    container.scrollBy({ left: SCROLL_AMOUNT, behavior: "smooth" });
+    setTimeout(updateArrows, 300);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    container.scrollBy({ left: -SCROLL_AMOUNT, behavior: "smooth" });
+    setTimeout(updateArrows, 300);
+  });
+
+  container.addEventListener("scroll", updateArrows);
+
+  updateArrows(); // أول تحديث بعد التحميل
+});
+
+
+
 
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
