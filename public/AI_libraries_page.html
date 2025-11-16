@@ -142,6 +142,16 @@
         hyphens: auto;
       }
 
+      .card .tool-logo {
+        max-width: 180px;
+        max-height: 120px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+      }
+
       .card .top-section {
         display: flex;
         flex-direction: column;
@@ -1057,15 +1067,15 @@
                 const card = document.createElement("article");
                 card.className = "card";
 
-                const title = escapeHtml(item.title || "");
                 const name = escapeHtml(item.name || "");
                 const description = escapeHtml(item.description || "");
                 const url = item.url || "#";
+                const logo = item.logo || "";
 
                 card.innerHTML = `
                   <div class="card-content">
                     <div class="top-section">
-                      ${name ? `<div class="title">${name}</div>` : ""}
+                      <img src="aitoolslogo/${logo}" alt="${name}" class="tool-logo" onerror="this.onerror=null; this.src='images/logo.png';" />
                       <div class="divider"></div>
                     </div>
                     <div class="middle-section">
