@@ -14,21 +14,43 @@
         padding: 0;
         box-sizing: border-box;
       }
-      :root {
-        --primary: #60a5fa;
-        --primary-light: #93c5fd;
-        --primary-dark: #3b82f6;
-        --accent: #38bdf8;
-        --accent-light: #7dd3fc;
-        --dark: #1e3a8a;
-        --light: #f8fafc;
-        --gray: #94a3b8;
-        --gray-light: #e2e8f0;
-        --success: #10b981;
-        --gradient-1: linear-gradient(135deg, #93c5fd 0%, #7dd3fc 100%);
-        --gradient-2: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
-        --gradient-3: linear-gradient(135deg, #93c5fd 0%, #60a5fa 100%);
-      }
+ :root {
+  /* ألوان مريحة للعين – Light Mode */
+  --primary: #2563eb;          /* أزرق هادئ للأزرار والعناوين */
+  --primary-light: #bfdbfe;    /* أزرق فاتح للخلفيات الناعمة */
+  --primary-dark: #1d4ed8;     /* أزرق أغمق للهـوفر */
+  --accent: #0ea5e9;           /* تركواز خفيف للتفاصيل الصغيرة */
+  --accent-light: #bae6fd;
+  --dark: #0f172a;             /* لون النص الأساسي (غامق مريح) */
+  --light: #f9fafb;            /* خلفيات فاتحة جدًا */
+  --gray: #6b7280;
+  --gray-light: #e5e7eb;
+  --success: #16a34a;
+
+  /* تدرجات ألطف */
+  --gradient-1: linear-gradient(135deg, #e0f2fe 0%, #f9fafb 100%);
+  --gradient-2: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+  --gradient-3: linear-gradient(135deg, #1d4ed8 0%, #38bdf8 100%);
+
+  /* خلفية الصفحة العامة */
+  --body-bg: #edf2f7;
+  /* بدال الصورة الثقيلة، نخليها خلفية ناعمة */
+  --bg-image: radial-gradient(
+    circle at top,
+    #e0f2fe 0%,
+    #f9fafb 55%,
+    #eef2ff 100%
+  );
+}
+.hero::before {
+  /* بس غيري الشفافية من 0.15 إلى 0.08 مثلاً */
+  background: radial-gradient(
+    circle,
+    rgba(96, 165, 250, 0.08) 0%,
+    transparent 70%
+  );
+}
+
       @font-face {
         font-family: "Lyon Arabic";
         src: url("Fonts/COMM - Lyon Arabic Display Regular.otf")
@@ -53,152 +75,290 @@
           format("opentype");
         font-weight: 700;
       }
-      body {
-        font-family: "Lyon Arabic", "Tajawal", sans-serif;
-        background: url("images/city-background.jpg") center center / cover
-          no-repeat fixed;
-        background-color: #bfdbfe;
-        min-height: 100vh;
-        color: var(--dark);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-      .topbar {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-        box-shadow: 0 2px 10px rgba(59, 130, 246, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        padding: 1rem 0;
-        transition: all 0.3s ease;
-      }
-      .topbar-row {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .nav {
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-      }
-      .nav a {
-        color: var(--dark);
-        text-decoration: none;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-      .nav a::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--accent);
-        transition: width 0.3s ease;
-      }
-      .nav a:hover::before,
-      .nav a.active::before {
-        width: 100%;
-      }
-      .nav a:hover {
-        color: var(--primary);
-        transform: translateY(-2px);
-      }
-      .nav a.active {
-        color: var(--primary);
-        background: rgba(96, 165, 250, 0.1);
-      }
-      .search {
-        display: flex;
-        align-items: center;
-        background: rgba(96, 165, 250, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.3);
-        border-radius: 50px;
-        padding: 0.5rem 1rem;
-        transition: all 0.3s ease;
-      }
-      .search:hover,
-      .search:focus-within {
-        background: rgba(96, 165, 250, 0.15);
-        border-color: var(--accent);
-        transform: scale(1.05);
-      }
-      .search input {
-        background: none;
-        border: none;
-        color: var(--dark);
-        outline: none;
-        padding: 0 0.5rem;
-        width: 200px;
-        font-family: "Lyon Arabic", sans-serif;
-      }
-      .search input::placeholder {
-        color: rgba(30, 58, 138, 0.6);
-      }
-      .search button {
-        background: none;
-        border: none;
-        color: var(--accent);
-        cursor: pointer;
-        transition: transform 0.3s ease;
-      }
-      .search button:hover {
-        transform: scale(1.2);
-      }
-      .logo {
-        height: 50px;
-      }
-      .hero {
-        padding: 100px 20px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(96, 165, 250, 0.15) 0%,
-          transparent 70%
-        );
-        animation: rotate 30s linear infinite;
-      }
-      @keyframes rotate {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-      .hero-content {
-        max-width: 1000px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-      }
-      .hero-icon {
-        width: 150px;
-        height: 150px;
-        margin-bottom: 2rem;
-        filter: drop-shadow(0 20px 40px rgba(96, 165, 250, 0.3));
-        animation: float 3s ease-in-out infinite;
-      }
+body {
+  font-family: "Lyon Arabic", "Tajawal", sans-serif;
+  background-color: #f2f8ff;
+  background-image: var(--bg-image);  /* نستخدم التدرّج الناعم اللي معرفتيه فوق */
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+  color: var(--dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+
+      /* ================= HEADER / TOPBAR ================= */
+
+
+.topbar-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.0rem;
+}
+
+/* لوغو + نص (اختياري) */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.logo {
+  height: 54px;
+  width: auto;
+  filter: drop-shadow(0 12px 30px rgba(15, 23, 42, 0.2));
+}
+
+/* لو حابة تضيفين نص بجنب الشعار استخدمي .brand-title / .brand-subtitle */
+.brand-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0f3c96;
+}
+.brand-subtitle {
+  font-size: 0.85rem;
+  color: #1f2937;
+  opacity: 0.85;
+}
+
+/* ============ NAV LINKS ============ */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 3rem; /* المسافات المتساوية */
+}
+
+.nav a {
+  position: relative;
+  color: #0f3c96;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* خط سفلي بسيط */
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 0%;
+  height: 2px;
+  background: #066eec;
+  transition: width 0.22s ease;
+}
+
+/* Hover بسييييط جداً */
+.nav a:hover {
+  color: #0956b4;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* Active */
+.nav a.active {
+  color: rgb(32, 142, 238);
+}
+.nav a.active::after {
+  width: 100%;
+}
+
+/* ================= SEARCH ================= */
+
+.search {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.5rem;
+
+  min-width: 260px;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.search:hover,
+.search:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 10px 26px rgba(37, 99, 235, 0.25);
+}
+
+.search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-size: 0.95rem;
+  text-align: right;
+  color: #111;
+}
+
+.search input::placeholder {
+  color: #888;
+}
+
+.search button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.15rem;
+  color: #1e3a8a;
+  transition: opacity 0.2s ease;
+}
+
+.search button:hover {
+  opacity: 0.8;
+}
+
+/* ================= LOGO ================= */
+
+.logo {
+   width: 150px;   /* أكبر + متوازن */
+  height: auto;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15));
+}
+h2 {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* للمتصفحات الحديثة */
+  background-clip: text;
+  color: transparent;
+}
+
+/* ================= MOBILE ================= */
+
+.hamburger,
+.nav-toggle {
+  display: none;
+}
+
+.hero-cta-btn {
+  margin-top: 1.8rem;
+  display: inline-block;
+  padding: 0.85rem 2.2rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb, #0ea5e9);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.35);
+  transition: all 0.25s ease;
+}
+
+.hero-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(37, 99, 235, 0.45);
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 110px 6vw 90px;  /* يرفع النص لفوق شوي */
+  
+  /* back1 كخلفية أساسية */
+  background: url("images/back.png") center top / cover no-repeat;
+  background-color: #f2f8ff;
+}
+
+/* لمعة خفيفة متحركة خفيييفة جداً */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at top,
+    rgba(148, 197, 253, 0.14) 0%,
+    transparent 55%
+  );
+  animation: rotate 30s linear infinite;
+  pointer-events: none;
+}
+
+/* التدرّج من الأسفل فقط عشان ما يبهّت النص */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(242, 248, 255, 0) 0%,   /* فوق شفاف تماماً */
+    rgba(242, 248, 255, 0) 65%,  /* النص يكون في هذي المنطقة الواضحة */
+    rgba(242, 248, 255, 0.8) 85%,
+    #f2f8ff 100%
+  );
+}
+
+/* محتوى الهيرو (النص + الشعار) */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin-left: auto;    /* يخليه على اليمين */
+  text-align: right;
+}
+
+/* الشعار */
+.hero-icon {
+  width: 110px;
+  height: 110px;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 16px 40px rgba(15, 23, 42, 0.25));
+  animation: float 3s ease-in-out infinite;
+}
+
+/* العنوان */
+.hero h1 {
+  font-size: clamp(2.3rem, 4.4vw, 3.5rem);
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* الفقرة */
+.hero p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: #1f2937;   /* غامق وواضح */
+  max-width: 520px;
+  margin: 0;
+}
+
+/* بولد داخل الفقرة */
+.hero p b {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+
       @keyframes float {
         0%,
         100% {
@@ -208,237 +368,313 @@
           transform: translateY(-20px);
         }
       }
-      .hero h1 {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        font-weight: 400;
-        color: var(--dark);
-        margin-bottom: 1.5rem;
-        background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      .hero p {
-        font-size: 1.25rem;
-        color: var(--dark);
-        line-height: 1.8;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      .hero p b {
-        color: var(--primary);
-        font-weight: 700;
-      }
-      .quote-section {
-        padding: 100px 20px;
-        background: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(10px);
-        position: relative;
-      }
-      .quote-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--primary),
-          transparent
-        );
-      }
-      .quote-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        gap: 60px;
-        align-items: center;
-        flex-direction: row-reverse;
-      }
-      .quote-text {
-        font-size: 1.5rem;
-        line-height: 2;
-        color: var(--dark);
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(96, 165, 250, 0.3);
-        border-radius: 20px;
-        padding: 3rem;
-        position: relative;
-      }
-      .quote-text::before {
-        content: '"';
-        position: absolute;
-        top: -20px;
-        right: 20px;
-        font-size: 150px;
-        color: var(--primary);
-        opacity: 0.1;
-        font-family: Georgia, serif;
-      }
-      .quote-author {
-        margin-top: 2rem;
-        text-align: right;
-      }
-      .author-title {
-        font-size: 1.25rem;
-        color: var(--primary);
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-      .author-subtitle {
-        font-size: 1rem;
-        color: var(--dark);
-        opacity: 0.8;
-      }
-      .quote-image {
-        flex: 0 0 350px;
-      }
-      .quote-image img {
-        width: 100%;
-        height: 500px;
-        object-fit: cover;
-        border-radius: 20px;
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
-        border: 2px solid rgba(96, 165, 250, 0.3);
-      }
-      /* News Section Styles */
-.news-section {
-  padding: 100px 20px;
-  background: rgba(255, 255, 255, 0.4);
+    /* MBS Quote */
+    /* قسم رؤية ولي العهد */
+/* ================== إصلاح تدرجات الخلفية ================== */
+
+/* خلي التدرجات خلف المحتوى */
+.vision-quote::before,
+.vision-quote::after {
+  z-index: 0;
 }
 
-.news-cards {
+/* خلي النص والصورة فوق التدرجات */
+.vision-text,
+.vision-photo {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================== دمج السكشن مع الخلفية ================== */
+
+.vision-quote {
+  position: relative;
   display: flex;
-  flex-direction: row;
-  gap: 3rem;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 70px 5vw 90px; /* ↓ كذا نصغر السكشن */
+  min-height: 360px;      /* ↓ يمنعه يصير طويل */
+
+  padding-right: 0 !important;
+
+
+  overflow: hidden;
+  direction: ltr;
+  background: linear-gradient(
+    to bottom,
+    #f2f8ff 0%,
+    rgba(242, 248, 255, 0.5) 40%,
+    #f2f8ff 100%
+  );
+}
+
+
+
+/* سحابة خفيفة خلف النص */
+.vision-quote::before {
+  content: "";
+  position: absolute;
+  inset: -40px 10% -60px 0;
+  background: radial-gradient(
+    circle at 25% 35%,
+    rgba(191, 219, 254, 0.65) 0%,
+    rgba(239, 246, 255, 0) 60%
+  );
+  pointer-events: none;
+}
+
+/* إضاءة خلف الصورة */
+.vision-quote::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;              /* يبدأ من يمين الصورة */
+  width: 60%;            /* مقدار تغطية التدرج (عدّليه حسب المقاس) */
+  height: 180px;         /* ارتفاع الدمج */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(242, 248, 255, 1) 100%
+  );
+  pointer-events: none;
+}
+
+
+/* ================== النص ================== */
+
+.vision-text {
+  direction: rtl;
+  text-align: right;
+  max-width: 57%;
+  font-size: 26px;
+  line-height: 1.5;
+  color: #0b2c63;
+}
+
+.vision-text h2 {
+  font-size: 20px;        /* نفس الحجم بدون تغيير */
+  line-height: 1.5;
+  direction: rtl;         /* من اليمين لليسار */
+  text-align: right;      /* يبدأ من اليمين */
+  max-width: 1000px;       /* يجبر النص يصير سطرين */
+  margin: 0 0 10px auto;  /* يثبت مكانه لليمين */
+}
+
+
+
+/* ================== تعديل بداية عبارة "سمو سيدي" ================== */
+
+.vision-author {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-top: 15px;
+  text-align: right;
+  opacity: 0.9;
+}
+
+
+/* لو تبين كلمة سمو سيدي هي اللي تتحرك فقط */
+.vision-author .sidi {
+    font-size: 16px;
+  line-height: 1.7;
+  margin-top: 15px;
+  text-align: right;
+  opacity: 0.9;
+  
+}
+
+/* ================== الصورة ================== */
+
+/* حاوية صورة ولي العهد */
+.vision-photo {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden; /* مهم جدًا للدمج */
+}
+
+/* الصورة */
+.vision-photo img {
+  height: 470px;          /* نفس المرجع */
+  object-fit: cover;
+  margin-right: 0px;    /* تلصق الصورة باليمين */
+  margin-bottom: 0px;   /* ننزل الصورة شوي لتصير نهاية الذوبان تحت العباءة */
+  z-index: 2;
+}
+
+/* التدرّج السفلي — الدمج الحقيقي */
+.vision-photo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 45%;   /* مقدار الذوبان — نفس اللي بالصورة */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,      /* بداية شفافة */
+    rgba(255, 255, 255, 0.4) 35%,   /* ذوبان خفيف */
+    #f2f8ff 100%                    /* اندماج كامل مع الخلفية */
+  );
+  z-index: 3;
+  pointer-events: none;
+}
+
+
+
+      /* ============================
+   SECTION: Latest News
+   ============================ */
+
+
+/* سكشن الأخبار */
+.news-section {
+  padding: 70px 20px 40px;
+  background: transparent;
+}
+
+/* Grid ثابت بالنص — بدون Scroll */
+.news-cards {
   max-width: 1200px;
   margin: 0 auto;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-bottom: 1.5rem;
-  scroll-behavior: smooth;
-  scrollbar-width: auto;
-  scrollbar-color: var(--primary) rgba(96, 165, 250, 0.15);
-  -webkit-overflow-scrolling: touch;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  overflow: visible;
 }
 
-/* شريط التمرير */
-.news-cards::-webkit-scrollbar {
-  height: 10px;
-  display: block;
-}
-
-.news-cards::-webkit-scrollbar-track {
-  background: rgba(96, 165, 250, 0.15);
-  border-radius: 10px;
-  margin: 0 10px;
-}
-
-.news-cards::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.news-cards::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
-  box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
-}
-
-/* بطاقة الخبر */
+/* الكرت — نسخة 1:1 من why-card */
 .news-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(96, 165, 250, 0.3);
-  border-radius: 22px;
+  position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+  border-radius: 30px;
   display: flex;
   flex-direction: column;
-  text-decoration: none;
-  color: inherit;
   cursor: pointer;
-  position: relative;
-  min-width: 360px;
-  max-width: 360px;
-  flex-shrink: 0;
+
+  /* نفس خلفية why-card */
+  backdrop-filter: blur(18px);
+  background: radial-gradient(circle at top,
+              rgba(255, 255, 255, 0.97) 0%,
+              rgba(239, 246, 255, 0.94) 40%,
+              rgba(219, 234, 254, 0.9) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+
+  transition: transform 0.35s ease,
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+  text-decoration: none;
 }
 
+/* نفس الـ Glow الخارجي حق why-card */
 .news-card::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-2);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid rgba(147, 197, 253, 0.7);
+  pointer-events: none;
+  opacity: 0.9;
 }
 
-.news-card:hover::before {
-  transform: scaleX(1);
-}
+/* توحيد شكل كرت آخر الأخبار مع "لماذا Beyond AI" */
 
+
+
+/* الهوفر – ما نغيّر الخلفية، بس ظل وحدود */
 .news-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 18px 35px rgba(96, 165, 250, 0.35);
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(96, 165, 250, 0.55);
+  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.18);
+  border-color: rgba(59, 130, 246, 0.9);
+  background: radial-gradient(circle at top,
+              rgba(255, 255, 255, 0.97) 0%,
+              rgba(239, 246, 255, 0.94) 40%,
+              rgba(219, 234, 254, 0.9) 100%) ;
 }
 
-/* صورة الخبر */
+/* ======== صورة الخبر ======== */
 .news-image {
   width: 100%;
-  height: 190px;
+  height: 210px;
   overflow: hidden;
-  position: relative;
-  flex-shrink: 0;
 }
 
 .news-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s ease; /* حركة الصورة */
 }
 
+/* الصورة تتحرك الآن (Zoom) */
 .news-card:hover .news-image img {
-  transform: scale(1.05);
+  transform: scale(1.07);
 }
 
-/* النص */
+/* ======== المحتوى ======== */
 .news-content {
   padding: 1.8rem 1.8rem 2.1rem;
-  display: block;
-}
-
-.news-content p {
-  color: var(--dark);
-  line-height: 1.9;
-  font-size: 1rem;
-  margin: 0;
   text-align: right;
-
-  /* تقصير النص داخل البطاقة */
-  display: -webkit-box;
-  -webkit-line-clamp: 5;   /* غيّري الرقم حسب ما تحبين */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
-      .why,
+/* التاريخ — بدون أيقونة */
+.news-date {
+  display: inline-flex;
+  align-items: right;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+
+  padding: 0.45rem 1.4rem;
+  border-radius: 999px;
+
+  /* نفس تدرج الهيرو والصفحة */
+  background: linear-gradient(135deg, #1d4ed8, #2563eb, #38bdf8);
+  box-shadow: 0 8px 18px rgba(96, 165, 250, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  margin-bottom: 1.1rem;
+}
+
+.news-date::before {
+  content: none;
+}
+
+/* نص الخبر */
+.news-content p {
+  font-size: 0.98rem;
+  line-height: 1.9;
+  color: #1f2937;
+  text-decoration: none!important;
+}
+
+/* ريسبونسف */
+@media (max-width: 992px) {
+  .news-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .news-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+     
+
       .AI,
       .offeres,
       .affiliated {
         padding: 100px 20px;
       }
-      .why {
-        background: rgba(255, 255, 255, 0.4);
-      }
+  
       .AI {
         background: rgba(255, 255, 255, 0.4);
       }
@@ -447,97 +683,89 @@
   padding-bottom: 160px; /* زودنا المسافة تحت القسم */
 }
 
-      .affiliated {
-        background: rgba(255, 255, 255, 0.5);
-      }
-      .about-us {
-        padding: 100px 20px;
-        background: rgba(255, 255, 255, 0.6);
-      }
-      .section-title {
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-      .section-title h2 {
-        font-size: clamp(2rem, 4vw, 3rem);
-        font-weight: 700;
-        color: var(--dark);
-        position: relative;
-        display: inline-block;
-      }
-      .section-title h2::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 4px;
-        background: var(--gradient-2);
-        border-radius: 2px;
-      }
 
-      /* AI Section Link Icon */
-      .AI .section-title {
-        position: relative;
-        padding-top: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
+      /* ============================
+   سكشن مركز الدراسات (ذكاء)
+   ============================ */
 
-      .AI .section-title .link-icon {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        width: 45px;
-        height: 45px;
-        z-index: 10;
-        order: 2;
-        flex-shrink: 0;
-      }
+.center-section {
+  width: 100%;
+  padding: 80px 0;
+  background: url("images/المركز-خلفية.png") center/cover no-repeat; /* الخلفية */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      .AI .section-title h2 {
-        order: 1;
-      }
+.center-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  width: 90%;
+  gap: 40px;
+}
 
-      .AI .section-title .link-icon a {
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(10px);
-        border: 2px solid rgba(96, 165, 250, 0.3);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(96, 165, 250, 0.2);
-      }
+/* النص */
+.center-text {
+  flex: 1;
+  direction: rtl;
+  text-align: right;
+}
 
-      .AI .section-title .link-icon a:hover {
-        transform: scale(1.15) rotate(5deg);
-        border-color: var(--primary);
-        box-shadow: 0 8px 25px rgba(96, 165, 250, 0.4);
-        background: rgba(96, 165, 250, 0.1);
-      }
+.center-text h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0d1a4a;
+  margin-bottom: 1rem;
+  text-align: right;
+}
 
-      .AI .section-title .link-icon img {
-        width: 20px;
-        height: 20px;
-        object-fit: contain;
-        transition: transform 0.3s ease;
-        filter: brightness(0.8);
-      }
+.center-text p {
+  font-size: 1.15rem;
+  line-height: 2.2;
+  color: #1f2a3b;
+  font-weight: 500;
+}
 
-      .AI .section-title .link-icon a:hover img {
-        transform: translateX(-2px);
-        filter: brightness(1);
-      }
+/* الشعار */
+.center-logo {
+  flex: 0 0 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-logo img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* responsive */
+@media (max-width: 992px) {
+  .center-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .center-text {
+    text-align: center;
+  }
+}
+/* مسافات مريحة بين السكاشن الرئيسية */
+.news-section,
+.center-section,
+.results-section,
+.affiliated,
+.join-us {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+/* مسافة إضافية بسيطة بعد رؤية ولي العهد */
+.vision-quote {
+  margin-bottom: 60px;
+}
 
       .cards {
         display: grid;
@@ -593,73 +821,7 @@
         line-height: 1.8;
         font-size: 1.1rem;
       }
-      .join-us {
-        padding: 100px 20px;
-        background: linear-gradient(
-          135deg,
-          #93c5fd 0%,
-          rgba(96, 165, 250, 0.3),
-          #60a5fa 100%
-        );
-        position: relative;
-        overflow: hidden;
-      }
-      .join-us::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.15) 0%,
-          transparent 70%
-        );
-        animation: rotate 25s linear infinite reverse;
-      }
-      .join-us-content {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-        position: relative;
-        z-index: 1;
-      }
-      .join-us-logo {
-        width: 120px;
-        margin-bottom: 2rem;
-        filter: brightness(0) invert(1);
-      }
-      .join-us h2 {
-        font-size: 2.5rem;
-        color: var(--light);
-        margin-bottom: 1.5rem;
-        font-weight: 700;
-      }
-      .join-us p {
-        font-size: 1.25rem;
-        color: rgba(255, 255, 255, 0.9);
-        margin-bottom: 2.5rem;
-        line-height: 1.8;
-      }
-      .join-us-btn {
-        display: inline-block;
-        padding: 1rem 3rem;
-        background: var(--light);
-        color: var(--primary);
-        font-size: 1.25rem;
-        font-weight: 700;
-        border-radius: 50px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      }
-      .join-us-btn:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        background: rgba(96, 165, 250, 0.3);
-        color: var(--light);
-      }
+      
    /* شركاء النجاح – شعارات كبيرة + سكروول داخلي + أسهم */
 
 .sponsor-carousel {
@@ -806,391 +968,302 @@
 }
 
 
-/* ماذا نقدم */
-/* قسم ماذا نقدم */
-.what-we-offer {
-  margin-top: 4rem;
-    margin-bottom: 5rem;
-}
 
-.what-we-offer .section-title {
+/* ============================
+   سكشن نتائج تروي قصّتنا
+   ============================ */
+/* ------------ سكشن الأرقام مثل الصورة ------------ */
+/* ===== إصلاح التصميم وجعله مثل الصورة ===== */
+
+/* إزالة الكروت وتحويلها لتصميم بسيط */
+.stat-card {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
   text-align: center;
-  margin-bottom: 3rem;
+  width: 220px; /* حجم العنصر */
 }
 
-.offer-cards {
+/* ترتيب العناصر أفقياً بدال Grid */
+.results-grid {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 70px;   /* المسافة بينهم */
+  margin-top: 50px;
 }
 
-.offer-card {
-  width: 480px; /* حجم الكرت */
-  background: rgba(255, 255, 255, 0.65);
-  border-radius: 26px;
-  padding: 2.5rem 2rem;
+/* الأيقونة */
+.stat-icon img {
+  width: 58px;    /* حجم الأيقونة */
+  height: 58px;
+  border-radius: 7px; /* نفس اللي طلبتيه */
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+/* الرقم */
+.stat-number {
+  font-size: 2.2rem; /* أصغر */
+  font-weight: 800;
+  color: #1d4ed8;
+  margin-bottom: 6px;
+}
+
+/* العنوان */
+.stat-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+   background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+  
+}
+
+/* الوصف */
+.stat-text {
+  font-size: 0.75rem;
+  color: #143496;
+  line-height: 1.8;
+}
+
+/* إصلاح العنوان الرئيسي */
+.results-title {
+ font-size: clamp(2.3rem, 4.4vw, 3.5rem);
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center !important ;
+}
+
+/* الفقرة تحت العنوان */
+.results-desc {
+  margin-top: 8px;
+  font-size: 1.1rem;
+  color: #1f2937;
   text-align: center;
-  border: 1px solid rgba(147, 197, 253, 0.32);
-  box-shadow: 0 12px 30px rgba(148, 163, 184, 0.22);
-  backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
-}
-
-.offer-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 45px rgba(148, 163, 184, 0.32);
-}
-
-.offer-icon {
-  width: 85px;
-  margin-bottom: 1.3rem;
-  opacity: 0.9;
-}
-
-.offer-card h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 1rem;
-}
-
-.offer-card p {
-  font-size: 1rem;
-  line-height: 1.9;
-  color: var(--dark);
-}
-
-/* ريسبونسف */
-@media (max-width: 768px) {
-  .offer-card {
-    width: 100%;
-  }
-}
-/* تاريخ اللي في آخر الأخبار */
-.news-date {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #ffffff;
-  padding: 0.45rem 1.4rem;
-  border-radius: 999px;
-  background: var(--gradient-3);
-  box-shadow: 0 8px 18px rgba(96, 165, 250, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  margin-bottom: 1.1rem;
-  margin-inline: auto;      /* يخليها في المنتصف تحت الصورة */
-}
-
-.news-date::before {
-  content: "📅";
-  font-size: 1rem;
-  opacity: 0.9;
 }
 
 
       /* the footer */
-      .footer {
-        margin-top: 44px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(96, 165, 250, 0.3);
-      }
-      .footer .wrap {
-        max-width: 100% !important;
-        padding-inline: 0 !important;
-      }
-      .foot {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-areas: "left right";
-        align-items: center;
-        gap: 8px 12px;
-        min-height: 64px;
-        padding-inline: 12px;
-        direction: ltr;
-        font-size: 13px;
-        padding-block: 10px 16px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      .foot-left {
-        grid-area: left;
-        justify-self: start;
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .social-icons {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        white-space: nowrap;
-      }
-      .social-icons .icon {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: transparent;
-        border: 1.5px solid rgba(96, 165, 250, 0.35);
-        display: grid;
-        place-items: center;
-        transition: all 0.2s ease;
-        cursor: pointer;
-        text-decoration: none;
-      }
-      .social-icons .icon:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
-        border-color: var(--primary);
-      }
-      .social-icons .icon img {
-        width: 14px;
-        height: 14px;
-        display: block;
-      }
-      .handle {
-        margin-inline-start: 8px;
-        opacity: 0.9;
-        font-size: 12.5px;
-        font-weight: 400;
-        color: var(--dark);
-      }
-      .email-line {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        opacity: 0.9;
-        font-size: 13px;
-      }
-      .email-line .icon {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: transparent;
-        border: 1.5px solid rgba(96, 165, 250, 0.35);
-        display: grid;
-        place-items: center;
-        transition: all 0.2s ease;
-        cursor: pointer;
-        text-decoration: none;
-      }
-      .email-line .icon:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
-        border-color: var(--primary);
-      }
-      .email-line .icon img {
-        width: 13px;
-        height: 13px;
-        display: block;
-      }
-      .email-line span {
-        color: var(--dark);
-      }
-      .foot-right {
-        grid-area: right;
-        justify-self: end;
-        direction: rtl;
-        text-align: right;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 50vw;
-        font-size: 13px;
-        font-weight: 400;
-        color: var(--dark);
-      }
-      .foot-right [dir="ltr"] {
-        unicode-bidi: isolate-override;
-        display: inline-block;
-        margin-inline-start: 4px;
-        font-weight: 400;
-      }
-      .sep {
-        opacity: 0.5;
-      }
-      .brand-en {
-        color: var(--primary);
-        font-weight: 700;
-      }
-      /* end of the footer */
-      .nav-toggle {
-        display: none;
-      }
-      .hamburger {
-        display: none;
-        color: var(--dark);
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0.5rem;
-      }
-      .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-      }
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .scale-in {
-        opacity: 0;
-        transform: scale(0.9);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-      }
-      .scale-in.visible {
-        opacity: 1;
-        transform: scale(1);
-      }
-      .slide-left {
-        opacity: 0;
-        transform: translateX(40px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-      }
-      .slide-left.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      .slide-right {
-        opacity: 0;
-        transform: translateX(-40px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-      }
-      .slide-right.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      #page-spinner {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          135deg,
-          #dbeafe 0%,
-          #bfdbfe 50%,
-          #93c5fd 100%
-        );
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .spinner {
-        width: 60px;
-        height: 60px;
-        border: 4px solid rgba(96, 165, 250, 0.3);
-        border-top-color: var(--primary);
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-      @media (max-width: 992px) {
-        .quote-container {
-          flex-direction: column-reverse;
-          gap: 3rem;
-        }
-        .quote-image {
-          flex: 0 0 auto;
-          max-width: 400px;
-        }
-        .about-us-box {
-          flex-direction: column;
-          text-align: center;
-        }
-        .cards {
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        }
-      }
-      @media (max-width: 768px) {
-        .hamburger {
-          display: block;
-        }
-        .nav {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: rgba(255, 255, 255, 0.98);
-          flex-direction: column;
-          padding: 2rem;
-          border-top: 1px solid rgba(96, 165, 246, 0.3);
-        }
-        .nav-toggle:checked ~ .nav {
-          display: flex;
-        }
-        .hero h1 {
-          font-size: 2rem;
-        }
-        .quote-text {
-          font-size: 1.2rem;
-          padding: 2rem;
-        }
-        .foot {
-          flex-direction: column;
-          text-align: center;
-        }
-        .foot-right {
-          text-align: center;
-        }
-        .search {
-          display: none;
-        }
+      /* ===================== Footer الجديد ===================== */
+/* ===================== Footer ===================== */
 
-        /* AI Section Link Icon - Mobile */
-        .AI .section-title {
-          flex-direction: column;
-          gap: 0.8rem;
-        }
+.footer {
+  margin-top: 80px;
+  background: #f9fafb;
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 50px 20px 20px;
+}
 
-        .AI .section-title .link-icon {
-          width: 38px;
-          height: 38px;
-        }
+/* الشبكة العامة للأعمدة */
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  direction: rtl;
+}
 
-        .AI .section-title .link-icon img {
-          width: 16px;
-          height: 16px;
-        }
+/* كل عمود */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* مهم: كل شيء يبدأ من اليمين */
+}
 
-        .foot {
-          grid-template-columns: 1fr;
-          grid-template-areas: "right" "left";
-          gap: 15px;
-        }
-        .foot-right {
-          justify-self: center;
-          max-width: 100%;
-          text-align: center;
-        }
-        .foot-left {
-          justify-self: center;
-          align-items: center;
-        }
-      }
-      @media (max-width: 480px) {
-        .hero-icon {
-          width: 100px;
-          height: 100px;
-        }
-        .cards {
-          grid-template-columns: 1fr;
-        }
-        .carousel-slide {
-          flex: 0 0 50%;
-        }
-      }
+/* عنوان الأعمدة */
+.footer-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f3c96;
+  margin-bottom: 0.75rem;
+  text-align: right !important;
+}
+
+/* ===== عمود روابط سريعة بالذات ===== */
+.footer-col:nth-child(2) .footer-title {
+  width: 100%;
+  margin: 0 1.4rem 0.4rem 0;   /* نفس إزاحة القائمة */
+}
+
+/* قائمة الروابط */
+.footer-links {
+  direction: rtl;
+  text-align: right;
+  list-style: disc;
+  list-style-position: outside; /* النقطة برا البوكس */
+  padding-right: 1.4rem;        /* إزاحة يمين للنص والعنوان */
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+  color: #0b2c63;
+}
+
+.footer-links li::marker {
+  color: #2563eb;
+  font-size: 1.1rem;
+}
+
+.footer-links a {
+  color: #1f2937;
+  font-size: 0.96rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #2563eb;
+}
+
+/* معلومات التواصل */
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+/* أيقونات التواصل */
+.footer-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e5f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1d4ed8;
+  font-size: 1rem;
+}
+
+/* الشريط السفلي كما هو عندك */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 25px auto 0;
+  padding-top: 15px;
+  border-top: 1px solid rgba(209, 213, 219, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  direction: rtl;
+  flex-wrap: wrap;
+}
+
+
+/* سوشال + سطر أخير */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 25px auto 0;
+  padding-top: 15px;
+  border-top: 1px solid rgba(209, 213, 219, 0.7);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  direction: rtl;
+  flex-wrap: wrap;
+}
+
+/* أيقونات التواصل الاجتماعي */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-social a {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  color: #1f2937;
+  font-size: 0.9rem;
+}
+
+.footer-social a:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+.footer-bottom-text {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+/* قائمة نظيفة بنقاط + وسط */
+.footer-links.neat-list {
+  list-style: disc;              /* نقاط */
+  padding-right: 1.5rem;         /* إزاحة بسيطة حتى تظهر النقاط */
+  text-align: center;            /* النص والروابط بالنص */
+  margin: 0 auto;
+}
+
+.footer-links.neat-list li {
+  margin: 0.35rem 0;             /* مسافات متساوية */
+}
+
+.footer-links.neat-list li::marker {
+  color: #1e40af;                /* لون النقاط بلون المبادرة */
+  font-size: 1.1rem;
+}
+
+.footer-links.neat-list a {
+  font-size: 1rem;
+  color: #1e3a8a;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.footer-links.neat-list a:hover {
+  color: #2563eb;
+}
+
+/* موبايل */
+@media (max-width: 840px) {
+  .footer-inner {
+    grid-template-columns: minmax(0, 1fr);
+    text-align: center;
+  }
+
+  .footer-contact li {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+        
     </style>
   </head>
   <body>
@@ -1208,7 +1281,7 @@
           <a href="WeeklyParagraphs.html">الفقرات الأسبوعية</a>
           <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
           <a href="Who_We_Are.html">من نحن</a>
-          <a href="#footer">تواصل معنا</a>
+          <a href="Contact_Us.html">تواصل معنا</a>
         </nav>
 
         <form class="search" id="searchForm">
@@ -1217,209 +1290,216 @@
         </form>
 
         <div class="brand">
-          <img src="images/logo.svg" alt="الشعار" class="logo" />
+          <img src="images/HeaderLogo.png" alt="الشعار" class="logo" />
         </div>
       </div>
     </header>
 
-    <section class="hero fade-in">
+<section class="hero fade-in">
   <div class="hero-content">
     <img src="images/logo.png" alt="AI Icon" class="hero-icon scale-in" />
-    <h1>مستقبلك مع الذكاء الاصطناعي يبدأ هنا</h1>
-    <p>
-      في مبادرة <b>Beyond AI</b> نؤمن أن التقنية ليست أدوات فحسب، بل هي فرصة
-      لابتكار المستقبل وصناعة الأثر. نفتح لك الأفق لتتعلم، تبتكر، وتحوّل
-      أفكارك إلى واقع.
-    </p>
+<h1>بوابتك لفهم الذكاء الاصطناعي</h1>
+
+<p class="hero-text">
+ مبادرة مجتمعية تُسهم في نشر الوعي بالذكاء الاصطناعي، وتعمل على تعزيز فهمه كأحد أهم محركات التقدّم والتحوّل، بما يدعم رؤية المملكة في بناء اقتصاد معرفي قائم على الابتكار.
+</p>
+
+<a href="Who_We_Are.html" class="hero-cta-btn">اكتشف المبادرة</a>
+
   </div>
 </section>
 
 
-    <section class="quote-section">
-      <div class="quote-container">
-        <div class="quote-content slide-left">
-          <div class="quote-text">
-            نحن نحتضن الذكاء الاصطناعي ونسخر قدراته معاً ونطلق إمكاناته لخير
-            الإنسانية جمعاء، وندعو كافة الحالمين والمبدعين والمستثمرين للانضمام
-            لنا لنبني نموذجاً رائداً لإطلاق قيمة البيانات والذكاء الاصطناعي
-            لبناء اقتصادات المعرفة
-            <div class="quote-author">
-              <div class="author-title">
-                صاحب السمو الملكي الأمير محمد بن سلمان بن عبدالعزيز آل سعود
-              </div>
-              <div class="author-subtitle">
-                ولي العهد رئيس مجلس الوزراء - حفظه الله
-              </div>
-            </div>
-          </div>
+<section class="vision-quote fade-in">
+  <div class="vision-text">
+    <h3>
+      ندعو كافة الحالمين والمبدعين والمستثمرين للانضمام لنا لبِناء نموذج رائد
+      لإطلاق قيمة البيانات والذكاء الاصطناعي لبناء اقتصادات المعرفة.
+    </h3>
+
+    <p class="vision-author">
+      <span class="sidi">سمو سيدي</span>
+      صاحب السمو الملكي الأمير محمد بن سلمان بن عبدالعزيز آل سعود<br>
+      ولي العهد، رئيس مجلس الوزراء - حفظه الله
+    </p>
+  </div>
+
+  <div class="vision-photo">
+    <img src="images/MBS.png" alt="سمو ولي العهد" />
+  </div>
+</section>
+
+
+
+
+
+<!-- ابدئي من هنا بدل آخر الأخبار ولماذا Beyond AI اللي عندك الآن -->
+
+<section class="mid-bg">
+
+  <!-- ====== آخر الأخبار ====== -->
+  <section class="news-section">
+    <div class="section-title">
+      <h2>آخر الأخبار</h2>
+    </div>
+
+    <div class="news-cards">
+
+      <!-- خبر 1 -->
+      <a href="https://x.com/_ksu/status/1987928051225702665?s=46"
+         class="news-card" target="_blank">
+
+        <div class="news-image">
+          <img src="images/news1.jpg" alt="معسكر الذكاء الاصطناعي" />
         </div>
-        <div class="quote-image slide-right">
-          <img src="images/prince_Mohammad.jpg" alt="صاحب السمو الملكي" />
-        </div>
-      </div>
-    </section>
-<section class="news-section">
-      <div class="section-title fade-in">
-        <h2>آخر الأخبار</h2>
-      </div>
-      <div class="news-cards">
-  <a href="https://x.com/_ksu/status/1987928051225702665?s=46"
-   class="news-card fade-in" target="_blank">
 
-  <div class="news-image">
-    <img src="images/news1.jpg" alt="معسكر الذكاء الاصطناعي" />
-  </div>
-
-  <div class="news-content">
-    <span class="news-date">٢٦ – ٣٠ أكتوبر ٢٠٢٥</span>
-
-    <p>
-      اختتمت مبادرة Beyond AI معسكر تطبيقات الذكاء الاصطناعي في الحوسبة
-      السحابية بمشاركة 75 طالبًا وطالبة، نفّذوا خلالها 17 مشروعًا مبتكرًا
-      في خمسة أيام تدريبية مكثفة بإشراف متخصص.
-    </p>
-  </div>
-
-</a>
-
-        
-   <a href="https://x.com/thakaa_beyond/status/1979572270713774285?s=46"
-   class="news-card fade-in" target="_blank">
-
-  <div class="news-image">
-    <img src="images/news2.png" alt="شراكة Oracle" />
-  </div>
-
-  <div class="news-content">
-    <span class="news-date">١٨ أكتوبر ٢٠٢٥</span>
-
-   <p>
-      أعلنت مبادرة Beyond AI عن عقد شراكة استراتيجية مع شركة Oracle
-      لدعم <b>معسكر تطبيقات الذكاء الاصطناعي في الحوسبة السحابية</b>،
-      وذلك لتوفير بيئة تدريبية عملية على أحدث التقنيات السحابية،
-      وتمكين الفرق المشاركة من بناء حلول مبتكرة في مجالات الذكاء الاصطناعي.
-    </p>
-  </div>
-
-</a>
-
-        
-     <a href="https://x.com/thakaa_beyond/status/1985022133693456598?s=46"
-   class="news-card fade-in" target="_blank">
-
-  <div class="news-image">
-    <img src="images/new3.png" alt="ورشة العمل" />
-  </div>
-
-  <div class="news-content">
-    <span class="news-date">٥ نوفمبر ٢٠٢٥</span>
-
-    <p>
-      أقامت مبادرة Beyond AI ورشة عمل بعنوان "How to Build an AI Chatbot"،
-      خاض فيها المشاركون تجربة عملية للتعرّف على أساسيات بناء أنظمة المحادثة
-      الذكية، وفهم دور الـ chatbots في تحسين التفاعل الرقمي.
-    </p>
-  </div>
-
-</a>
-
-      </div>
-    </section>
-
-    <section class="why">
-      <div class="section-title fade-in">
-        <h2>لماذا Beyond AI ؟</h2>
-      </div>
-      <div class="cards">
-        <div class="card scale-in">
-          <img src="images/AI.png" alt="AI" />
-          <h3>تكامل التخصصات</h3>
+        <div class="news-content">
+          <span class="news-date">٢٦ – ٣٠ أكتوبر ٢٠٢٥</span>
           <p>
-            نمزج الذكاء الاصطناعي مع تخصصك الأكاديمي لتكتشف تطبيقاته المباشرة في
-            مجالك
+            اختتمت مبادرة Beyond AI معسكر تطبيقات الذكاء الاصطناعي في الحوسبة
+            السحابية بمشاركة 75 طالبًا وطالبة، نفّذوا خلالها 17 مشروعًا مبتكرًا
+            في خمسة أيام تدريبية مكثفة بإشراف متخصص.
           </p>
         </div>
-        <div class="card scale-in">
-          <img src="images/mission.png" alt="Vision" />
-          <h3>رؤية مستقبلية</h3>
-          <p>نمنحك رؤية مستقبلية واضحة تقودك بخطوات واثقة نحو التميز</p>
-        </div>
-        <div class="card scale-in">
-          <img src="images/cooperation.png" alt="Community" />
-          <h3>مجتمع متعاون</h3>
-          <p>مجتمع طلابي متعاون يجمعنا الشغف بالعلم والإبداع في التقنية</p>
-        </div>
-      </div>
-    </section>
 
-    <section class="AI">
-  <div class="section-title fade-in">
-    <h2>مركز الدراسات المتقدمة في الذكاء الاصطناعي</h2>
-    <div class="link-icon">
-      <a href="https://thakaa.ksu.edu.sa/ar" target="_blank">
-        <img src="images/arrow.png" alt="Link Arrow" />
       </a>
-    </div>
-  </div>
 
-  <div class="cards">
-    <div class="card fade-in">
-      <h3>نبذة عن المركز</h3>
+      <!-- خبر 2 -->
+      <a href="https://x.com/thakaa_beyond/status/1979572270713774285?s=46"
+         class="news-card" target="_blank">
+
+        <div class="news-image">
+          <img src="images/news2.png" alt="شراكة Oracle" />
+        </div>
+
+        <div class="news-content">
+          <span class="news-date">١٨ أكتوبر ٢٠٢٥</span>
+          <p>
+            أعلنت مبادرة Beyond AI عن عقد شراكة استراتيجية مع شركة Oracle
+            لدعم <b>معسكر تطبيقات الذكاء الاصطناعي في الحوسبة السحابية</b>،
+            وذلك لتوفير بيئة تدريبية عملية على أحدث التقنيات السحابية،
+            وتمكين الفرق المشاركة من بناء حلول مبتكرة في مجالات الذكاء الاصطناعي.
+          </p>
+        </div>
+
+      </a>
+
+      <!-- خبر 3 -->
+      <a href="https://x.com/thakaa_beyond/status/1985022133693456598?s=46"
+         class="news-card" target="_blank">
+
+        <div class="news-image">
+          <img src="images/new3.png" alt="ورشة العمل" />
+        </div>
+
+        <div class="news-content">
+          <span class="news-date">٥ نوفمبر ٢٠٢٥</span>
+          <p>
+            أقامت مبادرة Beyond AI ورشة عمل بعنوان "How to Build an AI Chatbot"،
+            خاض فيها المشاركون تجربة عملية للتعرّف على أساسيات بناء أنظمة المحادثة
+            الذكية، وفهم دور الـ chatbots في تحسين التفاعل الرقمي.
+          </p>
+        </div>
+
+      </a>
+
+    </div>
+  </section>
+
+  
+
+<!-- بعده مباشرة يجي قسم مركز الدراسات المتقدمة في الذكاء الاصطناعي -->
+
+
+
+<section class="center-section">
+  <div class="center-content">
+
+    <!-- اليسار: النبذة -->
+    <div class="center-text">
+      <h2>نبذة عن المركز</h2>
       <p>
-        مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) هو مركز بحثي
-        متخصّص في تطوير تقنيات الذكاء الاصطناعي وتطبيقاته، ويتبع وكالة
-        الجامعة للدراسات العليا والبحث العلمي. يهدف المركز إلى دعم منظومة
-        البحث والابتكار في مجال الذكاء الاصطناعي على مستوى الجامعة والقطاعات
-        الوطنية من خلال تقديم خدمات بحثية واستشارية تعتمد على أفضل الممارسات
-        وأحدث المعايير والتقنيات العالمية.
+        مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) هو مركز بحثي متخصص في تطوير تقنيات الذكاء الاصطناعي
+        وتطبيقاته، ويتبع وكالة الجامعة للدراسات العليا والبحث العلمي. يهدف المركز إلى دعم منظومة البحث والابتكار
+        في مجال الذكاء الاصطناعي على مستوى الجامعة والقطاعات الوطنية من خلال تقديم خدمات بحثية واستشارية تعتمد
+        على أفضل الممارسات وأحدث المعايير والتقنيات العالمية.
       </p>
     </div>
+
+    <!-- اليمين: شعار ذكاء -->
+    <div class="center-logo">
+      <img src="images/المركز.png" alt="AI Center Logo">
+    </div>
+
   </div>
 </section>
+<section class="results-section">
+  <div class="results-inner">
 
+    <h2 class="results-title">نتائج تروي قصّتنا</h2>
 
-   <section class="what-we-offer fade-in">
-  <div class="section-title">
-    <h2>ماذا نقدم؟</h2>
-  </div>
+    <p class="results-desc">
+      هذه الأرقام تُجسّد ما حققته مبادرة Beyond AI خلال الفصل الدراسي الأول من عام ١٤٤٧ هـ.
+    </p>
 
-  <div class="offer-cards">
-    
-    <!-- الكرت 1 -->
-    <div class="offer-card">
-      <img src="images/what3.png" alt="AI Tools" class="offer-icon">
-      <h3>مكتبة أدوات الذكاء الاصطناعي</h3>
-      <p>
-        مجموعة أدوات مختارة تمكّنك من تطبيق الذكاء الاصطناعي في مجالك الأكاديمي والمهني.
-      </p>
-    </div>
+    <div class="results-grid">
 
-    <!-- الكرت 2 -->
-    <div class="offer-card">
-      <img src="images/what.png" alt="Programs" class="offer-icon">
-      <h3>برامج المبادرة</h3>
-      <p>
-        برامج معرفية وتطبيقية تهدف إلى تمكين الطلبة من استكشاف الذكاء الاصطناعي وتوظيفه عبر لقاءات وورش عمل ومعسكرات تخصصية.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-    <section class="join-us fade-in">
-      <div class="join-us-content">
-        <img src="images/logo.png" alt="Logo" class="join-us-logo scale-in" />
-        <h2>انضم إلى فعالياتنا المميزة</h2>
-        <p>
-          سجل الآن للانضمام إلى أحداث Beyond AI الحصرية. تفاعل مع الخبراء، اكتسب
-          معارف جديدة، وكن جزءاً من مجتمع متميز في مجال الذكاء الاصطناعي.
+      <!-- 1) عضو نشط -->
+      <article class="stat-card">
+        <div class="stat-icon">
+          <img src="images/22.png" alt="عضو نشط">
+        </div>
+        <div class="stat-number" data-target="85">+0</div>
+        <h3 class="stat-title">عضو نشط</h3>
+        <p class="stat-text">
+          من طلاب جامعات الرياض يعملون ضمن فرق المبادرة.
         </p>
-        <p class="coming-soon-text">سيتاح قريباً</p>
-      </div>
-    </section>
+      </article>
+
+      <!-- 2) مستفيد -->
+      <article class="stat-card">
+        <div class="stat-icon">
+          <img src="images/33.png" alt="مستفيد">
+        </div>
+        <div class="stat-number" data-target="1200">+0</div>
+        <h3 class="stat-title">مستفيد</h3>
+        <p class="stat-text">
+          من مختلف مناطق المملكة استفادوا من مبادرات وفعاليات Beyond AI.
+        </p>
+      </article>
+
+      <!-- 3) برامج معرفية -->
+      <article class="stat-card">
+        <div class="stat-icon">
+          <img src="images/44.png" alt="برامج معرفية">
+        </div>
+        <div class="stat-number" data-target="13">+0</div>
+        <h3 class="stat-title">برامج معرفية نوعية</h3>
+        <p class="stat-text">
+          ورش ولقاءات ومعسكر تدريبي وفقرات أسبوعية.
+        </p>
+      </article>
+
+      <!-- 4) الوصول الرقمي -->
+      <article class="stat-card">
+        <div class="stat-icon">
+          <img src="images/55.png" alt="الوصول الرقمي">
+        </div>
+        <div class="stat-number" data-target="400" data-suffix="K">+0K</div>
+        <h3 class="stat-title">الوصول الرقمي</h3>
+        <p class="stat-text">
+          وصول رقمي واسع يعكس انتشار وتأثير محتوى المبادرة.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 
 <section class="affiliated fade-in">
   <div class="section-title">
+
     <h2>شركاء النجاح</h2>
   </div>
 
@@ -1467,56 +1547,94 @@
 </section>
 
 
-    <footer class="footer fade-in" id="footer">
-      <div class="foot">
-        <div class="foot-left">
-          <div class="social-icons">
-            <a
-              class="icon"
-              href="https://www.linkedin.com/showcase/thakaabeyond/"
-              title="LinkedIn"
-              aria-label="LinkedIn"
-            >
-              <img src="images/liked-in.png" alt="LinkedIn" />
-            </a>
-            <a
-              class="icon"
-              href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-              title="X (Twitter)"
-              aria-label="X"
-            >
-              <img src="images/twitter.png" alt="X" />
-            </a>
-            <a
-              class="icon"
-              href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
-              title="TikTok"
-              aria-label="TikTok"
-            >
-              <img src="images/tik-tok.png" alt="TikTok" />
-            </a>
-            <span class="handle">@ThakaaBeyond</span>
+   <footer class="footer fade-in" id="footer">
+  <div class="footer-inner">
+
+    <!-- العمود 1 (يمين): عن مبادرة Beyond AI -->
+    <div class="footer-col">
+      <h3 class="footer-title">مبادرة Beyond AI</h3>
+
+     
+
+      <p class="footer-about-desc">
+         
+        مبادرة Beyond AI هي مبادرة مجتمعية  تابعة لمركز الدراسات المتقدمة في الذكاء الاصطناعي ( ذكاء ) في جامعة الملك سعود يقودها أكثر من ٩٠ طالبًا وطالبة من نخبة الجامعات السعودية،
+        وتهدف إلى تمكين الطلبة من مختلف المستويات الدراسية الجامعية ومن مختلف التخصصات
+        من فهم الذكاء الاصطناعي وتوظيفه في مساراتهم الأكاديمية والمهنية.
+      </p>
+    </div>
+
+    <!-- العمود 2 (وسط): روابط سريعة -->
+   <div class="footer-col">
+  <h3 class="footer-title">روابط سريعة</h3>
+ <ul class="footer-links">
+  <li><a href="index.html">الصفحة الرئيسية</a></li>
+  <li><a href="WeeklyParagraphs.html">برامـج المبــادرة</a></li>
+  <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
+  <li><a href="Who_We_Are.html">من نحن</a></li>
+  <li><a href="Contact_Us.html">تواصل معنا</a></li>
+</ul>
+
+</div>
+
+
+    <!-- العمود 3 (يسار): معلومات التواصل -->
+    <div class="footer-col">
+      <h3 class="footer-title">معلومات التواصل</h3>
+      <ul class="footer-contact">
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-envelope"></i>
           </div>
-          <div class="email-line">
-            <a
-              class="icon"
-              href="mailto:ThakaaBeyond@ksu.edu.sa"
-              title="Email"
-              aria-label="Email"
-              dir="ltr"
-            >
-              <img src="images/email.png" alt="Email" />
-            </a>
-            <span>ThakaaBeyond@ksu.edu.sa</span>
+          <span class="nowrap">ThakaaBeyond@ksu.edu.sa</span>
+        </li>
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-phone"></i>
           </div>
-        </div>
-        <div class="foot-right" dir="rtl">
-          <span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
-          <span class="sep" aria-hidden="true"> – </span>
-          <span class="brand-en" dir="ltr">Beyond AI</span>
-        </div>
-      </div>
-    </footer>
+          <span class="nowrap" dir="ltr">+966539066133</span>
+        </li>
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <span>مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك سعود</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- الشريط السفلي -->
+   
+  <div class="footer-bottom">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/showcase/thakaabeyond/" aria-label="LinkedIn" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" aria-label="X" title="X">
+        <i class="fa-brands fa-x-twitter"></i>
+
+
+
+      </a>
+      <a href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" aria-label="TikTok" title="TikTok">
+        <i class="fab fa-tiktok"></i>
+      </a>
+    </div>
+
+    <div class="footer-bottom-text">
+      جميع الحقوق محفوظة لمبادرة <span style="color:#2563eb; font-weight:700;">Beyond AI</span> – مركز الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
+    </div>
+  </div>
+</footer>
+
+
 
     <script>
       window.addEventListener("load", function () {
@@ -1737,6 +1855,40 @@ document.addEventListener("DOMContentLoaded", () => {
   updateArrows(); // أول تحديث بعد التحميل
 });
 
+// =============== عدّاد الأرقام في سكشن "نتائج تروي قصّتنا" ===============
+document.addEventListener("DOMContentLoaded", () => {
+  const stats = document.querySelectorAll(".stat-number");
+  if (!stats.length) return;
+
+  const statsObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target;
+        const target = Number(el.dataset.target);
+        const suffix = el.dataset.suffix || "";
+        const duration = 1500;
+        const start = performance.now();
+
+        function animate(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const value = Math.floor(progress * target);
+
+          el.textContent = "+" + value.toLocaleString("en-US") + suffix;
+
+          if (progress < 1) requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+        observer.unobserve(el);
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  stats.forEach((el) => statsObserver.observe(el));
+});
 
 
 
