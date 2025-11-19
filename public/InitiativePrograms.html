@@ -2,9 +2,12 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>برامج المبادرة</title>
     <link rel="icon" type="image/png" href="images/markblue.png" />
+    <link rel="stylesheet" href="header-footer.css">
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -58,122 +61,6 @@
         line-height: 1.6;
         overflow-x: hidden;
       }
-
-      /* Header */
-      .topbar {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-        box-shadow: 0 2px 10px rgba(59, 130, 246, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        padding: 1rem 0;
-        transition: all 0.3s ease;
-      }
-      .topbar-row {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .nav {
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-      }
-      .nav a {
-        color: var(--dark);
-        text-decoration: none;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        position: relative;
-      }
-      .nav a::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--accent);
-        transition: width 0.3s ease;
-      }
-      .nav a:hover::before,
-      .nav a.active::before {
-        width: 100%;
-      }
-      .nav a:hover {
-        color: var(--primary);
-        transform: translateY(-2px);
-      }
-      .nav a.active {
-        color: var(--primary);
-        background: rgba(96, 165, 250, 0.1);
-      }
-
-      .search {
-        display: flex;
-        align-items: center;
-        background: rgba(96, 165, 250, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.3);
-        border-radius: 50px;
-        padding: 0.5rem 1rem;
-        transition: all 0.3s ease;
-      }
-      .search:hover,
-      .search:focus-within {
-        background: rgba(96, 165, 250, 0.15);
-        border-color: var(--accent);
-        transform: scale(1.05);
-      }
-      .search input {
-        background: none;
-        border: none;
-        color: var(--dark);
-        outline: none;
-        padding: 0 0.5rem;
-        width: 200px;
-        font-family: "Lyon Arabic", sans-serif;
-      }
-      .search input::placeholder {
-        color: rgba(30, 58, 138, 0.6);
-      }
-      .search button {
-        background: none;
-        border: none;
-        color: var(--accent);
-        cursor: pointer;
-        transition: transform 0.3s ease;
-      }
-      .search button:hover {
-        transform: scale(1.2);
-      }
-      .logo {
-        height: 50px;
-      }
-      .hamburger {
-        display: none;
-        color: var(--dark);
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0.5rem;
-      }
-      .nav-toggle {
-        display: none;
-      }
-
-      /* Layout */
-      .wrap {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
       /* ===== عنوان برامج المبادرة أعلى الصفحة ===== */
       .page-main-title {
         text-align: center;
@@ -888,181 +775,8 @@
         margin: 0 auto;
       }
 
-      /* Footer */
-      .footer {
-        margin-top: 44px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(96, 165, 250, 0.3);
-      }
-      .footer .wrap {
-        max-width: 100% !important;
-        padding-inline: 0 !important;
-      }
-      .foot {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-areas: "left right";
-        align-items: center;
-        gap: 8px 12px;
-        min-height: 64px;
-        padding-inline: 12px;
-        direction: ltr;
-        font-size: 13px;
-        padding-block: 10px 16px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      .foot-left {
-        grid-area: left;
-        justify-self: start;
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .social-icons {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        white-space: nowrap;
-      }
-      .social-icons .icon {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: transparent;
-        border: 1.5px solid rgba(96, 165, 250, 0.35);
-        display: grid;
-        place-items: center;
-        transition: all 0.2s ease;
-        cursor: pointer;
-        text-decoration: none;
-      }
-      .social-icons .icon:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
-        border-color: var(--primary);
-      }
-      .social-icons .icon img {
-        width: 14px;
-        height: 14px;
-        display: block;
-      }
-      .handle {
-        margin-inline-start: 8px;
-        opacity: 0.9;
-        font-size: 12.5px;
-        font-weight: 400;
-        color: var(--dark);
-      }
-      .email-line {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        opacity: 0.9;
-        font-size: 13px;
-      }
-      .email-line .icon {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: transparent;
-        border: 1.5px solid rgba(96, 165, 250, 0.35);
-        display: grid;
-        place-items: center;
-        transition: all 0.2s ease;
-        cursor: pointer;
-        text-decoration: none;
-      }
-      .email-line .icon:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
-        border-color: var(--primary);
-      }
-      .email-line .icon img {
-        width: 13px;
-        height: 13px;
-        display: block;
-      }
-      .email-line span {
-        color: var(--dark);
-      }
-      .foot-right {
-        grid-area: right;
-        justify-self: end;
-        direction: rtl;
-        text-align: right;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 50vw;
-        font-size: 13px;
-        font-weight: 400;
-        color: var(--dark);
-      }
-      .foot-right [dir="ltr"] {
-        unicode-bidi: isolate-override;
-        display: inline-block;
-        margin-inline-start: 4px;
-        font-weight: 400;
-      }
-      .sep {
-        opacity: 0.5;
-      }
-      .brand-en {
-        color: var(--primary);
-        font-weight: 700;
-      }
 
-      @media (max-width: 900px) {
-        .hero-layout {
-          grid-template-columns: 1fr;
-        }
-        .latest-grid {
-          grid-template-columns: 1fr; /* تحت بعض في الجوال */
-        }
-        .latest-image-col {
-          max-height: none;
-        }
-      }
 
-      @media (max-width: 768px) {
-        .hamburger {
-          display: block;
-        }
-        .nav {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: rgba(255, 255, 255, 0.98);
-          flex-direction: column;
-          padding: 2rem;
-          border-top: 1px solid rgba(96, 165, 250, 0.3);
-        }
-        .nav-toggle:checked ~ .nav {
-          display: flex;
-        }
-        .search {
-          display: none;
-        }
-        .foot {
-          grid-template-columns: 1fr;
-          grid-template-areas: "right" "left";
-          gap: 15px;
-        }
-        .foot-right {
-          justify-self: center;
-          max-width: 100%;
-          text-align: center;
-        }
-        .foot-left {
-          justify-self: center;
-          align-items: center;
-        }
-      }
     </style>
   </head>
   <body>
@@ -1073,10 +787,10 @@
 
         <nav class="nav">
           <a href="index.html">الصفحة الرئيسية</a>
-          <a href="WeeklyParagraphs.html" class="active">برامج المبادرة</a>
+          <a href="InitiativePrograms.html" class="active">برامج المبادرة</a>
           <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
           <a href="Who_We_Are.html">من نحن</a>
-          <a href="#footer">تواصل معنا</a>
+          <a href="Contact_Us.html">تواصل معنا</a>
         </nav>
 
         <form class="search" id="searchForm">
@@ -1085,14 +799,14 @@
         </form>
 
         <div class="brand">
-          <img src="images/logo.svg" alt="الشعار" class="logo" />
+          <img src="images/HeaderLogo.png" alt="الشعار" class="logo" />
         </div>
       </div>
     </header>
 
     <!-- عنوان برامج المبادرة مع الشعار فوقه -->
     <section class="page-main-title">
-      <img src="images/logo.svg" alt="شعار المبادرة" />
+      <img src="images/HeaderLogo.png" alt="شعار المبادرة" />
       <h1>برامج المبادرة</h1>
     </section>
 
@@ -1821,56 +1535,92 @@
       </h1>
     </div>
 
-    <footer class="footer" id="footer">
-      <div class="foot">
-        <div class="foot-left">
-          <div class="social-icons">
-            <a
-              class="icon"
-              href="https://www.linkedin.com/showcase/thakaaBeyond/"
-              title="LinkedIn"
-              aria-label="LinkedIn"
-            >
-              <img src="images/liked-in.png" alt="LinkedIn" />
-            </a>
-            <a
-              class="icon"
-              href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-              title="X"
-              aria-label="X"
-            >
-              <img src="images/twitter.png" alt="X" />
-            </a>
-            <a
-              class="icon"
-              href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
-              title="TikTok"
-              aria-label="TikTok"
-            >
-              <img src="images/tik-tok.png" alt="TikTok" />
-            </a>
-            <span class="handle">@ThakaaBeyond</span>
+    <footer class="footer fade-in" id="footer">
+  <div class="footer-inner">
+
+    <!-- العمود 1 (يمين): عن مبادرة Beyond AI -->
+    <div class="footer-col">
+      <h3 class="footer-title">مبادرة Beyond AI</h3>
+
+     
+
+      <p class="footer-about-desc">
+         
+        مبادرة Beyond AI هي مبادرة مجتمعية  تابعة لمركز الدراسات المتقدمة في الذكاء الاصطناعي ( ذكاء ) في جامعة الملك سعود يقودها أكثر من ٩٠ طالبًا وطالبة من نخبة الجامعات السعودية،
+        وتهدف إلى تمكين الطلبة من مختلف المستويات الدراسية الجامعية ومن مختلف التخصصات
+        من فهم الذكاء الاصطناعي وتوظيفه في مساراتهم الأكاديمية والمهنية.
+      </p>
+    </div>
+
+    <!-- العمود 2 (وسط): روابط سريعة -->
+   <div class="footer-col">
+  <h3 class="footer-title">روابط سريعة</h3>
+ <ul class="footer-links">
+  <li><a href="index.html">الصفحة الرئيسية</a></li>
+  <li><a href="WeeklyParagraphs.html">برامـج المبــادرة</a></li>
+  <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
+  <li><a href="Who_We_Are.html">من نحن</a></li>
+  <li><a href="Contact_Us.html">تواصل معنا</a></li>
+</ul>
+
+</div>
+
+
+    <!-- العمود 3 (يسار): معلومات التواصل -->
+    <div class="footer-col">
+      <h3 class="footer-title">معلومات التواصل</h3>
+      <ul class="footer-contact">
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-envelope"></i>
           </div>
-          <div class="email-line">
-            <a
-              class="icon"
-              href="mailto:ThakaaBeyond@ksu.edu.sa"
-              title="Email"
-              aria-label="Email"
-              dir="ltr"
-            >
-              <img src="images/email.png" alt="Email" />
-            </a>
-            <span>ThakaaBeyond@ksu.edu.sa</span>
+          <span class="nowrap">ThakaaBeyond@ksu.edu.sa</span>
+        </li>
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-phone"></i>
           </div>
-        </div>
-        <div class="foot-right" dir="rtl">
-          <span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
-          <span class="sep" aria-hidden="true"> – </span>
-          <span class="brand-en" dir="ltr">Beyond AI</span>
-        </div>
-      </div>
-    </footer>
+          <span class="nowrap" dir="ltr">+966539066133</span>
+        </li>
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <span>مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك سعود</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- الشريط السفلي -->
+   
+  <div class="footer-bottom">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/showcase/thakaabeyond/" aria-label="LinkedIn" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" aria-label="X" title="X">
+        <i class="fa-brands fa-x-twitter"></i>
+
+
+
+      </a>
+      <a href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" aria-label="TikTok" title="TikTok">
+        <i class="fab fa-tiktok"></i>
+      </a>
+    </div>
+
+    <div class="footer-bottom-text">
+      جميع الحقوق محفوظة لمبادرة <span style="color:#2563eb; font-weight:700;">Beyond AI</span> – مركز الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
+    </div>
+  </div>
+</footer>
 
     <script>
       // Search functionality

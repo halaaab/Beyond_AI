@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>مكتبة أدوات الذكاء الاصطناعي</title>
     <link rel="icon" type="image/png" href="images/markblue.png" />
+    <link rel="stylesheet" href="header-footer.css">
     <link rel="apple-touch-icon" href="images/markblue.png" />
     <link rel="shortcut icon" href="images/markblue.png" />
+    <link rel="stylesheet" href="header-footer.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -75,144 +77,7 @@
         background-attachment: fixed;
       }
 
-      /* ================== HEADER (نفس index تقريباً) ================== */
-
-      .topbar {
-        background: rgba(255, 255, 255, 0.96);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-        box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        padding: 0.6rem 0;
-      }
-
-      .topbar-row {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 0.5rem;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 0.55rem;
-      }
-
-      .logo {
-        width: 150px;
-        height: auto;
-        filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15));
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-      }
-
-      .nav a {
-        position: relative;
-        color: #0f3c96;
-        font-size: 1.05rem;
-        font-weight: 700;
-        text-decoration: none;
-        transition: color 0.2s ease;
-      }
-
-      .nav a::after {
-        content: "";
-        position: absolute;
-        bottom: -4px;
-        right: 0;
-        width: 0%;
-        height: 2px;
-        background: #066eec;
-        transition: width 0.22s ease;
-      }
-
-      .nav a:hover {
-        color: #0956b4;
-      }
-
-      .nav a:hover::after {
-        width: 100%;
-      }
-
-      .nav a.active {
-        color: rgb(32, 142, 238);
-      }
-
-      .nav a.active::after {
-        width: 100%;
-      }
-
-      .search {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        gap: 0.5rem;
-
-        min-width: 260px;
-        background: #ffffff;
-        border-radius: 999px;
-        padding: 0.5rem 1.2rem;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        transition: border-color 0.22s ease, box-shadow 0.22s ease;
-      }
-
-      .search:hover,
-      .search:focus-within {
-        border-color: #2563eb;
-        box-shadow: 0 10px 26px rgba(37, 99, 235, 0.25);
-      }
-
-      .search input {
-        border: none;
-        outline: none;
-        width: 100%;
-        background: transparent;
-        font-size: 0.95rem;
-        text-align: right;
-        color: #111;
-      }
-
-      .search input::placeholder {
-        color: #888;
-      }
-
-      .search button {
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        font-size: 1.15rem;
-        color: #1e3a8a;
-        transition: opacity 0.2s ease;
-      }
-
-      .search button:hover {
-        opacity: 0.8;
-      }
-
-      .nav-toggle {
-        display: none;
-      }
-
-      .hamburger {
-        display: none;
-        color: var(--dark);
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0.5rem;
-      }
-
+ 
       /* ================== PAGE LAYOUT ================== */
 
       .about-us-intro {
@@ -556,214 +421,21 @@
         text-overflow: ellipsis;
       }
 
-      /* ================== FOOTER (نفس index) ================== */
-
-      .footer {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(96, 165, 250, 0.3);
-      }
-
-      .foot {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-areas: "left right";
-        align-items: center;
-        gap: 8px 12px;
-        min-height: 64px;
-        padding: 10px 12px 16px;
-        direction: ltr;
-        font-size: 13px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .foot-left {
-        grid-area: left;
-        justify-self: start;
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .social-icons {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        white-space: nowrap;
-      }
-
-      .social-icons .icon {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        background: transparent;
-        border: 1.5px solid rgba(96, 165, 250, 0.35);
-        display: grid;
-        place-items: center;
-        transition: all 0.2s ease;
-        cursor: pointer;
-        text-decoration: none;
-      }
-
-      .social-icons .icon:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
-        border-color: var(--primary);
-      }
-
-      .social-icons .icon img {
-        width: 14px;
-        height: 14px;
-        display: block;
-      }
-
-      .handle {
-        margin-inline-start: 8px;
-        opacity: 0.9;
-        font-size: 12.5px;
-        font-weight: 400;
-        color: var(--dark);
-      }
-
-      .email-line {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        opacity: 0.9;
-        font-size: 13px;
-      }
-
-      .email-line .icon {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: transparent;
-        border: 1.5px solid rgba(96, 165, 250, 0.35);
-        display: grid;
-        place-items: center;
-        transition: all 0.2s ease;
-        cursor: pointer;
-        text-decoration: none;
-      }
-
-      .email-line .icon:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(96, 165, 250, 0.25);
-        border-color: var(--primary);
-      }
-
-      .email-line .icon img {
-        width: 13px;
-        height: 13px;
-        display: block;
-      }
-
-      .foot-right {
-        grid-area: right;
-        justify-self: end;
-        direction: rtl;
-        text-align: right;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 50vw;
-        font-size: 13px;
-        font-weight: 400;
-        color: var(--dark);
-      }
-
-      .foot-right [dir="ltr"] {
-        unicode-bidi: isolate-override;
-        display: inline-block;
-        margin-inline-start: 4px;
-        font-weight: 400;
-      }
-
-      .sep {
-        opacity: 0.5;
-      }
-
-      .brand-en {
-        color: var(--primary);
-        font-weight: 700;
-      }
-
-      /* ================== RESPONSIVE ================== */
-
-      @media (max-width: 768px) {
-        .topbar-row {
-          padding: 0 1.4rem;
-          position: relative;
-        }
-
-        .hamburger {
-          display: block;
-        }
-
-        .nav {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: rgba(255, 255, 255, 0.98);
-          flex-direction: column;
-          padding: 2rem;
-          border-top: 1px solid rgba(96, 165, 250, 0.3);
-          gap: 10px;
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-toggle:checked ~ .nav {
-          display: flex;
-        }
-
-        .search {
-          display: none;
-        }
-
-        .wrap {
-          padding-inline: 18px;
-          border-radius: 20px;
-        }
-
-        .foot {
-          grid-template-columns: 1fr;
-          grid-template-areas: "right" "left";
-          gap: 15px;
-          padding-inline: 8px;
-        }
-
-        .foot-right {
-          justify-self: center;
-          max-width: 100%;
-          text-align: center;
-        }
-
-        .foot-left {
-          justify-self: center;
-          align-items: center;
-        }
-      }
     </style>
   </head>
   <body>
     <!-- HEADER -->
-    <header class="topbar">
+ <header class="topbar">
       <div class="topbar-row">
         <input type="checkbox" id="nav-toggle" class="nav-toggle" />
         <label for="nav-toggle" class="hamburger">☰</label>
 
         <nav class="nav">
-          <a href="index.html">الصفحة الرئيسية</a>
-          <a href="WeeklyParagraphs.html">الفقرات الأسبوعية</a>
-          <a href="AI_libraries_page.html" class="active">
-            مكتبة أدوات الذكاء الاصطناعي
-          </a>
+          <a href="index.html" >الصفحة الرئيسية</a>
+          <a href="InitiativePrograms.html">برامج المبــادرة</a>
+          <a href="AI_libraries_page.html"class="active">مكتبة أدوات الذكاء الاصطناعي</a>
           <a href="Who_We_Are.html">من نحن</a>
-          <a href="#footer">تواصل معنا</a>
+          <a href="Contact_Us.html">تواصل معنا</a>
         </nav>
 
         <form class="search" id="searchForm">
@@ -776,6 +448,7 @@
         </div>
       </div>
     </header>
+
 
     <!-- LOGO أعلى الصفحة -->
     <section class="about-us-intro">
@@ -823,62 +496,94 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer" id="footer">
-      <div class="foot">
-        <div class="foot-left">
-          <div class="social-icons">
-            <a
-              class="icon"
-              href="https://www.linkedin.com/showcase/thakaabeyond/"
-              title="LinkedIn"
-              aria-label="LinkedIn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="images/liked-in.png" alt="LinkedIn" />
-            </a>
-            <a
-              class="icon"
-              href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-              title="X (Twitter)"
-              aria-label="X"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="images/twitter.png" alt="X" />
-            </a>
-            <a
-              class="icon"
-              href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
-              title="TikTok"
-              aria-label="TikTok"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src="images/tik-tok.png" alt="TikTok" />
-            </a>
-            <span class="handle">@ThakaaBeyond</span>
+ <footer class="footer fade-in" id="footer">
+  <div class="footer-inner">
+
+    <!-- العمود 1 (يمين): عن مبادرة Beyond AI -->
+    <div class="footer-col">
+      <h3 class="footer-title">مبادرة Beyond AI</h3>
+
+     
+
+      <p class="footer-about-desc">
+         
+        مبادرة Beyond AI هي مبادرة مجتمعية  تابعة لمركز الدراسات المتقدمة في الذكاء الاصطناعي ( ذكاء ) في جامعة الملك سعود يقودها أكثر من ٩٠ طالبًا وطالبة من نخبة الجامعات السعودية،
+        وتهدف إلى تمكين الطلبة من مختلف المستويات الدراسية الجامعية ومن مختلف التخصصات
+        من فهم الذكاء الاصطناعي وتوظيفه في مساراتهم الأكاديمية والمهنية.
+      </p>
+    </div>
+
+    <!-- العمود 2 (وسط): روابط سريعة -->
+   <div class="footer-col">
+  <h3 class="footer-title">روابط سريعة</h3>
+ <ul class="footer-links">
+  <li><a href="index.html">الصفحة الرئيسية</a></li>
+  <li><a href="WeeklyParagraphs.html">برامـج المبــادرة</a></li>
+  <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
+  <li><a href="Who_We_Are.html">من نحن</a></li>
+  <li><a href="Contact_Us.html">تواصل معنا</a></li>
+</ul>
+
+</div>
+
+
+    <!-- العمود 3 (يسار): معلومات التواصل -->
+    <div class="footer-col">
+      <h3 class="footer-title">معلومات التواصل</h3>
+      <ul class="footer-contact">
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-envelope"></i>
           </div>
-          <div class="email-line">
-            <a
-              class="icon"
-              href="mailto:ThakaaBeyond@ksu.edu.sa"
-              title="Email"
-              aria-label="Email"
-              dir="ltr"
-            >
-              <img src="images/email.png" alt="Email" />
-            </a>
-            <span>ThakaaBeyond@ksu.edu.sa</span>
+          <span class="nowrap">ThakaaBeyond@ksu.edu.sa</span>
+        </li>
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-phone"></i>
           </div>
-        </div>
-        <div class="foot-right" dir="rtl">
-          <span>مساحة تجمع المعرفة التخصصية والذكاء الاصطناعي</span>
-          <span class="sep" aria-hidden="true"> – </span>
-          <span class="brand-en" dir="ltr">Beyond AI</span>
-        </div>
-      </div>
-    </footer>
+          <span class="nowrap" dir="ltr">+966539066133</span>
+        </li>
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <span>مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك سعود</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- الشريط السفلي -->
+   
+  <div class="footer-bottom">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/showcase/thakaabeyond/" aria-label="LinkedIn" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" aria-label="X" title="X">
+        <i class="fa-brands fa-x-twitter"></i>
+
+
+
+      </a>
+      <a href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" aria-label="TikTok" title="TikTok">
+        <i class="fab fa-tiktok"></i>
+      </a>
+    </div>
+
+    <div class="footer-bottom-text">
+      جميع الحقوق محفوظة لمبادرة <span style="color:#2563eb; font-weight:700;">Beyond AI</span> – مركز الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
+    </div>
+  </div>
+</footer>
+      
+
 
     <!-- Firebase init -->
     <script type="module">

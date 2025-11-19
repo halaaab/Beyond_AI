@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Beyond AI Inititaive</title>
+    <link rel="stylesheet" href="header-footer.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -88,148 +89,8 @@ body {
 }
 
 
-      /* ================= HEADER / TOPBAR ================= */
+      
 
-
-.topbar-row {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 0.5rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.0rem;
-}
-
-/* لوغو + نص (اختياري) */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.logo {
-  height: 54px;
-  width: auto;
-  filter: drop-shadow(0 12px 30px rgba(15, 23, 42, 0.2));
-}
-
-/* لو حابة تضيفين نص بجنب الشعار استخدمي .brand-title / .brand-subtitle */
-.brand-title {
-  font-weight: 700;
-  font-size: 1rem;
-  color: #0f3c96;
-}
-.brand-subtitle {
-  font-size: 0.85rem;
-  color: #1f2937;
-  opacity: 0.85;
-}
-
-/* ============ NAV LINKS ============ */
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 3rem; /* المسافات المتساوية */
-}
-
-.nav a {
-  position: relative;
-  color: #0f3c96;
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-/* خط سفلي بسيط */
-.nav a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  right: 0;
-  width: 0%;
-  height: 2px;
-  background: #066eec;
-  transition: width 0.22s ease;
-}
-
-/* Hover بسييييط جداً */
-.nav a:hover {
-  color: #0956b4;
-}
-
-.nav a:hover::after {
-  width: 100%;
-}
-
-/* Active */
-.nav a.active {
-  color: rgb(32, 142, 238);
-}
-.nav a.active::after {
-  width: 100%;
-}
-
-/* ================= SEARCH ================= */
-
-.search {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  gap: 0.5rem;
-
-  min-width: 260px;
-  background: #ffffff;
-  border-radius: 999px;
-  padding: 0.5rem 1.2rem;
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: border-color 0.22s ease, box-shadow 0.22s ease;
-}
-
-.search:hover,
-.search:focus-within {
-  border-color: #2563eb;
-  box-shadow: 0 10px 26px rgba(37, 99, 235, 0.25);
-}
-
-.search input {
-  border: none;
-  outline: none;
-  width: 100%;
-  background: transparent;
-  font-size: 0.95rem;
-  text-align: right;
-  color: #111;
-}
-
-.search input::placeholder {
-  color: #888;
-}
-
-.search button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 1.15rem;
-  color: #1e3a8a;
-  transition: opacity 0.2s ease;
-}
-
-.search button:hover {
-  opacity: 0.8;
-}
-
-/* ================= LOGO ================= */
-
-.logo {
-   width: 150px;   /* أكبر + متوازن */
-  height: auto;
-  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15));
-}
 h2 {
   font-size: clamp(2rem, 3.6vw, 3rem);
   font-weight: 700;
@@ -245,12 +106,7 @@ h2 {
   color: transparent;
 }
 
-/* ================= MOBILE ================= */
 
-.hamburger,
-.nav-toggle {
-  display: none;
-}
 
 .hero-cta-btn {
   margin-top: 1.8rem;
@@ -1278,7 +1134,7 @@ h2 {
 
         <nav class="nav">
           <a href="index.html" class="active">الصفحة الرئيسية</a>
-          <a href="WeeklyParagraphs.html">الفقرات الأسبوعية</a>
+          <a href="InitiativePrograms.html">برامج المبــادرة</a>
           <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
           <a href="Who_We_Are.html">من نحن</a>
           <a href="Contact_Us.html">تواصل معنا</a>
