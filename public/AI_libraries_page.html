@@ -14,7 +14,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
-      /* ================== FONTS ================== */
       @font-face {
         font-family: "Lyon Arabic";
         src: url("Fonts/COMM - Lyon Arabic Display Regular.otf")
@@ -40,7 +39,6 @@
         font-weight: 700;
       }
 
-      /* ================== COLORS (نفس index) ================== */
       :root {
         --primary: #2563eb;
         --primary-light: #bfdbfe;
@@ -77,9 +75,6 @@
         background-attachment: fixed;
       }
 
- 
-      /* ================== PAGE LAYOUT ================== */
-
       .about-us-intro {
         text-align: center;
         padding: 70px 20px 10px;
@@ -106,14 +101,15 @@
         }
       }
 
-      /* الحاوية الرئيسية – كارد زجاجي وسط الخلفية */
       .wrap {
         max-width: 1200px;
         margin: 0 auto 80px;
         padding: 30px 24px 40px;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(14px);
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(30px) saturate(160%);
+        -webkit-backdrop-filter: blur(30px) saturate(160%);
         border-radius: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
         box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
       }
 
@@ -133,8 +129,6 @@
         margin: 0 auto 24px;
         background: rgba(96, 165, 250, 0.35);
       }
-
-      /* ================== FILTER PILLS ================== */
 
       .filters {
         display: flex;
@@ -201,8 +195,6 @@
         display: none;
       }
 
-      /* ================== LOADING ================== */
-
       .loading {
         display: none;
         text-align: center;
@@ -211,8 +203,6 @@
         font-weight: 600;
         letter-spacing: 0.3px;
       }
-
-      /* ================== GRID + CARDS (مقاس جديد) ================== */
 
       .grid {
         display: grid;
@@ -240,24 +230,25 @@
         transform: translateY(6px);
       }
 
-      .card {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        border: 1.5px solid #e5e7eb;
+      .grid .card {
+        background: rgba(255, 255, 255, 0.16) !important;
+        backdrop-filter: blur(25px) saturate(160%);
+        -webkit-backdrop-filter: blur(25px) saturate(160%);
         border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
         min-height: 380px;
         position: relative;
         overflow: hidden;
         display: flex;
         flex-direction: column;
         cursor: pointer;
-        transition: all 0.3s ease;
         transform-origin: center;
         direction: rtl;
-        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+        box-shadow: 0 18px 50px rgba(15, 23, 42, 0.18);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
       }
 
-      .card::before {
+      .grid .card::before {
         content: "";
         position: absolute;
         top: 0;
@@ -265,22 +256,24 @@
         right: 0;
         height: 4px;
         background: var(--gradient-2);
+        opacity: 0.9;
         transform: scaleX(0);
         transform-origin: right;
         transition: transform 0.3s ease;
       }
 
-      .card:hover::before {
+      .grid .card:hover::before {
         transform: scaleX(1);
       }
 
-      .card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
-        border-color: rgba(37, 99, 235, 0.7);
+      .grid .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
+        border-color: rgba(191, 219, 254, 0.9);
+        background: rgba(255, 255, 255, 0.24);
       }
 
-      .card.hidden {
+      .grid .card.hidden {
         display: none;
       }
 
@@ -420,12 +413,10 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
-
     </style>
   </head>
   <body>
-    <!-- HEADER -->
- <header class="topbar">
+    <header class="topbar">
       <div class="topbar-row">
         <input type="checkbox" id="nav-toggle" class="nav-toggle" />
         <label for="nav-toggle" class="hamburger">☰</label>
@@ -433,7 +424,7 @@
         <nav class="nav">
           <a href="index.html" >الصفحة الرئيسية</a>
           <a href="InitiativePrograms.html">برامج المبــادرة</a>
-          <a href="AI_libraries_page.html"class="active">مكتبة أدوات الذكاء الاصطناعي</a>
+          <a href="AI_libraries_page.html" class="active">مكتبة أدوات الذكاء الاصطناعي</a>
           <a href="Who_We_Are.html">من نحن</a>
           <a href="Contact_Us.html">تواصل معنا</a>
         </nav>
@@ -449,15 +440,12 @@
       </div>
     </header>
 
-
-    <!-- LOGO أعلى الصفحة -->
     <section class="about-us-intro">
       <div class="about-us-logo">
         <img src="images/logo.png" alt="Beyond AI" />
       </div>
     </section>
 
-    <!-- MAIN CARD -->
     <main class="wrap">
       <h1>مكتبة أدوات الذكاء الاصطناعي</h1>
       <div class="heading-line"></div>
@@ -491,101 +479,80 @@
       </div>
 
       <section class="grid" aria-live="polite">
-        <!-- Cards loaded ديناميكياً -->
       </section>
     </main>
 
-    <!-- FOOTER -->
- <footer class="footer fade-in" id="footer">
-  <div class="footer-inner">
+    <footer class="footer fade-in" id="footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h3 class="footer-title">مبادرة Beyond AI</h3>
+          <p class="footer-about-desc">
+            مبادرة Beyond AI هي مبادرة مجتمعية  تابعة لمركز الدراسات المتقدمة في الذكاء الاصطناعي ( ذكاء ) في جامعة الملك سعود يقودها أكثر من ٩٠ طالبًا وطالبة من نخبة الجامعات السعودية،
+            وتهدف إلى تمكين الطلبة من مختلف المستويات الدراسية الجامعية ومن مختلف التخصصات
+            من فهم الذكاء الاصطناعي وتوظيفه في مساراتهم الأكاديمية والمهنية.
+          </p>
+        </div>
 
-    <!-- العمود 1 (يمين): عن مبادرة Beyond AI -->
-    <div class="footer-col">
-      <h3 class="footer-title">مبادرة Beyond AI</h3>
+        <div class="footer-col">
+          <h3 class="footer-title">روابط سريعة</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">الصفحة الرئيسية</a></li>
+            <li><a href="WeeklyParagraphs.html">برامـج المبــادرة</a></li>
+            <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
+            <li><a href="Who_We_Are.html">من نحن</a></li>
+            <li><a href="Contact_Us.html">تواصل معنا</a></li>
+          </ul>
+        </div>
 
-     
+        <div class="footer-col">
+          <h3 class="footer-title">معلومات التواصل</h3>
+          <ul class="footer-contact">
+            <li>
+              <div class="footer-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <span class="nowrap">ThakaaBeyond@ksu.edu.sa</span>
+            </li>
+            <li>
+              <div class="footer-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <span class="nowrap" dir="ltr">+966539066133</span>
+            </li>
+            <li>
+              <div class="footer-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <span>مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك سعود</span>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-      <p class="footer-about-desc">
-         
-        مبادرة Beyond AI هي مبادرة مجتمعية  تابعة لمركز الدراسات المتقدمة في الذكاء الاصطناعي ( ذكاء ) في جامعة الملك سعود يقودها أكثر من ٩٠ طالبًا وطالبة من نخبة الجامعات السعودية،
-        وتهدف إلى تمكين الطلبة من مختلف المستويات الدراسية الجامعية ومن مختلف التخصصات
-        من فهم الذكاء الاصطناعي وتوظيفه في مساراتهم الأكاديمية والمهنية.
-      </p>
-    </div>
+      <div class="footer-bottom">
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
 
-    <!-- العمود 2 (وسط): روابط سريعة -->
-   <div class="footer-col">
-  <h3 class="footer-title">روابط سريعة</h3>
- <ul class="footer-links">
-  <li><a href="index.html">الصفحة الرئيسية</a></li>
-  <li><a href="WeeklyParagraphs.html">برامـج المبــادرة</a></li>
-  <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
-  <li><a href="Who_We_Are.html">من نحن</a></li>
-  <li><a href="Contact_Us.html">تواصل معنا</a></li>
-</ul>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/showcase/thakaabeyond/" aria-label="LinkedIn" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" aria-label="X" title="X">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" aria-label="TikTok" title="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
 
-</div>
+        <div class="footer-bottom-text">
+          جميع الحقوق محفوظة لمبادرة <span style="color:#2563eb; font-weight:700;">Beyond AI</span> – مركز الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
+        </div>
+      </div>
+    </footer>
 
-
-    <!-- العمود 3 (يسار): معلومات التواصل -->
-    <div class="footer-col">
-      <h3 class="footer-title">معلومات التواصل</h3>
-      <ul class="footer-contact">
-        <li>
-          <div class="footer-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <span class="nowrap">ThakaaBeyond@ksu.edu.sa</span>
-        </li>
-        <li>
-          <div class="footer-icon">
-            <i class="fas fa-phone"></i>
-          </div>
-          <span class="nowrap" dir="ltr">+966539066133</span>
-        </li>
-        <li>
-          <div class="footer-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <span>مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك سعود</span>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- الشريط السفلي -->
-   
-  <div class="footer-bottom">
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-/>
-
-    <div class="footer-social">
-      <a href="https://www.linkedin.com/showcase/thakaabeyond/" aria-label="LinkedIn" title="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-      <a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" aria-label="X" title="X">
-        <i class="fa-brands fa-x-twitter"></i>
-
-
-
-      </a>
-      <a href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" aria-label="TikTok" title="TikTok">
-        <i class="fab fa-tiktok"></i>
-      </a>
-    </div>
-
-    <div class="footer-bottom-text">
-      جميع الحقوق محفوظة لمبادرة <span style="color:#2563eb; font-weight:700;">Beyond AI</span> – مركز الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
-    </div>
-  </div>
-</footer>
-      
-
-
-    <!-- Firebase init -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
@@ -613,7 +580,6 @@
       window.collection = collection;
     </script>
 
-    <!-- Search + مكتبة الأدوات -->
     <script>
       (function () {
         const searchForm = document.getElementById("searchForm");
