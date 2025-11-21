@@ -4,16 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>مكتبة أدوات الذكاء الاصطناعي</title>
+
     <link rel="icon" type="image/png" href="images/markblue.png" />
-    <link rel="stylesheet" href="header-footer.css">
     <link rel="apple-touch-icon" href="images/markblue.png" />
     <link rel="shortcut icon" href="images/markblue.png" />
-    <link rel="stylesheet" href="header-footer.css">
+
+    <link rel="stylesheet" href="header-footer.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+
     <style>
+      /* ================== الخطوط ================== */
       @font-face {
         font-family: "Lyon Arabic";
         src: url("Fonts/COMM - Lyon Arabic Display Regular.otf")
@@ -69,24 +72,23 @@
         overflow-x: hidden;
         color: var(--dark);
         background-color: #f2f8ff;
-        background-image: url("images/back.png");
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.7)),
+          url("images/back.png") center center / cover no-repeat fixed;
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
       }
 
+      /* ================== اللوقو فوق ================== */
       .about-us-intro {
         text-align: center;
-        padding: 70px 20px 10px;
-      }
-
-      .about-us-logo {
-        margin-bottom: 1.5rem;
+        padding: 40px 20px 0;
       }
 
       .about-us-logo img {
-        width: 140px;
-        height: 140px;
+        width: 110px;
+        height: 110px;
         filter: drop-shadow(0 20px 40px rgba(96, 165, 250, 0.35));
         animation: float 3s ease-in-out infinite;
       }
@@ -101,20 +103,27 @@
         }
       }
 
+      /* ================== الكونتينر الأساسي ================== */
       .wrap {
         max-width: 1200px;
-        margin: 0 auto 80px;
-        padding: 30px 24px 40px;
+        margin: -10px auto 60px;
+        padding: 20px 24px 32px;
+
         background: rgba(255, 255, 255, 0.08);
         backdrop-filter: blur(30px) saturate(160%);
         -webkit-backdrop-filter: blur(30px) saturate(160%);
+
         border-radius: 28px;
         border: 1px solid rgba(255, 255, 255, 0.35);
         box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
       }
 
-      h1 {
-        margin: 0 auto 18px;
+      main.wrap {
+        margin-top: 10px;
+      }
+
+      h2 {
+        margin: 0 auto 10px;
         text-align: center;
         font-size: clamp(2rem, 5vw, 3rem);
         font-weight: 600;
@@ -130,6 +139,7 @@
         background: rgba(96, 165, 250, 0.35);
       }
 
+      /* ================== الفلاتر (الأقسام) ================== */
       .filters {
         display: flex;
         flex-direction: row;
@@ -195,6 +205,7 @@
         display: none;
       }
 
+      /* ================== حالة التحميل ================== */
       .loading {
         display: none;
         text-align: center;
@@ -204,25 +215,14 @@
         letter-spacing: 0.3px;
       }
 
+      /* ================== الشبكة ================== */
       .grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 26px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 22px;
         margin-top: 6px;
         align-items: stretch;
         transition: opacity 180ms ease, transform 180ms ease;
-      }
-
-      @media (max-width: 1100px) {
-        .grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 720px) {
-        .grid {
-          grid-template-columns: 1fr;
-        }
       }
 
       .grid.fading {
@@ -230,13 +230,34 @@
         transform: translateY(6px);
       }
 
+      @media (max-width: 1200px) {
+        .grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 900px) {
+        .grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 600px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ================== الكروت (Glass Effect) ================== */
       .grid .card {
         background: rgba(255, 255, 255, 0.16) !important;
         backdrop-filter: blur(25px) saturate(160%);
         -webkit-backdrop-filter: blur(25px) saturate(160%);
-        border-radius: 22px;
+
+        border-radius: 20px;
         border: 1px solid rgba(255, 255, 255, 0.4);
-        min-height: 380px;
+        min-height: 230px;
+
         position: relative;
         overflow: hidden;
         display: flex;
@@ -244,8 +265,13 @@
         cursor: pointer;
         transform-origin: center;
         direction: rtl;
-        box-shadow: 0 18px 50px rgba(15, 23, 42, 0.18);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          border-color 0.3s ease,
+          background 0.3s ease;
       }
 
       .grid .card::before {
@@ -267,9 +293,9 @@
       }
 
       .grid .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.25);
-        border-color: rgba(191, 219, 254, 0.9);
+        transform: translateY(-6px);
+        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.24);
+        border-color: rgba(191, 219, 254, 0.95);
         background: rgba(255, 255, 255, 0.24);
       }
 
@@ -287,11 +313,12 @@
         font-size: 18px;
       }
 
+      /* ================== محتوى الكرت ================== */
       .card-content {
         display: flex;
         flex-direction: column;
         gap: 0;
-        padding: 24px 18px 18px;
+        padding: 20px 16px 14px;
         text-align: center;
         direction: rtl;
         color: var(--dark);
@@ -303,15 +330,15 @@
       .card .top-section {
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 12px;
         width: 100%;
         align-items: center;
-        margin-bottom: 16px;
+        margin-bottom: 10px;
       }
 
       .card .tool-logo {
-        max-width: 170px;
-        max-height: 120px;
+        max-width: 150px;
+        max-height: 110px;
         width: auto;
         height: auto;
         object-fit: contain;
@@ -331,18 +358,18 @@
         align-items: flex-start;
         justify-content: center;
         width: 100%;
-        padding-top: 6px;
-        padding-bottom: 14px;
+        padding-top: 4px;
+        padding-bottom: 10px;
       }
 
       .card .middle-section:empty {
         flex: 0;
         padding: 0;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
       }
 
       .card .description {
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.75;
         color: #1e293b;
         word-wrap: break-word;
@@ -403,10 +430,10 @@
         color: #ffffff;
         font-weight: 600;
         font-size: 16px;
-        height: 52px;
-        line-height: 52px;
+        height: 48px;
+        line-height: 48px;
         margin: 0;
-        padding: 0 18px;
+        padding: 0 16px;
         border-radius: 0 0 22px 22px;
         background: var(--gradient-3);
         white-space: nowrap;
@@ -415,16 +442,20 @@
       }
     </style>
   </head>
+
   <body>
+    <!-- ============ الهيدر ============ -->
     <header class="topbar">
       <div class="topbar-row">
         <input type="checkbox" id="nav-toggle" class="nav-toggle" />
         <label for="nav-toggle" class="hamburger">☰</label>
 
         <nav class="nav">
-          <a href="index.html" >الصفحة الرئيسية</a>
+          <a href="index.html">الصفحة الرئيسية</a>
           <a href="InitiativePrograms.html">برامج المبــادرة</a>
-          <a href="AI_libraries_page.html" class="active">مكتبة أدوات الذكاء الاصطناعي</a>
+          <a href="AI_libraries_page.html" class="active"
+            >مكتبة أدوات الذكاء الاصطناعي</a
+          >
           <a href="Who_We_Are.html">من نحن</a>
           <a href="Contact_Us.html">تواصل معنا</a>
         </nav>
@@ -440,16 +471,19 @@
       </div>
     </header>
 
+    <!-- ============ لوقو الصفحة ============ -->
     <section class="about-us-intro">
       <div class="about-us-logo">
         <img src="images/logo.png" alt="Beyond AI" />
       </div>
     </section>
 
+    <!-- ============ الكونتينت الأساسي ============ -->
     <main class="wrap">
-      <h1>مكتبة أدوات الذكاء الاصطناعي</h1>
+      <h2>مكتبة أدوات الذكاء الاصطناعي</h2>
       <div class="heading-line"></div>
 
+      <!-- الفلاتر -->
       <div class="filters" role="tablist" aria-label="فلاتر الأقسام">
         <button class="pill active" role="tab" data-specialty="medicine">
           الطب
@@ -478,31 +512,34 @@
         جارٍ تحميل الأدوات...
       </div>
 
-      <section class="grid" aria-live="polite">
-      </section>
+      <!-- الشبكة -->
+      <section class="grid" aria-live="polite"></section>
     </main>
 
+    <!-- ============ الفوتر ============ -->
     <footer class="footer fade-in" id="footer">
       <div class="footer-inner">
         <div class="footer-col">
           <h3 class="footer-title">مبادرة Beyond AI</h3>
           <p class="footer-about-desc">
-            مبادرة Beyond AI هي مبادرة مجتمعية  تابعة لمركز الدراسات المتقدمة في الذكاء الاصطناعي ( ذكاء ) في جامعة الملك سعود يقودها أكثر من ٩٠ طالبًا وطالبة من نخبة الجامعات السعودية،
-            وتهدف إلى تمكين الطلبة من مختلف المستويات الدراسية الجامعية ومن مختلف التخصصات
-            من فهم الذكاء الاصطناعي وتوظيفه في مساراتهم الأكاديمية والمهنية.
+            مبادرة Beyond AI هي مبادرة مجتمعية تابعة لمركز الدراسات المتقدمة
+            في الذكاء الاصطناعي ( ذكاء ) في جامعة الملك سعود يقودها أكثر من ٩٠
+            طالبًا وطالبة من نخبة الجامعات السعودية، وتهدف إلى تمكين الطلبة من
+            مختلف المستويات الدراسية الجامعية ومن مختلف التخصصات من فهم الذكاء
+            الاصطناعي وتوظيفه في مساراتهم الأكاديمية والمهنية.
           </p>
         </div>
+  <div class="footer-col">
+  <h3 class="footer-title">روابط سريعة</h3>
+ <ul class="footer-links">
+  <li><a href="index.html">الصفحة الرئيسية</a></li>
+  <li><a href="InitiativePrograms.html">برامـج المبــادرة</a></li>
+  <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
+  <li><a href="Who_We_Are.html">من نحن</a></li>
+  <li><a href="Contact_Us.html">تواصل معنا</a></li>
+</ul>
 
-        <div class="footer-col">
-          <h3 class="footer-title">روابط سريعة</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">الصفحة الرئيسية</a></li>
-            <li><a href="WeeklyParagraphs.html">برامـج المبــادرة</a></li>
-            <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
-            <li><a href="Who_We_Are.html">من نحن</a></li>
-            <li><a href="Contact_Us.html">تواصل معنا</a></li>
-          </ul>
-        </div>
+</div>
 
         <div class="footer-col">
           <h3 class="footer-title">معلومات التواصل</h3>
@@ -523,7 +560,10 @@
               <div class="footer-icon">
                 <i class="fas fa-map-marker-alt"></i>
               </div>
-              <span>مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك سعود</span>
+              <span>
+                مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك
+                سعود
+              </span>
             </li>
           </ul>
         </div>
@@ -536,23 +576,38 @@
         />
 
         <div class="footer-social">
-          <a href="https://www.linkedin.com/showcase/thakaabeyond/" aria-label="LinkedIn" title="LinkedIn">
+          <a
+            href="https://www.linkedin.com/showcase/thakaabeyond/"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+          >
             <i class="fab fa-linkedin-in"></i>
           </a>
-          <a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" aria-label="X" title="X">
+          <a
+            href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
+            aria-label="X"
+            title="X"
+          >
             <i class="fa-brands fa-x-twitter"></i>
           </a>
-          <a href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" aria-label="TikTok" title="TikTok">
+          <a
+            href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
+            aria-label="TikTok"
+            title="TikTok"
+          >
             <i class="fab fa-tiktok"></i>
           </a>
         </div>
 
         <div class="footer-bottom-text">
-          جميع الحقوق محفوظة لمبادرة <span style="color:#2563eb; font-weight:700;">Beyond AI</span> – مركز الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
+          جميع الحقوق محفوظة لمبادرة
+          <span style="color: #2563eb; font-weight: 700">Beyond AI</span> – مركز
+          الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
         </div>
       </div>
     </footer>
 
+    <!-- ============ Firebase (module) ============ -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
@@ -575,11 +630,13 @@
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
       const db = getFirestore(app);
+
       window.db = db;
       window.getDocs = getDocs;
       window.collection = collection;
     </script>
 
+    <!-- ============ سكربت البحث ============ -->
     <script>
       (function () {
         const searchForm = document.getElementById("searchForm");
@@ -589,24 +646,30 @@
           الطب: "medicine",
           طب: "medicine",
           medicine: "medicine",
+
           "إدارة الأعمال": "business_administration",
           إدارة: "business_administration",
           أعمال: "business_administration",
           business: "business_administration",
+
           "العمارة والتخطيط": "architecture",
           العمارة: "architecture",
           تخطيط: "architecture",
           architecture: "architecture",
+
           "تقنية المعلومات": "computer_science",
           تقنية: "computer_science",
           معلومات: "computer_science",
           it: "computer_science",
+
           الصيدلة: "pharmacy",
           صيدلة: "pharmacy",
           pharmacy: "pharmacy",
+
           القانون: "law",
           قانون: "law",
           law: "law",
+
           الإعلام: "media",
           إعلام: "media",
           media: "media",
@@ -645,6 +708,7 @@
               return;
             }
 
+            // تخصّص معيّن داخل نفس الصفحة
             const majorKey = majorsMapping[query];
             if (majorKey) {
               const button = document.querySelector(
@@ -657,6 +721,7 @@
               }
             }
 
+            // تواصل معنا
             if (query.includes("تواصل") || query.includes("contact")) {
               document
                 .querySelector(".footer")
@@ -665,6 +730,7 @@
               return;
             }
 
+            // صفحات أخرى
             for (const [page, keywords] of Object.entries(pageMapping)) {
               if (
                 keywords.some(
@@ -682,7 +748,10 @@
           });
         }
       })();
+    </script>
 
+    <!-- ============ سكربت المكتبة (فايربيس + الكروت) ============ -->
+    <script>
       document.addEventListener("DOMContentLoaded", function () {
         const pills = document.querySelectorAll(".pill");
         const grid = document.querySelector(".grid");
@@ -740,14 +809,33 @@
                 const description = escapeHtml(item.description || "");
                 const url = item.url || "#";
                 const logo = item.logo || "";
+                const linkLabelFromDB = item.linkLabel || "";
+
+                // تحديد نص الرابط بشكل ذكي
+                let linkLabel = "تعرّف على الأداة";
+                if (linkLabelFromDB) {
+                  linkLabel = escapeHtml(linkLabelFromDB);
+                } else if (
+                  url.includes("youtube.com") ||
+                  url.includes("youtu.be")
+                ) {
+                  linkLabel = "شاهد المقطع التعريفي للأداة";
+                } else if (url && url !== "#") {
+                  linkLabel = "انتقل إلى موقع الأداة";
+                }
 
                 card.innerHTML = `
                   <div class="card-content">
                     <div class="top-section">
-                      <img src="aitoolslogo/${logo}" alt="${name}" class="tool-logo"
-                           onerror="this.onerror=null; this.src='images/logo.png';" />
+                      <img
+                        src="aitoolslogo/${logo}"
+                        alt="${name}"
+                        class="tool-logo"
+                        onerror="this.onerror=null; this.src='images/logo.png';"
+                      />
                       <div class="divider"></div>
                     </div>
+
                     <div class="middle-section">
                       ${
                         description
@@ -755,16 +843,23 @@
                           : ""
                       }
                     </div>
+
                     <div class="bottom-section">
                       ${
-                        url !== "#"
-                          ? `<a class="card-link" href="${url}" target="_blank" rel="noopener">اطلع على المقطع التعريفي للأداة</a>`
+                        url && url !== "#"
+                          ? `<a class="card-link" href="${url}" target="_blank" rel="noopener">
+                               ${linkLabel}
+                             </a>`
                           : ""
                       }
                     </div>
                   </div>
-                  <div class="card__bar"><span>${name}</span></div>
+
+                  <div class="card__bar">
+                    <span>${name}</span>
+                  </div>
                 `;
+
                 grid.appendChild(card);
               });
             }
@@ -791,6 +886,7 @@
 
         (async () => {
           await fetchLibraries();
+
           const selectedMajor = sessionStorage.getItem("selectedMajor");
           if (
             selectedMajor &&

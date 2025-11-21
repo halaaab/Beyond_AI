@@ -1,775 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>الذكاء الاصطناعي + الهندسة الصناعية (IBM Watson)</title>
-    <link rel="icon" type="image/png" href="images/markblue.png" />
-    <link rel="stylesheet" href="header-footer.css">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        --primary: #0f62d9;
-        --primary-light: #cfe6ff;
-        --primary-soft: #e7f2ff;
-        --accent: #14b8ff;
-        --dark: #0f172a;
-        --muted: #64748b;
-        --card-bg: #f8fbff;
-      }
-
-      @font-face {
-        font-family: "Lyon Arabic";
-        src: url("Fonts/COMM - Lyon Arabic Display Regular.otf")
-          format("opentype");
-        font-weight: 400;
-      }
-      @font-face {
-        font-family: "Lyon Arabic";
-        src: url("Fonts/COMM - Lyon Arabic Display Regular.otf")
-          format("opentype");
-        font-weight: 500;
-      }
-      @font-face {
-        font-family: "Lyon Arabic";
-        src: url("Fonts/COMM - Lyon Arabic Display Light.otf")
-          format("opentype");
-        font-weight: 300;
-      }
-      @font-face {
-        font-family: "Lyon Arabic";
-        src: url("Fonts/COMM - Lyon Arabic Display Regular.otf")
-          format("opentype");
-        font-weight: 700;
-      }
-
-      body {
-        font-family: "Lyon Arabic", "Tajawal", sans-serif;
-        background: linear-gradient(180deg, #e2f0ff 0%, #f5fbff 50%, #e2f0ff 100%);
-        min-height: 100vh;
-        color: var(--dark);
-        line-height: 1.7;
-        overflow-x: hidden;
-      }
-
-      /* ===== Layout عام ===== */
-      .wrap {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 2.4rem 1.5rem 3.5rem;
-      }
-
-      .ai-page {
-        display: flex;
-        justify-content: center;
-        margin-top: 1.5rem;
-      }
-
-      .info-card {
-        width: 100%;
-        max-width: 900px;
-        background: var(--card-bg);
-        border-radius: 26px;
-        border: 1px solid rgba(59, 130, 246, 0.3);
-        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
-        overflow: hidden;
-      }
-
-      /* ===== الهيدر الداخلي (معدّل) ===== */
-      .info-header {
-        display: grid;
-        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
-        gap: 1.6rem;
-        align-items: center;
-        background: linear-gradient(135deg, #0b3c96, #0072d6);
-        padding: 1.2rem 1.6rem;
-        color: #ffffff;
-        position: relative;
-        min-height: 230px;
-      }
-
-      .info-header::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          circle at 0% 0%,
-          rgba(255, 255, 255, 0.18),
-          transparent 55%
-        );
-        opacity: 0.9;
-        pointer-events: none;
-      }
-
-      .info-header-left {
-        position: relative;
-        z-index: 1;
-      }
-
-      /* 🔹 الصورة اللي على اليمين – شفافة ومرتبة */
-      .info-header-left img {
-        width: 100%;
-        max-width: 260px;
-        border-radius: 26px;
-        background: rgba(255, 255, 255, 0.82);
-        padding: 0.6rem;
-        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
-        opacity: 0.78;
-        backdrop-filter: blur(6px);
-        transition: all 0.25s ease;
-      }
-
-      .info-header-left img:hover {
-        opacity: 0.92;
-        transform: translateY(-3px);
-        box-shadow: 0 22px 46px rgba(0, 0, 0, 0.32);
-      }
-
-      .info-header-right {
-        position: relative;
-        z-index: 1;
-        text-align: right;
-      }
-
-      /* صورة العنوان */
-      .header-logo-img {
-        width: 100%;
-        max-width: 420px;
-        height: auto;
-        display: block;
-        margin-bottom: 0.7rem;
-        margin-right: 0;
-        margin-left: auto;
-        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
-      }
-
-      .info-subtitle {
-        font-size: 0.95rem;
-        max-width: 440px;
-      }
-
-      /* ===== جسم الإنفوغرافيك ===== */
-      .info-body {
-        padding: 1.8rem 2.2rem 2.4rem;
-      }
-
-      .section-heading {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--primary);
-        text-align: center;
-        margin: 1.4rem 0 0.5rem;
-        position: relative;
-      }
-
-      .section-heading::before,
-      .section-heading::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        width: 22%;
-        height: 1px;
-        background: rgba(15, 98, 217, 0.35);
-      }
-
-      .section-heading::before {
-        right: 0;
-      }
-
-      .section-heading::after {
-        left: 0;
-      }
-
-      .section-text {
-        font-size: 0.92rem;
-        color: var(--dark);
-        text-align: justify;
-      }
-
-      .intro-box {
-        background: #f0f6ff;
-        border-radius: 16px;
-        border: 1px solid rgba(59, 130, 246, 0.25);
-        padding: 1rem 1.4rem;
-        margin-top: 0.3rem;
-      }
-
-      /* المميزات */
-      .features-row {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-        gap: 1rem;
-        margin-top: 0.5rem;
-      }
-
-      .feature-card {
-        background: #ffffff;
-        border-radius: 18px;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        padding: 0.9rem 0.9rem 1rem;
-        text-align: center;
-        font-size: 0.9rem;
-      }
-
-      .feature-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin: 0 auto 0.4rem;
-        display: grid;
-        place-items: center;
-        background: var(--primary-soft);
-        color: var(--primary);
-        font-size: 1.1rem;
-      }
-
-      .feature-title {
-        font-weight: 700;
-        margin-bottom: 0.25rem;
-        color: #0f172a;
-      }
-
-      /* حالات الاستخدام */
-      .use-cases-box {
-        margin-top: 0.5rem;
-        background: #eff7ff;
-        border-radius: 18px;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        padding: 1.2rem 1.3rem;
-      }
-
-      .use-cases-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 0.9rem;
-        font-size: 0.9rem;
-      }
-
-      .use-case {
-        background: #ffffff;
-        border-radius: 14px;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        padding: 0.7rem 0.8rem;
-      }
-
-      .use-case-title {
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 0.25rem;
-        font-size: 0.9rem;
-      }
-
-      /* الفوائد */
-      .value-row {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 1rem;
-        margin-top: 0.4rem;
-      }
-
-      .value-card {
-        background: #ffffff;
-        border-radius: 16px;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        padding: 0.9rem 1rem;
-        font-size: 0.9rem;
-      }
-
-      .value-card-header {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        margin-bottom: 0.25rem;
-        color: #0f172a;
-        font-weight: 700;
-      }
-
-      .value-card-header i {
-        color: var(--primary);
-      }
-
-      /* التحديات */
-      .challenges-box {
-        background: #fef9f0;
-        border-radius: 16px;
-        border: 1px solid rgba(245, 158, 11, 0.4);
-        padding: 0.9rem 1.2rem;
-        font-size: 0.9rem;
-      }
-
-      .challenges-list {
-        list-style: none;
-        margin-top: 0.4rem;
-        display: grid;
-        gap: 0.3rem;
-      }
-
-      .challenges-list li::before {
-        content: "•";
-        margin-left: 0.3rem;
-        color: #f59e0b;
-      }
-
-      /* توقعات مستقبلية + QR */
-      .updates-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.9fr);
-        gap: 1.2rem;
-        align-items: center;
-        margin-top: 0.5rem;
-      }
-
-      .updates-box {
-        background: #ffffff;
-        border-radius: 16px;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        padding: 0.9rem 1rem;
-        font-size: 0.9rem;
-      }
-
-      .qr-box {
-        text-align: center;
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
-
-      .qr-placeholder {
-        width: 140px;
-        height: 140px;
-        border-radius: 12px;
-        border: 2px dashed rgba(148, 163, 184, 0.8);
-        margin: 0 auto 0.4rem;
-        display: grid;
-        place-items: center;
-        font-size: 0.8rem;
-        color: #9ca3af;
-      }
-
-    </style>
-  </head>
-
-  <body>
-<header class="topbar">
-      <div class="topbar-row">
-        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-        <label for="nav-toggle" class="hamburger">☰</label>
-
-        <nav class="nav">
-          <a href="index.html" class="active">الصفحة الرئيسية</a>
-          <a href="InitiativePrograms.html.html">برامج المبــادرة</a>
-          <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
-          <a href="Who_We_Are.html">من نحن</a>
-          <a href="Contact_Us.html">تواصل معنا</a>
-        </nav>
-
-        <form class="search" id="searchForm">
-          <input type="search" id="searchInput" placeholder="عن ماذا تبحث؟" />
-          <button type="submit"><i class="fas fa-search"></i></button>
-        </form>
-
-        <div class="brand">
-          <img src="images/HeaderLogo.png" alt="الشعار" class="logo" />
-        </div>
-      </div>
-    </header>
-
-   
-
-    <main class="wrap">
-      <section class="ai-page">
-        <div class="info-card">
-          <!-- هيدر الإنفوغرافيك -->
-          <div class="info-header">
-            <div class="info-header-left">
-              <!-- صورة الآلة (يمين) -->
-              <img src="images/watson-badge.png" alt="الهندسة الصناعية وIBM Watson" />
-            </div>
-            <div class="info-header-right">
-              <!-- صورة العنوان -->
-              <img
-                src="images/ai-industrial-header.png"
-                alt="الذكاء الاصطناعي في الهندسة الصناعية باستخدام IBM Watson"
-                class="header-logo-img"
-              />
-              <p class="info-subtitle">
-                تستخدم فرق الهندسة الصناعية منصّات مثل <strong>IBM Watson</strong>
-                لتحليل البيانات التشغيلية الضخمة، والتنبؤ بالأعطال، وتحسين
-                تدفق العمل في المصانع وسلاسل الإمداد، بحيث يصبح القرار مبنياً
-                على بيانات دقيقة وليس على الحدس فقط.
-              </p>
-            </div>
-          </div>
-
-          <!-- جسم الصفحة -->
-          <div class="info-body">
-            <!-- المقدمة -->
-            <h2 class="section-heading">المقدمة</h2>
-            <div class="intro-box">
-              <p class="section-text">
-                جوهر <strong>الهندسة الصناعية</strong> هو تحسين الأنظمة: خطوط
-                الإنتاج، المخزون، العمليات، والجودة. مع تضخم حجم البيانات
-                القادمة من الحساسات والأنظمة المختلفة، ظهرت الحاجة إلى أدوات
-                ذكاء اصطناعي قادرة على قراءة هذه البيانات واقتراح قرارات
-                فورية. هنا يأتي دور
-                <strong>IBM Watson</strong> كنظام تحليلات متقدم يقدم نماذج
-                تنبؤية وتوصيات تشغيلية تساعد المهندس الصناعي على رؤية الصورة
-                كاملة.
-              </p>
-            </div>
-
-            <!-- المميزات -->
-            <h2 class="section-heading">أهم المميزات</h2>
-            <div class="features-row">
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="fas fa-industry"></i>
-                </div>
-                <div class="feature-title">تحليل بيانات خطوط الإنتاج</div>
-                <p>
-                  ربط بيانات الآلات والحساسات في لوحة واحدة، لاكتشاف الاختناقات
-                  ومناطق الهدر في الوقت الفعلي.
-                </p>
-              </div>
-
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="fas fa-tools"></i>
-                </div>
-                <div class="feature-title">الصيانة التنبؤية</div>
-                <p>
-                  بناء نماذج تتنبأ بالأعطال المحتملة قبل وقوعها، ما يقلل التوقف
-                  المفاجئ في خط الإنتاج ويطيل عمر المعدات.
-                </p>
-              </div>
-
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="fas fa-truck-loading"></i>
-                </div>
-                <div class="feature-title">تحسين سلاسل الإمداد</div>
-                <p>
-                  تحليل الطلب، المخزون، وأوقات الشحن واقتراح كميات الطلب المثلى
-                  ومسارات النقل الأنسب.
-                </p>
-              </div>
-
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="fas fa-check-circle"></i>
-                </div>
-                <div class="feature-title">دعم القرارات التشغيلية</div>
-                <p>
-                  لوحات قياس تفاعلية (Dashboards) تعرض مؤشرات الأداء الرئيسية
-                  وتقارن بين سيناريوهات تشغيل مختلفة.
-                </p>
-              </div>
-            </div>
-
-            <!-- حالات الاستخدام -->
-            <h2 class="section-heading">حالات الاستخدام</h2>
-            <div class="use-cases-box">
-              <div class="use-cases-grid">
-                <div class="use-case">
-                  <div class="use-case-title">مراقبة جودة المنتجات</div>
-                  <p>
-                    استخدام نماذج رؤية حاسوبية لتحليل صور المنتجات الخارجة من
-                    خط الإنتاج واكتشاف العيوب تلقائياً بدقة وسرعة أعلى من الفحص
-                    اليدوي.
-                  </p>
-                </div>
-                <div class="use-case">
-                  <div class="use-case-title">تخطيط الطاقة والموارد</div>
-                  <p>
-                    تحليل أنماط استهلاك الطاقة في المصنع وتحديد أوقات الذروة،
-                    واقتراح جداول تشغيل تقلل التكاليف وتحافظ على الإنتاجية.
-                  </p>
-                </div>
-                <div class="use-case">
-                  <div class="use-case-title">نمذجة السيناريوهات What-if</div>
-                  <p>
-                    تجربة تأثير تغيير عدد العمال، أو سرعة الخط، أو ترتيب
-                    المهام افتراضياً قبل تطبيقها فعلياً على أرض الواقع.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- الفوائد -->
-            <h2 class="section-heading">الفوائد</h2>
-            <div class="value-row">
-              <div class="value-card">
-                <div class="value-card-header">
-                  <i class="fas fa-percentage"></i>
-                  <span>رفع كفاءة الخطوط</span>
-                </div>
-                <p>
-                  تقليل وقت التوقف غير المخطط وزيادة معدل الاستفادة من
-                  المعدات (OEE) من خلال مراقبة الأداء وتحليل الأسباب الجذرية
-                  للمشكلات.
-                </p>
-              </div>
-
-              <div class="value-card">
-                <div class="value-card-header">
-                  <i class="fas fa-dollar-sign"></i>
-                  <span>خفض التكاليف</span>
-                </div>
-                <p>
-                  قرارات مبنية على بيانات حول المخزون، الطاقة، وساعات العمل
-                  تساعد في تقليل الهدر وتقليل المخزون الراكد.
-                </p>
-              </div>
-
-              <div class="value-card">
-                <div class="value-card-header">
-                  <i class="fas fa-stopwatch"></i>
-                  <span>استجابة أسرع للأعطال</span>
-                </div>
-                <p>
-                  تنبيهات مبكرة عند خروج المؤشرات عن النطاق الطبيعي، ما يتيح
-                  لفريق الصيانة التدخل قبل أن يتوقف الخط تماماً.
-                </p>
-              </div>
-
-              <div class="value-card">
-                <div class="value-card-header">
-                  <i class="fas fa-users-cog"></i>
-                  <span>دعم متخذي القرار</span>
-                </div>
-                <p>
-                  توحيد البيانات من أنظمة مختلفة في لوحة واحدة، بحيث يملك
-                  مديرو العمليات صورة مشتركة عند اتخاذ أي قرار استراتيجي.
-                </p>
-              </div>
-            </div>
-
-            <!-- التحديات -->
-            <h2 class="section-heading">التحديات</h2>
-            <div class="challenges-box">
-              <p>
-                رغم أن <strong>IBM Watson</strong> وأدوات الذكاء الاصطناعي توفر
-                فرصاً كبيرة، إلا أن تطبيقها في بيئة صناعية يواجه عدداً من
-                التحديات:
-              </p>
-              <ul class="challenges-list">
-                <li>الحاجة إلى بيانات نظيفة ومنظَّمة من الأنظمة المختلفة.</li>
-                <li>ضرورة تهيئة العاملين لفهم مخرجات النماذج وعدم مقاومتها.</li>
-                <li>تكلفة الربط بين الأجهزة القديمة (Legacy Systems) والمنصات الجديدة.</li>
-                <li>متطلبات أمن معلومات عالية عند التعامل مع بيانات حساسة عن خطوط الإنتاج.</li>
-              </ul>
-            </div>
-
-            <!-- توقعات مستقبلية / المراجع -->
-            <h2 class="section-heading">توقعات مستقبلية</h2>
-            <div class="updates-grid">
-              <div class="updates-box">
-                <p>
-                  يتجه مستقبل الهندسة الصناعية إلى مفهوم <strong>المصنع الذكي</strong>
-                  (Smart Factory)، حيث تتكامل الحساسات، الروبوتات، وأنظمة
-                  التخطيط مع منصات ذكاء اصطناعي مثل
-                  <strong>IBM Watson</strong>. هذا التكامل يسمح ليس فقط
-                  بمراقبة ما يحدث، بل بالتنبؤ بما سيحدث واقتراح أفضل تصرّف
-                  ممكن في اللحظة نفسها.
-                </p>
-                <p style="margin-top: 0.4rem; font-size: 0.88rem; color: var(--muted);">
-                  لمتابعة آخر التطورات يمكن الرجوع إلى تقارير التحوّل الصناعي
-                  (Industry&nbsp;4.0)، ودراسات حالات من شركات طبقت التحليلات
-                  التنبؤية في مصانعها.
-                </p>
-              </div>
-              <div class="qr-box">
-                <div class="qr-placeholder">
-                  ضع كود QR أو رابط
-                  <br />
-                  صفحة IBM Watson
-                </div>
-                <div>
-                  يمكنك استبدال هذا المربع بصورة QR حقيقية تقود إلى صفحة تعريفية
-                  عن IBM Watson في المجال الصناعي أو إلى مورد تعليمي للطلاب.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer fade-in" id="footer">
-  <div class="footer-inner">
-
-    <!-- العمود 1 (يمين): عن مبادرة Beyond AI -->
-    <div class="footer-col">
-      <h3 class="footer-title">مبادرة Beyond AI</h3>
-
-     
-
-      <p class="footer-about-desc">
-         
-        مبادرة Beyond AI هي مبادرة مجتمعية  تابعة لمركز الدراسات المتقدمة في الذكاء الاصطناعي ( ذكاء ) في جامعة الملك سعود يقودها أكثر من ٩٠ طالبًا وطالبة من نخبة الجامعات السعودية،
-        وتهدف إلى تمكين الطلبة من مختلف المستويات الدراسية الجامعية ومن مختلف التخصصات
-        من فهم الذكاء الاصطناعي وتوظيفه في مساراتهم الأكاديمية والمهنية.
-      </p>
-    </div>
-
-    <!-- العمود 2 (وسط): روابط سريعة -->
-   <div class="footer-col">
-  <h3 class="footer-title">روابط سريعة</h3>
- <ul class="footer-links">
-  <li><a href="index.html">الصفحة الرئيسية</a></li>
-  <li><a href="WeeklyParagraphs.html">برامـج المبــادرة</a></li>
-  <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
-  <li><a href="Who_We_Are.html">من نحن</a></li>
-  <li><a href="Contact_Us.html">تواصل معنا</a></li>
-</ul>
-
-</div>
-
-
-    <!-- العمود 3 (يسار): معلومات التواصل -->
-    <div class="footer-col">
-      <h3 class="footer-title">معلومات التواصل</h3>
-      <ul class="footer-contact">
-        <li>
-          <div class="footer-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <span class="nowrap">ThakaaBeyond@ksu.edu.sa</span>
-        </li>
-        <li>
-          <div class="footer-icon">
-            <i class="fas fa-phone"></i>
-          </div>
-          <span class="nowrap" dir="ltr">+966539066133</span>
-        </li>
-        <li>
-          <div class="footer-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <span>مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك سعود</span>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- الشريط السفلي -->
-   
-  <div class="footer-bottom">
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-/>
-
-    <div class="footer-social">
-      <a href="https://www.linkedin.com/showcase/thakaabeyond/" aria-label="LinkedIn" title="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-      <a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" aria-label="X" title="X">
-        <i class="fa-brands fa-x-twitter"></i>
-
-
-
-      </a>
-      <a href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" aria-label="TikTok" title="TikTok">
-        <i class="fab fa-tiktok"></i>
-      </a>
-    </div>
-
-    <div class="footer-bottom-text">
-      جميع الحقوق محفوظة لمبادرة <span style="color:#2563eb; font-weight:700;">Beyond AI</span> – مركز الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
-    </div>
-  </div>
-</footer>
-
-
-    <!-- ===== Search Script ===== -->
-    <script>
-      (function () {
-        const form = document.getElementById("searchForm");
-        const input = document.getElementById("searchInput");
-
-        if (!form) return;
-
-        const pageMapping = {
-          "index.html": ["الرئيسية", "الصفحة الرئيسية", "home"],
-          "WeeklyParagraphs.html": [
-            "البرامج",
-            "برامج",
-            "الأسبوعية",
-            "ai x",
-          ],
-          "AI_libraries_page.html": [
-            "مكتبة",
-            "الأدوات",
-            "tools",
-            "library",
-          ],
-          "Who_We_Are.html": ["من نحن", "about", "نبذة"],
-        };
-
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const query = (input.value || "").trim().toLowerCase();
-
-          if (!query) {
-            alert("الرجاء إدخال كلمة البحث");
-            return;
-          }
-
-          // أقسام داخل الصفحة
-          if (
-            query.includes("الهندسة الصناعية") ||
-            query.includes("industrial") ||
-            query.includes("watson")
-          ) {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-            return;
-          }
-
-          // صفحات أخرى
-          for (const [page, keywords] of Object.entries(pageMapping)) {
-            if (
-              keywords.some(
-                (k) =>
-                  query.includes(k.toLowerCase()) ||
-                  k.toLowerCase().includes(query)
-              )
-            ) {
-              window.location.href = page;
-              return;
-            }
-          }
-
-          if (
-            query.includes("تواصل") ||
-            query.includes("contact") ||
-            query.includes("email") ||
-            query.includes("ايميل")
-          ) {
-            document
-              .getElementById("footer")
-              .scrollIntoView({ behavior: "smooth" });
-            return;
-          }
-
-          alert(
-            'لم يتم العثور على نتائج لـ "' +
-              query +
-              '"\n\n' +
-              "يمكنك البحث عن: الهندسة الصناعية، IBM Watson، برامج المبادرة، مكتبة الأدوات، من نحن، أو تواصل معنا."
-          );
-        });
-      })();
-    </script>
-  </body>
-</html>

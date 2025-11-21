@@ -9,504 +9,1037 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <style>
 @font-face {
-font-family: 'Lyon Arabic';
-src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
-font-weight: 400;
+  font-family: 'Lyon Arabic';
+  src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+  font-weight: 400;
 }
 @font-face {
-font-family: 'Lyon Arabic';
-src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
-font-weight: 500;
+  font-family: 'Lyon Arabic';
+  src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+  font-weight: 500;
 }
 @font-face {
-font-family: 'Lyon Arabic';
-src: url('Fonts/COMM - Lyon Arabic Display Light.otf') format('opentype');
-font-weight: 300;
+  font-family: 'Lyon Arabic';
+  src: url('Fonts/COMM - Lyon Arabic Display Light.otf') format('opentype');
+  font-weight: 300;
 }
 @font-face {
-font-family: 'Lyon Arabic';
-src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
-font-weight: 700;
+  font-family: 'Lyon Arabic';
+  src: url('Fonts/COMM - Lyon Arabic Display Regular.otf') format('opentype');
+  font-weight: 700;
 }
 
 :root {
---primary: #60a5fa;
---primary-light: #93c5fd;
---primary-dark: #3b82f6;
---accent: #38bdf8;
---accent-light: #7dd3fc;
---dark: #1e3a8a;
---light: #f8fafc;
---gray: #94a3b8;
---gray-light: #e2e8f0;
+  --primary: #60a5fa;
+  --primary-light: #93c5fd;
+  --primary-dark: #3b82f6;
+  --accent: #38bdf8;
+  --accent-light: #7dd3fc;
+  --dark: #1e3a8a;
+  --light: #f8fafc;
+  --gray: #94a3b8;
+  --gray-light: #e2e8f0;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Lyon Arabic', 'Tajawal', sans-serif;
-  
-  /* نفس خلفية تواصل معنا */
-  background: 
-      linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.70)),
-      url("images/back.png") center center / cover no-repeat fixed;
-
+  background:
+    linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.70)),
+    url("images/back.png") center center / cover no-repeat fixed;
   min-height: 100vh;
   color: var(--dark);
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-
-
-
-
-
 /* Main Content */
 main {
-max-width: 1200px;
-margin: 0 auto;
-padding: 60px 20px 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px 100px;
 }
 
-.about-us-intro {
-text-align: center;
-margin-bottom: 80px;
+/* ===================== من نحن (Hero Row) ===================== */
+
+.about-hero-row {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 80px 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
-.about-us-logo {
-margin-bottom: 2rem;
+/* يمين: الشعار + العنوان */
+.about-hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 300px;
 }
 
-.about-us-logo img {
-width: 150px;
-height: 150px;
-filter: drop-shadow(0 20px 40px rgba(96, 165, 250, 0.3));
-animation: float 3s ease-in-out infinite;
+.about-hero-logo {
+  width: 170px;
+  height: 170px;
+  filter: drop-shadow(0 18px 40px rgba(96, 165, 250, 0.35));
+  margin-bottom: 1.2rem;
 }
 
-@keyframes float {
-0%, 100% { transform: translateY(0px); }
-50% { transform: translateY(-20px); }
+.about-hero-title {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+/* يسار: الكارد الزجاجي */
+.about-hero-left {
+  flex: 1;
+}
+
+/* كارد زجاجي عام */
+.glass-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 30px;
+  padding: 3rem;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+  animation: fadeIn 0.8s ease;
+}
+
+.about-hero-left p {
+  font-size: 1.2rem;
+  line-height: 2.2;
+  color: #123075;
+}
+
+/* أنيميشن */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* موبايل - يصير كله فوق بعض */
+@media(max-width: 900px) {
+  .about-hero-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-hero-left {
+    width: 100%;
+  }
 }
 
 h1 {
-font-size: clamp(2rem, 5vw, 3.5rem);
-font-weight: 700;
-color: var(--dark);
-margin-bottom: 1.5rem;
-background: linear-gradient(135deg, #1e3a8a, #3b82f6);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.about-us-box {
-background: rgba(255, 255, 255, 0.7);
-backdrop-filter: blur(10px);
-border: 1px solid rgba(96, 165, 250, 0.3);
-border-radius: 20px;
-padding: 3rem;
-margin: 2rem auto;
-max-width: 900px;
-box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+/* ===== Section Wrapper ===== */
+.vision-mission-section {
+  width: 100%;
+  padding: 80px 20px 80px;
 }
 
-.about-us-text p {
-font-size: 1.2rem;
-line-height: 2;
-color: var(--dark);
+/* ===== Container: 2 Columns ===== */
+.vm-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  direction: rtl;
 }
+
+/* ===== Card Style ===== */
+.vm-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+  padding: 2.5rem;
+  text-align: center;
+  animation: fadeIn 0.7s ease;
+}
+
+/* ===== Icons ===== */
+.vm-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #0b2c63;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.15);
+}
+
+/* ===== Titles ===== */
+.vm-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0b2c63;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.vm-title::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: #3b82f6;
+  display: block;
+  margin: 8px auto 0;
+  border-radius: 3px;
+}
+
+/* ===== Text ===== */
+.vm-text {
+  font-size: 1.1rem;
+  line-height: 2rem;
+  color: #1e1e52;
+  margin-top: 10px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .vm-container {
+    grid-template-columns: 1fr;
+  }
+
+  .vm-card {
+    margin-bottom: 20px;
+  }
+}
+
+/* ============= أهداف المبادرة (سكروول أفقي) ============= */
+
+.goals-section {
+  max-width: 1200px;
+  margin: 70px auto 0;
+  padding: 0 20px;
+}
+
+.goals-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.goals-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.goals-header p {
+  font-size: 1rem;
+  color: rgba(15, 23, 42, 0.8);
+}
+
+/* حاوية السكروول */
+.goals-scroll {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding: 1rem 0 0.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.goals-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.goals-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.goals-scroll::-webkit-scrollbar-thumb {
+  background: transparent;   /* كان رمادي */
+}
+
+.goals-scroll {
+  scrollbar-width: none;     /* يخفيه في فايرفوكس */
+  scrollbar-color: transparent transparent;
+}
+
+.goals-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.6) transparent;
+}
+
+/* الكروت نفسها */
+.goal-card {
+  scroll-snap-align: start;
+  flex: 0 0 260px;
+  max-width: 280px;
+  min-height: 210px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.40);
+  padding: 1.6rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: right;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.16);
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+              border-color 0.25s ease, background 0.25s ease;
+}
+
+.goal-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(148, 163, 184, 0.6);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.22);
+}
+
+.goal-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.2rem;
+  margin-left: auto;
+  background: radial-gradient(circle at 30% 20%, #bfdbfe, #1d4ed8);
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.45);
+}
+
+.goal-icon i { font-size: 1.1rem; }
+
+.goal-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f3c96;
+}
+
+.goal-text {
+  font-size: 0.95rem;
+  color: rgba(15, 23, 42, 0.85);
+  line-height: 1.8;
+}
+
+/* موبايل */
+@media (max-width: 768px) {
+  .goals-section {
+    margin-top: 50px;
+  }
+
+  .goal-card {
+    flex: 0 0 75%;
+  }
+}
+
+/* غلاف الأهداف + السكروول */
+.goals-scroll-wrapper {
+  margin-top: 2rem;
+}
+
+.goals-hint {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.goals-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+.goals-dots .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.45);
+  transition: width 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+  opacity: 0.7;
+}
+
+.goals-dots .dot.active {
+  width: 16px;
+  background: #2563eb;
+  opacity: 1;
+}
+
+.goals-hint-text {
+  font-size: 0.85rem;
+  color: rgba(15, 23, 42, 0.55);
+  user-select: none;
+  animation: goalsHintMove 2s ease-in-out infinite;
+}
+
+@keyframes goalsHintMove {
+  0%   { opacity: 0.4; transform: translateX(0); }
+  50%  { opacity: 1;   transform: translateX(-6px); }
+  100% { opacity: 0.4; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  .goals-scroll-wrapper {
+    margin-top: 1.5rem;
+  }
+}
+
+/* ================== كلمة شكر وتقدير ================== */
 
 .gratitude-section {
-background: rgba(255, 255, 255, 0.5);
-backdrop-filter: blur(10px);
-border-radius: 20px;
-padding: 3rem;
-margin-bottom: 80px;
-border: 1px solid rgba(96, 165, 250, 0.3);
+  padding: 90px 20px 80px;
+  display: flex;
+  justify-content: center;
 }
 
-.gratitude-section h2 {
-font-size: 2rem;
-color: var(--dark);
-text-align: center;
-margin-bottom: 2rem;
-position: relative;
-display: inline-block;
-width: 100%;
+.gratitude-inner {
+  max-width: 900px;
+  width: 100%;
+  position: relative;
 }
 
-.gratitude-section h2::after {
-content: '';
-position: absolute;
-bottom: -10px;
-left: 50%;
-transform: translateX(-50%);
-width: 100px;
-height: 4px;
-background: linear-gradient(90deg, var(--primary), var(--accent));
-border-radius: 2px;
+.gratitude-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(26px) saturate(170%);
+  -webkit-backdrop-filter: blur(26px) saturate(170%);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.40);
+  padding: 3rem 2.8rem;
+  box-shadow: 0 20px 55px rgba(15, 23, 42, 0.16);
+  animation: gratitudeFadeIn 0.9s ease-out;
 }
 
-.gratitude-text p {
-font-size: 1.15rem;
-line-height: 2;
-color: var(--dark);
-text-align: center;
-max-width: 900px;
-margin: 0 auto;
+.gratitude-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(129, 199, 255, 0.40), transparent 55%),
+    radial-gradient(circle at 80% 100%, rgba(59, 130, 246, 0.38), transparent 55%);
+  opacity: 0.75;
+  mix-blend-mode: screen;
+  animation: gratitudeGlow 18s linear infinite;
 }
+
+.gratitude-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.gratitude-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gratitude-text {
+  font-size: 1.1rem;
+  line-height: 2.2;
+  color: #102a6b;
+}
+
+.gratitude-signature {
+  margin-top: 2rem;
+  font-size: 0.98rem;
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.gratitude-signature::before {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  margin: 0 auto 0.7rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #60a5fa, #2563eb);
+}
+
+@keyframes gratitudeFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gratitudeGlow {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(10px, -8px, 0) rotate(180deg); }
+  100% { transform: translate3d(0, 0, 0) rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .gratitude-card {
+    padding: 2.4rem 1.8rem;
+  }
+
+  .gratitude-title {
+    font-size: 1.7rem;
+  }
+
+  .gratitude-text {
+    font-size: 1rem;
+  }
+}
+
+/* ================== Team Section ================== */
 
 .team-section {
-margin-top: 60px;
+  margin-top: 80px;
+  padding-bottom: 80px;
 }
 
+/* عنوان الفقرة (المؤسسة وقيادة المبادرة / رؤساء اللجان / النواب / رؤساء الفرق) */
 .team-category {
-margin-bottom: 80px;
+  margin-bottom: 70px;
+  text-align: center;
 }
 
 .category-title {
-font-size: 2rem;
-color: var(--dark);
-text-align: center;
-margin-bottom: 3rem;
-position: relative;
-display: inline-block;
-width: 100%;
+  font-size: 2rem;
+  color: #0b2c63;
+  margin-bottom: 2.5rem;
+  position: relative;
+  display: inline-block;
 }
 
 .category-title::after {
-content: '';
-position: absolute;
-bottom: -10px;
-left: 50%;
-transform: translateX(-50%);
-width: 80px;
-height: 3px;
-background: linear-gradient(90deg, var(--primary), var(--accent));
-border-radius: 2px;
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 3px;
+  background: linear-gradient(90deg, #60a5fa, #38bdf8);
+  border-radius: 999px;
 }
 
-.team-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 2rem;
+/* ===== المؤسسة (فوق) + النائبة (تحتها) ===== */
+
+.leaders-two {
+  max-width: 430px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
 }
 
+/* عبارة "نائبة المبادرة" بين الكرتين */
+.vice-label {
+  text-align: center;
+  font-size: 0.98rem;
+  color: #64748b;
+  margin: 0.1rem 0 0.2rem;
+}
+
+/* الكروت (تستخدم مع القيادة + رؤساء + نواب + رؤساء فرق) */
+.leader-card,
 .member-card {
-background: rgba(255, 255, 255, 0.7);
-backdrop-filter: blur(10px);
-border: 1px solid rgba(96, 165, 250, 0.3);
-border-radius: 20px;
-padding: 2rem;
-text-align: center;
-transition: all 0.3s ease;
-position: relative;
-overflow: hidden;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 1.9rem 1.6rem;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  transition: transform 0.22s ease, box-shadow 0.22s ease,
+              background 0.22s ease, border-color 0.22s ease;
 }
 
-.member-card::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-height: 4px;
-background: linear-gradient(90deg, var(--primary), var(--accent));
-transform: scaleX(0);
-transition: transform 0.3s ease;
-}
-
-.member-card:hover::before { transform: scaleX(1); }
-
+.leader-card:hover,
 .member-card:hover {
-transform: translateY(-10px);
-box-shadow: 0 20px 40px rgba(96, 165, 250, 0.3);
-background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(148, 163, 184, 0.65);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.18);
 }
 
-.member-avatar {
-width: 100px;
-height: 100px;
-border-radius: 50%;
-margin: 0 auto 1.5rem;
-background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
-border: 3px solid rgba(96, 165, 250, 0.3);
-}
-
+/* نص الكروت */
 .member-name {
-font-size: 1.3rem;
-color: var(--dark);
-margin-bottom: 0.5rem;
-font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0b2c63;
+  margin-bottom: 0.35rem;
 }
 
 .member-position {
-font-size: 1rem;
-color: var(--gray);
-margin-bottom: 1rem;
-line-height: 1.5;
+  font-size: 0.92rem;
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 1.1rem;
 }
+
+/* ===== Grid ثابت لرؤساء اللجان / النواب / رؤساء الفرق ===== */
+
+.team-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* أيقونة LinkedIn داخل دائرة واحدة موحّدة */
 
 .linkedin-icon {
-display: inline-block;
-width: 36px;
-height: 36px;
-background: rgba(96, 165, 250, 0.1);
-border: 2px solid rgba(96, 165, 250, 0.3);
-border-radius: 50%;
-transition: all 0.3s ease;
-position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(96, 165, 250, 0.55);
+  background: rgba(255, 255, 255, 0.95);
+  transition: all 0.25s ease;
 }
 
-.linkedin-icon::before {
-content: '';
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-width: 18px;
-height: 18px;
-background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%233b82f6"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>');
-background-size: contain;
-background-repeat: no-repeat;
+.linkedin-icon i {
+  font-size: 16px;
+  color: #3b82f6;
+  transition: color 0.25s ease;
 }
 
 .linkedin-icon:hover {
-background: rgba(96, 165, 250, 0.2);
-border-color: var(--primary);
-transform: scale(1.1);
+  background: #2563eb;
+  border-color: #2563eb;
+  transform: translateY(-1px) scale(1.06);
 }
 
+.linkedin-icon:hover i {
+  color: #ffffff;
+}
+
+/* موبايل */
+@media (max-width: 768px) {
+  .team-category {
+    margin-bottom: 55px;
+  }
+
+  .leaders-two {
+    max-width: 100%;
+  }
+}
 
 </style>
 </head>
 <body>
 <header class="topbar">
-      <div class="topbar-row">
-        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-        <label for="nav-toggle" class="hamburger">☰</label>
+  <div class="topbar-row">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="hamburger">☰</label>
 
-        <nav class="nav">
-          <a href="index.html" >الصفحة الرئيسية</a>
-          <a href="InitiativePrograms.html">برامج المبــادرة</a>
-          <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
-          <a href="Who_We_Are.html"class="active">من نحن</a>
-          <a href="Contact_Us.html">تواصل معنا</a>
-        </nav>
+    <nav class="nav">
+      <a href="index.html">الصفحة الرئيسية</a>
+      <a href="InitiativePrograms.html">برامج المبــادرة</a>
+      <a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a>
+      <a href="Who_We_Are.html" class="active">من نحن</a>
+      <a href="Contact_Us.html">تواصل معنا</a>
+    </nav>
 
-        <form class="search" id="searchForm">
-          <input type="search" id="searchInput" placeholder="عن ماذا تبحث؟" />
-          <button type="submit"><i class="fas fa-search"></i></button>
-        </form>
+    <form class="search" id="searchForm">
+      <input type="search" id="searchInput" placeholder="عن ماذا تبحث؟" />
+      <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
 
-        <div class="brand">
-          <img src="images/HeaderLogo.png" alt="الشعار" class="logo" />
-        </div>
-      </div>
-    </header>
+    <div class="brand">
+      <img src="images/HeaderLogo.png" alt="الشعار" class="logo" />
+    </div>
+  </div>
+</header>
 
 <main>
 
-<section class="about-us-intro">
-  
-<div class="about-us-logo"><img src="images/logo.png" alt="Beyond AI" /></div>
-<h1>من نحن</h1>
-<div class="about-us-box">
-<div class="about-us-text">
-<p>مبادرة Beyond AI هي مبادرة رائدة لمركز الدراسات المتقدمة في الذكاء الاصطناعي، تهدف إلى تمكين الطلاب من فهم وتطبيق الذكاء الاصطناعي في مختلف المجالات الأكاديمية والتقنية. نحرص على تطوير مهارات الطلاب العلمية والعملية لمواكبة التوجهات الحديثة في مجال الذكاء الاصطناعي، ونسعى جاهدين لبناء جيل قادر على استخدام التقنيات الحديثة لإحداث أثر ملموس في المجتمع.</p>
-</div>
-</div>
+<section class="about-hero-row">
+  <div class="about-hero-right">
+    <img src="images/logo.png" alt="Beyond AI" class="about-hero-logo" />
+    <h1 class="about-hero-title">من نحن</h1>
+  </div>
+
+  <div class="about-hero-left glass-card">
+    <p>
+      مبادرة Beyond AI هي مبادرة رائدة لمركز الدراسات المتقدمة في الذكاء الاصطناعي،
+      تهدف إلى تمكين الطلاب من فهم وتطبيق الذكاء الاصطناعي في مختلف المجالات
+      الأكاديمية والتقنية. نحرص على تطوير مهارات الطلاب العلمية والعملية لمواكبة
+      التوجهات الحديثة في مجال الذكاء الاصطناعي، ونسعى جاهدين لبناء جيل قادر على
+      استخدام التقنيات الحديثة لإحداث أثر ملموس في المجتمع.
+    </p>
+  </div>
 </section>
 
+<section class="vision-mission-section">
+  <div class="vm-container">
+    <div class="vm-card">
+      <div class="vm-icon">
+        <i class="fas fa-eye"></i>
+      </div>
+      <h2 class="vm-title">الرؤية</h2>
+      <p class="vm-text">
+        خلق بيئة تعليمية مُلهمة وتفاعلية تدعم الابتكار والإبداع،
+        وتساعد طلاب الجامعات السعودية على اكتشاف قدرات الذكاء الاصطناعي
+        وتطبيقاته في تخصصاتهم، لتوسيع مداركهم وتعزيز مهاراتهم المستقبلية
+        بطريقة عملية ومُساندة لمسارهم الأكاديمي.
+      </p>
+    </div>
 
-<section class="gratitude-section">
-  <h2>الرؤية والرسالة</h2>
-  <div class="gratitude-text">
-    <p><strong style="color: var(--primary);">الرؤية:</strong> خلق بيئة تعليمية مرنة وتفاعلية تدعم الابتكار والإبداع وتساعد طلاب الجامعات السعودية على اكتشاف قدرات الذكاء الاصطناعي وتطبيقاته في تخصصاتهم، لتوسيع مداركهم وتعزيز مهاراتهم المستقبلية بطريقة عملية وسلسة.</p>
-    
-    <p style="margin-top: 1.5rem;"><strong style="color: var(--primary);">الرسالة:</strong> نسعى لتقديم مفاهيم الذكاء الاصطناعي بأسلوب مبسط وتفاعلي، يوسع آفاق طلاب الجامعات ويساعدهم على تطوير تخصصاتهم واكتشاف الفرص المستقبلية.</p>
+    <div class="vm-card">
+      <div class="vm-icon">
+        <i class="fas fa-bullseye"></i>
+      </div>
+      <h2 class="vm-title">الرسالة</h2>
+      <p class="vm-text">
+        نسعى لتقديم مفاهيم الذكاء الاصطناعي بأسلوب مبسط وفعّال،
+        يوسع آفاق طلاب الجامعات ويساعدهم على تطوير تخصصاتهم
+        واكتشاف الفرص المستقبلية.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="goals-section">
+  <div class="goals-header">
+    <h2>أهداف المبادرة</h2>
+    <p>
+      من منطلق رؤيتها ورسالتها، تسعى مبادرة Beyond AI إلى بناء تجربة طلابية معرفية وملهمة في مجال الذكاء الاصطناعي.
+    </p>
+  </div>
+
+  <div class="goals-scroll-wrapper">
+    <div class="goals-scroll">
+      <article class="goal-card">
+        <div class="goal-icon">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <h3 class="goal-title">دعم التطوير والابتكار</h3>
+        <p class="goal-text">
+          دعم التطوير والابتكار في تطبيقات الذكاء الاصطناعي وإطلاق أفكار وحلول إبداعية يقودها الطلاب.
+        </p>
+      </article>
+
+      <article class="goal-card">
+        <div class="goal-icon">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <h3 class="goal-title">رفع الوعي بالتقنيات</h3>
+        <p class="goal-text">
+          رفع الوعي بتقنيات الذكاء الاصطناعي وأثرها في تشكيل مستقبل التخصصات والمهن المختلفة.
+        </p>
+      </article>
+
+      <article class="goal-card">
+        <div class="goal-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3 class="goal-title">تمكين مختلف التخصصات</h3>
+        <p class="goal-text">
+          تمكين الطلاب من مختلف التخصصات من استكشاف المفاهيم والتطبيقات بأسلوب مبسط وتفاعلي.
+        </p>
+      </article>
+
+      <article class="goal-card">
+        <div class="goal-icon">
+          <i class="fas fa-flask"></i>
+        </div>
+        <h3 class="goal-title">بيئة محفّزة على التعلّم</h3>
+        <p class="goal-text">
+          خلق بيئة محفّزة على التعلّم والعمل الجماعي والتجربة في سياق الذكاء الاصطناعي.
+        </p>
+      </article>
+
+      <article class="goal-card">
+        <div class="goal-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3 class="goal-title">تنمية المهارات المستقبلية</h3>
+        <p class="goal-text">
+          تنمية التفكير الإبداعي وتطوير المهارات المستقبلية التي تعزز جاهزية الطلاب للعصر الرقمي.
+        </p>
+      </article>
+
+      <article class="goal-card">
+        <div class="goal-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <h3 class="goal-title">ربط الذكاء الاصطناعي بالحياة الأكاديمية</h3>
+        <p class="goal-text">
+          ربط الذكاء الاصطناعي بالحياة الأكاديمية والمهنية للطلاب بطريقة ملهمة وذات أثر عملي.
+        </p>
+      </article>
+    </div>
+
+    <div class="goals-hint">
+      <div class="goals-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <div class="goals-hint-text">↔ اسحب لعرض المزيد من الأهداف</div>
+    </div>
   </div>
 </section>
 
 <section class="gratitude-section">
-  <h2>أهداف المبادرة</h2>
-  <div class="gratitude-text" style="text-align: right;">
-    <p style="margin-bottom: 1.5rem;">من منطلق رؤيتها ورسالتها، تسعى مبادرة Beyond AI إلى بناء تجربة طلابية معرفية وملهمة في مجال الذكاء الاصطناعي، من خلال تحقيق الأهداف التالية:</p>
-    
-    <ul style="text-align: right; list-style-position: inside; line-height: 2.2; font-size: 1.1rem;">
-      <li>دعم التطوير والابتكار في تطبيقات الذكاء الاصطناعي</li>
-      <li>رفع الوعي بتقنيات الذكاء الاصطناعي وأثرها في تشكيل مستقبل التخصصات والمهن</li>
-      <li>تمكين الطلاب من مختلف التخصصات من استكشاف المفاهيم والتطبيقات بأسلوب مبسط وتفاعلي</li>
-      <li>خلق بيئة محفّزة على التعلّم، الابتكار، والعمل الجماعي في سياق الذكاء الاصطناعي</li>
-      <li>تنمية التفكير الإبداعي وتطوير المهارات المستقبلية التي تعزز جاهزية الطلاب للعصر الرقمي</li>
-      <li>ربط الذكاء الاصطناعي بالحياة الأكاديمية والمهنية للطلاب بطريقة ملهمة وذات أثر عملي</li>
-    </ul>
-  </div>
-</section>
+  <div class="gratitude-inner">
+    <div class="gratitude-card">
+      <div class="gratitude-content">
+        <h2 class="gratitude-title">كلمة شكر وتقدير</h2>
+        <p class="gratitude-text">
+          نتقدم بجزيل الشكر والامتنان لكل من ساهم في إطلاق وتطوير مبادرة Beyond AI.
+          من قائدتنا الملهمة إلى كل عضو في فريقنا المتميّز، شكرًا لكم على شغفكم
+          وتفانيكم، وعلى الوقت والجهد الذي بذلتموه لصناعة تجربة مختلفة لطلاب الجامعات.
+          إنجازاتنا اليوم هي ثمرة جهودكم المباركة، وبفضلكم نواصل مسيرتنا لنشر المعرفة
+          وتمكين الطلبة من استكشاف قوة الذكاء الاصطناعي وصناعة مستقبلهم بثقة وتميّز.
+        </p>
 
-<section class="gratitude-section">
-<h2>كلمة شكر وتقدير</h2>
-<div class="gratitude-text">
-<p>نتقدم بجزيل الشكر والامتنان لكل من ساهم في إطلاق وتطوير مبادرة Beyond AI. من قائدتنا الملهمة إلى كل عضو في فريقنا المتميز، شكرًا لكم على شغفكم وتفانيكم. معًا نصنع المستقبل، ونبني جيلًا واعيًا بقوة الذكاء الاصطناعي وقادرًا على الابتكار والتميز. إنجازاتنا اليوم هي ثمرة جهودكم المباركة، وبفضلكم نواصل المسيرة نحو تحقيق رؤيتنا في نشر المعرفة وتمكين الطلاب.</p>
-</div>
+        <p class="gratitude-signature">
+          فريق مبادرة Beyond AI
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="team-section">
-<div class="team-category">
-<h2 class="category-title">المؤسسة والقائدة</h2>
-<div class="team-grid">
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">حلا عبدالرحمن الصبار</h3>
-<p class="member-position">مؤسسة وقائدة مبادرة Beyond AI</p>
-<a href="https://www.linkedin.com/in/hala-alsabbar-b55676322" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">هيفاء خالد الحماد</h3>
-<p class="member-position">نائبة مبادرة Beyond AI</p>
-<a href="https://www.linkedin.com/in/haifa-alhammad-5880a92b6" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-</div>
-</div>
 
-<div class="team-category">
-<h2 class="category-title">رؤساء اللجان</h2>
-<div class="team-grid">
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">ديمة عبدالله الفرهود</h3>
-<p class="member-position">قائدة اللجنة التقنية</p>
-<a href="https://www.linkedin.com/in/deema-alfarhoud-3a9b40222" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">شادن عبدالمجيد الجماز</h3>
-<p class="member-position">قائدة لجنة الموارد البشرية</p>
-<a href="https://www.linkedin.com/in/shadenaljammaz" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">عبدالعزيز احمد الشنيبر</h3>
-<p class="member-position">قائد لجنة الدعم اللوجستي</p>
-<a href="https://www.linkedin.com/in/abdulaziz-alsheneber-6996722a3" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">وليد تركي العتيبي</h3>
-<p class="member-position">قائد لجنة العلاقات العامة</p>
-<a href="https://www.linkedin.com/in/waleed-alotaibi-36925b349" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">رجاء الصقير</h3>
-<p class="member-position">قائدة اللجنة الاعلامية</p>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">محمد الشتوي</h3>
-<p class="member-position">قائد لجنة المحتوى</p>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">ندى الرميثي</h3>
-<p class="member-position">قائدة لجنة الجودة</p>
-</div>
-</div>
-</div>
+  <!-- المؤسسة وقيادة المبادرة (المؤسسة فوق، النائبة تحتها) -->
+  <div class="team-category">
+    <h2 class="category-title">المؤسسة وقائدة المبادرة</h2>
 
+    <div class="leaders-two">
+      <div class="leader-card">
+        <h3 class="member-name">حلا عبدالرحمن الصبار</h3>
+        <p class="member-position">مؤسسة وقائدة مبادرة Beyond AI</p>
+        <a href="https://www.linkedin.com/in/hala-alsabbar-b55676322"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
 
+      <!-- العبارة بين الكرتين -->
+      <h2 class="category-title">نائبة المبادرة</h2>
 
-<div class="team-category">
-<h2 class="category-title">النواب</h2>
-<div class="team-grid">
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">نوف أحمد المنديل</h3>
-<p class="member-position">نائبة لجنة المحتوى</p>
-<a href="https://www.linkedin.com/in/nouf-almandil-52813323a" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">شوق هشام الهدلق</h3>
-<p class="member-position">نائبة لجنة الجودة والتطوير</p>
-<a href="https://www.linkedin.com/in/showq-alhadlaq-854ba4282" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">فهد بن طارق العقيل</h3>
-<p class="member-position">نائب لجنة العلاقات العامة</p>
-<a href="https://www.linkedin.com/in/fahad-alaqeel-0a037331b" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">هيفاء الرميح</h3>
-<p class="member-position">نائبة لجنة الموارد البشرية</p>
-<a href="https://www.linkedin.com/in/jawaher-aldukhi-225b12250" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">رنا احمد الغامدي</h3>
-<p class="member-position">نائبة لجنة الدعم اللوجستي</p>
-<a href="https://www.linkedin.com/in/rana-alghamdi-8b8165333" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="team-grid">
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">عبدالعزيز البيوض</h3>
-<p class="member-position">نائب اللجنة التقنية</p>
-</div>
-</div>
-</div>
-</div>
+      <div class="leader-card">
+        <h3 class="member-name">هيفاء خالد الحماد</h3>
+        <p class="member-position">نائبة مبادرة Beyond AI</p>
+        <a href="https://www.linkedin.com/in/haifa-alhammad-5880a92b6"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+  </div>
 
+  <!-- رؤساء اللجان -->
+  <div class="team-category">
+    <h2 class="category-title">رؤساء اللجان</h2>
 
+    <div class="team-grid">
+      <div class="member-card">
+        <h3 class="member-name">ديـمـة عبدالله الفرهود</h3>
+        <p class="member-position">قائدة اللجنة التقنية</p>
+        <a href="https://www.linkedin.com/in/deema-alfarhoud-3a9b40222"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
 
+      <div class="member-card">
+        <h3 class="member-name">شادن عبدالمجيد الجماز</h3>
+        <p class="member-position">قائدة لجنة الموارد البشرية</p>
+        <a href="https://www.linkedin.com/in/shadenaljammaz"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
 
+      <div class="member-card">
+        <h3 class="member-name">عبدالعزيز احمد الشنيبر</h3>
+        <p class="member-position">قائد لجنة الدعم اللوجستي</p>
+        <a href="https://www.linkedin.com/in/abdulaziz-alsheneber-6996722a3"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
 
-<div class="team-category">
-<h2 class="category-title">رؤساء الفرق</h2>
-<div class="team-grid">
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">غلا مبارك بن زبيّن</h3>
-<p class="member-position">قائدة فريق التواصل الداخلي في لجنة العلاقات العامة</p>
-<a href="https://www.linkedin.com/in/ghala-bin-zabayen-6213b4348" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">جود هشام الوابل</h3>
-<p class="member-position">قائدة فريق التواصل الخارجي باللجنة العلاقات العامة</p>
-<a href="https://www.linkedin.com/in/joud-alwabel-587581347" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">غاده عبدالعزيز الحمدان</h3>
-<p class="member-position">قائدة الفريق المحتوى الرقمي باللجنة التقنية</p>
-<a href="https://www.linkedin.com/in/ghada-alhamdan" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">راما خالد العمير</h3>
-<p class="member-position">قائدة فريق المطورين باللجنة التقنية</p>
-<a href="https://www.linkedin.com/in/rama-alomair-5937602a9" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">مضاوي احمد البوحمد</h3>
-<p class="member-position">قائدة فريق التسويق باللجنة الإعلامية</p>
-<a href="https://www.linkedin.com/in/madhawi-albuhamad-874826319" class="linkedin-icon" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"></a>
-</div>
-<div class="member-card">
-<div class="member-avatar placeholder"></div>
-<h3 class="member-name">هيا الشويش</h3>
-<p class="member-position">قائدة فريق التصميم باللجنة الاعلامية</p>
-</div>
-</div>
+      <div class="member-card">
+        <h3 class="member-name">وليد تركي العتيبي</h3>
+        <p class="member-position">قائد لجنة العلاقات العامة</p>
+        <a href="https://www.linkedin.com/in/waleed-alotaibi-36925b349"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">رجاء الصقير</h3>
+        <p class="member-position">قائدة اللجنة الإعلامية</p>
+        <!-- بدون لينكدإن حالياً -->
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">محمد الشتوي</h3>
+        <p class="member-position">قائد لجنة المحتوى</p>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">ندى الرميثي</h3>
+        <p class="member-position">قائدة لجنة الجودة والتطوير</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- النواب -->
+  <div class="team-category">
+    <h2 class="category-title">النواب</h2>
+
+    <div class="team-grid">
+      <div class="member-card">
+        <h3 class="member-name">نوف أحمد المنديل</h3>
+        <p class="member-position">نائبة لجنة المحتوى</p>
+        <a href="https://www.linkedin.com/in/nouf-almandil-52813323a"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">شوق هشام الهدلق</h3>
+        <p class="member-position">نائبة لجنة الجودة والتطوير</p>
+        <a href="https://www.linkedin.com/in/showq-alhadlaq-854ba4282"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">فهد بن طارق العقيل</h3>
+        <p class="member-position">نائب لجنة العلاقات العامة</p>
+        <a href="https://www.linkedin.com/in/fahad-alaqeel-0a037331b"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">هيفاء الرميح</h3>
+        <p class="member-position">نائبة لجنة الموارد البشرية</p>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">رنا أحمد الغامدي</h3>
+        <p class="member-position">نائبة لجنة الدعم اللوجستي</p>
+        <a href="https://www.linkedin.com/in/rana-alghamdi-8b8165333"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">عبدالعزيز البيوض</h3>
+        <p class="member-position">نائب اللجنة التقنية</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- رؤساء الفرق -->
+  <div class="team-category">
+    <h2 class="category-title">رؤساء الفرق</h2>
+
+    <div class="team-grid">
+      <div class="member-card">
+        <h3 class="member-name">غلا مبارك بن زبـيّن</h3>
+        <p class="member-position">قائدة فريق التواصل الداخلي في لجنة العلاقات العامة</p>
+        <a href="https://www.linkedin.com/in/ghala-bin-zabayen-6213b4348"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">جود هشام الوابل</h3>
+        <p class="member-position">قائدة فريق التواصل الخارجي في لجنة العلاقات العامة</p>
+        <a href="https://www.linkedin.com/in/joud-alwabel-587581347"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">غادة عبدالعزيز الحمدان</h3>
+        <p class="member-position">قائدة فريق المحتوى الرقمي باللجنة التقنية</p>
+        <a href="https://www.linkedin.com/in/ghada-alhamdan"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">راما خالد العمير</h3>
+        <p class="member-position">قائدة فريق المطورين باللجنة التقنية</p>
+        <a href="https://www.linkedin.com/in/rama-alomair-5937602a9"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">مضاوي أحمد البوحمد</h3>
+        <p class="member-position">قائدة فريق التسويق باللجنة الإعلامية</p>
+        <a href="https://www.linkedin.com/in/madhawi-albuhamad-874826319"
+           class="linkedin-icon" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+
+      <div class="member-card">
+        <h3 class="member-name">هيا الشويش</h3>
+        <p class="member-position">قائدة فريق التصميم باللجنة الإعلامية</p>
+      </div>
+    </div>
+  </div>
+
 </div>
 </main>
-
 <footer class="footer fade-in" id="footer">
   <div class="footer-inner">
 
@@ -597,60 +1130,119 @@ transform: scale(1.1);
 <script>
 // Search functionality
 (function() {
-const searchForm = document.getElementById('searchForm');
-const searchInput = document.getElementById('searchInput');
+  const searchForm = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
 
-const majorsMapping = {
-'الطب': 'medicine', 'طب': 'medicine', 'medicine': 'medicine',
-'إدارة الأعمال': 'business', 'إدارة': 'business', 'أعمال': 'business', 'business': 'business',
-'العمارة والتخطيط': 'architecture', 'العمارة': 'architecture', 'تخطيط': 'architecture', 'architecture': 'architecture',
-'تقنية المعلومات': 'it', 'تقنية': 'it', 'معلومات': 'it', 'it': 'it',
-'الصيدلة': 'pharmacy', 'صيدلة': 'pharmacy', 'pharmacy': 'pharmacy',
-'القانون': 'law', 'قانون': 'law', 'law': 'law',
-'الإعلام': 'media', 'إعلام': 'media', 'media': 'media'
-};
+  const majorsMapping = {
+    'الطب': 'medicine', 'طب': 'medicine', 'medicine': 'medicine',
+    'إدارة الأعمال': 'business', 'إدارة': 'business', 'أعمال': 'business', 'business': 'business',
+    'العمارة والتخطيط': 'architecture', 'العمارة': 'architecture', 'تخطيط': 'architecture', 'architecture': 'architecture',
+    'تقنية المعلومات': 'it', 'تقنية': 'it', 'معلومات': 'it', 'it': 'it',
+    'الصيدلة': 'pharmacy', 'صيدلة': 'pharmacy', 'pharmacy': 'pharmacy',
+    'القانون': 'law', 'قانون': 'law', 'law': 'law',
+    'الإعلام': 'media', 'إعلام': 'media', 'media': 'media'
+  };
 
-const pageMapping = {
-'index.html': ['الصفحة الرئيسية', 'الرئيسية', 'home'],
-'WeeklyParagraphs.html': ['الفقرات الأسبوعية', 'فقرات', 'أسبوعية', 'weekly'],
-'AI_libraries_page.html': ['مكتبة أدوات الذكاء الاصطناعي', 'مكتبة', 'أدوات', 'library', 'tools']
-};
+  const pageMapping = {
+    'index.html': ['الصفحة الرئيسية', 'الرئيسية', 'home'],
+    'WeeklyParagraphs.html': ['الفقرات الأسبوعية', 'فقرات', 'أسبوعية', 'weekly'],
+    'AI_libraries_page.html': ['مكتبة أدوات الذكاء الاصطناعي', 'مكتبة', 'أدوات', 'library', 'tools']
+  };
 
-searchForm.addEventListener('submit', function(e) {
-e.preventDefault();
-const query = searchInput.value.trim().toLowerCase();
+  searchForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const query = searchInput.value.trim().toLowerCase();
 
-if (!query) {
-alert('الرجاء إدخال كلمة البحث');
-return;
-}
+    if (!query) {
+      alert('الرجاء إدخال كلمة البحث');
+      return;
+    }
 
-// Check for major
-const majorKey = majorsMapping[query];
-if (majorKey) {
-sessionStorage.setItem('selectedMajor', majorKey);
-window.location.href = 'AI_libraries_page.html';
-return;
-}
+    const majorKey = majorsMapping[query];
+    if (majorKey) {
+      sessionStorage.setItem('selectedMajor', majorKey);
+      window.location.href = 'AI_libraries_page.html';
+      return;
+    }
 
-// Check for footer/contact
-if (query.includes('تواصل') || query.includes('contact')) {
-document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });
-searchInput.value = '';
-return;
-}
+    if (query.includes('تواصل') || query.includes('contact')) {
+      document.querySelector('.footer-bottom').scrollIntoView({ behavior: 'smooth' });
+      searchInput.value = '';
+      return;
+    }
 
-// Check for other pages
-for (const [page, keywords] of Object.entries(pageMapping)) {
-if (keywords.some(k => k.toLowerCase().includes(query) || query.includes(k.toLowerCase()))) {
-window.location.href = page;
-return;
-}
-}
+    for (const [page, keywords] of Object.entries(pageMapping)) {
+      if (keywords.some(k => k.toLowerCase().includes(query) || query.includes(k.toLowerCase()))) {
+        window.location.href = page;
+        return;
+      }
+    }
 
-alert('لم يتم العثور على نتائج للبحث: ' + query);
-});
+    alert('لم يتم العثور على نتائج للبحث: ' + query);
+  });
 })();
 </script>
+
+<script>
+  const goalsScroll = document.querySelector(".goals-scroll");
+  const dots = document.querySelectorAll(".goals-dots .dot");
+
+  if (goalsScroll && dots.length) {
+    goalsScroll.addEventListener("scroll", () => {
+      const maxScroll = goalsScroll.scrollWidth - goalsScroll.clientWidth;
+      const current = goalsScroll.scrollLeft;
+
+      let ratio = 0;
+      if (maxScroll > 0) {
+        ratio = current / maxScroll; // من 0 إلى 1
+      }
+
+      const index = Math.round(ratio * (dots.length - 1));
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+    });
+  }
+</script>
+
+
+<script>
+// أسهم السكروول لقادة اللجان / النواب / رؤساء الفرق
+document.querySelectorAll('.team-scroll-wrapper').forEach(wrapper => {
+  const scrollContainer = wrapper.querySelector('.team-scroll');
+  const leftArrow = wrapper.querySelector('.scroll-left');
+  const rightArrow = wrapper.querySelector('.scroll-right');
+
+  if (!scrollContainer || !leftArrow || !rightArrow) return;
+
+  const scrollAmount = 280; // عرض كرت تقريباً
+
+  function updateArrowOpacity() {
+    const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    if (maxScroll <= 0) {
+      leftArrow.style.opacity = '0';
+      rightArrow.style.opacity = '0';
+      return;
+    }
+    leftArrow.style.opacity = scrollContainer.scrollLeft > 10 ? '0.9' : '0.3';
+    rightArrow.style.opacity = scrollContainer.scrollLeft < maxScroll - 10 ? '0.9' : '0.3';
+  }
+
+  leftArrow.addEventListener('click', () => {
+    scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  rightArrow.addEventListener('click', () => {
+    scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+
+  scrollContainer.addEventListener('scroll', updateArrowOpacity);
+  window.addEventListener('load', updateArrowOpacity);
+  updateArrowOpacity();
+});
+</script>
+
+
 </body>
 </html>

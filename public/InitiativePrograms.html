@@ -5,19 +5,21 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>برامج المبادرة</title>
-    <link rel="icon" type="image/png" href="images/markblue.png" />
-    <link rel="stylesheet" href="header-footer.css">
+    
+    <link rel="stylesheet" href="header-footer.css" />
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
       :root {
         --primary: #60a5fa;
         --primary-light: #93c5fd;
@@ -27,6 +29,7 @@
         --dark: #1e3a8a;
         --light: #f8fafc;
       }
+
       @font-face {
         font-family: "Lyon Arabic";
         src: url("Fonts/COMM - Lyon Arabic Display Regular.otf")
@@ -51,141 +54,82 @@
           format("opentype");
         font-weight: 700;
       }
-      body {
-        font-family: "Lyon Arabic", "Tajawal", sans-serif;
-        background: url("images/city-background.jpg") center center / cover
-          no-repeat fixed;
-        background-color: #bfdbfe;
-        min-height: 100vh;
-        color: var(--dark);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-      /* ===== عنوان برامج المبادرة أعلى الصفحة ===== */
-      .page-main-title {
-        text-align: center;
-        padding: 70px 0 40px;
-      }
-      .page-main-title img {
-        width: 72px;
-        height: auto;
-        margin-bottom: 18px;
-      }
-      .page-main-title h1 {
-        font-size: clamp(2.6rem, 4.5vw, 3.4rem);
-        font-weight: 400;
-        color: #2563eb;
-        letter-spacing: 0.4px;
-      }
 
-      /* ===== HERO (أعلى الصفحة) ===== */
-      .programs-hero {
-        margin: 2.5rem auto 1.6rem;
-      }
-      .hero-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-        gap: 2rem;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.8);
-        border-radius: 24px;
-        border: 1px solid rgba(96, 165, 250, 0.35);
-        padding: 2.4rem 2.2rem;
-        box-shadow: 0 14px 32px rgba(15, 23, 42, 0.18);
-      }
-      .hero-media img {
-        width: 100%;
-        border-radius: 18px;
-        object-fit: cover;
-      }
-      .hero-content-label {
-        font-size: 0.9rem;
-        color: #1d4ed8;
-        background: rgba(191, 219, 254, 0.8);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.25rem 0.9rem;
-        border-radius: 999px;
-        border: 1px solid rgba(59, 130, 246, 0.4);
-        margin-bottom: 0.9rem;
-      }
-      .hero-content-label i {
-        font-size: 0.85rem;
-      }
-      .hero-title {
-        font-size: clamp(2rem, 3.4vw, 2.6rem);
-        color: #0f172a;
-        margin-bottom: 0.4rem;
-        font-weight: 600;
-      }
-      .hero-subtitle {
-        font-size: 1rem;
-        color: #1f2937;
-        opacity: 0.95;
-        margin-bottom: 1.2rem;
-      }
-      .hero-text {
-        font-size: 0.98rem;
-        color: #1e293b;
-        line-height: 1.9;
-        margin-bottom: 1.5rem;
-      }
-      .hero-stats {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.6rem;
-        margin-bottom: 1.2rem;
-      }
-      .hero-stat-item {
-        min-width: 90px;
-      }
-      .hero-stat-number {
-        display: block;
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--primary-dark);
-      }
-      .hero-stat-label {
-        font-size: 0.82rem;
-        color: #475569;
-      }
-      .hero-social {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-      }
-      .hero-social span {
-        font-size: 0.82rem;
-        color: #64748b;
-      }
-      .hero-social a {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        border: 1px solid rgba(148, 163, 184, 0.7);
-        display: grid;
-        place-items: center;
-        background: #eff6ff;
-        transition: all 0.2s ease;
-      }
-      .hero-social a img {
-        width: 15px;
-        height: 15px;
-      }
-      .hero-social a:hover {
-        transform: translateY(-1px);
-        border-color: var(--primary-dark);
-        box-shadow: 0 6px 14px rgba(37, 99, 235, 0.35);
-      }
+body {
+  font-family: "Lyon Arabic", "Tajawal", sans-serif;
+  background-color: #f2f8ff;   /* لون هادي */
+ 
+  min-height: 100vh;
+  color: #0f172a;
+  line-height: 1.6;
+  
+}
+
+
+  
+
+      /* ================== Hero - صفحة برامج المبادرة ================== */
+
+
+.programs-hero {
+  position: relative;
+  width: 100%;
+  
+  padding: 130px 8vw 110px;
+
+  background: url("images/pback.png")  center / cover no-repeat;
+  
+  flex-direction: column;
+  align-items: flex-start;   /* لأننا RTL بيطلع المحتوى جهة اليمين */
+ justify-content: flex-start;
+
+  text-align: right;
+}
+
+
+/* النص داخل الهيرو */
+.programs-hero-title {
+  font-size: clamp(2.3rem, 4vw, 3.2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  justify-content: flex-start;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.programs-hero-text {
+  max-width: 800px;
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #0f172a;
+}
+.hero-logo {
+  width: 90px;
+  margin-bottom: 1rem;
+  opacity: 1;
+}
+
+/* موبايل */
+@media (max-width: 768px) {
+  .programs-hero {
+    padding: 120px 6vw 80px;
+    min-height: 60vh;
+  }
+
+  .programs-hero-text {
+    font-size: 1rem;
+  }
+}
 
       /* ===== شريط البرامج (٤ برامج) ===== */
       .programs-strip {
-        margin: 1.4rem auto 0;
+        margin: 1.4rem 0 0;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 0.8rem;
       }
+
       .program-pill {
         border-radius: 999px;
         padding: 0.55rem 1rem;
@@ -200,586 +144,1315 @@
         color: #0f172a;
         transition: all 0.2s ease;
       }
+
       .program-pill span.label {
         font-weight: 600;
       }
+
       .program-pill i {
         font-size: 0.85rem;
         color: #2563eb;
       }
+
       .program-pill:hover {
         transform: translateY(-1px);
         box-shadow: 0 8px 16px rgba(148, 163, 184, 0.4);
         border-color: var(--primary-light);
       }
+
       .program-pill.latest {
         background: linear-gradient(90deg, #2563eb, #38bdf8);
         color: #eff6ff;
         border-color: rgba(37, 99, 235, 0.9);
       }
+
       .program-pill.latest i {
         color: #fffbeb;
       }
 
-      /* ===== أحدث برنامج – المعسكر (مع خلفية متحركة) ===== */
-      .latest-section {
-        margin: 2.1rem auto 2.6rem;
-        position: relative;
-        overflow: hidden;
-        border-radius: 24px;
-        border: 1px solid rgba(59, 130, 246, 0.45);
-        padding: 2rem 2.1rem 2.2rem;
-        box-shadow: 0 16px 30px rgba(15, 23, 42, 0.18);
-        background: linear-gradient(135deg, #dbeafe, #f4f7ff);
-      }
+     /* ===== أحدث برنامج – معسكر الذكاء الاصطناعي بالحوسبة السحابية ===== */
+.latest-section {
+  max-width: 1200px;
+  margin: 3rem auto 3rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+}
 
-      .latest-section::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          135deg,
-          #dbeafe,
-          #bfdbfe,
-          #eff6ff,
-          #dbeafe
-        );
-        background-size: 300% 300%;
-        animation: gradientMove 8s ease-in-out infinite;
-        opacity: 0.5;
-        z-index: -1;
-      }
+/* العمود الأيسر – الصورة */
+.latest-image-col {
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0b1120;
+  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.4);
+}
 
-      .latest-section-inner {
-        position: relative;
-        z-index: 1;
-      }
+.latest-image-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
-      .latest-kicker {
-        font-size: 0.86rem;
-        color: #1d4ed8;
-        margin-bottom: 0.4rem;
-      }
-      .latest-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 0.7rem;
-      }
-      .latest-text {
-        font-size: 0.96rem;
-        color: #1e293b;
-        margin-bottom: 1.1rem;
-        line-height: 1.9;
-      }
+/* العمود الأيمن – النص */
+.latest-info-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
+  
+}
 
-      /* ✅ هنا التعديل: شبكة تحتوي يمين (النص + المربعات) ويسار (الصورة) */
-      .latest-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); /* يمين أوسع قليلاً */
-        gap: 1.5rem;
-        font-size: 0.9rem;
-        align-items: start;
-      }
+/* شارة "أحدث برنامج" */
+.latest-badge {
+  
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: #f9fafb;
+  padding: 0.2rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.35);
+}
 
-      /* العمود الأيمن: النقاط + المربعات الأربع */
-      .latest-info-col {
-        display: flex;
-        flex-direction: column;
-        gap: 1.1rem;
-      }
+/* شعارات Oracle × Beyond AI */
+.latest-logos-row {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
 
-      .latest-points {
-        list-style: none;
-        padding-right: 1.2rem;
-        position: relative;
-      }
-      .latest-points li {
-        margin-bottom: 0.4rem;
-        position: relative;
-      }
-      .latest-points li::before {
-        content: "•";
-        position: absolute;
-        right: -1.1rem;
-        color: #2563eb;
-      }
+.latest-logos-row img {
+  max-height: 50px;
+  width: auto;
+}
 
-      .latest-meta-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.7rem;
-      }
-      .latest-meta-item {
-        background: rgba(248, 250, 252, 0.96);
-        border-radius: 16px;
-        padding: 0.7rem 0.9rem;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-      }
-      .latest-meta-label {
-        font-size: 0.8rem;
-        color: #64748b;
-      }
-      .latest-meta-value {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: #0f172a;
-      }
+/* العنوان والتاريخ */
+.latest-title {
+  font-size: 2.1rem;
 
-      /* العمود الأيسر: الصورة لوحدها ومكبّرة */
-      .latest-image-col {
-        border-radius: 18px;
-        overflow: hidden;
-        background: #0f172a;
-        box-shadow: 0 14px 26px rgba(15, 23, 42, 0.4);
-        max-height: 360px;
-      }
-      .latest-image-col img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
+  font-weight: 700;
+  color: #2563eb;
+  margin-top: 0.8rem;
+}
 
-      /* حركة الـ gradient لقسم أحدث برنامج */
-      @keyframes gradientMove {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
+.latest-date {
+  font-size: 0.92rem;
+  color: #1e3a8a;
+  margin-top: 0.3rem;
+}
+
+/* النص */
+.latest-text {
+  font-size: 0.98rem;
+  color: #0f172a;
+  line-height: 2;
+  margin-top: 0.7rem;
+}
+
+/* صف الأرقام */
+.latest-stats-row {
+  width: 100%;
+  margin-top: 1.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.latest-stat {
+  min-width: 90px;
+  text-align: center;
+}
+.latest-video {
+    width: 100%;
+    height: 100%;
+    min-width: 90px;
+    
+    display: block;
+}
+
+
+
+.latest-stat-number {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1d4ed8;
+}
+
+.latest-stat-label {
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  color: #0f172a;
+}
+
+
+/* ريسبونسيف */
+@media (max-width: 992px) {
+  .latest-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-inline: 1rem;
+  }
+
+  .latest-image-col {
+    order: -1; /* الصورة تبقى فوق في الموبايل */
+  }
+
+  .latest-badge {
+    align-self: flex-start;
+  }
+
+  .latest-logos-row {
+    justify-content: flex-start;
+  }
+
+  .latest-title {
+    text-align: right;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .latest-stats-row {
+    gap: 1.6rem;
+  }
+
+  .latest-stat {
+    min-width: 90px;
+  }
+}
 
       /* ===== عناوين الأقسام العامة ===== */
+     
       .section-main-heading {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #0f172a;
-        margin-bottom: 0.3rem;
-      }
+    text-align: center;           /* يخليه بالنص */
+    font-size: 2rem;            /* حجم كبير وفخم */
+    font-weight: 700;             /* ثقيل */
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+
+    background: linear-gradient(90deg, #1b47c3, #237ec3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    letter-spacing: 0.5px;        /* يعطي فخامة */
+}
+
+.section-main-heading::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #1b47c3, #237ec3);
+    margin: 10px auto 0;
+    border-radius: 10px;
+}
+
       .section-subtitle {
         font-size: 0.9rem;
         color: #475569;
         margin-bottom: 1.4rem;
       }
 
-      /* ===== البرامج (الكروت) ===== */
-      .programs-section {
-        background: rgba(255, 255, 255, 0.78);
-        border-radius: 22px;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        padding: 2.1rem 2rem 2.3rem;
-        margin-bottom: 2.6rem;
-      }
-      .programs-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 1.4rem;
-      }
-      .program-card {
-        background: #f8fafc;
-        border-radius: 18px;
-        border: 1px solid rgba(148, 163, 184, 0.6);
-        padding: 1.2rem 1.3rem 1.1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        transition: all 0.2s ease;
-      }
-      .program-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 22px rgba(148, 163, 184, 0.35);
-        border-color: var(--primary-light);
-      }
-      .program-tag {
-        font-size: 0.78rem;
-        color: #1d4ed8;
-        background: rgba(191, 219, 254, 0.9);
-        padding: 0.15rem 0.6rem;
-        border-radius: 999px;
-        display: inline-block;
-      }
-      .program-title {
-        font-size: 1.02rem;
-        font-weight: 700;
-        color: #0f172a;
-      }
-      .program-text {
-        font-size: 0.88rem;
-        color: #475569;
-      }
-      .program-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-        margin-top: 0.4rem;
-        font-size: 0.8rem;
-        color: #64748b;
-      }
-      .program-meta span {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-      }
-      .program-meta i {
-        font-size: 0.75rem;
-        color: #1d4ed8;
-      }
+   /* ===== البرامج (الكروت) – كارد عريض + سكرول ===== */
+.programs-section {
+  margin-top: 7rem; /* ارفعي الرقم حسب المسافة اللي تبينها */
+  position: relative;
+  padding: 4rem 2rem;
+  border-radius: 32px;
+  overflow: hidden;
 
-      /* 🔵 مكان الصور داخل البرامج */
-      .program-image {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        border-radius: 18px;
-        overflow: hidden;
-        margin-bottom: 0.7rem;
-        background: #e2e8f0;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .program-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        display: block;
-      }
+  background: linear-gradient(180deg, #eef4ff 0%, #e3efff 40%, #f5faff 100%);
+}
+
+/* Blob Top Right */
+.programs-section::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(96,165,250,0.30), transparent 70%);
+  top: -120px;
+  right: -100px;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+/* Blob Bottom Left */
+.programs-section::after {
+  content: "";
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(56,189,248,0.25), transparent 70%);
+  bottom: -140px;
+  left: -90px;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+
+.programs-grid {
+  display: flex;
+  gap: 1.8rem;
+  overflow-x: auto;
+  padding-bottom: 0.8rem;
+  scroll-snap-type: x mandatory;
+}
+
+.programs-grid::-webkit-scrollbar {
+  height: 6px;
+}
+.programs-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+.programs-grid::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.6);
+  border-radius: 999px;
+}
+
+
+.program-card {
+  position: relative;
+  z-index: 2;
+
+  /* Glass effect الأبيض */
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  padding: 2rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05); /* خفيف جدًا فقط للرفع */
+  transition: 0.25s ease;
+}
+
+/* Hover ناعم يعطي لمعة */
+.program-card:hover {
+  background: rgba(255, 255, 255, 0.65);
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* Hover ناعم */
+.program-card:hover {
+  
+  transform: translateY(-4px);
+}
+
+
+
+/* التاق */
+.program-tag {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  color: #f9fafb;
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  padding: 0.25rem 1rem;
+  border-radius: 999px;
+  display: inline-block;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28);
+  margin-bottom: 0.4rem;
+}
+
+
+/* العنوان + النص */
+.program-title {
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.program-text {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.9;
+}
+
+/* الإحصائيات – الآيكون فوق الرقم فوق العنوان */
+.program-stats-row {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem;
+}
+
+.program-stat {
+  min-width: 110px;
+  text-align: center;
+}
+
+.program-stat i {
+  font-size: 1.4rem;
+  color: #1d4ed8;
+  margin-bottom: 0.4rem;
+}
+
+.program-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.program-stat-label {
+  font-size: 0.86rem;
+  color: #64748b;
+  margin-top: 0.15rem;
+}
+
+/* ريسبونسيف */
+@media (max-width: 900px) {
+  .program-card {
+    padding: 1.2rem 1.1rem;
+  }
+
+  .programs-section {
+    padding-inline: 1.2rem;
+  }
+}
 
       /* ===== الفقرات الأسبوعية ===== */
-      .weekly-section {
-        background: rgba(255, 255, 255, 0.86);
-        border-radius: 22px;
-        border: 1px solid rgba(148, 163, 184, 0.55);
-        padding: 2.1rem 2rem 2.4rem;
-        margin-bottom: 2.6rem;
-      }
-      .weekly-strip {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-        gap: 0.9rem;
-        margin-top: 0.5rem;
-        margin-bottom: 1.8rem;
-      }
-      .weekly-card {
-        background: #f1f5f9;
-        border-radius: 16px;
-        border: 1px solid rgba(148, 163, 184, 0.7);
-        padding: 0.9rem 1rem;
-        font-size: 0.9rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.2rem;
-        transition: all 0.2s ease;
-      }
-      .weekly-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 18px rgba(148, 163, 184, 0.4);
-        border-color: var(--primary-light);
-      }
-      .weekly-card-label {
-        font-size: 0.78rem;
-        color: #1d4ed8;
-        font-weight: 600;
-      }
-      .weekly-card-title {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: #111827;
-      }
-      .weekly-card-text {
-        font-size: 0.85rem;
-        color: #475569;
-      }
+     .weekly-section {
+  position: relative;
+  width: 100%;
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 
-      /* "في دقيقة" – لو احتجتها لاحقاً */
-      .minute-grid {
-        display: grid;
-        gap: 1rem;
-        margin-top: 1.4rem;
-      }
-      @media (min-width: 768px) {
-        .minute-grid {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-      }
-      .minute-card {
-        background: #f8fafc;
-        border-radius: 14px;
-        padding: 0.9rem 1rem;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        font-size: 0.9rem;
-      }
-      .minute-title {
-        font-weight: 700;
-        font-size: 0.95rem;
-        color: #0f172a;
-        margin-bottom: 0.2rem;
-      }
-      .minute-tag {
-        display: inline-block;
-        margin-top: 0.35rem;
-        font-size: 0.78rem;
-        padding: 0.18rem 0.6rem;
-        border-radius: 999px;
-        background: rgba(37, 99, 235, 0.06);
-        color: #1d4ed8;
-      }
+.weekly-content {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
 
-      /* AI x التخصص – كروت الربط */
-      .ai-major-list {
-        margin-top: 1.75rem;
-        display: grid;
-        gap: 1rem;
-      }
-      @media (min-width: 768px) {
-        .ai-major-list {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-      .ai-major-item {
-        background: rgba(248, 250, 252, 0.95);
-        border-radius: 14px;
-        padding: 1.15rem 1.3rem;
-        border: 1px solid rgba(148, 163, 184, 0.55);
-        display: flex;
-        flex-direction: column;
-        gap: 0.35rem;
-      }
-      .ai-major-title {
-        margin-bottom: 0.4rem;
-      }
+.weekly-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: -1;
+}
 
-      /* 🔵 شعار الفقرة كأنه عنوان صغير */
-      .ai-major-title img {
-        display: block;
-        max-height: 150px;
-        width: auto;
-        height: auto;
-        margin-inline-start: 0;
-        margin-inline-end: auto;
-      }
+.weekly-text {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 250px;
+  margin-top: 80px;
+}
 
-      .ai-major-meta {
-        font-size: 0.88rem;
-        color: #64748b;
-      }
-      .ai-major-btn {
-        margin-top: 0.55rem;
-        align-self: flex-start;
-        padding: 0.48rem 1.15rem;
-        border-radius: 999px;
-        border: none;
-        cursor: pointer;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-        color: #fff;
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
-      .ai-major-btn i {
-        font-size: 0.8rem;
-      }
-      .ai-major-btn:hover {
-        filter: brightness(1.05);
-        transform: translateY(-1px);
-        box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
-      }
+.weekly-title {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
 
-      /* كروت تخيّل لو (مع الأنيميشن القديم) */
-      .imagine-card {
-        background: linear-gradient(135deg, #e0edff, #f4f7ff, #e0edff);
-        background-size: 320% 320%;
-        animation: imagineGradient 18s ease infinite;
-        border-radius: 20px;
-        border: 1px solid rgba(96, 165, 250, 0.55);
-        padding: 1.8rem 2rem 1.8rem;
-        box-shadow: 0 14px 26px rgba(15, 23, 42, 0.15);
-        position: relative;
-        overflow: hidden;
-      }
-      .imagine-card::before {
-        content: "";
-        position: absolute;
-        inset: -40%;
-        background: linear-gradient(
-          120deg,
-          rgba(255, 255, 255, 0) 20%,
-          rgba(255, 255, 255, 0.3) 50%,
-          rgba(255, 255, 255, 0) 80%
-        );
-        opacity: 0.5;
-        animation: imagineShine 14s linear infinite;
-        pointer-events: none;
-      }
-      @keyframes imagineGradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-      @keyframes imagineShine {
-        0% {
-          transform: translateX(-30%);
-        }
-        100% {
-          transform: translateX(30%);
-        }
-      }
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 70px;
+}
 
-      .imagine-card + .imagine-card {
-        margin-top: 1.5rem;
-      }
-      .imagine-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: #133375;
-        margin-bottom: 0.8rem;
-      }
-      .imagine-subtitle {
-        font-size: 0.95rem;
-        color: #1e293b;
-        margin-bottom: 1.1rem;
-      }
-      .imagine-body {
-        font-size: 0.98rem;
-        color: #0f172a;
-        line-height: 1.9;
-      }
-      .imagine-tools-label {
-        margin-top: 1.6rem;
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: #0f172a;
-      }
-      .imagine-tools {
-        margin-top: 0.8rem;
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-      .tool-card {
-        flex: 1;
-        min-width: 230px;
-        background: #dbeafe;
-        border-radius: 16px;
-        border: 1px solid rgba(59, 130, 246, 0.4);
-        padding: 0.9rem 1rem;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 0.6rem 1rem;
-        align-items: center;
-      }
-      .tool-main-title {
-        font-size: 0.93rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 0.25rem;
-      }
-      .tool-main-text {
-        font-size: 0.82rem;
-        color: #1e293b;
-      }
-      .tool-bullets {
-        margin-top: 0.35rem;
-        padding-right: 1rem;
-        font-size: 0.82rem;
-        color: #0f172a;
-      }
-      .tool-bullets li {
-        margin-bottom: 0.2rem;
-      }
-      .tool-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.25rem;
-        margin-top: 0.4rem;
-        padding: 0.18rem 0.6rem;
-        border-radius: 999px;
-        background: rgba(37, 99, 235, 0.08);
-        color: #1d4ed8;
-        font-size: 0.78rem;
-      }
-      .tool-chip i {
-        font-size: 0.7rem;
-      }
-      .tool-side {
-        justify-self: end;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.35rem;
-      }
-      .tool-logo {
-        font-size: 0.78rem;
-        font-weight: 700;
-        color: #e5f0ff;
-        background: rgba(15, 23, 42, 0.92);
-        padding: 0.2rem 0.7rem;
-        border-radius: 999px;
-        white-space: nowrap;
-      }
-      .tool-qr {
-        width: 64px;
-        height: 64px;
-        border-radius: 12px;
-        background: #0b1120;
-        border: 2px solid rgba(191, 219, 254, 0.85);
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .tool-qr img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        display: block;
-      }
-      .imagine-author {
-        margin-top: 1.4rem;
-        font-size: 0.8rem;
-        color: #334155;
-      }
 
-      .imagine-section {
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 22px;
-        border: 1px solid rgba(148, 163, 184, 0.55);
-        padding: 2.1rem 2rem 2.6rem;
-        margin-bottom: 2.6rem;
-      }
+.weekly-subtitle {
+  font-size: 16px;
+  color: #3f3f46;
+  line-height: 1.8;
+}
 
-      .paragraphs-ending-div {
-        text-align: center;
-        padding: 2.8rem 0 3.2rem;
-      }
-      .paragraphs-ending-div h1 {
-        font-size: clamp(1.25rem, 3vw, 1.75rem);
-        font-weight: 400;
-        color: var(--dark);
-        line-height: 1.8;
-        max-width: 900px;
-        margin: 0 auto;
-      }
+
+.ai-major-section {
+  padding: 6rem 0;
+  direction: rtl;
+  background: radial-gradient(circle at top left, #e0f2fe, #f8fafc, #e0f2fe);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== الحاوية الأساسية ===== */
+.ai-major-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  position: relative;
+  text-align: center;
+}
+
+/* ===== النص (العنوان + النبذة) ===== */
+.ai-major-text {
+  flex: 1;
+  display: flex;
+  
+  text-align: center;
+  gap: 1.5rem;
+  z-index: 2; /* فوق الصورة */
+}
+
+.ai-major-heading {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  min-height: 70px; /* ارتفاع ثابت */
+  display: flex;
+  align-items: center; /* يخلّي الكلمة بالوسط رأسياً */
+}
+
+
+#dynamic-major {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  color: transparent;
+  padding: 0 4px;
+  font-weight: 900;
+  text-align: left;
+}
+
+.ai-major-description {
+   top: 140px; /* ثبتي مكان النبذة تحت العنوان */
+  font-size: 1.25rem;
+  line-height: 2.1;
+  color: #1e293b;
+  max-width: 650px;
+  text-align: right;
+  
+}
+
+/* ===== الصورة ===== */
+.ai-major-image {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.25; /* نفس طلبك 25% */
+  z-index: 1;
+}
+
+.ai-major-image img {
+  width: 650px;
+  max-width: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ===== للجوال ===== */
+@media (max-width: 900px) {
+  .ai-major-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .ai-major-image {
+    position: relative;
+    right: 0;
+    top: 0;
+    transform: none;
+    opacity: 0.25;
+    margin-bottom: 2rem;
+  }
+
+  .ai-major-heading {
+    font-size: 2.3rem;
+    text-align: center;
+  }
+
+  .ai-major-description {
+    font-size: 1.1rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+
+/* ================================
+   قسم مشاهدة فقرة التخصص + الذكاء الاصطناعي
+==================================*/
+
+.ai-segment-section {
+  padding: 4rem 0 5rem;
+  direction: rtl;
+  background: radial-gradient(circle at top left, #e0f2fe, #f8fafc, #e0f2fe);
+  text-align: center;
+}
+
+/* العنوان الأساسي */
+.section-main-heading {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin-bottom: 0.4rem;
+}
+
+/* العنوان الفرعي */
+.section-subtitle {
+  font-size: 1.05rem;
+  color: #475569;
+  margin-bottom: 3rem;
+}
+
+/* الشبكة */
+.ai-segment-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+/* ================================
+   الكارد
+==================================*/
+.ai-segment-card {
+  position: relative;
+  z-index: 1;
+
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+
+  padding: 1.4rem 1rem 1.8rem;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+
+  transition: 0.25s ease;
+}
+
+.ai-segment-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(148, 163, 184, 0.45);
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.18);
+}
+
+/* الصورة */
+.ai-segment-card-image {
+  width: 100%;
+  max-width: 170px;
+  margin-bottom: 1rem;
+}
+
+.ai-segment-card-image img {
+  width: 100%;
+  display: block;
+  border-radius: 15px;
+  object-fit: contain;
+
+  /* دمج الصورة بدون حواف واضحة */
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.15));
+}
+
+/* العنوان داخل الكارد */
+.ai-segment-title {
+  font-size: 1.1rem;
+  font-weight: 1000;
+  margin-bottom: 0.5rem;
+  color: #1e3a8a;
+  letter-spacing: 0.2px;
+}
+
+/* النص – نثبّت ارتفاعه */
+.ai-segment-text {
+  font-size: 0.5rem;
+  line-height: 1.85;
+  color: #475569;
+  margin-bottom: 1rem;
+
+  min-height: 3.5rem; /* ثبات النص */
+}
+
+/* زر الفقرة */
+.ai-segment-btn {
+  margin-top: auto;
+
+  padding: 0.55rem 1.8rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: "Lyon Arabic", sans-serif;
+
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+  transition: 0.2s ease;
+}
+
+.ai-segment-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #1e40af, #1e3a8a);
+  box-shadow: 0 14px 35px rgba(37, 99, 235, 0.45);
+}
+
+/* ================================
+   Responsive
+==================================*/
+@media (max-width: 1100px) {
+  .ai-segment-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .ai-segment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-segment-card {
+    padding: 1.3rem;
+  }
+
+  .ai-segment-card-image {
+    max-width: 150px;
+  }
+}
+
+
+
+
+/* ===== المودال الأساسي (الخلفية + الفريم) ===== */
+/* ===========================
+   المودال الخلفي (الطبقة الداكنة)
+   =========================== */
+.episode-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.episode-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===========================
+   الكرت الأساسي داخل المودال
+   =========================== */
+.episode-modal-content {
+  position: relative;
+  max-width: 1100px;
+  width: 100%;
+  max-height: 90vh;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.45);
+  background: radial-gradient(circle at top, #e0f2fe, #f8fafc, #e0f2fe);
+}
+
+/* زر الإغلاق (X) */
+.episode-close {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #0f172a;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.35);
+}
+
+/* غلاف محتوى المودال (سكرول داخلي) */
+.ai-modal-shell {
+  padding: 2.5rem 3rem 2.5rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  direction: rtl;
+}
+
+/* ===========================
+   هيدر الفقرة (الشعار + العنوان)
+   =========================== */
+.ai-tool-wrapper {
+  direction: rtl;
+  font-family: "Lyon Arabic", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #0f172a;
+}
+
+.ai-tool-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  margin-bottom: 2.4rem;
+}
+
+/* الشعار بدون مربع */
+.ai-tool-logo {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  border-radius: 0;
+  background: none !important;
+  box-shadow: none !important;
+  margin-bottom: 0.4rem;
+}
+
+.ai-tool-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #1e3a8a;
+}
+
+.ai-tool-subtitle {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+/* ===========================
+   الـ Glass Container لكل قسم
+   (مقدمة – مميزات – فوائد – تحديات – توقعات)
+   =========================== */
+.ai-glass-section {
+  width: 100%;
+  padding: 1.7rem 1.9rem;
+  margin-bottom: 1.6rem;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+}
+
+/* عنوان كل قسم – بالنص + Gradient + خطين */
+.ai-section-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  text-align: center;
+
+  background: linear-gradient(90deg, #2563eb, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+
+.ai-section-title::before,
+.ai-section-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 23%;
+  height: 2px;
+  background: linear-gradient(90deg, #bfdbfe, #93c5fd);
+}
+
+.ai-section-title::before {
+  right: 0;
+}
+
+.ai-section-title::after {
+  left: 0;
+}
+
+/* النصوص داخل الأقسام */
+.ai-glass-section p,
+.ai-glass-section li {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: #0f172a;
+}
+
+.ai-glass-section ul {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  column-gap: 2rem;
+  padding-right: 1.2rem;
+}
+.ai-glass-section ul li {
+  break-inside: avoid;
+  margin-bottom: 0.7rem;
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+/* لو حبيتي صندوق QR أو ملاحظة في آخر الفقرة */
+.ai-tool-footer {
+  margin-top: 1.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.35);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.ai-tool-footer-text {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.ai-tool-qr-box {
+  min-width: 120px;
+  min-height: 120px;
+  border-radius: 18px;
+  border: 1px dashed rgba(148, 163, 184, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: #64748b;
+  background: rgba(248, 250, 252, 0.85);
+}
+
+.ai-tool-qr-box img {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+@media (max-width: 900px) {
+  .ai-glass-section ul {
+    columns: 1;
+    -webkit-columns: 1;
+    -moz-columns: 1;
+  }
+}
+/* ===========================
+   موبايل / شاشات أصغر
+   =========================== */
+@media (max-width: 900px) {
+  .episode-modal {
+    padding: 1rem;
+  }
+
+  .episode-modal-content {
+    max-width: 100%;
+  }
+
+  .ai-modal-shell {
+    padding: 1.6rem 1.4rem 1.8rem;
+  }
+
+  .ai-tool-title {
+    font-size: 1.7rem;
+  }
+
+  .ai-section-title::before,
+  .ai-section-title::after {
+    width: 18%;
+  }
+
+  .ai-glass-section {
+    padding: 1.4rem 1.3rem;
+  }
+}
+
+/* ===== هيرو فقرة تخيّل لو...؟ ===== */
+
+.imagine-hero-section {
+  padding: 4.5rem 0;
+  background: radial-gradient(circle at top left, #e0f2fe, #f8fafc, #e0f2fe);
+  position: relative;
+  overflow: hidden;
+}
+
+.imagine-hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* يخلي النص بالنص زي الذكاء الاصطناعي + التخصص */
+  direction: rtl;
+}
+
+/* الصورة – تبقى على اليمين وبخلفية خفيفة */
+.imagine-hero-image {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.25;
+  z-index: 1;
+}
+
+.imagine-hero-image img {
+  max-width: 650px;
+  width: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* النص – في المنتصف لكن المحاذاة من اليمين */
+.imagine-hero-text {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: right;
+}
+
+/* عنوان تخيّل لو على اليمين فوق الصورة تقريبًا */
+.imagine-hero-title {
+  margin: 0 0 1.2rem 0;
+  text-align: right;
+}
+
+/* أنيميشن كتابة من اليمين + لمعة خفيفة */
+.imagine-typed {
+  display: inline-block;
+  font-size: 3.1rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  white-space: nowrap;
+  overflow: hidden;
+
+  border-right: 3px solid rgba(37, 99, 235, 0.9);
+  padding-inline: 4px;
+
+  /* يبدأ مخفي ويتكتب من اليمين */
+  width: 0;
+  animation:
+    imagineTypingRTL 2.2s steps(12, end) 0.2s forwards,
+    caretBlink 0.7s step-end infinite 2.4s,
+    softGlow 2.4s ease-in-out 2.4s infinite alternate;
+}
+
+/* كتابة RTL (يزيد العرض بس، النص RTL فيبان من اليمين) */
+@keyframes imagineTypingRTL {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* وميض الكارِت */
+@keyframes caretBlink {
+  0%   { border-right-color: rgba(37, 99, 235, 0.9); }
+  50%  { border-right-color: transparent; }
+  100% { border-right-color: rgba(37, 99, 235, 0.9); }
+}
+
+/* لمعة ناعمة */
+@keyframes softGlow {
+  0% {
+    text-shadow: none;
+  }
+  100% {
+    text-shadow:
+      0 0 10px rgba(37, 99, 235, 0.35),
+      0 0 22px rgba(56, 189, 248, 0.35);
+  }
+}
+
+/* نص الفقرة */
+.imagine-hero-body {
+  font-size: 1.05rem;
+  line-height: 2.1;
+  color: #0f172a;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* موبايل */
+@media (max-width: 900px) {
+  .imagine-hero-container {
+    min-height: auto;
+    padding: 3rem 1.5rem;
+  }
+
+  .imagine-hero-image {
+    position: relative;
+    right: 0;
+    top: 0;
+    transform: none;
+    opacity: 0.3;
+    margin-bottom: 1.5rem;
+  }
+
+  .imagine-hero-text {
+    text-align: center;
+  }
+
+  .imagine-hero-title {
+    text-align: center;
+  }
+
+  .imagine-hero-body {
+    font-size: 1rem;
+  }
+}
+
+/* ============================
+   تخيّل لو – الحالات التطبيقية
+   ============================ */
+
+.imagine-cases-section {
+  padding: 4rem 0 5rem;
+  background: radial-gradient(circle at top left, #e0f2fe, #f8fafc, #e0f2fe);
+  position: relative;
+  overflow: hidden;
+}
+
+/* حاوية عامة */
+.imagine-cases-shell {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  direction: rtl;
+}
+
+/* التابات (التعليم – الألعاب – التجارة – التصميم) */
+.imagine-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.imagine-tab {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: rgba(248, 250, 252, 0.95);
+  padding: 0.5rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #0f172a;
+  transition: all 0.22s ease;
+}
+
+.imagine-tab:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(148, 163, 184, 0.4);
+}
+
+.imagine-tab.is-active {
+  background: linear-gradient(90deg, #2563eb, #38bdf8);
+  color: #f9fafb;
+  border-color: transparent;
+}
+
+/* المسرح اللي يتبدّل فيه المحتوى */
+.imagine-cases-stage {
+  position: relative;
+  min-height: 320px;
+}
+
+/* كل سيناريو */
+.imagine-scenario {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.2fr) minmax(0, 0.7fr);
+  gap: 2.5rem;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+/* السيناريو المعروض */
+.imagine-scenario.is-active {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+/* العمود (كروت الأدوات) */
+.imagine-tools-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* كرت أداة واحدة */
+.imagine-tool-card {
+  width: 240px; /* عرض أصغر */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+  border-radius: 22px; /* تصغير الانحناء */
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  padding: 1.2rem 1.2rem; /* أصغر من قبل */
+
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12);
+  text-align: center;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.imagine-tool-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(15,23,42,0.18);
+}
+
+
+.imagine-tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(37, 99, 235, 0.25);
+  border-color: rgba(129, 140, 248, 0.8);
+}
+
+.imagine-tool-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.4rem;
+}
+
+.imagine-tool-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+
+.imagine-tool-logo {
+  max-width: 90px;
+  margin: 0 auto 0.7rem;
+  display: block;
+}
+
+
+
+.imagine-tool-link span.arrow {
+  font-size: 1.05rem;
+}
+
+/* النص في المنتصف */
+.imagine-text-col {
+  text-align: right;
+}
+
+.imagine-scenario-title {
+  font-size: clamp(1.7rem, 2.4vw, 2.1rem); 
+  font-weight: 600;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.6;
+}
+
+.imagine-scenario-body {
+ font-size: 0.9rem;      /* أصغر  */
+  line-height: 1.9;  
+  color: #0f172a;
+}
+
+/* الصورة على اليمين – Opacity هادي */
+.imagine-visual-col {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.imagine-visual-col img {
+  max-width: 520px;
+  width: 100%;
+  object-fit: contain;
+  opacity: 0.24; /* هنا تقللين/تزيدين حسب اللي يريح عينك */
+  pointer-events: none;
+  user-select: none;
+}
+
+/* موبايل / شاشات صغيرة */
+@media (max-width: 960px) {
+  .imagine-scenario {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+    padding-top: 1.5rem;
+  }
+
+  .imagine-tools-col {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .imagine-tool-card {
+    min-width: 180px;
+  }
+
+  .imagine-visual-col {
+    justify-content: center;
+  }
+
+  .imagine-visual-col img {
+    max-width: 360px;
+    opacity: 0.3;
+  }
+
+  .imagine-cases-stage {
+    min-height: 0;
+  }
+}
 
 
 
     </style>
   </head>
+
   <body>
+
     <header class="topbar">
       <div class="topbar-row">
         <input type="checkbox" id="nav-toggle" class="nav-toggle" />
@@ -803,761 +1476,626 @@
         </div>
       </div>
     </header>
+    
+   <main class="page-main"></main>
 
-    <!-- عنوان برامج المبادرة مع الشعار فوقه -->
-    <section class="page-main-title">
-      <img src="images/HeaderLogo.png" alt="شعار المبادرة" />
-      <h1>برامج المبادرة</h1>
-    </section>
+      <!-- HERO -->
+<section class="programs-hero">
+  <div class="programs-hero-content">
+    <img src="images/logo.png" alt="لوقو المبادرة" class="hero-logo">
+    <h1 class="programs-hero-title">برامج مبادرة Beyond AI</h1>
 
-    <!-- HERO + شريط البرامج + أحدث برنامج -->
-    <div class="wrap programs-hero">
-      <div class="hero-layout">
-        <div class="hero-media">
-          <img src="images/program.jpeg" alt="صورة من برامج المبادرة" />
+    <p class="programs-hero-text">
+      في برامج Beyond AI نمنحك تجربة تجمع بين الأساسيات النظرية والتطبيق العملي للذكاء الاصطناعي،
+      عبر فقرات وورش ولقاءات مخصّصة لتطوير مهاراتك وربطها بتخصصك الأكاديمي وحياتك اليومية.
+      هنا ستجد محتوى يُلهمك ويفتح لك آفاقًا جديدة لتكون جزءًا من المستقبل الرقمي.
+    </p>
+  </div>
+</section>
+
+
+
+
+<!-- أحدث برنامج: معسكر تطبيقات الذكاء الاصطناعي بالحوسبة السحابية -->
+<section class="latest-section" id="camp" aria-label="أحدث برنامج">
+ 
+
+  <!-- النص (يمين) -->
+  <div class="latest-info-col">
+    <!-- شارة أحدث برنامج -->
+    <div class="latest-badge">أحدث برنامج</div>
+
+    <!-- شعارات Oracle × Beyond AI -->
+    <div class="latest-logos-row">
+      <img src="images/3.png" alt="Oracle" />
+      <span>×</span>
+      <img src="images/HeaderLogo.png" alt="Beyond AI Initiative" />
+    </div>
+
+    <!-- العنوان والتاريخ -->
+    <h2 class="latest-title">
+      معسكر تطبيقات الذكاء الاصطناعي بالحوسبة السحابية
+    </h2>
+   
+
+    <!-- وصف المعسكر -->
+    <p class="latest-text">
+      معسكر تدريبي مكثَّف قدّمته مبادرة <strong>Beyond AI</strong>
+      بالشراكة مع <strong>Oracle</strong>، قام على التعلّم التطبيقي من
+      خلال معالجة مشكلات واقعية وتطوير مشاريع تخدم مستهدفات رؤية المملكة
+      2030. أتاح هذا البرنامج للمشاركين تنمية مهاراتهم التقنية في الذكاء
+      الاصطناعي والحوسبة السحابية، وبناء نماذج تجسّد دور التقنيات الحديثة
+      في دعم مستقبل المملكة الرقمي.
+    </p>
+
+    <!-- صف الإحصائيات -->
+    <div class="latest-stats-row">
+      <div class="latest-stat">
+        <div class="latest-stat-number" data-target="200" data-plus="+">
+          +200
         </div>
-        <div class="hero-content">
-          <div class="hero-content-label">
-            <i class="fas fa-star"></i>
-            برامج المبادرة
-          </div>
-          <h1 class="hero-title">استثمر مهاراتك مع برامج مبادرة ذكاء وما بعدها</h1>
-          <p class="hero-subtitle">
-            مجموعة برامج نوعية تربط الطلاب والطالبات بالذكاء الاصطناعي عبر مسارات
-            تطبيقية، ولقاءات حية، ومعسكرات متخصصة.
-          </p>
-          <p class="hero-text">
-            من خلال هذه البرامج ستجد محتوى تدريبي، جلسات حوارية، وفرص تطبيق حقيقي
-            تساعدك تبني فهم عميق للذكاء الاصطناعي في تخصصك الجامعي، وتفتح لك
-            مسارات مستقبلية في سوق العمل.
-          </p>
-          <div class="hero-stats">
-            <div class="hero-stat-item">
-              <span class="hero-stat-number">+2000</span>
-              <span class="hero-stat-label">مستفيد ومُستفيدة</span>
-            </div>
-            <div class="hero-stat-item">
-              <span class="hero-stat-number">+50</span>
-              <span class="hero-stat-label">فعالية وجلسة</span>
-            </div>
-            <div class="hero-stat-item">
-              <span class="hero-stat-number">+10</span>
-              <span class="hero-stat-label">تخصص جامعي</span>
-            </div>
-          </div>
+        <div class="latest-stat-label">المتقدّمين</div>
+      </div>
 
-          <div class="hero-social">
-            <span>تابع تفاصيل البرامج عبر منصاتنا:</span>
-            <a
-              href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-              target="_blank"
-            >
-              <img src="images/twitter.png" alt="X" />
-            </a>
-            <a
-              href="https://www.linkedin.com/showcase/thakaaBeyond/"
-              target="_blank"
-            >
-              <img src="images/liked-in.png" alt="LinkedIn" />
-            </a>
+      <div class="latest-stat">
+        <div class="latest-stat-number" data-target="75">
+          75
+        </div>
+        <div class="latest-stat-label">المتنافسين</div>
+      </div>
+
+      <div class="latest-stat">
+        <div class="latest-stat-number" data-target="17">
+          17
+        </div>
+        <div class="latest-stat-label">مشروع تطبيقي</div>
+      </div>
+
+      <div class="latest-stat">
+        <div class="latest-stat-number" data-target="4">
+          4
+        </div>
+        <div class="latest-stat-label">الفرق الفائزة</div>
+      </div>
+
+      <div class="latest-stat">
+        <div class="latest-stat-number" data-target="150" data-plus="+" data-suffix="K">
+          +150K
+        </div>
+        <div class="latest-stat-label">الوصول الرقمي</div>
+      </div>
+    </div>
+  </div>
+    <div class="latest-image-col">
+<video id="latestVideo" class="latest-video" autoplay muted loop playsinline>
+    <source src="images/bootcampV.mp4" type="video/mp4">
+</video>
+
+
+
+
+  </div>
+
+</section>
+
+
+ <section class="programs-section" id="programs">
+  <h2 class="section-main-heading">البرامج</h2>
+  <p class="section-subtitle"></p>
+
+  <div class="programs-grid" aria-label="برامج المبادرة">
+    <!-- لقاء مقدمة في الذكاء الاصطناعي -->
+    <article class="program-card" id="program-intro">
+      <div class="program-card-body">
+        <span class="program-tag">لقاء معرفي</span>
+
+        <div class="program-title">
+          مقدمة بالذكاء الاصطناعي وأدواته العلمية
+        </div>
+
+        <p class="program-text">
+          لقاء تمهيدي يعرّف المشاركين بمفاهيم الذكاء الاصطناعي، أنواعه،
+          ومجالات استخدامه، مع استعراض لأهم الأدوات والمنصات التي تدعم
+          التعلم والتجربة للطلاب والطالبات في مختلف التخصصات.
+        </p>
+
+        <div class="program-stats-row">
+          <div class="program-stat">
+            <i class="fas fa-user-friends"></i>
+            <div class="program-number" data-target="2013"></div>
+            <div class="program-stat-label">عدد المتقدمين</div>
+          </div>
+          <div class="program-stat">
+            <i class="fas fa-chart-line"></i>
+            <div class="program-number" data-target="31" data-suffix="K+"></div>
+            <div class="program-stat-label">الوصول الرقمي</div>
           </div>
         </div>
       </div>
+    </article>
 
-      <!-- شريط البرامج الأربعة -->
-      <div class="programs-strip" aria-label="شريط برامج المبادرة">
-        <button
-          class="program-pill latest"
-          type="button"
-          onclick="document.getElementById('camp').scrollIntoView({behavior:'smooth'});"
-        >
-          <i class="fas fa-bolt"></i>
-          <span class="label">أحدث برنامج</span>
-          <span>معسكر تطبيقات الذكاء الاصطناعي في الحوسبة السحابية</span>
-        </button>
+    <!-- اللقاء الثاني -->
+    <article class="program-card" id="program-apps">
+      <div class="program-card-body">
+        <span class="program-tag">لقاء معرفي</span>
 
-        <button
-          class="program-pill"
-          type="button"
-          onclick="document.getElementById('program-intro').scrollIntoView({behavior:'smooth'});"
-        >
-          <i class="fas fa-chalkboard-teacher"></i>
-          <span class="label">لقاء</span>
-          <span>مقدمة بالذكاء الاصطناعي وأدواته العلمية</span>
-        </button>
+        <div class="program-title">
+          تطبيقات الذكاء الاصطناعي ومتابعة التطورات التقنية
+        </div>
 
-        <button
-          class="program-pill"
-          type="button"
-          onclick="document.getElementById('program-apps').scrollIntoView({behavior:'smooth'});"
-        >
-          <i class="fas fa-satellite-dish"></i>
-          <span class="label">لقاء</span>
-          <span>تطبيقات الذكاء الاصطناعي ومتابعة التطورات التقنية</span>
-        </button>
+        <p class="program-text">جلسة معرفية تستعرض التطورات المتسارعة في تقنيات الذكاء الاصطناعي، وكيف تُسهم هذه التقنيات في تشكيل مستقبل القطاعات المختلفة مثل الصحة، الأعمال، الإعلام، التعليم، والخدمات الحكومية.
 
-        <button
-          class="program-pill"
-          type="button"
-          onclick="document.getElementById('program-chatbot').scrollIntoView({behavior:'smooth'});"
-        >
-          <i class="fas fa-robot"></i>
-          <span class="label">ورشة عمل</span>
-          <span>How to build an AI Chatbot</span>
-        </button>
+        </p>
+
+        <div class="program-stats-row">
+          <div class="program-stat">
+            <i class="fas fa-user-friends"></i>
+            <div class="program-number" data-target="2058"></div>
+            <div class="program-stat-label">عدد المتقدمين</div>
+          </div>
+          <div class="program-stat">
+            <i class="fas fa-chart-line"></i>
+            <div class="program-number" data-target="83" data-suffix="K+"></div>
+            <div class="program-stat-label">الوصول الرقمي</div>
+          </div>
+        </div>
       </div>
+    </article>
 
-      <!-- أحدث برنامج: المعسكر -->
-      <section class="latest-section" id="camp" aria-label="أحدث برنامج">
-        <div class="latest-section-inner">
-          <div class="latest-kicker">أحدث برامج المبادرة</div>
-          <h2 class="latest-title">
-            معسكر لتطبيقات الذكاء الاصطناعي في الحوسبة السحابية
-          </h2>
-          <p class="latest-text">
-            برنامج تدريبي نظمته مبادرة <strong>Beyond AI</strong> بالشراكة مع
-            <strong> Oracle</strong>، يهدف إلى تمكين الطلاب من فهم الذكاء
-            الاصطناعي وتطبيقاته ضمن بيئات الحوسبة السحابية عبر مزيج من التعلّم
-            النظري والتطبيقي. يقدّم المعسكر تجربة عملية للتعرّف على أدوات
-            وخدمات <strong>Oracle Cloud AI Services</strong> وتطبيقاتها في تطوير
-            الحلول التقنيّة، كما يعزّز مهارات الابتكار والعمل الجماعي لدى
-            المشاركين، ويتيح لهم فهمًا أعمق لآليات بناء التطبيقات السحابية
-            وتحسين كفاءتها باستخدام تقنيات الذكاء الاصطناعي، مما يسهم في إعداد
-            كوادر وطنية قادرة على دعم التحول الرقمي في المملكة.
-          </p>
+    <!-- ورشة الشات بوت -->
+    <article class="program-card" id="program-chatbot">
+      <div class="program-card-body">
+        <span class="program-tag">ورشة عمل</span>
 
-          <!-- ✅ الشبكة الجديدة: يمين (نص + مربعات) / يسار (صورة) -->
-          <div class="latest-grid">
-            <!-- العمود الأيمن -->
-            <div class="latest-info-col">
-              <ul class="latest-points">
-                <li>
-                  تعرّف عملي على أدوات وخدمات Oracle للحوسبة السحابية والذكاء
-                  الاصطناعي.
-                </li>
-                <li>
-                  مزيج من الشرح النظري والتطبيقات العملية لبناء حلول حقيقية في بيئة
-                  سحابية.
-                </li>
-                <li>
-                  مشاريع تطبيقية يُقدّمها المشاركون في ختام المعسكر أمام لجنة من
-                  المتخصصين.
-                </li>
-                <li>
-                  تعزيز مهارات التحليل، الابتكار، والعمل الجماعي وتجهيز الطلاب
-                  لدعم مبادرات التحول الرقمي.
-                </li>
-              </ul>
-
-              <div class="latest-meta-grid">
-                <div class="latest-meta-item">
-                  <div class="latest-meta-label">عدد المتقدّمين</div>
-                  <div class="latest-meta-value">200+ متقدّم ومتقدّمة</div>
-                </div>
-                <div class="latest-meta-item">
-                  <div class="latest-meta-label">عدد المشاركين في المعسكر</div>
-                  <div class="latest-meta-value">70 مشارك ومشاركة</div>
-                </div>
-                <div class="latest-meta-item">
-                  <div class="latest-meta-label">المشاريع التطبيقية</div>
-                  <div class="latest-meta-value">17 مشروعًا تطبيقيًا</div>
-                </div>
-                <div class="latest-meta-item">
-                  <div class="latest-meta-label">الفرق الفائزة</div>
-                  <div class="latest-meta-value">
-                    4 فرق فائزة في ختام المعسكر
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- العمود الأيسر: الصورة لوحدها -->
-            <div class="latest-image-col">
-              <img
-                src="images/program.jpeg"
-                alt="صورة من معسكر تطبيقات الذكاء الاصطناعي في الحوسبة السحابية"
-              />
-            </div>
-          </div>
+        <div class="program-title">
+          ورشة عمل: How to build an AI Chatbot
         </div>
-      </section>
-    </div>
 
-    <!-- البرامج (٣ كروت) -->
-    <div class="wrap">
-      <section class="programs-section" id="programs">
-        <h2 class="section-main-heading">البرامج</h2>
-        <p class="section-subtitle"></p>
-        <div class="programs-grid">
-          <!-- لقاء مقدمة في الذكاء الاصطناعي -->
-          <article class="program-card" id="program-intro">
-            <div class="program-image">
-              <img src="images/9.png" alt="صورة لقاء مقدمة بالذكاء الاصطناعي" />
-            </div>
-
-            <span class="program-tag">لقاء معرفي </span>
-            <div class="program-title">
-              مقدمة بالذكاء الاصطناعي وأدواته العلمية
-            </div>
-            <p class="program-text">
-              لقاء تمهيدي يعرّف المشاركين بمفاهيم الذكاء الاصطناعي، أنواعه، ومجالات
-              استخدامه، مع استعراض لأهم الأدوات والمنصات التي تدعم التعلم
-              والتجربة للطلاب والطالبات في مختلف التخصصات.
-            </p>
-            <div class="program-meta">
-              <span>
-                <i class="far fa-calendar-alt"></i>
-              </span>
-              <span>
-                <i class="fas fa-users"></i>
-              </span>
-              <span>
-                <i class="fas fa-user-friends"></i>
-                عدد المقدمين: 2013
-              </span>
-              <span>
-                <i class="fas fa-chart-line"></i>
-                الوصول الرقمي: 31k
-              </span>
-            </div>
-          </article>
-
-          <!-- اللقاء الثاني: تطبيقات الذكاء الاصطناعي -->
-          <article class="program-card" id="program-apps">
-            <div class="program-image">
-              <img src="images/8.png" alt="صورة لقاء تطبيقات الذكاء الاصطناعي" />
-            </div>
-
-            <span class="program-tag">لقاء معرفي</span>
-            <div class="program-title">
-              تطبيقات الذكاء الاصطناعي ومتابعة التطورات التقنية
-            </div>
-            <p class="program-text">
-              جلسة تفاعلية تستعرض أحدث حالات الاستخدام في القطاعات المختلفة،
-              مع تبسيط الأخبار التقنية، وإبراز ما يعنيه كل تطور جديد للطلاب
-              في مساراتهم الأكاديمية والمهنية.
-            </p>
-            <div class="program-meta">
-              <span>
-                <i class="far fa-clock"></i>
-              </span>
-              <span>
-                <i class="fas fa-broadcast-tower"></i>
-              </span>
-              <span>
-                <i class="fas fa-user-friends"></i>
-                عدد المقدمين: 2058
-              </span>
-              <span>
-                <i class="fas fa-chart-line"></i>
-                الوصول الرقمي: 83k
-              </span>
-            </div>
-          </article>
-
-          <!-- ورشة العمل: How to build an AI Chatbot -->
-          <article class="program-card" id="program-chatbot">
-            <div class="program-image">
-              <img src="images/10.png" alt="صورة ورشة عمل بناء شات بوت" />
-            </div>
-
-            <span class="program-tag">ورشة عمل</span>
-            <div class="program-title">
-              ورشة عمل: How to build an AI Chatbot
-            </div>
-            <p class="program-text">
-              ورشة عملية يتدرّب فيها المشاركون على تصميم روبوت محادثة، بناء
-              السيناريوهات، ربطه بواجهة برمجية، وتجهيزه لخدمة حقيقية مثل دعم
-              العملاء أو الإجابة عن أسئلة الطلاب.
-            </p>
-            <div class="program-meta">
-              <span>
-                <i class="fas fa-laptop-code"></i>
-              </span>
-              <span>
-                <i class="far fa-check-circle"></i>
-              </span>
-              <span>
-                <i class="fas fa-user-friends"></i>
-                عدد المقدمين: 719
-              </span>
-              <span>
-                <i class="fas fa-chart-line"></i>
-                الوصول الرقمي: 35k
-              </span>
-            </div>
-          </article>
-        </div>
-      </section>
-    </div>
-
-    <!-- الفقرات الأسبوعية + الذكاء الاصطناعي + التخصص -->
-    <div class="wrap">
-      <section class="weekly-section" id="weekly">
-        <h2 class="section-main-heading">الفقرات الأسبوعية</h2>
-        <p class="section-subtitle">
-          محتوى أسبوعي على منصات التواصل يعرّفك على الذكاء الاصطناعي من زوايا
-          مختلفة، ويتم ربطه هنا مع المراجع والمقاطع لكل فقرة.
+        <p class="program-text">ورشة تدريبية تقدّم شرحًا موجزًا لآليات بناء روبوتات المحادثة المعتمدة على الذكاء الاصطناعي، كما تتضمّن تطبيقًا عمليًا لإنشاء نموذج أولي يقدّم تفاعلاً ذكيًا وفعّالًا.
         </p>
 
-        <div class="weekly-strip">
-          <div class="weekly-card">
-            <span class="weekly-card-label">الفقرة الأولى</span>
-            <div class="weekly-card-title">الذكاء الاصطناعي + التخصص</div>
-            <div class="weekly-card-text">
-              فقرة تربط في كل مرة بين تخصص جامعي وأداة أو حالة استخدام عملية
-              للذكاء الاصطناعي في نفس المجال، مع مثال تطبيقي موثّق.
-            </div>
+        <div class="program-stats-row">
+          <div class="program-stat">
+            <i class="fas fa-user-friends"></i>
+            <div class="program-number" data-target="719"></div>
+            <div class="program-stat-label">عدد المتقدمين</div>
           </div>
-
-          <div class="weekly-card">
-            <span class="weekly-card-label">الفقرة الثانية</span>
-            <div class="weekly-card-title">تخيّل لو...</div>
-            <div class="weekly-card-text">
-              سيناريوهات من حياتك الجامعية أو المهنية توضّح كيف يغيّر الذكاء
-              الاصطناعي طريقة التعلّم والعمل واتخاذ القرار.
-            </div>
+          <div class="program-stat">
+            <i class="fas fa-chart-line"></i>
+            <div class="program-number" data-target="35" data-suffix="K+"></div>
+            <div class="program-stat-label">الوصول الرقمي</div>
           </div>
         </div>
+      </div>
+    </article>
+  </div>
+</section>
 
-        <span
-          class="section-label"
-          style="
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: #0f172a;
-            background: rgba(248, 250, 252, 0.9);
-            padding: 0.3rem 0.8rem;
-            border-radius: 999px;
-            border: 1px solid rgba(148, 163, 184, 0.4);
-            margin-bottom: 0.8rem;
-          "
-        >
-          <i
-            class="fas fa-layer-group"
-            style="color: var(--primary-dark); font-size: 0.85rem"
-          ></i>
-          الذكاء الاصطناعي والتخصصات
-        </span>
+<section class="weekly-section">
+  <div class="weekly-content">
+    <img src="images/backweek.png" alt="weekly background" class="weekly-bg">
 
-        <div class="ai-major-list">
-          <div class="ai-major-item">
-            <div class="ai-major-title">
-              <img
-                src="images/ai-pathology-header.png"
-                alt="الذكاء الاصطناعي + علم الأمراض (Path AI)"
-              />
-            </div>
-            <div class="ai-major-meta">
-              نماذج قادرة على تمييز الأنسجة السليمة من المريضة، ودعم أطباء علم
-              الأمراض في تشخيص أكثر دقة وسرعة داخل معامل التحاليل والمستشفيات.
-            </div>
-            <a href="ai_pathology.html" class="ai-major-btn">
-              مشاهدة الفقرة الكاملة
-              <i class="fas fa-arrow-left"></i>
-            </a>
-          </div>
+    <div class="weekly-text">
+      <h2 class="weekly-title">
+     مساحتك الأسبوعية لاكتشاف كيف يصنع الذكاء الاصطناعي مستقبل تخصصك
+      </h2>
 
-          <div class="ai-major-item">
-            <div class="ai-major-title">
-              <img
-                src="images/ai-marketing-header.png"
-                alt="الذكاء الاصطناعي + التسويق (Jasper AI)"
-              />
-            </div>
-            <div class="ai-major-meta">
-              مساعد ذكي في كتابة المحتوى التسويقي، من العناوين إلى حملات البريد
-              والإعلانات، مع اقتراح صيغ تناسب الشرائح المستهدفة.
-            </div>
-            <a href="ai_marketing.html" class="ai-major-btn">
-              مشاهدة الفقرة الكاملة
-              <i class="fas fa-arrow-left"></i>
-            </a>
-          </div>
+      <p class="weekly-subtitle"> تقدّم الفقرات الأسبوعية محتوى معرفيًا ثريًا يربط بين تخصصك وتحوّلات الذكاء الاصطناعي المتسارعة.
+ويُقدَّم المحتوى عبر منصّات التواصل الاجتماعي بأسلوب مبسّط وعملي يبرز ملامح المستقبل، ويستعرض أحدث التطبيقات والأفكار التي تسهم في تطوير رؤيتك لمجالك.
+      </p>
+    </div>
+  </div>
+</section>
 
-          <div class="ai-major-item">
-            <div class="ai-major-title">
-              <img
-                src="images/ai-industrial-header.png"
-                alt="الذكاء الاصطناعي + الهندسة الصناعية (IBM Watson)"
-              />
-            </div>
-            <div class="ai-major-meta">
-              تحليل بيانات خطوط الإنتاج وسلاسل الإمداد للتنبؤ بالأعطال، تحسين
-              الجداول وتقليل الهدر، ورفع كفاءة القرارات التشغيلية.
-            </div>
-            <a href="ai_industrial.html" class="ai-major-btn">
-              مشاهدة الفقرة الكاملة
-              <i class="fas fa-arrow-left"></i>
-            </a>
-          </div>
-
-          <div class="ai-major-item">
-            <div class="ai-major-title">
-              <img
-                src="images/ai-ux-header.png"
-                alt="الذكاء الاصطناعي + تصميم تجربة المستخدم (Localise)"
-              />
-            </div>
-            <div class="ai-major-meta">
-              أدوات تدعم فرق تجربة المستخدم في تحليل سلوك المستخدمين، اختبار
-              الشاشات، وتخصيص المحتوى واللغة بما يناسب كل فئة.
-            </div>
-            <a href="ai_ux.html" class="ai-major-btn">
-              مشاهدة الفقرة الكاملة
-              <i class="fas fa-arrow-left"></i>
-            </a>
-          </div>
-        </div>
-      </section>
+<section class="ai-major-section">
+  <div class="ai-major-container">
+   <!-- الصورة: أنتِ تضيفينها بنفسك -->
+    <div class="ai-major-image">
+      <img src="images/backai.jpg" alt="AI Major Image">
     </div>
 
-    <!-- الفقرة الأسبوعية الثانية: تخيل لو... -->
-    <div class="wrap">
-      <section class="imagine-section" id="imagine">
-        <h2 class="section-main-heading">تخيّل لو...</h2>
-        <p class="section-subtitle">
-          سيناريوهات واقعية من حياتك الجامعية والمهنية توضّح كيف يمكن للذكاء
-          الاصطناعي أن يغيّر طريقة التعلّم والعمل واتخاذ القرار.
-        </p>
 
-        <div style="margin-top: 0.5rem">
-          <!-- تخيل لو: المتجر الإلكتروني + Dynamic Yield & Insider -->
-          <div class="imagine-card">
-            <div class="imagine-title">
-              تخيّل لو كان لديك متجر إلكتروني قادر على تحليل سلوك عملائك
-              والتنبؤ باهتماماتهم قبل أن يُفصحوا عنها.
-            </div>
-            <p class="imagine-subtitle">
-              كل زائر يجد واجهة مصمَّمة خصيصًا له تعكس ذوقه واهتماماته بدقّة عالية،
-              ويحدث ذلك تلقائيًا دون أي تدخّل يدوي.
-            </p>
-            <p class="imagine-body">
-              في هذا السيناريو، أنظمة التخصيص المعتمدة على الذكاء الاصطناعي تراقب
-              رحلة العميل لحظيًا: الصفحات التي يزورها، المنتجات التي يضيفها أو
-              يتركها في السلة، والأوقات التي يزيد فيها التصفح والشراء. بعدها
-              تُنشئ المنصّة عروضًا مخصّصة، وترتيبًا مختلفًا للصفحة الرئيسية، ورسائل
-              تذكير ذكية لعربات التسوق المتروكة. النتيجة؟ تجربة تسوّق أقرب لما
-              يحتاجه كل عميل، وارتفاع في معدل التحويل وقيمة المبيعات.
-            </p>
-
-            <div class="imagine-tools-label">الأدوات:</div>
-            <div class="imagine-tools">
-              <!-- DYNAMIC YIELD -->
-              <div class="tool-card">
-                <div>
-                  <div class="tool-main-title">DYNAMIC YIELD</div>
-                  <ul class="tool-bullets">
-                    <li>منصّة متقدّمة تقدّم تجربة تسوّق شخصية لكل مستخدم.</li>
-                    <li>
-                      تحلّل سلوك العميل في الوقت الفعلي وتقترح منتجات وعروضًا تناسبه.
-                    </li>
-                    <li>تُساعد أصحاب المتاجر على رفع معدّل التحويل وتحسين المبيعات.</li>
-                  </ul>
-                  <div class="tool-chip">
-                    <i class="fas fa-magic"></i>
-                    توصيات ومنتجات مخصّصة
-                  </div>
-                </div>
-                <div class="tool-side">
-                  <div class="tool-logo">Dynamic Yield</div>
-                  <div class="tool-qr">
-                    <img
-                      src="images/qr-dynamic-yield.png"
-                      alt="رمز QR لمنصّة Dynamic Yield"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <!-- INSIDER -->
-              <div class="tool-card">
-                <div>
-                  <div class="tool-main-title">INSIDER</div>
-                  <ul class="tool-bullets">
-                    <li>
-                      منظومة متكاملة للتخصيص الذكي والتسويق عبر قنوات متعدّدة.
-                    </li>
-                    <li>
-                      تتابع رحلة العميل عبر الموقع والتطبيق والبريد الإلكتروني
-                      والرسائل.
-                    </li>
-                    <li>
-                      تمكّن فرق التسويق من بناء حملات آلية تستهدف الفئة المناسبة في
-                      الوقت المناسب.
-                    </li>
-                  </ul>
-                  <div class="tool-chip">
-                    <i class="fas fa-route"></i>
-                    رحلات عملاء آلية
-                  </div>
-                </div>
-                <div class="tool-side">
-                  <div class="tool-logo">Insider</div>
-                  <div class="tool-qr">
-                    <img
-                      src="images/qr-insider.png"
-                      alt="رمز QR لمنصّة Insider"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="imagine-author">
-              الكاتبة: لطيفة السيف – طالبة في كلية علوم الحاسب والمعلومات
-            </div>
-          </div>
-
-          <!-- تخيل لو: معلّم لغات ذكي + Duolingo Max -->
-          <div class="imagine-card">
-            <div class="imagine-title">
-              تخيّل لو كان لديك معلّم ذكي يشرح لك كل إجابة وكل تفصيل فورًا!
-            </div>
-            <p class="imagine-subtitle">
-              بدل ما تنتظر تصحيح الواجب أو ملاحظات متأخرة، تحصل على شرح فوري
-              للأخطاء، وأمثلة إضافية، وتمارين تفاعلية تكمل بها التعلّم.
-            </p>
-            <p class="imagine-body">
-              في منصّة
-              <strong>Duolingo Max</strong>
-              يُستخدم نموذج الذكاء الاصطناعي
-              <strong>GPT-4</strong>
-              لتقديم شروحات لحظيّة للأخطاء اللغوية عبر ميزة
-              <strong>Explain My Answer</strong>،
-              إلى جانب محاكاة محادثات حيّة مع شخصيات افتراضية من خلال ميزة
-              <strong>Roleplay</strong>،
-              هذا يعزّز تجربة التعلّم، ويجعلها أكثر تفاعلية وواقعية، خصوصًا لمن
-              يتعلّم بمفرده أو خارج أوقات المحاضرات.
-            </p>
-
-            <div class="imagine-tools-label">الأداة:</div>
-            <div class="imagine-tools">
-              <div class="tool-card">
-                <div>
-                  <div class="tool-main-title">DUOLINGO MAX</div>
-                  <ul class="tool-bullets">
-                    <li>دروس لغة مدعومة بشرح فوري للأجوبة الخاطئة.</li>
-                    <li>محادثات تفاعلية مع شخصيات افتراضية لتقوية مهارة التحدّث.</li>
-                    <li>تجربة تعلّم شخصية تتكيّف مع مستوى المتعلّم وتقدّمه.</li>
-                  </ul>
-                  <div class="tool-chip">
-                    <i class="fas fa-language"></i>
-                    تعلّم لغة بتفاعل أعلى
-                  </div>
-                </div>
-                <div class="tool-side">
-                  <div class="tool-logo">Duolingo Max</div>
-                  <div class="tool-qr">
-                    <img
-                      src="images/qr-duolingo-max.png"
-                      alt="رمز QR لـ Duolingo Max"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="imagine-author">
-              الكاتبة: ريما الزريقي – طالبة في كلية علوم الحاسب والمعلومات
-            </div>
-          </div>
-
-          <!-- تخيل لو: وصف واجهة فقط + Figma AI & Canva Magic Design -->
-          <div class="imagine-card">
-            <div class="imagine-title">
-              تخيّل لو تمكّنت كمصمّم واجهات من إدخال وصف موجز لفكرتك، ليقوم مساعد
-              ذكي بإعداد تصميم أوّلي متكامل لشاشة التطبيق.
-            </div>
-            <p class="imagine-subtitle">
-              بدلاً من البدء من صفحة فارغة، يتحوّل الوصف النصّي إلى مسوّدة واجهة
-              جاهزة تُعدّل عليها وتطوّرها كما تشاء.
-            </p>
-            <p class="imagine-body">
-              اليوم تمثّل هذه الأدوات مثالًا واحدًا من بين مئات الأمثلة الواقعية
-              التي نعايشها؛ حيث يمكن لمصمّم تجربة المستخدم، أو حتى من ليست لديه
-              خبرة عميقة في التصميم، أن يحوّل فكرة مبسّطة إلى نموذج أولي واضح،
-              يُجرَّب مع المستخدمين ويُبنى عليه المنتج النهائي.
-            </p>
-
-            <div class="imagine-tools-label">الأدوات:</div>
-            <div class="imagine-tools">
-              <!-- FIGMA AI – FIRST DRAFT -->
-              <div class="tool-card">
-                <div>
-                  <div class="tool-main-title">FIGMA AI – FIRST DRAFT</div>
-                  <ul class="tool-bullets">
-                    <li>يحوّل الوصف النصّي إلى واجهة أوليّة جاهزة للاختبار.</li>
-                    <li>يسرّع بداية المشروع ويوفّر وقت المصمّم في رسم المسوّدات.</li>
-                    <li>
-                      يساعد على تجربة أكثر من فكرة تصميم بسرعة قبل اعتماد الشكل النهائي.
-                    </li>
-                  </ul>
-                  <div class="tool-chip">
-                    <i class="fas fa-drafting-compass"></i>
-                    مسودات واجهات فورية
-                  </div>
-                </div>
-                <div class="tool-side">
-                  <div class="tool-logo">Figma AI</div>
-                  <div class="tool-qr">
-                    <img
-                      src="images/qr-figma-ai.png"
-                      alt="رمز QR لأداة Figma AI"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <!-- CANVA AI – MAGIC DESIGN -->
-              <div class="tool-card">
-                <div>
-                  <div class="tool-main-title">CANVA AI – MAGIC DESIGN</div>
-                  <ul class="tool-bullets">
-                    <li>توليد عروض، صور، وشعارات من وصف نصّي نحو عناصر جاهزة.</li>
-                    <li>يساعد غير المصمّمين على إنتاج تصاميم احترافية بسهولة.</li>
-                    <li>
-                      يقدّم قوالب متنوّعة يمكن تعديلها سريعًا لتناسب الهويّة البصرية.
-                    </li>
-                  </ul>
-                  <div class="tool-chip">
-                    <i class="fas fa-wand-sparkles"></i>
-                    تصاميم جاهزة من وصف قصير
-                  </div>
-                </div>
-                <div class="tool-side">
-                  <div class="tool-logo">Canva AI</div>
-                  <div class="tool-qr">
-                    <img
-                      src="images/qr-canva-magic.png"
-                      alt="رمز QR لأداة Canva Magic Design"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="imagine-author">
-              الكاتب: محمد الشقوي – طالب في كلية علوم الحاسب والمعلومات
-            </div>
-          </div>
-
-          <!-- تخيل لو: ألعاب وشخصيات + Character.ai & Scenario.gg -->
-          <div class="imagine-card">
-            <div class="imagine-title">
-              تخيّل لو كان بإمكان فرق تطوير الألعاب ابتكار شخصيّات حيّة ونسج
-              حوارات شيّقة في وقت قصير.
-            </div>
-            <p class="imagine-subtitle">
-              بدلاً من أسابيع من كتابة السيناريو والحوار يدويًا، تساعدك أدوات
-              الذكاء الاصطناعي على توليد شخصيات وخلفيّات وقصص تتكيّف مع قرارات
-              اللاعب.
-            </p>
-            <p class="imagine-body">
-              في هذا النوع من المشاريع، يتحوّل الذكاء الاصطناعي إلى شريك إبداعي:
-              يقترح شخصيات جديدة، يوسّع عالم اللعبة، ويولّد مسارات حوار مختلفة
-              بناءً على اختيارات اللاعب. هكذا تصبح العقبات التقنية والوقتية بداية
-              لفرص إبداعية جديدة في تصميم الألعاب وتجارب اللعب القصصية.
-            </p>
-
-            <div class="imagine-tools-label">الأدوات:</div>
-            <div class="imagine-tools">
-              <!-- CHARACTER.AI -->
-              <div class="tool-card">
-                <div>
-                  <div class="tool-main-title">CHARACTER.AI</div>
-                  <ul class="tool-bullets">
-                    <li>إنشاء شخصيّات افتراضية بملامح وسلوكيّات واقعية.</li>
-                    <li>نسج حوارات تفاعلية يمكن إدماجها في قصص وألعاب.</li>
-                    <li>
-                      تتيح لفِرق التطوير اختبار شخصيات عديدة بسرعة قبل اعتمادها.
-                    </li>
-                  </ul>
-                  <div class="tool-chip">
-                    <i class="fas fa-comments"></i>
-                    حوارات تفاعليّة للشخصيات
-                  </div>
-                </div>
-                <div class="tool-side">
-                  <div class="tool-logo">character.ai</div>
-                  <div class="tool-qr">
-                    <img
-                      src="images/qr-character-ai.png"
-                      alt="رمز QR لموقع character.ai"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <!-- SCENARIO.GG -->
-              <div class="tool-card">
-                <div>
-                  <div class="tool-main-title">SCENARIO.GG</div>
-                  <ul class="tool-bullets">
-                    <li>توليد أصول رسوميّة (Game Assets) بجودة عالية ومتناسقة.</li>
-                    <li>تسهيل بناء العوالم والخلفيّات والشخصيات البصرية في وقت أقل.</li>
-                    <li>
-                      يدعم الفرق الصغيرة في إنتاج محتوى بصري ينافس استوديوهات الألعاب الكبيرة.
-                    </li>
-                  </ul>
-                  <div class="tool-chip">
-                    <i class="fas fa-gamepad"></i>
-                    أصول ألعاب مولّدة بالذكاء الاصطناعي
-                  </div>
-                </div>
-                <div class="tool-side">
-                  <div class="tool-logo">Scenario.gg</div>
-                  <div class="tool-qr">
-                    <img
-                      src="images/qr-scenario-gg.png"
-                      alt="رمز QR لموقع Scenario.gg"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="imagine-author">
-              الكاتبة: روعة المحيميد – طالبة في كلية علوم الحاسب والمعلومات
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <div class="wrap paragraphs-ending-div">
-      <h1>
-        نحن لا نقدم محتوى فقط، بل نبني وعيًا مستقبليًا يربطك بالذكاء الاصطناعي
-        خطوة بخطوة، من برامج متخصصة، إلى فقرات أسبوعية، إلى سيناريوهات تعيشها
-        يوميًا.
-      </h1>
-    </div>
-
-    <footer class="footer fade-in" id="footer">
-  <div class="footer-inner">
-
-    <!-- العمود 1 (يمين): عن مبادرة Beyond AI -->
-    <div class="footer-col">
-      <h3 class="footer-title">مبادرة Beyond AI</h3>
-
-     
-
-      <p class="footer-about-desc">
-         
-        مبادرة Beyond AI هي مبادرة مجتمعية  تابعة لمركز الدراسات المتقدمة في الذكاء الاصطناعي ( ذكاء ) في جامعة الملك سعود يقودها أكثر من ٩٠ طالبًا وطالبة من نخبة الجامعات السعودية،
-        وتهدف إلى تمكين الطلبة من مختلف المستويات الدراسية الجامعية ومن مختلف التخصصات
-        من فهم الذكاء الاصطناعي وتوظيفه في مساراتهم الأكاديمية والمهنية.
+    <!-- النص: العنوان على اليمين + النبذة على اليسار -->
+    <div class="ai-major-text">
+    
+  <h2 class="ai-major-heading">
+        الذكاء الاصطناعي +
+        <span id="dynamic-major">القانون</span>
+      </h2>
+      <p class="ai-major-description">
+        هي فقرة أسبوعية تستعرض دور الذكاء الاصطناعي في مختلف التخصصات الأكاديمية والمهنية، 
+        من خلال إبراز الأدوات والتقنيات التي أصبحت جزءًا من ممارسات كل مجال، 
+        وتوضح كيف يمكن للذكاء الاصطناعي تطوير مهاراتك وفتح آفاق جديدة في مسارك.
       </p>
     </div>
 
-    <!-- العمود 2 (وسط): روابط سريعة -->
-   <div class="footer-col">
+    <!-- الصورة: أنتِ تضيفينها بنفسك -->
+
+
+  </div>
+</section>
+
+<section class="ai-segment-section">
+
+  <!-- العنوان الأساسي -->
+  <h2 class="section-main-heading">
+   عندما يفتح الذكاء الاصطناعي آفاقًا جديدة في مجالــــك
+  </h2>
+
+  <p class="section-subtitle">
+    اختر بطاقة لتشاهد كيف يغيّر الذكاء الاصطناعي تفاصيل كل تخصص في دقائق معدودة.
+  </p>
+
+  <!-- شبكة البطاقات -->
+  <div class="ai-segment-grid">
+
+  <article class="ai-segment-card" data-episode-id="jasper_marketing">
+  <div class="ai-segment-card-image">
+    <img src="images/jasperai.png" alt="الذكاء الاصطناعي + التسويق" />
+  </div>
+
+  <h3 class="ai-segment-title">الذكاء الاصطناعي + التسويق</h3>
+
+  <p class="ai-segment-desc">يصنع محتوى أسرع ويمنح رؤى أدق للحملات.
+  </p>
+
+  <button class="ai-segment-btn">عرض الفقرة</button>
+</article>
+
+
+    <!-- ===== الكرت 2 ===== -->
+   <article class="ai-segment-card" data-episode-id="localise_ux">
+  <div class="ai-segment-card-image">
+    <img src="images/localise.png" alt="الذكاء الاصطناعي + تجربة المستخدم" />
+  </div>
+
+  <h3 class="ai-segment-title">الذكاء الاصطناعي + تصميم الواجهات </h3>
+
+  <p class="ai-segment-desc">
+   يُحسّن الواجهات ويُقدّم تجربة أكثر سلاسة وذكاءً.
+  </p>
+
+  <button class="ai-segment-btn">عرض الفقرة</button>
+</article>
+
+    <!-- ===== الكرت 3 ===== -->
+   <article class="ai-segment-card" data-episode-id="ibm_industry">
+  <div class="ai-segment-card-image">
+    <img src="images/ibmwatson.png" alt="الذكاء الاصطناعي + الصناعة" />
+  </div>
+
+  <h3 class="ai-segment-title">الذكاء الاصطناعي + الهندسة الصناعية </h3>
+
+  <p class="ai-segment-desc">
+    يرفع كفاءة الإنتاج ويتنبّأ بالأعطال قبل حدوثها.
+  </p>
+
+  <button class="ai-segment-btn">عرض الفقرة</button>
+</article>
+
+
+    <!-- ===== الكرت 4 ===== -->
+    <article class="ai-segment-card" data-episode-id="pathai_medical">
+  <div class="ai-segment-card-image">
+    <img src="images/pathai.png" alt="الذكاء الاصطناعي + الصحة" />
+  </div>
+
+  <h3 class="ai-segment-title">الذكاء الاصطناعي + علم الأمراض</h3>
+
+  <p class="ai-segment-desc">يعزّز دقّة التحليل الطبي ويُسرّع التشخيص.
+  </p>
+
+  <button class="ai-segment-btn">عرض الفقرة</button>
+</article>
+
+
+  </div>
+</section>
+
+
+<div class="episode-modal" id="episodeModal">
+  <div class="episode-modal-content">
+    <button class="episode-close">&times;</button>
+    <div class="ai-modal-shell">
+      <div id="aiModalContent"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<section class="imagine-hero-section" id="imagine">
+  <div class="imagine-hero-container">
+
+    <!-- الصورة (تبقى على اليمين) -->
+    <div class="imagine-hero-image">
+      <img src="images/backai.jpg" alt="تخيّل لو - توضيح الفقرة">
+    </div>
+
+    <!-- النص -->
+    <div class="imagine-hero-text">
+    <h2 class="imagine-hero-title">
+  <span class="imagine-typed">تخيّل لو...؟</span>
+</h2>
+
+
+      <p class="imagine-hero-body"> فقرة تخيّل لو تعرض مثالًا لخاصية أو تقنية معاصرة في الذكاء الاصطناعي، بأسلوب موجز يوضح أثرها المباشر في تحسين العمل وتسهيل المهام. ثم تقدّم الأداة الفعلية التي تعتمد عليها هذه التقنية، مع بيان فائدتها وطريقة تطبيقها في الاستخدامات المهنية والتعليمية.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="imagine-cases-section" id="imagine-cases">
+  <div class="imagine-cases-shell">
+
+    <!-- التابات -->
+    <div class="imagine-tabs">
+      <button class="imagine-tab is-active" data-scenario="edu">التعليم</button>
+      <button class="imagine-tab" data-scenario="games">الألعاب</button>
+      <button class="imagine-tab" data-scenario="commerce">التجارة</button>
+      <button class="imagine-tab" data-scenario="design">التصميم</button>
+    </div>
+
+    <!-- المسرح -->
+    <div class="imagine-cases-stage">
+
+      <!-- 1) التعليم – Duolingo Max (أداة واحدة) -->
+      <article class="imagine-scenario is-active" data-scenario-panel="edu">
+         <!-- الصورة -->
+        <div class="imagine-visual-col">
+          <!-- صورة مجال التعليم -->
+          <img src="images/التعليم.png" alt="تخيّل لو في التعليم">
+        </div>
+
+<!-- النص -->
+        <div class="imagine-text-col">
+          <h3 class="imagine-scenario-title">
+            تخيّل لو كان لديك معلّم ذكي يشرح لك كل إجابة وكل تفصيل فورًا!
+          </h3>
+          <p class="imagine-scenario-body">
+            في منصة <strong>Duolingo Max</strong> يُستخدم نموذج ذكاء اصطناعي متقدّم لتقديم شروحات لحظية
+            للأخطاء اللغوية عبر ميزة <strong>Explain My Answer</strong>، إلى جانب محاكاة محادثات حيّة
+            مع شخصيات افتراضية. هذا يغيّر تجربة التعلّم تمامًا، ويجعلها أكثر تفاعلية وواقعية، خصوصًا لمن
+            يتعلّم بمفرده أو خارج أوقات المحاضرات.
+          </p>
+        </div>
+
+
+        <!-- الأدوات -->
+        <div class="imagine-tools-col">
+          <a
+            class="imagine-tool-card"
+            href="https://www.duolingo.com"
+            target="_blank"
+            rel="noopener"
+          >
+
+            <div class="imagine-tool-title">DUOLINGO MAX</div>
+            <!-- عدّلي المسار حسب اسم ملف لوقو دوولينقو عندك -->
+            <img src="images/17.png" alt="Duolingo Max Logo" class="imagine-tool-logo" />
+            <div class="imagine-tool-link">
+              <span class="arrow">↖</span>
+              <span>للتعرّف عليها</span>
+            </div>
+          </a>
+        </div>
+
+        
+
+       
+      </article>
+
+      <!-- 2) الألعاب – Character.ai + Scenario.gg -->
+
+      <article class="imagine-scenario" data-scenario-panel="games">
+           <!-- الصورة -->
+        <div class="imagine-visual-col">
+          <img src="images/الألعاب.png" alt="تخيّل لو في الألعاب">
+        </div>
+     
+
+          <!-- النص -->
+        <div class="imagine-text-col">
+          <h3 class="imagine-scenario-title">
+            تخيّل لو كان بإمكان فرق تطوير الألعاب ابتكار شخصيات حيّة ونسج حوارات شيّقة في دقائق!
+          </h3>
+          <p class="imagine-scenario-body">
+            باستخدام أدوات مثل <strong>character.ai</strong> يمكن بناء شخصيات افتراضية تتفاعل مع
+            اللاعبين بشكل طبيعي، بينما تساعد <strong>Scenario.gg</strong> في توليد أصول ورسومات
+            مخصّصة لعالم اللعبة. النتيجة هي تجربة تطوير أسرع، وتركيز أكبر على الإبداع وقصة اللعبة
+            بدل تضييع الوقت في التفاصيل المتكررة.
+          </p>
+        </div>
+
+        <!-- الأدوات -->
+        <div class="imagine-tools-col">
+
+          <a
+            class="imagine-tool-card"
+            href="https://character.ai"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="imagine-tool-title">CHARACTER.AI</div>
+            <img src="images/13.png" alt="character.ai logo" class="imagine-tool-logo" />
+            <div class="imagine-tool-link">
+              <span class="arrow">↖</span>
+              <span>للتعرّف عليها</span>
+            </div>
+          </a>
+
+          <a
+            class="imagine-tool-card"
+            href="https://scenario.com"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="imagine-tool-title">SCENARIO.GG</div>
+            <img src="images/14.png" alt="Scenario.gg logo" class="imagine-tool-logo" />
+            <div class="imagine-tool-link">
+              <span class="arrow">↖</span>
+              <span>للتعرّف عليها</span>
+            </div>
+          </a>
+
+        </div>
+ </article>
+    
+
+     
+
+      <!-- 3) التجارة – Dynamic Yield + Insider -->
+      <article class="imagine-scenario" data-scenario-panel="commerce">
+            <!-- الصورة -->
+        <div class="imagine-visual-col">
+          <img src="images/التجارة.png" alt="تخيّل لو في التجارة">
+        </div>
+
+  <!-- النص -->
+        <div class="imagine-text-col">
+          <h3 class="imagine-scenario-title">
+            تخيّل لو كان لديك متجر إلكتروني قادر على تحليل سلوك عملائك والتنبؤ باهتماماتهم قبل أن يصرّحوا بها!
+          </h3>
+          <p class="imagine-scenario-body">
+            منصّات مثل <strong>Dynamic Yield</strong> و<strong>Insider</strong> تستخدم الذكاء
+            الاصطناعي لتخصيص التجربة لكل زائر؛ من ترتيب المنتجات، إلى العروض، وحتى رسائل البريد
+            والإشعارات. كل زائر يجد واجهة مصممة خصيصًا له تعكس ذوقه واهتماماته بدقة عالية، ويتم ذلك
+            تلقائيًا دون أي تعديل يدوي مستمر من فريق المتجر.
+          </p>
+        </div>
+
+
+        <!-- الأدوات -->
+        <div class="imagine-tools-col">
+
+          <a
+            class="imagine-tool-card"
+            href="https://www.dynamicyield.com"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="imagine-tool-title">DYNAMIC YIELD</div>
+            <img src="images/16.png" alt="Dynamic Yield logo" class="imagine-tool-logo" />
+            <div class="imagine-tool-link">
+              <span class="arrow">↖</span>
+              <span>للتعرّف عليها</span>
+            </div>
+          </a>
+
+          <a
+            class="imagine-tool-card"
+            href="https://useinsider.com"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="imagine-tool-title">INSIDER</div>
+            <img src="images/15.png" alt="Insider logo" class="imagine-tool-logo" />
+            <div class="imagine-tool-link">
+              <span class="arrow">↖</span>
+              <span>للتعرّف عليها</span>
+            </div>
+          </a>
+
+        </div>
+
+      
+
+    
+      </article>
+
+      <!-- 4) التصميم – Canva AI + Figma AI -->
+      <article class="imagine-scenario" data-scenario-panel="design">
+
+<!-- الصورة -->
+        <div class="imagine-visual-col">
+          <img src="images/التصميم.png" alt="تخيّل لو في التصميم">
+        </div>
+
+         <!-- النص -->
+        <div class="imagine-text-col">
+          <h3 class="imagine-scenario-title">
+            تخيّل لو تمكّن مصمم الواجهات من إدخال وصف موجز لفكرته، ليقوم مساعد ذكي بإعداد تصميم أوَّلي متكامل للشاشة فورًا!
+          </h3>
+          <p class="imagine-scenario-body">
+            مع <strong>Canva AI</strong> و<strong>Figma AI</strong> يمكن تحويل وصف بسيط للمشروع
+            إلى مسوّدات جاهزة للاستخدام أو التعديل. هذا يختصر المراحل الأولى من العمل، ويمنح المصمم
+            وقتًا أكبر للتفكير في الهوية، وتجربة المستخدم، والتفاصيل الإبداعية بدل البدء من صفحة فارغة
+            في كل مرة.
+          </p>
+        </div>
+
+        <!-- الأدوات -->
+        <div class="imagine-tools-col">
+
+          <a
+            class="imagine-tool-card"
+            href="https://www.canva.com"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="imagine-tool-title">CANVA AI – MAGIC DESIGN</div>
+            <img src="images/12.png" alt="Canva AI logo" class="imagine-tool-logo" />
+            <div class="imagine-tool-link">
+              <span class="arrow">↖</span>
+              <span>للتعرّف عليها</span>
+            </div>
+          </a>
+
+          <a
+            class="imagine-tool-card"
+            href="https://www.figma.com"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="imagine-tool-title">FIGMA AI – FIRST DRAFT</div>
+            <img src="images/11.png" alt="Figma AI logo" class="imagine-tool-logo" />
+            <div class="imagine-tool-link">
+              <span class="arrow">↖</span>
+              <span>للتعرّف عليها</span>
+            </div>
+          </a>
+
+        </div>
+
+       
+
+        
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+    <!-- ===== الفوتر الموحد ===== -->
+    <footer class="footer fade-in" id="footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h3 class="footer-title">مبادرة Beyond AI</h3>
+          <p class="footer-about-desc">
+            مبادرة Beyond AI هي مبادرة مجتمعية تابعة لمركز الدراسات المتقدمة في
+            الذكاء الاصطناعي ( ذكاء ) في جامعة الملك سعود يقودها أكثر من ٩٠
+            طالبًا وطالبة من نخبة الجامعات السعودية، وتهدف إلى تمكين الطلبة من
+            مختلف المستويات الدراسية الجامعية ومن مختلف التخصصات من فهم الذكاء
+            الاصطناعي وتوظيفه في مساراتهم الأكاديمية والمهنية.
+          </p>
+        </div>
+
+         <div class="footer-col">
   <h3 class="footer-title">روابط سريعة</h3>
  <ul class="footer-links">
   <li><a href="index.html">الصفحة الرئيسية</a></li>
-  <li><a href="WeeklyParagraphs.html">برامـج المبــادرة</a></li>
+  <li><a href="InitiativePrograms.html">برامـج المبــادرة</a></li>
   <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
   <li><a href="Who_We_Are.html">من نحن</a></li>
   <li><a href="Contact_Us.html">تواصل معنا</a></li>
@@ -1565,65 +2103,138 @@
 
 </div>
 
+        <div class="footer-col">
+          <h3 class="footer-title">معلومات التواصل</h3>
+          <ul class="footer-contact">
+            <li>
+              <div class="footer-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <span class="nowrap">ThakaaBeyond@ksu.edu.sa</span>
+            </li>
+            <li>
+              <div class="footer-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <span class="nowrap" dir="ltr">+966539066133</span>
+            </li>
+            <li>
+              <div class="footer-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <span>مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك سعود</span>
+            </li>
+          </ul>
+        </div>
+      </div>
 
-    <!-- العمود 3 (يسار): معلومات التواصل -->
-    <div class="footer-col">
-      <h3 class="footer-title">معلومات التواصل</h3>
-      <ul class="footer-contact">
-        <li>
-          <div class="footer-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <span class="nowrap">ThakaaBeyond@ksu.edu.sa</span>
-        </li>
-        <li>
-          <div class="footer-icon">
-            <i class="fas fa-phone"></i>
-          </div>
-          <span class="nowrap" dir="ltr">+966539066133</span>
-        </li>
-        <li>
-          <div class="footer-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <span>مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك سعود</span>
-        </li>
-      </ul>
-    </div>
+      <div class="footer-bottom">
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
 
-  </div>
+        <div class="footer-social">
+          <a
+            href="https://www.linkedin.com/showcase/thakaabeyond/"
+            aria-label="LinkedIn"
+            title="LinkedIn"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a
+            href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
+            aria-label="X"
+            title="X"
+          >
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+          <a
+            href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
+            aria-label="TikTok"
+            title="TikTok"
+          >
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
 
-  <!-- الشريط السفلي -->
-   
-  <div class="footer-bottom">
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-/>
-
-    <div class="footer-social">
-      <a href="https://www.linkedin.com/showcase/thakaabeyond/" aria-label="LinkedIn" title="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-      <a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" aria-label="X" title="X">
-        <i class="fa-brands fa-x-twitter"></i>
-
-
-
-      </a>
-      <a href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" aria-label="TikTok" title="TikTok">
-        <i class="fab fa-tiktok"></i>
-      </a>
-    </div>
-
-    <div class="footer-bottom-text">
-      جميع الحقوق محفوظة لمبادرة <span style="color:#2563eb; font-weight:700;">Beyond AI</span> – مركز الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
-    </div>
-  </div>
-</footer>
+        <div class="footer-bottom-text">
+          جميع الحقوق محفوظة لمبادرة
+          <span style="color: #2563eb; font-weight: 700">Beyond AI</span> – مركز
+          الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
+        </div>
+      </div>
+    </footer>
 
     <script>
-      // Search functionality
+  // عدّاد الإحصائيات في قسم المعسكر
+  (function () {
+    const section = document.getElementById("camp");
+    const counters = document.querySelectorAll(".latest-stat-number");
+    let started = false;
+
+    if (!section || counters.length === 0) return;
+
+    function animateCounters() {
+      counters.forEach((counter) => {
+        const target = parseInt(counter.dataset.target, 10);
+        if (isNaN(target)) return;
+
+        const suffix = counter.dataset.suffix || "";
+        const plus = counter.dataset.plus || "";
+        let current = 0;
+        const duration = 1500;
+        const startTime = performance.now();
+
+        function update(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          current = Math.floor(progress * target);
+
+          if (suffix === "K") {
+            counter.textContent = plus + current + "K";
+          } else {
+            counter.textContent = plus + current;
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          }
+        }
+
+        requestAnimationFrame(update);
+      });
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !started) {
+            started = true;
+            animateCounters();
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(section);
+  })();
+</script>
+
+<script>
+const video = document.getElementById('latestVideo');
+
+video.addEventListener('mouseenter', () => {
+    video.setAttribute('controls', true);
+});
+
+video.addEventListener('mouseleave', () => {
+    video.removeAttribute('controls');
+});
+</script>
+
+    <!-- سكربت البحث نفسه اللي عندك -->
+    <script>
       (function () {
         const searchForm = document.getElementById("searchForm");
         const searchInput = document.getElementById("searchInput");
@@ -1751,7 +2362,6 @@
               }
             }
 
-            // في حال ما لقينا نتيجة مباشرة
             const suggestions = `📌 التخصصات: طب، هندسة، الفقرات، الذكاء الاصطناعي + التخصص، تخيّل لو
 📌 البرامج: المعسكر، اللقاءات، الورش
 📌 يمكنك البحث عن: أحدث برنامج، مبادرة Beyond AI، شراكة Oracle، المشاريع التطبيقيّة، الكورسات، جلسات الدعم، مسارات الذكاء الاصطناعي، الحوسبة السحابية، معسكر الطلاب، أدوات الذكاء، مهارات المستقبل، التدريب العملي.`;
@@ -1764,5 +2374,612 @@
         }
       })();
     </script>
+
+    <script>
+  // أنيميشن أرقام البرامج (عدد المتقدمين + الوصول الرقمي)
+  (function () {
+    const section = document.getElementById("programs");
+    const numbers = document.querySelectorAll(".program-number");
+    let started = false;
+
+    if (!section || numbers.length === 0) return;
+
+    function animateProgramNumbers() {
+      numbers.forEach((numEl) => {
+        const target = parseInt(numEl.dataset.target, 10);
+        if (isNaN(target)) return;
+
+        const suffix = numEl.dataset.suffix || "";
+        let current = 0;
+        const duration = 1300;
+        const startTime = performance.now();
+
+        function update(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          current = Math.floor(progress * target);
+
+          if (suffix) {
+            numEl.textContent = current + suffix;
+          } else {
+            numEl.textContent = current;
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          }
+        }
+
+        requestAnimationFrame(update);
+      });
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !started) {
+            started = true;
+            animateProgramNumbers();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+  })();
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dynamicSpan = document.getElementById("dynamic-major");
+
+    // التخصصات اللي بتلف
+    const majors = [
+      "القانون",
+      "الهندسة",
+      "الطب",
+      "علوم الحاسب",
+      "التسويق",
+      "الإدارة",
+      "التصميم",
+      "المالية"
+    ];
+
+    let index = 0;
+
+    function changeWord() {
+      // خروج الكلمة الحالية
+      dynamicSpan.classList.remove("word-fade-in");
+      dynamicSpan.classList.add("word-fade-out");
+
+      setTimeout(() => {
+        // غيّر الكلمة
+        index = (index + 1) % majors.length;
+        dynamicSpan.textContent = majors[index];
+
+        // دخول الكلمة الجديدة
+        dynamicSpan.classList.remove("word-fade-out");
+        dynamicSpan.classList.add("word-fade-in");
+      }, 350); // نفس تقريباً زمن الـ fade-out
+    }
+
+    // بداية أنيميشن أول كلمة
+    dynamicSpan.classList.add("word-fade-in");
+
+    // غيّر الكلمة كل 2.8 ثانية تقريباً
+    setInterval(changeWord, 2800);
+  });
+</script>
+
+
+
+<script>
+  /* ============================================
+   1) بيانات جميع الفقرات (اكتبي محتوى كل فقرة هنا)
+   ============================================ */
+const EPISODES = {
+
+  /* ===== Jasper – التسويق ===== */
+  jasper_marketing: {
+    logo: "images/J.png",
+    title: "الذكاء الاصطناعي + التسويق",
+    subtitle: "أداة Jasper AI للمحتوى التسويقي",
+
+    qrImage: "images/JasperQR.png",
+    qrLabel: "امسح الباركود لزيارة موقع Jasper AI",
+
+    sections: [
+      {
+        title: "المقدمة",
+        type: "paragraph",
+        content: [
+          "ظهرت أدوات مثل Jasper AI لتكون شريكًا لفرق التسويق في ابتكار أفكار جديدة للنصوص وتحسين الحملات، وتوفير وقت كبير كان يُصرف على الكتابة من الصفر.",
+          "تعتمد الأداة على نماذج لغوية متقدمة لتوليد محتوى متوافق مع شخصية العلامة التجارية والجمهور المستهدف، مع إمكانيّة ضبط النبرة والأسلوب وعدة لغات مختلفة."
+        ]
+      },
+      {
+        title: "أهم المميزات",
+        type: "list",
+        items: [
+          "كتابة الإعلانات: توليد عناوين ونصوص إعلانية لوسائل التواصل والمنصّات المختلفة مثل Google Ads و Meta Ads بصيغ متنوّعة للاختبار.",
+          "رسائل البريد التسويقي: اقتراح هيكل الرسالة المقدّمة، الدعوة إلى الإجراء، مع إمكانيّة ضبط النبرة (رسميّة، ودّية، حماسية...).",
+          "وصف المنتجات وصفحات الهبوط: إنشاء وصف منظم للمنتج، ميزات، استخدامات، مع اقتراح عناوين قوية ونقاط Key Benefits.",
+          "دعم لغات متعددة: توليد نصوص بلغات مختلفة مع الحفاظ على الرسالة التسويقية الأساسية."
+        ]
+      },
+      {
+        title: "الفوائد",
+        type: "list",
+        items: [
+          "رفع الإنتاجية: تمكين فريق التسويق من إنتاج عدد أكبر من القطع التسويقية في وقت أقل مع الحفاظ بجودة مقبولة للنصوص.",
+          "توفير الوقت: اختصار مرحلة \"صفحة بيضاء\"؛ يحصل الفريق على مسودة أولى سريعة بدلاً من أن يبدأ من الصفر في كل مرة.",
+          "إثراء الأفكار: اقتراح زوايا جديدة للحديث عن المنتج، وصيغ مختلفة للحملة، مما يساعد في تجنّب التكرار والملل لدى الجمهور.",
+          "وصول أوسع للرسائل: إنتاج محتوى بلغات وأسواق مختلفة بسهولة، مما يدعم توسّع العلامة في مناطق جديدة."
+        ]
+      },
+      {
+        title: "التحديات",
+        type: "list",
+        items: [
+          "الحاجة لمراجعة بشرية دقيقة قبل النشر لضمان دقّة المعلومات والانسجام مع الاستراتيجية التسويقية.",
+          "احتماليّة إنتاج نصوص عامّة أو متشابهة بين العلامات التجارية إذا تم الاعتماد على المخرجات كما هي دون تخصيص.",
+          "خطر فقدان نبرة العلامة التجارية إذا لم تُضبط الإرشادات والقوالب المستخدمة داخل الأداة."
+        ]
+      },
+      {
+        title: "التوقعات المستقبلية",
+        type: "paragraph",
+        content: [
+          "من المتوقّع أن تتكامل أدوات مثل Jasper AI بشكل أعمق مع منصّات إدارة الحملات الإعلانية، بحيث تربط بين أداء الحملة الفعلي والنصوص المقترحة.",
+          "سيساعد ذلك فرق التسويق على بناء دورات مستمرة من التحسين، تعتمد على البيانات بدل حدس الفريق فقط."
+        ]
+      }
+    ]
+  },
+
+  /* ===== Localise – تجربة المستخدم ===== */
+  localise_ux: {
+    logo: "images/L.png",
+    title: "الذكاء الاصطناعي + تجربة المستخدم",
+    subtitle: "منصة Localise لواجهات متعددة اللغات",
+
+    qrImage: "images/LocaliseQR.png",
+    qrLabel: "امسح الباركود لتتعرف أكثر على Localise",
+
+    sections: [
+      {
+        title: "المقدمة",
+        type: "paragraph",
+        content: [
+          "تعد Localise منصّة مدعومة بالذكاء الاصطناعي متخصصة في توطين المحتوى وتجربة المستخدم (UX/UI)، تمكّن الفرق من تحويل مواقعها وتطبيقاتها إلى واجهة ذكية تحترم لغة المستخدم وثقافته دون التأثير على التصميم أو الأداء.",
+          "تساعد المنصّة في إدارة النصوص وترجمتها، والتأكد من توافقها مع التصميم، مما يجعل التجربة أكثر قربًا وإنسانية لمختلف الشرائح."
+        ]
+      },
+      {
+        title: "أهم المميزات",
+        type: "list",
+        items: [
+          "إدارة مركزية لكل النصوص داخل الموقع أو التطبيق مع إمكانيّة التحديث الفوري دون المساس بكود الواجهة.",
+          "دعم متقدم للغات المختلفة واتجاه النصوص مثل الواجهة من اليمين إلى اليسار (RTL) مع الحفاظ على جمال التصميم وتجربة المستخدم.",
+          "تكامل مع أنظمة التصميم وأدوات التطوير، ما يسهّل التعاون بين المصممين والمطورين وفِرق المحتوى.",
+          "تقارير حول حالة الترجمات والجمل الناقصة أو القديمة، لمساعدة الفريق على متابعة جودة المحتوى."
+        ]
+      },
+      {
+        title: "الفوائد",
+        type: "list",
+        items: [
+          "تجربة متّسقة للمستخدم في كل لغة، مما يعزّز الثقة بالمنتج أو الخدمة.",
+          "تسريع إطلاق المنتجات في أسواق جديدة دون الحاجة لإعادة بناء الواجهة لكل لغة.",
+          "تخفيف العبء على الفرق التقنية من خلال فصل إدارة النصوص عن كود الواجهة.",
+          "رفع مصداقيّة العلامة التجارية في الأسواق العالمية من خلال واجهات مترجمة بعناية."
+        ]
+      },
+      {
+        title: "التحديات",
+        type: "list",
+        items: [
+          "الحاجة لمراجعة بشرية خصوصًا في المصطلحات المتخصصة أو المحتوى الحساس.",
+          "التأكد من توافق طول النصوص مع العناصر التصميمية حتى لا تنكسر الواجهة.",
+          "إدارة فرق مترجمين أو مراجعين في حال تعدّد اللغات والمناطق المستهدفة."
+        ]
+      },
+      {
+        title: "التوقعات المستقبلية",
+        type: "paragraph",
+        content: [
+          "مع تطوّر النماذج اللغوية، يُتوقّع أن تصبح المنصّات مثل Localise قادرة على اقتراح ترجمات تأخذ في الاعتبار نبرة العلامة التجارية وسياق التصميم تلقائيًا.",
+          "كما سيزداد الاعتماد على الأتمتة في اكتشاف النصوص غير المترجمة أو غير المتّسقة وإرسال تنبيهات للفريق مباشرة."
+        ]
+      }
+    ]
+  },
+
+  /* ===== IBM Watson – الصناعة ===== */
+  ibm_industry: {
+    logo: "images/I.png",
+    title: "الذكاء الاصطناعي + الصناعة",
+    subtitle: "حلول IBM Watson للطاقة والتصنيع",
+
+    qrImage: "images/IBMQR.png",
+    qrLabel: "امسح الباركود لاستكشاف حلول IBM Watson",
+
+    sections: [
+      {
+        title: "المقدمة",
+        type: "paragraph",
+        content: [
+          "تستخدم العديد من المصانع حلول IBM Watson لتحليل البيانات الضخمة القادمة من خطوط الإنتاج والمعدّات، بهدف تحسين الكفاءة وتقليل الهدر.",
+          "تساعد هذه الحلول في التنبؤ بالأعطال قبل وقوعها، وتحسين جداول الصيانة، ورفع موثوقيّة الآلات."
+        ]
+      },
+      {
+        title: "أهم المميزات",
+        type: "list",
+        items: [
+          "جمع بيانات الحساسات من المعدات في الوقت الفعلي وتحليلها.",
+          "نماذج تنبؤية لاكتشاف الأنماط التي تسبق الأعطال.",
+          "لوحات تحكم تعرض حالة الخطوط الإنتاجية لحظيًا.",
+          "تكامل مع أنظمة إدارة الأصول والصيانة في المنشأة."
+        ]
+      },
+      {
+        title: "الفوائد",
+        type: "list",
+        items: [
+          "تقليل وقت التوقف غير المخطّط للآلات، مما يرفع الإنتاجية الإجمالية.",
+          "خفض تكلفة الصيانة بإجراء الصيانة الوقائية في الوقت المناسب.",
+          "تحسين جودة المنتجات بفضل مراقبة الاستقرار في خطوط الإنتاج.",
+          "دعم متّخذ القرار ببيانات دقيقة بدلاً من الاعتماد فقط على الخبرة الشخصية."
+        ]
+      },
+      {
+        title: "التحديات",
+        type: "list",
+        items: [
+          "الحاجة إلى بيانات نظيفة ومتكاملة من أنظمة مختلفة داخل المصنع.",
+          "تكلفة التركيب والتكامل الأولية قد تكون مرتفعة لبعض المنشآت.",
+          "تدريب الموظفين على استخدام الأنظمة التحليلية الجديدة واتخاذ قرارات مبنية على البيانات."
+        ]
+      },
+      {
+        title: "التوقعات المستقبلية",
+        type: "paragraph",
+        content: [
+          "سيتوسع استخدام الصيانة التنبؤية ليشمل معظم المعدات الحرجة في المنشآت الصناعية.",
+          "كما سيزداد الدمج بين الروبوتات الصناعية والذكاء الاصطناعي لاتخاذ قرارات ذاتية في خطوط الإنتاج."
+        ]
+      }
+    ]
+  },
+
+  /* ===== PathAI – الصحة ===== */
+  pathai_medical: {
+    logo: "images/P.png",
+    title: "الذكاء الاصطناعي + الصحة",
+    subtitle: "منصة PathAI للتشخيص الطبي",
+
+    qrImage: "images/PathQR.png",
+    qrLabel: "امسح الباركود للتعرّف أكثر على PathAI",
+
+    sections: [
+      {
+        title: "المقدمة",
+        type: "paragraph",
+        content: [
+          "توفر PathAI قدرات تشخيصية مدعومة بالذكاء الاصطناعي لتحليل صور الخلايا والأنسجة في المختبرات المرضية (Pathology).",
+          "تساعد المنصّة الأطباء على اكتشاف الأورام والتغيّرات غير الطبيعية بدقّة أعلى وفي وقت أقل، مما يدعم اتخاذ قرار علاجي أدق."
+        ]
+      },
+      {
+        title: "أهم المميزات",
+        type: "list",
+        items: [
+          "تحليل دقيق لشرائح الأنسجة الماسحة رقميًا واكتشاف الأنماط الدقيقة التي قد لا تُلاحظ بالعين المجرّدة.",
+          "نماذج مدرَّبة على مئات الآلاف من العينات المرضية لتقليل نسبة الخطأ.",
+          "إمكانية تمييز درجات شدّة المرض أو مرحلة الورم لدعم قرار الطبيب المعالج.",
+          "واجهات عرض تفاعلية تمكّن الأطباء من مراجعة النتائج مع إظهار المناطق الحرجة على الصورة."
+        ]
+      },
+      {
+        title: "الفوائد",
+        type: "list",
+        items: [
+          "رفع دقّة التشخيص خصوصًا في الحالات المعقّدة أو الحدودية.",
+          "تقليل احتماليّة الأخطاء البشرية الناتجة عن الإجهاد أو ضغط العمل.",
+          "تسريع رحلة المريض من الفحص إلى التشخيص وبالتالي بدء العلاج مبكرًا.",
+          "دعم الأطباء بمؤشرات إضافية تعزّز ثقتهم في القرار العلاجي."
+        ]
+      },
+      {
+        title: "التحديات",
+        type: "list",
+        items: [
+          "الحاجة إلى مجموعات بيانات ضخمة وعالية الجودة من المستشفيات والمختبرات لتدريب النماذج.",
+          "قضايا الخصوصية وحماية بيانات المرضى عند مشاركة الصور الطبية.",
+          "الحاجة إلى اعتماد وتنظيم رسمي من الجهات الصحية قبل الاعتماد الكامل على النظام."
+        ]
+      },
+      {
+        title: "التوقعات المستقبلية",
+        type: "paragraph",
+        content: [
+          "من المتوقّع أن تصبح حلول مثل PathAI جزءًا أساسيًا من منظومة التشخيص في المستشفيات الكبرى، وليس خيارًا إضافيًا.",
+          "قد نرى مستقبلًا أدوات تشخيص مدعومة بالذكاء الاصطناعي أقرب إلى المريض، مثل أجهزة تحليل صور مرتبطة بتطبيقات أو عيادات افتراضية."
+        ]
+      }
+    ]
+  }
+
+};
+
+
+
+
+
+/* ============================================
+   2) فتح المودال وتعبئة المحتوى ديناميكيًا
+   ============================================ */
+
+const modal = document.getElementById("episodeModal");
+const modalContent = document.getElementById("aiModalContent");
+const modalCloseBtn = modal.querySelector(".episode-close");
+
+function openEpisodeModal(id) {
+  const data = EPISODES[id];
+  if (!data) return;
+
+  let html = `
+    <div class="ai-tool-wrapper">
+      <div class="ai-tool-header">
+        ${data.logo ? `<img src="${data.logo}" class="ai-tool-logo" />` : ""}
+        <div class="ai-tool-title">${data.title}</div>
+        ${data.subtitle ? `<div class="ai-tool-subtitle">${data.subtitle}</div>` : ""}
+      </div>
+  `;
+
+  // الأقسام (مقدمة – مميزات – فوائد – تحديات – توقعات)
+  data.sections.forEach(section => {
+    html += `
+      <section class="ai-glass-section">
+        <h3 class="ai-section-title">${section.title}</h3>
+    `;
+
+    if (section.type === "paragraph") {
+      section.content.forEach(p => {
+        html += `<p>${p}</p>`;
+      });
+    }
+
+    if (section.type === "list") {
+      html += `<ul>`;
+      section.items.forEach(i => {
+        html += `<li>${i}</li>`;
+      });
+      html += `</ul>`;
+    }
+
+    html += `</section>`;
+  });
+
+  // الفوتر: باركود + ملاحظة (اختياري)
+  if (data.qrImage || data.qrLabel) {
+    html += `
+      <footer class="ai-tool-footer">
+        <div class="ai-tool-footer-text">
+          ${data.qrLabel || ""}
+        </div>
+        ${
+          data.qrImage
+            ? `<div class="ai-tool-qr-box">
+                 <img src="${data.qrImage}" alt="QR Code">
+               </div>`
+            : ""
+        }
+      </footer>
+    `;
+  }
+
+  html += `</div>`; // end .ai-tool-wrapper
+
+  modalContent.innerHTML = html;
+  modal.classList.add("is-open");
+  document.body.style.overflow = "hidden";
+}
+
+
+/* ============================================
+   3) إغلاق المودال
+   ============================================ */
+
+function closeEpisodeModal() {
+  modal.classList.remove("is-open");
+  document.body.style.overflow = "";
+}
+
+modalCloseBtn.addEventListener("click", closeEpisodeModal);
+
+modal.addEventListener("click", e => {
+  if (e.target === modal) closeEpisodeModal();
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeEpisodeModal();
+});
+
+
+/* ============================================
+   4) ربط الكروت بالمودال
+   ============================================ */
+
+document.querySelectorAll("[data-episode-id]").forEach(card => {
+  card.addEventListener("click", () => {
+    openEpisodeModal(card.dataset.episodeId);
+  });
+});
+
+</script>
+
+
+<script>
+  // ===== 1) تعريف الفقرات (غيّري النصوص والصور على مزاجك) =====
+  const IMAGINE_SCENARIOS = [
+    {
+      id: "duolingo",
+      logo: "images/duolingo.png",
+      app: "Duolingo Max",
+      cta: "للتعرّف عليها",
+      heading: "تخيّل لو كان لديك معلّم ذكي يشرح لك كل إجابة وكل تفصيل فورًا!",
+      body:
+        "في منصة Duolingo Max يُستخدم نموذج الذكاء الاصطناعي GPT-4 لتقديم شروحات لحظية للأخطاء اللغوية عبر ميزة Explain My Answer، إلى جانب محاكاة محادثات حيّة مع شخصيات افتراضية من خلال ميزة Roleplay، هذا يعزّز تجربة التعلّم ويجعلها أكثر تفاعلية وواقعية، خصوصًا لمن يتعلّم بمفرده أو خارج أوقات المحاضرات."
+    },
+    {
+      id: "notion",
+      logo: "images/notion.png",
+      app: "Notion AI",
+      cta: "شوفي كيف يساعدك",
+      heading: "تخيّل لو كان مشروع تخرجك منظم بالكامل… بضغطة زر.",
+      body:
+        "Notion AI يساعدك في تلخيص المراجع، اقتراح أفكار للعناوين، وتنظيم المهام في صفحة واحدة. بدل التشتت بين ملفات وملاحظات متفرقة، يتحوّل كل شيء إلى مساحة عمل ذكية تربط الأفكار بالمهام والمواعيد النهائية."
+    },
+    {
+      id: "SlidesAI",
+      logo: "images/slidesai.png",
+      app: "SlidesAI",
+      cta: "جرّبيها في عرضك القادم",
+      heading: "تخيّل لو كان عرضك التقديمي يُصمَّم تلقائيًا من مجرد نص.",
+      body:
+        "تقوم SlidesAI بتحويل النصوص الطويلة إلى شرائح مرتّبة، مع عناوين رئيسية ونِقَاط مختصرة وتصاميم متناسقة. هذا يختصر عليك ساعات من ترتيب الشرائح، ويترك لك التركيز على الرسالة نفسها وطريقة الإلقاء."
+    }
+  ];
+
+  // ===== 2) ربط العناصر من الصفحة =====
+  const caseCard   = document.getElementById("imagineCaseCard");
+  const caseText   = document.getElementById("imagineCaseText");
+
+  const logoEl     = document.getElementById("imagineCaseLogo");
+  const appEl      = document.getElementById("imagineCaseApp");
+  const ctaEl      = document.getElementById("imagineCaseCta");
+  const headingEl  = document.getElementById("imagineCaseHeading");
+  const bodyEl     = document.getElementById("imagineCaseBody");
+
+  const prevBtn    = document.getElementById("imaginePrev");
+  const nextBtn    = document.getElementById("imagineNext");
+  const dotsWrap   = document.getElementById("imagineDots");
+
+  let currentIndex = 0;
+
+  // ===== 3) إنشاء النقاط تحت الفقرات =====
+  const dots = IMAGINE_SCENARIOS.map((scenario, index) => {
+    const dot = document.createElement("button");
+    dot.className = "imagine-dot" + (index === 0 ? " is-active" : "");
+    dot.setAttribute("type", "button");
+    dot.addEventListener("click", () => goToScenario(index));
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  function updateDots() {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("is-active", i === currentIndex);
+    });
+  }
+
+  // ===== 4) دالة تغيّر محتوى الفقرة مع ترانزشن يشبه match & move =====
+  function changeScenario(nextIndex, direction) {
+    if (nextIndex === currentIndex || nextIndex < 0 || nextIndex >= IMAGINE_SCENARIOS.length) return;
+
+    const next = IMAGINE_SCENARIOS[nextIndex];
+    const outClass  = direction === "next" ? "imagine-slide-out-left"  : "imagine-slide-out-right";
+    const inClass   = direction === "next" ? "imagine-slide-in-from-right" : "imagine-slide-in-from-left";
+
+    // 1) طلّعي الحالي شوي مع تخفيف أوباسيتي
+    caseCard.classList.add(outClass);
+    caseText.classList.add(outClass);
+
+    setTimeout(() => {
+      // 2) حدّثي المحتوى بعد ما يختفي
+      logoEl.src        = next.logo;
+      logoEl.alt        = next.app;
+      appEl.textContent = next.app;
+      ctaEl.textContent = next.cta;
+      headingEl.textContent = next.heading;
+      bodyEl.textContent    = next.body;
+
+      // 3) حضّري الدخول من الجهة الثانية
+      caseCard.classList.remove(outClass);
+      caseText.classList.remove(outClass);
+
+      caseCard.classList.add(inClass);
+      caseText.classList.add(inClass);
+
+      // تفعيل الحالة النشطة عشان يكمل الترانزشن
+      requestAnimationFrame(() => {
+        caseCard.classList.add("imagine-is-active");
+        caseText.classList.add("imagine-is-active");
+      });
+
+      setTimeout(() => {
+        caseCard.classList.remove(inClass, "imagine-is-active");
+        caseText.classList.remove(inClass, "imagine-is-active");
+      }, 380);
+
+      currentIndex = nextIndex;
+      updateDots();
+    }, 230);
+  }
+
+  function goToScenario(index) {
+    const direction = index > currentIndex ? "next" : "prev";
+    changeScenario(index, direction);
+  }
+
+  // أزرار التالي / السابق
+  nextBtn.addEventListener("click", () => {
+    const nextIndex = (currentIndex + 1) % IMAGINE_SCENARIOS.length;
+    changeScenario(nextIndex, "next");
+  });
+
+  prevBtn.addEventListener("click", () => {
+    const prevIndex = (currentIndex - 1 + IMAGINE_SCENARIOS.length) % IMAGINE_SCENARIOS.length;
+    changeScenario(prevIndex, "prev");
+  });
+</script>
+
+   
+<script>
+  (function () {
+    const tabs = document.querySelectorAll(".imagine-tab");
+    const panels = document.querySelectorAll(".imagine-scenario");
+
+    if (!tabs.length || !panels.length) return;
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const target = tab.getAttribute("data-scenario");
+
+        // لو نفس المفتوح – لا شيء
+        if (tab.classList.contains("is-active")) return;
+
+        // فعّل التاب
+        tabs.forEach((t) => t.classList.remove("is-active"));
+        tab.classList.add("is-active");
+
+        // بدّل البانلز
+        panels.forEach((panel) => {
+          if (panel.getAttribute("data-scenario-panel") === target) {
+            panel.classList.add("is-active");
+          } else {
+            panel.classList.remove("is-active");
+          }
+        });
+      });
+    });
+  })();
+</script>
+
+
+
+
+
   </body>
 </html>

@@ -585,11 +585,13 @@ h2 {
 }
 
 /* الشعار */
+
 .center-logo {
-  flex: 0 0 320px;
   display: flex;
+  flex-direction: column; /* يخلي المحتوى فوق بعض */
   justify-content: center;
-  align-items: center;
+  align-items: center; /* يخلي كل شيء بالنص */
+  text-align: center;
 }
 
 .center-logo img {
@@ -597,6 +599,28 @@ h2 {
   max-width: 320px;
   height: auto;
 }
+
+
+.center-fixed-link {
+  margin-top: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.center-fixed-link span {
+  font-size: 1.05rem;
+  margin-right: 4px;
+}
+
+.center-fixed-link:hover {
+  color: #0d1a4a;
+  transform: translateY(-2px);
+}
+
+
 
 /* responsive */
 @media (max-width: 992px) {
@@ -702,7 +726,7 @@ h2 {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: var(--primary) rgba(96, 165, 250, 0.15);
-  direction: ltr; /* عشان حركة السكروول تكون واضحة وما تلخبط مع RTL */
+  direction: rlt; /* عشان حركة السكروول تكون واضحة وما تلخبط مع RTL */
 }
 
 /* Scrollbar للكروم والسفاري */
@@ -1253,7 +1277,7 @@ h2 {
           <p>
             أقامت مبادرة Beyond AI ورشة عمل بعنوان "How to Build an AI Chatbot"،
             خاض فيها المشاركون تجربة عملية للتعرّف على أساسيات بناء أنظمة المحادثة
-            الذكية، وفهم دور الـ chatbots في تحسين التفاعل الرقمي.
+            الذكية.
           </p>
         </div>
 
@@ -1278,16 +1302,23 @@ h2 {
         مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) هو مركز بحثي متخصص في تطوير تقنيات الذكاء الاصطناعي
         وتطبيقاته، ويتبع وكالة الجامعة للدراسات العليا والبحث العلمي. يهدف المركز إلى دعم منظومة البحث والابتكار
         في مجال الذكاء الاصطناعي على مستوى الجامعة والقطاعات الوطنية من خلال تقديم خدمات بحثية واستشارية تعتمد
-        على أفضل الممارسات وأحدث المعايير والتقنيات العالمية.
+       
+       على أفضل الممارسات وأحدث المعايير والتقنيات العالمية.<br>
+       <a href="https://thakaa.ksu.edu.sa/ar" class="center-bottom-link" target="_blank">
+        لزيارة صفحة موقع الدراسات المتقدمة في الذكاء الاصطناعي<span>↗</span>
+      </a>
       </p>
     </div>
 
     <!-- اليمين: شعار ذكاء -->
     <div class="center-logo">
       <img src="images/المركز.png" alt="AI Center Logo">
-    </div>
 
+    </div>
+ 
+ 
   </div>
+   
 </section>
 <section class="results-section">
   <div class="results-inner">
@@ -1308,7 +1339,7 @@ h2 {
         <div class="stat-number" data-target="85">+0</div>
         <h3 class="stat-title">عضو نشط</h3>
         <p class="stat-text">
-          من طلاب جامعات الرياض يعملون ضمن فرق المبادرة.
+          من طلاب جامعات الرياض .
         </p>
       </article>
 
@@ -1320,7 +1351,7 @@ h2 {
         <div class="stat-number" data-target="1200">+0</div>
         <h3 class="stat-title">مستفيد</h3>
         <p class="stat-text">
-          من مختلف مناطق المملكة استفادوا من مبادرات وفعاليات Beyond AI.
+          من مختلف مناطق المملكة العربية السعودية .
         </p>
       </article>
 
@@ -1332,7 +1363,7 @@ h2 {
         <div class="stat-number" data-target="13">+0</div>
         <h3 class="stat-title">برامج معرفية نوعية</h3>
         <p class="stat-text">
-          ورش ولقاءات ومعسكر تدريبي وفقرات أسبوعية.
+          ورش ولقاءات ومعسكرات تدريبية وفقرات أسبوعية.
         </p>
       </article>
 
@@ -1364,10 +1395,7 @@ h2 {
       <div class="carousel-track">
 
         <!-- 1 -->
-        <div class="carousel-slide">
-          <img src="images/5.png" alt="Partner 1" 
-               onerror="this.style.display='none'; console.error('صورة 2.png مفقودة');" />
-        </div>
+       
 
         <!-- 2 (كان p1 — الآن صار 5) -->
         <div class="carousel-slide">
@@ -1392,7 +1420,11 @@ h2 {
           <img src="images/p1.png" alt="Partner 2" 
                onerror="this.style.display='none'; console.error('صورة p1.png مفقودة');" />
         </div>
-
+        
+ <div class="carousel-slide">
+          <img src="images/5.png" alt="Partner 1" 
+               onerror="this.style.display='none'; console.error('صورة 2.png مفقودة');" />
+        </div>
       </div>
     </div>
 
@@ -1425,7 +1457,7 @@ h2 {
   <h3 class="footer-title">روابط سريعة</h3>
  <ul class="footer-links">
   <li><a href="index.html">الصفحة الرئيسية</a></li>
-  <li><a href="WeeklyParagraphs.html">برامـج المبــادرة</a></li>
+  <li><a href="InitiativePrograms.html">برامـج المبــادرة</a></li>
   <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
   <li><a href="Who_We_Are.html">من نحن</a></li>
   <li><a href="Contact_Us.html">تواصل معنا</a></li>
