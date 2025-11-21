@@ -446,104 +446,52 @@
 .footer-links.neat-list a:hover {
   color: #2563eb;
 }
-
-/* موبايل */
-
 @media (max-width: 960px) {
-  .topbar-row {
-    padding: 0.6rem 0.9rem;
-    gap: 0.75rem;
 
-    /* نخلي الهيدر Grid عشان نتحكم بالترتيب */
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    /* 👉 الهامبرقر يمين – اللوقو يسار */
-    grid-template-areas:
-      "hamburger . brand"
-      "nav       nav nav";
-    row-gap: 0.5rem;
+  /* نقلل ارتفاع الهيدر شوية */
+  .topbar-row {
+    padding: 0.35rem 0.9rem;
+    gap: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  /* اللوقو (يسار) */
+  /* الشعار */
   .brand {
-    grid-area: brand;
-    justify-self: flex-end;   /* في RTL: يصير على الطرف اليسار */
     display: flex;
     align-items: center;
   }
 
-  /* زر الهامبرقر (يمين) */
-  .hamburger {
-    grid-area: hamburger;
-    justify-self: flex-start; /* في RTL: يصير على الطرف اليمين */
+  .logo {
+    width: 110px;   /* أصغر شوي بالجوال */
+    height: auto;
+  }
 
+  /* زر المنيو (الهامبرقر) – نصغره */
+  .hamburger {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.8);
+    background: rgba(255, 255, 255, 0.95);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 999px;
-    border: 1px solid rgba(148, 163, 184, 0.85);
-    background: rgba(255, 255, 255, 0.92);
-    cursor: pointer;
-    font-size: 1.4rem;
+    font-size: 0.95rem;   /* الخط أصغر */
     color: #0f3c96;
+    cursor: pointer;
     transition: all 0.2s ease;
-    user-select: none;
+    box-shadow: 0 3px 8px rgba(15, 23, 42, 0.18);
   }
 
   .hamburger:hover {
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.2);
     transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(15, 23, 42, 0.25);
   }
 
-  /* الناف – قائمة منسدلة تحت */
-  .nav {
-    grid-area: nav;
-    position: relative;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
-
-    background: rgba(248, 250, 252, 0.98);
-    border-radius: 18px;
-    padding: 0.6rem 0.9rem 0.9rem;
-
-    transform: translateY(-120%);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.25s ease;
-    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.25);
-  }
-
-  .nav a {
-    width: 100%;
-    padding: 0.25rem 0.2rem;
-    font-size: 0.98rem;
-  }
-
-  /* فتح القائمة مع التشييك */
-  .nav-toggle:checked ~ .nav {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .nav-toggle:checked + .hamburger {
-    border-color: #2563eb;
-    color: #2563eb;
-    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
-  }
-
-  /* 🔕 نخفي خانة البحث في الجوال مؤقتًا */
+  /* نقدر نخلي البحث مخفي مؤقتًا بالجوال */
   .search {
     display: none;
-  }
-
-  /* تصغير الشعار شوي في الموبايل */
-  .logo {
-    width: 130px;
-    filter: drop-shadow(0 8px 20px rgba(15, 23, 42, 0.22));
   }
 }
