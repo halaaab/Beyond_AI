@@ -445,31 +445,29 @@
 
   <body>
     <!-- ============ الهيدر ============ -->
-    <header class="topbar">
-      <div class="topbar-row">
-        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-        <label for="nav-toggle" class="hamburger">☰</label>
+      <header class="topbar">
+  <div class="topbar-row">
+   
 
-        <nav class="nav">
-          <a href="index.html">الصفحة الرئيسية</a>
-          <a href="InitiativePrograms.html">برامج المبــادرة</a>
-          <a href="AI_libraries_page.html" class="active"
-            >مكتبة أدوات الذكاء الاصطناعي</a
-          >
-          <a href="Who_We_Are.html">من نحن</a>
-          <a href="Contact_Us.html">تواصل معنا</a>
-        </nav>
+    <!-- ✅ Checkbox + hamburger + nav -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="hamburger">☰</label>
 
-        <form class="search" id="searchForm">
-          <input type="search" id="searchInput" placeholder="عن ماذا تبحث؟" />
-          <button type="submit"><i class="fas fa-search"></i></button>
-        </form>
+    <nav class="nav">
+      <a href="index.html" >الصفحة الرئيسية</a>
+      <a href="InitiativePrograms.html">برامج المبــادرة</a>
+      <a href="AI_libraries_page.html"class="active">مكتبة أدوات الذكاء الاصطناعي</a>
+      <a href="Who_We_Are.html">من نحن</a>
+      <a href="Contact_Us.html" >تواصل معنا</a>
+    </nav>
 
-        <div class="brand">
-          <img src="images/HeaderLogo.png" alt="الشعار" class="logo" />
-        </div>
-      </div>
-    </header>
+     <!-- ✅ Logo (always on the left) -->
+    <div class="brand">
+      <img src="images/HeaderLogo.png" alt="الشعار" class="logo" />
+    </div>
+  </div>
+</header>
+
 
     <!-- ============ لوقو الصفحة ============ -->
     <section class="about-us-intro">
@@ -517,97 +515,83 @@
     </main>
 
     <!-- ============ الفوتر ============ -->
-    <footer class="footer fade-in" id="footer">
-      <div class="footer-inner">
-        <div class="footer-col">
-          <h3 class="footer-title">مبادرة Beyond AI</h3>
-          <p class="footer-about-desc">
-            مبادرة Beyond AI هي مبادرة مجتمعية تابعة لمركز الدراسات المتقدمة
-            في الذكاء الاصطناعي ( ذكاء ) في جامعة الملك سعود يقودها أكثر من ٩٠
-            طالبًا وطالبة من نخبة الجامعات السعودية، وتهدف إلى تمكين الطلبة من
-            مختلف المستويات الدراسية الجامعية ومن مختلف التخصصات من فهم الذكاء
-            الاصطناعي وتوظيفه في مساراتهم الأكاديمية والمهنية.
-          </p>
-        </div>
-  <div class="footer-col">
-  <h3 class="footer-title">روابط سريعة</h3>
- <ul class="footer-links">
-  <li><a href="index.html">الصفحة الرئيسية</a></li>
-  <li><a href="InitiativePrograms.html">برامـج المبــادرة</a></li>
-  <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
-  <li><a href="Who_We_Are.html">من نحن</a></li>
-  <li><a href="Contact_Us.html">تواصل معنا</a></li>
-</ul>
+  
+<footer class="footer" id="footer">
+  <div class="footer-inner">
 
-</div>
+    <!-- العمود 1: عن مبادرة Beyond AI -->
+    <div class="footer-col">
+      <h3 class="footer-title">مبادرة Beyond AI</h3>
+      <p class="footer-about-desc">
+        مبادرة Beyond AI هي مبادرة مجتمعية تابعة لمركز الدراسات المتقدمة في
+        الذكاء الاصطناعي (ذكاء) في جامعة الملك سعود، يقودها أكثر من ٩٠ طالبًا
+        وطالبة من نخبة الجامعات السعودية، وتهدف إلى تمكين الطلبة من مختلف
+        المستويات الدراسية والتخصصات من فهم الذكاء الاصطناعي وتوظيفه في
+        مساراتهم الأكاديمية والمهنية.
+      </p>
+    </div>
 
-        <div class="footer-col">
-          <h3 class="footer-title">معلومات التواصل</h3>
-          <ul class="footer-contact">
-            <li>
-              <div class="footer-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <span class="nowrap">ThakaaBeyond@ksu.edu.sa</span>
-            </li>
-            <li>
-              <div class="footer-icon">
-                <i class="fas fa-phone"></i>
-              </div>
-              <span class="nowrap" dir="ltr">+966539066133</span>
-            </li>
-            <li>
-              <div class="footer-icon">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <span>
-                مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك
-                سعود
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <!-- العمود 2: روابط سريعة -->
+    <div class="footer-col footer-links-col">
+      <h3 class="footer-title">روابط سريعة</h3>
+      <ul class="footer-links">
+        <li><a href="index.html">الصفحة الرئيسية</a></li>
+        <li><a href="InitiativePrograms.html">برامج المبادرة</a></li>
+        <li><a href="AI_libraries_page.html">مكتبة أدوات الذكاء الاصطناعي</a></li>
+        <li><a href="Who_We_Are.html">من نحن</a></li>
+        <li><a href="Contact_Us.html">تواصل معنا</a></li>
+      </ul>
+    </div>
 
-      <div class="footer-bottom">
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        />
+    <!-- العمود 3: معلومات التواصل -->
+    <div class="footer-col">
+      <h3 class="footer-title">معلومات التواصل</h3>
+      <ul class="footer-contact">
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <span class="nowrap">ThakaaBeyond@ksu.edu.sa</span>
+        </li>
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <span class="nowrap" dir="ltr">+966539066133</span>
+        </li>
+        <li>
+          <div class="footer-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <span>مركز الدراسات المتقدمة في الذكاء الاصطناعي (ذكاء) – جامعة الملك سعود</span>
+        </li>
+      </ul>
+    </div>
 
-        <div class="footer-social">
-          <a
-            href="https://www.linkedin.com/showcase/thakaabeyond/"
-            aria-label="LinkedIn"
-            title="LinkedIn"
-          >
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a
-            href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g"
-            aria-label="X"
-            title="X"
-          >
-            <i class="fa-brands fa-x-twitter"></i>
-          </a>
-          <a
-            href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1"
-            aria-label="TikTok"
-            title="TikTok"
-          >
-            <i class="fab fa-tiktok"></i>
-          </a>
-        </div>
+  </div>
 
-        <div class="footer-bottom-text">
-          جميع الحقوق محفوظة لمبادرة
-          <span style="color: #2563eb; font-weight: 700">Beyond AI</span> – مركز
-          الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
-        </div>
-      </div>
-    </footer>
+  <!-- مواقع التواصل -->
+  <div class="footer-bottom">
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/showcase/thakaabeyond/" aria-label="LinkedIn" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://x.com/thakaa_beyond?s=21&t=vdTFnpnktDr0FShuBiqZ_g" aria-label="X" title="X">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+      <a href="https://www.tiktok.com/@thakaa_beyond?_t=zs-8zjfwuzngmz&_r=1" aria-label="TikTok" title="TikTok">
+        <i class="fab fa-tiktok"></i>
+      </a>
+    </div>
 
-    <!-- ============ Firebase (module) ============ -->
+    <div class="footer-bottom-text">
+      جميع الحقوق محفوظة لمبادرة
+      <span style="color:#2563eb; font-weight:700;">Beyond AI</span>
+      – مركز الدراسات المتقدمة في الذكاء الاصطناعي ، جامعة الملك سعود.
+    </div>
+  </div>
+</footer>
+  <!-- ============ Firebase (module) ============ -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
@@ -900,5 +884,47 @@
         })();
       });
     </script>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchLinks = document.querySelectorAll(".nav-search-toggle");
+    const searchForm  = document.querySelector(".search");
+    const navToggle   = document.getElementById("nav-toggle");
+
+    if (!searchForm) return;
+
+    // فتح / إغلاق من "بحث في الموقع"
+    searchLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (navToggle) navToggle.checked = false;
+
+        searchForm.classList.toggle("search-open");
+      });
+    });
+
+    // الضغط في أي مكان برا -> يقفل
+    document.addEventListener("click", (e) => {
+      if (!searchForm.classList.contains("search-open")) return;
+
+      const insideSearch   = e.target.closest(".search");
+      const searchLink     = e.target.closest(".nav-search-toggle");
+
+      if (insideSearch || searchLink) return;
+
+      searchForm.classList.remove("search-open");
+    });
+
+    // زر ESC من الكيبورد
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        searchForm.classList.remove("search-open");
+      }
+    });
+  });
+</script>
+
   </body>
 </html>
