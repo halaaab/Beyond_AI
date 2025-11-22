@@ -445,3 +445,26 @@
     height: 30% !important;
   }
 }
+@supports (-webkit-touch-callout: none) {
+  * {
+    -webkit-text-size-adjust: 100%;
+  }
+}
+.scroll-hint {
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-align: center;
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 768px) {
+  .scroll-hint {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .scroll-hint {
+    display: none;  /* نخفيها في الديسكتوب */
+  }
+}

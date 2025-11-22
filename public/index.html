@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <link rel="icon" type="image/png" href="images/markblue.png" />
-  <link rel="stylesheet" href="header-footer.css">
-    <title>Beyond AI Inititaive</title>
-    <link rel="stylesheet" href="header-footer.css">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+  />
+
+  <title>Beyond AI Inititaive</title>
+
+  <!-- ✅ مهم: نفس ملف CSS لكن مع رقم نسخة لتكسير الكاش -->
+  <link rel="stylesheet" href="header-footer.css?v=6" />
+
+<link rel="icon" type="image/png" href="images/markblue.png?v=2">
+<link rel="apple-touch-icon" href="images/markblue.png?v=2">
+<link rel="shortcut icon" href="images/markblue.png?v=2">
+
+
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+
+</head>
+
+
     <style>
       * {
         margin: 0;
@@ -1059,33 +1075,52 @@ h2 {
 /* ============================
    سكشن نتائج تروي قصّتنا
    ============================ */
-/* ------------ سكشن الأرقام مثل الصورة ------------ */
-/* ===== إصلاح التصميم وجعله مثل الصورة ===== */
+/* ============================
+   سكشن نتائج تروي قصّتنا
+   ============================ */
 
-/* إزالة الكروت وتحويلها لتصميم بسيط */
-.stat-card {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  box-shadow: none !important;
+/* العنوان والوصف */
+.results-title {
+  font-size: clamp(2.1rem, 4vw, 2.7rem);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-align: center;
-  width: 220px; /* حجم العنصر */
 }
 
-/* ترتيب العناصر أفقياً بدال Grid */
+.results-desc {
+  margin-top: 8px;
+  font-size: 1.05rem;
+  color: #1f2937;
+  text-align: center;
+}
+
+/* شبكة الأرقام – ديسكتوب */
 .results-grid {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 70px;   /* المسافة بينهم */
+  gap: 70px;
   margin-top: 50px;
+}
+
+/* الكرت */
+.stat-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  text-align: center;
+  width: 220px;
 }
 
 /* الأيقونة */
 .stat-icon img {
-  width: 58px;    /* حجم الأيقونة */
+  width: 58px;
   height: 58px;
-  border-radius: 7px; /* نفس اللي طلبتيه */
+  border-radius: 7px;
   object-fit: cover;
   display: block;
   margin: 0 auto 12px;
@@ -1093,7 +1128,7 @@ h2 {
 
 /* الرقم */
 .stat-number {
-  font-size: 2.2rem; /* أصغر */
+  font-size: 2.2rem;
   font-weight: 800;
   color: #1d4ed8;
   margin-bottom: 6px;
@@ -1103,50 +1138,29 @@ h2 {
 .stat-title {
   font-size: 1.15rem;
   font-weight: 700;
-   background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 6px;
-  
 }
 
-/* الوصف */
+/* الوصف تحت الرقم */
 .stat-text {
   font-size: 0.75rem;
   color: #143496;
   line-height: 1.8;
 }
 
-/* إصلاح العنوان الرئيسي */
-.results-title {
- font-size: clamp(2.3rem, 4.4vw, 3.5rem);
-  font-weight: 600;
-  margin-bottom: 1.2rem;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center !important ;
-}
-
-/* الفقرة تحت العنوان */
-.results-desc {
-  margin-top: 8px;
-  font-size: 1.1rem;
-  color: #1f2937;
-  text-align: center;
-}
-
-/* ===== ريسبونسف لسكشن "نتائج تروي قصّتنا" – موبايل ===== */
+/* =========== موبايل / تابلت (2×2 rows) =========== */
 @media (max-width: 768px) {
 
   .results-section {
     padding: 50px 18px;
   }
 
-  /* العنوان والفقرة */
   .results-title {
-    font-size: 1.6rem;      /* أصغر مثل الهيرو وبن سلمان */
-    margin-bottom: 0.6rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
   }
 
   .results-desc {
@@ -1156,60 +1170,49 @@ h2 {
     margin-inline: auto;
   }
 
-  /* ترتيب الأرقام */
+  /* نخليها 2×2 */
   .results-grid {
-    flex-wrap: wrap;        /* يخليها 2×2 بدل صف طويل */
     justify-content: center;
-    gap: 28px 18px;
-    margin-top: 32px;
+    flex-wrap: wrap;           /* مهم: يلفّ الكروت */
+    gap: 24px 16px;            /* فراغ عمودي وأفقي */
+    max-width: 480px;
+    margin: 26px auto 0;
   }
 
   .stat-card {
-    width: 44%;             /* كرتين في الصف الواحد تقريبا */
-    max-width: 190px;
+    width: 46%;                /* تقريبا كرتين في الصف */
+    max-width: none;
+    text-align: center;
   }
 
   .stat-icon img {
-    width: 48px;
-    height: 48px;
-    border-radius: 7px;
+    width: 50px;
+    height: 50px;
     margin-bottom: 8px;
   }
 
   .stat-number {
-    font-size: 1.7rem;      /* أصغر شوي */
+    font-size: 1.8rem;
     margin-bottom: 4px;
   }
 
   .stat-title {
-    font-size: 0.98rem;
+    font-size: 1rem;
     margin-bottom: 4px;
   }
 
- /* الوصف تحت كل رقم */
-.stat-text {
-  font-size: 0.4rem !important;   /* أصغر بكثير */
-  line-height: 1.3;
-  color: #143496;
-  opacity: 0.9;
-  text-align: center;
-  margin-top: 6px;
-}
-
-}
-
-/* لو الشاشة أصغر من 430px نخلي الكروت صف واحد تحت بعض */
-@media (max-width: 430px) {
-  .stat-card {
-    width: 100%;
-    max-width: 260px;
+  .stat-text {
+    font-size: 0.65rem;
+    line-height: 1.6;
+    margin-top: 4px;
   }
 }
+
 
      
         
     </style>
-  </head>
+  
   <body>
     <div id="page-spinner">
       <div class="spinner"></div>

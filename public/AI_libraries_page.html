@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>مكتبة أدوات الذكاء الاصطناعي</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+  />
 
-    <link rel="icon" type="image/png" href="images/markblue.png" />
-    <link rel="apple-touch-icon" href="images/markblue.png" />
-    <link rel="shortcut icon" href="images/markblue.png" />
+  <title>Beyond AI Initiative</title>
 
-    <link rel="stylesheet" href="header-footer.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+  <!-- CSS الرئيسي -->
+  <link rel="stylesheet" href="header-footer.css?v=6" />
+
+<link rel="icon" type="image/png" href="images/markblue.png?v=2">
+<link rel="apple-touch-icon" href="images/markblue.png?v=2">
+<link rel="shortcut icon" href="images/markblue.png?v=2">
+
+
+  <!-- Font Awesome -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+</head>
+
 
     <style>
       /* ================== الخطوط ================== */
@@ -247,6 +258,49 @@
           grid-template-columns: 1fr;
         }
       }
+      /* ===== فلاتر المكتبة — موبايل فقط (صفّين: 4 فوق + 3 تحت) ===== */
+@media (max-width: 600px) {
+
+  .filters {
+    justify-content: center;
+    gap: 8px 10px;        /* مسافة بين الأزرار */
+    padding: 0 10px;
+  }
+
+  .pill {
+    flex: 0 1 calc(25% - 10px);  /* يخلي تقريباً ٤ أزرار في الصف */
+    min-width: auto;             /* يلغي الحد الأدنى القديم 118px */
+    padding: 0 10px;
+    height: 34px;
+    line-height: 34px;
+    font-size: 14px;
+  }
+
+  /* الصف الثاني يحتوي 3 فقط */
+  /* نستخدم nth-child لتوزيعهم */
+  .filters .pill:nth-child(n+5) {
+    grid-column: span 1;
+  }
+
+ 
+
+  /* آخر 3 أزرار — نحتاج نوسّطهم */
+  .filters .pill:nth-child(5),
+  .filters .pill:nth-child(6),
+  .filters .pill:nth-child(7) {
+    grid-column: span 1;
+  }
+
+  /* نخلي الصف الثاني 3 أزرار في النص */
+  .filters {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .filters .pill:nth-child(5) { grid-column: 2; }
+  .filters .pill:nth-child(6) { grid-column: 3; }
+  .filters .pill:nth-child(7) { grid-column: 4; }
+}
+
 
       /* ================== الكروت (Glass Effect) ================== */
       .grid .card {
@@ -441,7 +495,7 @@
         text-overflow: ellipsis;
       }
     </style>
-  </head>
+ 
 
   <body>
     <!-- ============ الهيدر ============ -->

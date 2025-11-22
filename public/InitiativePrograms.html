@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
-    <meta charset="UTF-8" />
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+  />
+<link rel="icon" type="image/png" href="images/markblue.png?v=2">
+<link rel="apple-touch-icon" href="images/markblue.png?v=2">
+<link rel="shortcut icon" href="images/markblue.png?v=2">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>برامج المبادرة</title>
-    
-    <link rel="stylesheet" href="header-footer.css" />
+  <title>Beyond AI Inititaive</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+  <!-- ✅ مهم: نفس ملف CSS لكن مع رقم نسخة لتكسير الكاش -->
+   <link rel="stylesheet" href="header-footer.css?v=6" />
+
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+</head>
+
     <style>
     
 * {
@@ -514,17 +525,55 @@ body {
   margin-top: 0.15rem;
 }
 
-/* ريسبونسيف */
-@media (max-width: 900px) {
-  .program-card {
-    padding: 1.2rem 1.1rem;
-  }
+@media (max-width: 768px) {
 
   .programs-section {
-    padding-inline: 1.2rem;
+    padding: 2rem 0 2.4rem;
+  }
+
+  /* Scroll أفقي */
+  .programs-grid {
+    display: flex;
+    overflow-x: auto !important;
+    gap: 16px;
+    padding: 0 16px;
+    scroll-snap-type: x mandatory;
+  }
+
+  /* الكرت بحجم ثابت في الموبايل */
+  .program-card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+    border-radius: 18px;
+    padding: 1.5rem;
+  }
+
+  /* حجم الخطوط أصغر */
+  .program-title {
+    font-size: 1rem;
+  }
+
+  .program-text {
+    font-size: 0.85rem;
+  }
+
+  .program-number {
+    font-size: 1.2rem;
+  }
+
+  .program-stat-label {
+    font-size: 0.75rem;
   }
 }
 
+/* ========== شريط Scroll للجوال (شكل أجمل) ========== */
+.programs-grid::-webkit-scrollbar {
+  height: 6px;
+}
+.programs-grid::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.55);
+  border-radius: 999px;
+}
       /* ===== الفقرات الأسبوعية ===== */
      .weekly-section {
   position: relative;
@@ -549,7 +598,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  object-fit: cover;
+  object-fit: cover !important;
+  
   z-index: -1;
 }
 
@@ -577,6 +627,64 @@ body {
   color: #3f3f46;
   line-height: 1.8;
 }
+@media (max-width: 768px) {
+  .weekly-section {
+    padding: 10;
+    margin: 0;
+  }
+
+  .weekly-content {
+    width: 100%;
+    text-align: center;
+    margin:  auto;
+    position: relative;
+    padding-top: 0;
+  }
+
+  /* الصورة — إلغاء absolute بالكامل */
+  .weekly-bg {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;           /* 👈 هنا نتحكم بالحجم */
+    height: auto !important;
+    margin: 10px auto 0.9rem !important;
+    display: block;
+    border-radius: 12px;
+    object-fit: contain !important;
+    z-index: 1 !important;
+  }
+
+  /* العنوان */
+  .weekly-title {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin-bottom: 1.1rem;
+    padding: 0 5px;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  /* النص */
+  .weekly-subtitle {
+    font-size: 0.82rem;
+    line-height: 1.8;
+    padding: 0 10px;
+    margin: 10 ;
+    text-align: center;
+    color: #1f2a3b;
+  }
+
+  /* إزالة البادينق العجيب اللي كان فوق */
+  .weekly-text {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+   
+  }
+}
+
+
+
 
 
 .ai-major-section {
@@ -656,32 +764,76 @@ body {
   pointer-events: none;
   user-select: none;
 }
+/* ===== موبايل لقسم الذكاء الاصطناعي + التخصص ===== */
+@media (max-width: 768px) {
 
-/* ===== للجوال ===== */
-@media (max-width: 900px) {
+  .ai-major-section {
+    padding: 3.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
   .ai-major-container {
-    flex-direction: column-reverse;
+    max-width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
     text-align: center;
   }
 
+  /* نخلي الصورة كخلفية خفيفة خلف النص */
   .ai-major-image {
-    position: relative;
+    position: absolute;
+    inset: 0;
     right: 0;
     top: 0;
     transform: none;
-    opacity: 0.25;
-    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.22;           /* نفس إحساس الصورة بالصورة اللي ارسلتيها */
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .ai-major-image img {
+    width: 90%;
+    max-width: 520px;
+    object-fit: contain;
+  }
+
+  /* النص يكون فوق الصورة */
+  .ai-major-text {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
 
   .ai-major-heading {
-    font-size: 2.3rem;
-    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: auto;
+  }
+
+  #dynamic-major {
+    padding: 0 4px;
   }
 
   .ai-major-description {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    line-height: 1.9;
+    max-width: 90%;
     margin: 0 auto;
     text-align: center;
+    color: #1e293b;
   }
 }
 
@@ -691,7 +843,7 @@ body {
 ==================================*/
 
 .ai-segment-section {
-  padding: 4rem 0 5rem;
+  padding: 6rem 1 6rem;
   direction: rtl;
   background: radial-gradient(circle at top left, #e0f2fe, #f8fafc, #e0f2fe);
   text-align: center;
@@ -702,7 +854,7 @@ body {
   font-size: 2.2rem;
   font-weight: 800;
   color: #1e3a8a;
-  margin-bottom: 0.4rem;
+  margin-bottom: 1.0rem;
 }
 
 /* العنوان الفرعي */
@@ -817,26 +969,102 @@ body {
   box-shadow: 0 14px 35px rgba(37, 99, 235, 0.45);
 }
 
-/* ================================
-   Responsive
-==================================*/
-@media (max-width: 1100px) {
-  .ai-segment-grid {
-    grid-template-columns: repeat(2, minmax(0,1fr));
-  }
-}
+/* ===== موبايل لقسم "عندما يفتح الذكاء الاصطناعي آفاقًا جديدة في مجالك" ===== */
+/* ===== موبايل لقسم AI Segment Cards مع سكرول أفقي ===== */
+@media (max-width: 768px) {
 
-@media (max-width: 700px) {
-  .ai-segment-grid {
-    grid-template-columns: 1fr;
+  .ai-segment-section {
+    padding: 4.0rem 0 3rem;
+    background: radial-gradient(circle at top left, #e0f2fe, #f8fafc, #e0f2fe);
+    text-align: center !important;
   }
 
+  /* عنوان القسم */
+  .ai-segment-section .section-main-heading {
+    
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.7;
+    max-width: 100%;
+    margin: 0.7 0.7 0.7rem;
+  }
+
+  /* الوصف */
+  .ai-segment-section .section-subtitle {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    max-width: 100%;
+    margin: 0 0.1 1.3rem;
+  }
+
+  /* === الكروت بسكرول أفقي === */
+  .ai-segment-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding: 0 1rem 0.8rem;
+    max-width: 100%;
+    margin: 0 auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ai-segment-grid::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .ai-segment-grid::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.55);
+    border-radius: 999px;
+  }
+
+  /* الكرت نفسه */
   .ai-segment-card {
-    padding: 1.3rem;
+    flex: 0 0 80%;              /* حجم الكرت بالنسبة لعرض الشاشة */
+    scroll-snap-align: center;
+    padding: 1.1rem 0.9rem 1.3rem;
+    border-radius: 18px;
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.1);
   }
 
+  /* الصورة في الكرت */
   .ai-segment-card-image {
-    max-width: 150px;
+    max-width: 180px;
+    margin: 0 auto 0rem;
+  }
+
+  .ai-segment-card-image img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 14px;
+  }
+
+  /* عنوان الكرت */
+  .ai-segment-title {
+    font-size: 0.98rem;
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+    text-align: center;
+  }
+
+  /* نص الوصف */
+  .ai-segment-desc,
+  .ai-segment-card p {
+    font-size: 0.82rem;
+    line-height: 1.8;
+    margin-bottom: 0.9rem;
+    text-align: center;
+  }
+
+  /* الزر */
+  .ai-segment-btn {
+    width: 72%;
+    max-width: 240px;
+    margin: 0.2rem auto 0;
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.3);
   }
 }
 
@@ -1207,32 +1435,52 @@ body {
   margin: 0 auto;
 }
 
-/* موبايل */
-@media (max-width: 900px) {
-  .imagine-hero-container {
-    min-height: auto;
-    padding: 3rem 1.5rem;
+/* ===== خلي قسم تخيّل لو يظهر نفس الديسكتوب على الجوال ===== */
+
+@media (max-width: 768px) {
+
+  .imagine-hero-section {
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: row !important;   /* نفس الديسكتوب */
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
   }
 
-  .imagine-hero-image {
-    position: relative;
-    right: 0;
-    top: 0;
-    transform: none;
-    opacity: 0.3;
-    margin-bottom: 1.5rem;
+  .imagine-container {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 
-  .imagine-hero-text {
-    text-align: center;
+  /* النص – نفس الديسكتوب */
+  .imagine-text {
+    max-width: 55%;
+    text-align: right !important;
   }
 
-  .imagine-hero-title {
-    text-align: center;
+  .imagine-title {
+    font-size: 2.3rem !important;     /* نفس الحجم */
+    margin-bottom: 1rem;
   }
 
-  .imagine-hero-body {
-    font-size: 1rem;
+  .imagine-desc {
+    font-size: 1.1rem !important;
+    line-height: 2rem;
+  }
+
+  /* الصورة – نفس مكانها بالضبط */
+  .imagine-image {
+    max-width: 45%;
+  }
+
+  .imagine-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 }
 
@@ -1414,31 +1662,97 @@ body {
   user-select: none;
 }
 
-/* موبايل / شاشات صغيرة */
+/* موبايل / شاشات صغيرة لقسم تخيّل لو */
 @media (max-width: 960px) {
+
+  /* التابات: صف واحد + سكرول أفقي */
+  .imagine-tabs {
+    justify-content: flex-start;
+    flex-wrap: nowrap;           /* ما يلفون لسطرين */
+    overflow-x: auto;           /* سكرول أفقي */
+    padding: 0 1rem;
+    gap: 0.6rem;
+  }
+
+  .imagine-tabs::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .imagine-tabs::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.6);
+    border-radius: 999px;
+  }
+
+  .imagine-tab {
+    flex: 0 0 auto;              /* كل زر ياخذ مساحة على قدّه */
+    white-space: nowrap;         /* ما ينكسر السطر داخل الزر */
+    font-size: 0.85rem;
+    padding: 0.45rem 1.1rem;
+  }
+
+  /* السيناريو: ترتيب عمودي (الصورة → النص → الأدوات) */
   .imagine-scenario {
-    grid-template-columns: 1fr;
-    gap: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
     padding-top: 1.5rem;
+    text-align: center;
+    min-height: auto;
   }
 
-  .imagine-tools-col {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .imagine-tool-card {
-    min-width: 180px;
-  }
-
+  /* الصورة فوق – أصغر ومركّزة */
   .imagine-visual-col {
+    order: 1;
+    width: 100%;
+    display: flex;
     justify-content: center;
   }
 
   .imagine-visual-col img {
-    max-width: 360px;
-    opacity: 0.3;
+    max-width: 230px;        /* صغّرنا الصورة */
+    width: 100%;
+    opacity: 0.3;            /* نفس الجو السابق */
+    margin-bottom: 0.5rem;
+  }
+
+  /* النص في المنتصف */
+  .imagine-text-col {
+    order: 2;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .imagine-scenario-title {
+    font-size: 1.25rem;
+    line-height: 1.7;
+  }
+
+  .imagine-scenario-body {
+    font-size: 0.9rem;
+    line-height: 1.9;
+  }
+
+  /* كروت الأدوات تحت – صف أو صفين */
+  .imagine-tools-col {
+    order: 3;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+  }
+
+  .imagine-tool-card {
+    min-width: 150px;
+    max-width: 180px;
+    padding: 0.9rem 1rem;
+  }
+
+  .imagine-tool-logo {
+    max-width: 70px;
+    margin-bottom: 0.5rem;
   }
 
   .imagine-cases-stage {
@@ -1448,8 +1762,9 @@ body {
 
 
 
+
     </style>
-  </head>
+
 
   <body>
 
@@ -1685,6 +2000,8 @@ body {
     </div>
   </div>
 </section>
+<section class="ai-segment-section">
+
 
 <section class="ai-major-section">
   <div class="ai-major-container">
@@ -1714,82 +2031,71 @@ body {
   </div>
 </section>
 
-<section class="ai-segment-section">
 
   <!-- العنوان الأساسي -->
   <h2 class="section-main-heading">
-   عندما يفتح الذكاء الاصطناعي آفاقًا جديدة في مجالــــك
+    عندما يفتح الذكاء الاصطناعي آفاقًا جديدة في مجالــــك
   </h2>
 
   <p class="section-subtitle">
     اختر بطاقة لتشاهد كيف يغيّر الذكاء الاصطناعي تفاصيل كل تخصص في دقائق معدودة.
   </p>
 
-  <!-- شبكة البطاقات -->
-  <div class="ai-segment-grid">
+  <!-- السكروول -->
+  <div class="ai-segment-grid" aria-label="فقرة الذكاء الاصطناعي + التخصص">
 
-  <article class="ai-segment-card" data-episode-id="jasper_marketing">
-  <div class="ai-segment-card-image">
-    <img src="images/jasperai.png" alt="الذكاء الاصطناعي + التسويق" />
-  </div>
-
-  <h3 class="ai-segment-title">الذكاء الاصطناعي + التسويق</h3>
-
-  <p class="ai-segment-desc">يصنع محتوى أسرع ويمنح رؤى أدق للحملات.
-  </p>
-
-  <button class="ai-segment-btn">عرض الفقرة</button>
-</article>
-
+    <!-- ===== الكرت 1 ===== -->
+    <article class="ai-segment-card" data-episode-id="jasper_marketing">
+      <div class="ai-segment-card-image">
+        <img src="images/jasperai.png" alt="الذكاء الاصطناعي + التسويق" />
+      </div>
+      <h3 class="ai-segment-title">الذكاء الاصطناعي + التسويق</h3>
+      <p class="ai-segment-desc">يصنع محتوى أسرع ويمنح رؤى أدق للحملات.</p>
+      <button class="ai-segment-btn">عرض الفقرة</button>
+    </article>
 
     <!-- ===== الكرت 2 ===== -->
-   <article class="ai-segment-card" data-episode-id="localise_ux">
-  <div class="ai-segment-card-image">
-    <img src="images/localise.png" alt="الذكاء الاصطناعي + تجربة المستخدم" />
-  </div>
-
-  <h3 class="ai-segment-title">الذكاء الاصطناعي + تصميم الواجهات </h3>
-
-  <p class="ai-segment-desc">
-   يُحسّن الواجهات ويُقدّم تجربة أكثر سلاسة وذكاءً.
-  </p>
-
-  <button class="ai-segment-btn">عرض الفقرة</button>
-</article>
+    <article class="ai-segment-card" data-episode-id="localise_ux">
+      <div class="ai-segment-card-image">
+        <img src="images/localise.png" alt="الذكاء الاصطناعي + تجربة المستخدم" />
+      </div>
+      <h3 class="ai-segment-title">الذكاء الاصطناعي + تجربة المستخدم</h3>
+      <p class="ai-segment-desc">يُحسّن الواجهات ويقدّم تجربة أكثر سلاسة وذكاءً.</p>
+      <button class="ai-segment-btn">عرض الفقرة</button>
+    </article>
 
     <!-- ===== الكرت 3 ===== -->
-   <article class="ai-segment-card" data-episode-id="ibm_industry">
-  <div class="ai-segment-card-image">
-    <img src="images/ibmwatson.png" alt="الذكاء الاصطناعي + الصناعة" />
-  </div>
-
-  <h3 class="ai-segment-title">الذكاء الاصطناعي + الهندسة الصناعية </h3>
-
-  <p class="ai-segment-desc">
-    يرفع كفاءة الإنتاج ويتنبّأ بالأعطال قبل حدوثها.
-  </p>
-
-  <button class="ai-segment-btn">عرض الفقرة</button>
-</article>
-
+    <article class="ai-segment-card" data-episode-id="ibm_industry">
+      <div class="ai-segment-card-image">
+        <img src="images/ibmwatson.png" alt="الذكاء الاصطناعي + الهندسة الصناعية" />
+      </div>
+      <h3 class="ai-segment-title">الذكاء الاصطناعي + الهندسة الصناعية</h3>
+      <p class="ai-segment-desc">يُحسّن كفاءة الإنتاج ويتنبّأ بالأعطال.</p>
+      <button class="ai-segment-btn">عرض الفقرة</button>
+    </article>
 
     <!-- ===== الكرت 4 ===== -->
     <article class="ai-segment-card" data-episode-id="pathai_medical">
-  <div class="ai-segment-card-image">
-    <img src="images/pathai.png" alt="الذكاء الاصطناعي + الصحة" />
-  </div>
-
-  <h3 class="ai-segment-title">الذكاء الاصطناعي + علم الأمراض</h3>
-
-  <p class="ai-segment-desc">يعزّز دقّة التحليل الطبي ويُسرّع التشخيص.
-  </p>
-
-  <button class="ai-segment-btn">عرض الفقرة</button>
-</article>
-
+      <div class="ai-segment-card-image">
+        <img src="images/pathai.png" alt="الذكاء الاصطناعي + علم الأمراض" />
+      </div>
+      <h3 class="ai-segment-title">الذكاء الاصطناعي + علم الأمراض</h3>
+      <p class="ai-segment-desc">يعزّز دقّة التحليل الطبي ويُسرّع التشخيص.</p>
+      <button class="ai-segment-btn">عرض الفقرة</button>
+    </article>
 
   </div>
+
+  <!-- مؤشر السلايدر (ثلاث نقاط) -->
+  <div class="ai-segment-indicators">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
 </section>
+
 
 
 <div class="episode-modal" id="episodeModal">
